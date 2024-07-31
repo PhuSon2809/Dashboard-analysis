@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@font-face {
+  font-family: 'Thin';
+  src:
+    local('SVN-Gilroy Thin'),
+    url('./assets/fonts/SVN-Gilroy-Thin.otf') format('truetype');
+}
+@font-face {
+  font-family: 'Xlight';
+  src:
+    local('SVN-Gilroy Xlight'),
+    url('./assets/fonts/SVN-Gilroy-Xlight.otf') format('truetype');
+}
+@font-face {
+  font-family: 'Light';
+  src:
+    local('SVN-Gilroy Light'),
+    url('./assets/fonts/SVN-Gilroy-Light.otf') format('truetype');
+}
+@font-face {
+  font-family: 'Medium';
+  src:
+    local('SVN-Gilroy Medium'),
+    url('./assets/fonts/SVN-Gilroy-Medium.otf') format('truetype');
+}
+@font-face {
+  font-family: 'Regular';
+  src:
+    local('SVN-Gilroy Regular'),
+    url('./assets/fonts/SVN-Gilroy-Regular.otf') format('truetype');
+}
+@font-face {
+  font-family: 'SemiBold';
+  src:
+    local('SVN-Gilroy SemiBold'),
+    url('./assets/fonts/SVN-Gilroy-SemiBold.otf') format('truetype');
+}
+@font-face {
+  font-family: 'Bold';
+  src:
+    local('SVN-Gilroy Bold'),
+    url('./assets/fonts/SVN-Gilroy-Bold.otf') format('truetype');
+}
+@font-face {
+  font-family: 'XBold';
+  src:
+    local('SVN-Gilroy XBold'),
+    url('./assets/fonts/SVN-Gilroy-XBold.otf') format('truetype');
+}
+@font-face {
+  font-family: 'Black';
+  src:
+    local('SVN-Gilroy Black'),
+    url('./assets/fonts/SVN-Gilroy-Black.otf') format('truetype');
+}
+@font-face {
+  font-family: 'Heavy';
+  src:
+    local('SVN-Gilroy Heavy'),
+    url('./assets/fonts/SVN-Gilroy-Heavy.otf') format('truetype');
+}
+@font-face {
+  font-family: 'Italic';
+  src:
+    local('SVN-Gilroy Italic'),
+    url('./assets/fonts/SVN-Gilroy-Italic.otf') format('truetype');
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  user-select: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #d5d5d5;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #8a8a8a;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.mdl-js {
+  padding-right: 0 !important;
+}
+
+.scroll-bar-small {
+  &::-webkit-scrollbar {
+    width: 4px !important;
+  }
+}
+
+.wrapper-content {
+  overflow: -moz-scrollbars-none !important;
+  -ms-overflow-style: none !important;
+
+  &::-webkit-scrollbar {
+    width: 0 !important;
+    display: none;
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next,
+.swiper-pagination {
+  display: none;
+}
+
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

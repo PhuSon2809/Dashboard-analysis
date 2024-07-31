@@ -1,0 +1,25 @@
+.list-person {
+  .swiper {
+    .swiper-wrapper {
+      margin-left: 160px;
+      align-items: center;
+      .swiper-slide {
+        transition: all 0.3s ease-in-out;
+        opacity: 0 !important;
+        .card {
+          transition: all 0.3s ease-in-out;
+          opacity: 0 !important;
+        }
+      }
+
+      .swiper-slide-active,
+      .swiper-slide-prev,
+      .swiper-slide-next {
+        opacity: 1 !important;
+        .card {
+          opacity: 1 !important;
+        }
+      }
+    }
+  }
+}

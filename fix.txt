@@ -1,0 +1,19 @@
+
+Web Ecom:
+- Edit lại vị trí frame product mờ khi di chuột vào tránh che thanh menu. - check
+-
+Page Trang chủ:
++ Edit lại nút điều hướng ở phần ND màu đen - check
++ Khi bấm ShopNow ở danh mục nào thì điều hướng sang đúng page Danh mục đó. - check
+Page Sản phẩm: Update số lượng SP khi share link (ko hiển thị sp share) - check
+Page Danh mục SP:
++ Edit lại kích thước khung ảnh tay cầm thuốc - check
++ Frame Flash sale: edit sp tự chuyển động sang sp khác trong vòng 5s. - check
+Page History Order: phần Storage lỗi điều chỉnh số lượng sau khi Add to bag và Add to bag bị đẩy hết sp qua.
+Page Thanh toán: tạo ràng buộc thông tin card khi user nhập
+Frame Payment Method (page Setting): thêm frame Add a new card & Add a new wallet - check
+Frame Address(page setting): thêm button xóa bất kỳ d/c nào đó có trong Profile - check
+Edit vị trí dấu mũi tên dưới thanh footer vào chỗ gần chatbot để có thể quay lại đầu trang bất cứ chổ nào (tất cả các page có) - check
+Mobile:
+Page Trang chủ:
++ Điều chỉnh vị trí thanh search căng giửa (cả page Trang chủ và Danh mục SP) - check
