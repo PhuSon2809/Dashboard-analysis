@@ -4,10 +4,10 @@ import { EffectCreative, Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import images from '~/assets'
+import { IconButton } from '~/components/iconButton'
 import { ArrowLeftIcon, ArrowRightIcon, ChevronRight } from '~/components/icons'
 import { PersonreactionCard } from '~/components/personreactionCard'
 import './styles.scss'
-import { IconButton } from '~/components/iconButton'
 
 const listData = [
   {
@@ -97,7 +97,7 @@ const CurrentReactions = memo(() => {
             timeless.
           </p>
 
-          <div className='flex flex-col gap-[26px] mt-[47px]'>
+          <div className='min-w-[472px] flex flex-col gap-[26px] mt-[47px]'>
             {listTypePerson.map((type) => (
               <div
                 key={type}
@@ -179,7 +179,7 @@ const CurrentReactions = memo(() => {
               )
             })}
           </Swiper>
-          <div className='flex items-center justify-center gap-4 mt-10'>
+          <div className='flex items-center justify-center gap-4 mt-10 pr-7'>
             <IconButton size='48' ref={prevRef} onClick={() => swiperRef.current?.swiper?.slidePrev()}>
               <ArrowLeftIcon className='size-6' />
             </IconButton>

@@ -1,9 +1,12 @@
 import { memo } from 'react'
-import { CurrentReactions, FoodBeverage, RealTimeReport, TodayReport } from '~/sections/home'
+import { Navbar } from '~/layouts/components/navbar'
+import { CurrentReactions, FoodBeverage, OrderReport, RealTimeReport, TodayReport } from '~/sections/home'
+import Engagement from '~/sections/home/Engagement'
 
 const Home = memo(() => {
   return (
-    <div className=' w-full h-full bg-red-400 relative overflow-hidden'>
+    <div className='w-full h-full bg-grey500 relative'>
+      <Navbar className='absolute top-5 left-5 z-50' />
       <div className='relative z-20'>
         <FoodBeverage />
       </div>
@@ -48,8 +51,19 @@ const Home = memo(() => {
         <RealTimeReport />
       </div>
 
-      <CurrentReactions />
-      <TodayReport />
+      <div className='overflow-hidden'>
+        <CurrentReactions />
+        <TodayReport />
+        <Engagement />
+      </div>
+
+      <div className='relative'>
+        <div className='h-[810px] bg-ln-white-5 mt-[151px] relative z-10' />
+
+        <div className='relative z-20 mt-[-1240px]'>
+          <OrderReport />
+        </div>
+      </div>
     </div>
   )
 })
