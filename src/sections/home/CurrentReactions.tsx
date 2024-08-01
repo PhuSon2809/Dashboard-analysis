@@ -8,6 +8,7 @@ import { IconButton } from '~/components/iconButton'
 import { ArrowLeftIcon, ArrowRightIcon, ChevronRight } from '~/components/icons'
 import { PersonreactionCard } from '~/components/personreactionCard'
 import './styles.scss'
+import { useAppSelector } from '~/redux/configStore'
 
 const listData = [
   {
@@ -71,6 +72,8 @@ const CurrentReactions = memo(() => {
   const prevRef = useRef<HTMLButtonElement>(null)
   const nextRef = useRef<HTMLButtonElement>(null)
 
+  const { homeReportCurrent } = useAppSelector((s) => s.report)
+
   const [typeActive, setTypeActive] = useState<string>('unhappy')
   const [activeSlide, setActiveSlide] = useState<number>(0)
 
@@ -129,7 +132,7 @@ const CurrentReactions = memo(() => {
                         'text-grey999/[.64] mt-1'
                       )}
                     >
-                      {type === 'unhappy' ? '3' : '8'} persons
+                      {type === 'unhappy' ? homeReportCurrent?.unhappyPersons : homeReportCurrent?.happyPersons} persons
                     </p>
                   </div>
                 </div>

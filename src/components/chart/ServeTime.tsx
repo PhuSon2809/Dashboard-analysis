@@ -1,6 +1,55 @@
-import { memo } from 'react'
+import { memo, useCallback, useEffect, useMemo, useState } from 'react'
+import { useAppDispatch, useAppSelector } from '~/redux/configStore'
+import { setFinishTimecount, setTimecount } from '~/redux/timecount/timecount.slice'
 
 const ServeTime = memo(() => {
+  const dispatch = useAppDispatch()
+
+  const { timecount, isFinishTimecount } = useAppSelector((s) => s.timecount)
+
+  // const duration = 5 * 60 * 1000
+  const duration = 20 * 1000
+
+  const [time, setTime] = useState<number>(duration)
+
+  useEffect(() => {
+    if (timecount !== 0) {
+      setTime(timecount)
+      dispatch(setTimecount(timecount))
+    }
+  }, [])
+
+  useEffect(() => {
+    if (timecount <= 0) {
+      setTime(duration)
+      dispatch(setTimecount(duration))
+      dispatch(setFinishTimecount(true))
+    } else {
+      if (isFinishTimecount) {
+        dispatch(setFinishTimecount(false))
+      }
+    }
+  }, [isFinishTimecount, timecount])
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setTime(time - 1000)
+      dispatch(setTimecount(time - 1000))
+    }, 1000)
+
+    return () => clearTimeout(timerId)
+  }, [time])
+
+  const getFormattedTime = useCallback((milliseconds: number) => {
+    const total_seconds = Math.floor(milliseconds / 1000)
+    const minutes = Math.floor(total_seconds / 60)
+    const seconds = total_seconds % 60
+
+    return { minutes, seconds }
+  }, [])
+
+  const formattedTime = useMemo(() => getFormattedTime(time), [time])
+
   return (
     <div className='size-[110px] bg-rg-white backdrop-blur-2xl rounded-[9.64px] shadow-s-14 flex items-center justify-center'>
       <div className='size-[90px] bg-white rounded-full shadow-s-9 relative flex items-center justify-center'>
@@ -36,7 +85,11 @@ const ServeTime = memo(() => {
         </div>
 
         <div className='flex flex-col items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
-          <h6 className='text-[14.47px] font-customSemiBold'>5m40s</h6>
+          <h6 className='text-[14.47px] font-customSemiBold'>
+            {formattedTime.minutes > 0 && formattedTime.minutes}
+            {formattedTime.minutes > 0 && 'm'}
+            {formattedTime.seconds}s
+          </h6>
           <p className='text-[6.63px] font-customSemiBold text-transparent bg-clip-text bg-ln-serve-time'>Serve Time</p>
         </div>
       </div>

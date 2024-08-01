@@ -1,10 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import rootReducer from './root/root.slice'
+import timecountReducer from './timecount/timecount.slice'
+import reportReducer from './report/report'
 
 export const store = configureStore({
   reducer: {
-    root: rootReducer
+    root: rootReducer,
+    timecount: timecountReducer,
+    report: reportReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
