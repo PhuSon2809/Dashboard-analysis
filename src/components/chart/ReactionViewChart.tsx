@@ -50,65 +50,63 @@ const ReactionViewChart = memo(() => {
       </div>
 
       <div className='size-[400px] absolute top-[71px] left-[36px]'>
-        <div className='w-full h-full p-1'>
-          <div className='relative'>
-            <Doughnut
-              className='relative z-50'
-              ref={chartTotalOrderRef}
-              options={{
-                cutout: 132,
-                plugins: {
-                  datalabels: {
-                    font: { size: 12 },
-                    anchor: 'center',
-                    align: 'center',
-                    formatter: (value) => `${formatLocaleString(value)}%`,
-                    color: (context) => ['#0D0D0D', '#FFF', '#0D0D0D', '#0D0D0D'][context.dataIndex] || '#FFF'
-                  },
-                  legend: { display: false },
-                  tooltip: {
-                    position: 'nearest',
-                    displayColors: false,
-                    backgroundColor: 'rgba(14, 14, 14, 0.6)',
-                    padding: 10,
-                    callbacks: {
-                      title: function () {
-                        return ''
-                      },
-                      label: function (tooltipItem: TooltipItem<'doughnut'>) {
-                        const dataset = tooltipItem.chart.data.datasets[tooltipItem.datasetIndex]
-                        const currentValue = dataset.data[tooltipItem.dataIndex] as number
-                        const percentage = (currentValue / total) * 100
-                        return `${percentage}%`
-                      }
+        <div className='relative'>
+          <Doughnut
+            className='relative z-50'
+            ref={chartTotalOrderRef}
+            options={{
+              cutout: 132,
+              plugins: {
+                datalabels: {
+                  font: { size: 12 },
+                  anchor: 'center',
+                  align: 'center',
+                  formatter: (value) => `${formatLocaleString(value)}%`,
+                  color: (context) => ['#0D0D0D', '#FFF', '#0D0D0D', '#0D0D0D'][context.dataIndex] || '#FFF'
+                },
+                legend: { display: false },
+                tooltip: {
+                  position: 'nearest',
+                  displayColors: false,
+                  backgroundColor: 'rgba(14, 14, 14, 0.6)',
+                  padding: 10,
+                  callbacks: {
+                    title: function () {
+                      return ''
+                    },
+                    label: function (tooltipItem: TooltipItem<'doughnut'>) {
+                      const dataset = tooltipItem.chart.data.datasets[tooltipItem.datasetIndex]
+                      const currentValue = dataset.data[tooltipItem.dataIndex] as number
+                      const percentage = (currentValue / total) * 100
+                      return `${percentage}%`
                     }
                   }
                 }
-              }}
-              data={{
-                labels: ['5.0', '4.0', '3.0', '2.0', '1.0'],
-                datasets: [
-                  {
-                    data: datasetData,
-                    backgroundColor: (ctx: any) =>
-                      ctx.chart.data.datasets[0].data.map((_: any, index: number) => getGradientColor(ctx, index)),
-                    hoverBackgroundColor: (ctx: any) =>
-                      ctx.chart.data.datasets[0].data.map((_: any, index: number) => getGradientColor(ctx, index)),
-                    borderRadius: 5,
-                    borderWidth: 0,
-                    spacing: 6
-                  }
-                ]
-              }}
-            />
-          </div>
+              }
+            }}
+            data={{
+              labels: ['5.0', '4.0', '3.0', '2.0', '1.0'],
+              datasets: [
+                {
+                  data: datasetData,
+                  backgroundColor: (ctx: any) =>
+                    ctx.chart.data.datasets[0].data.map((_: any, index: number) => getGradientColor(ctx, index)),
+                  hoverBackgroundColor: (ctx: any) =>
+                    ctx.chart.data.datasets[0].data.map((_: any, index: number) => getGradientColor(ctx, index)),
+                  borderRadius: 5,
+                  borderWidth: 0,
+                  spacing: 6
+                }
+              ]
+            }}
+          />
+        </div>
 
-          <div className='size-[256.2px] flex items-center justify-center rounded-full border-[2.5px] border-dotted border-[#A6A6A6] absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10'>
-            <div className='size-[246.64px] flex items-center justify-center bg-[#F8F8F8] rounded-full'>
-              <div className='size-[205.97px] flex flex-col items-center justify-center gap-1 bg-white rounded-full shadow-s-8'>
-                <h3 className='text-[30px]/[45px] font-medium text-[#292D30]'>${510}</h3>
-                <p className='text-[19px]/[28px] text-[#474B4E]'>December</p>
-              </div>
+        <div className='size-[256.2px] flex items-center justify-center rounded-full border-[2.5px] border-dotted border-[#A6A6A6] absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10'>
+          <div className='size-[246.64px] flex items-center justify-center bg-[#F8F8F8] rounded-full'>
+            <div className='size-[205.97px] flex flex-col items-center justify-center gap-1 bg-white rounded-full shadow-s-8'>
+              <h3 className='text-[30px]/[45px] font-medium text-[#292D30]'>${510}</h3>
+              <p className='text-[19px]/[28px] text-[#474B4E]'>December</p>
             </div>
           </div>
         </div>

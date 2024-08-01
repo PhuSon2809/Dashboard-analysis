@@ -1,5 +1,11 @@
 import { memo } from 'react'
-import { BestSellerChart, MostUsedPaymentChart, PaymentReactionChart, ReactionsEnjoyChart } from '~/components/chart'
+import {
+  BestSellerChart,
+  MostUsedPaymentChart,
+  PaymentReactionChart,
+  ReactionsEnjoyChart,
+  ServeTime
+} from '~/components/chart'
 import PurchasesChart from '~/components/chart/PurchasesChart'
 
 const OrderReport = memo(() => {
@@ -19,6 +25,7 @@ const OrderReport = memo(() => {
           <div className='flex items-center gap-[17.6px] mb-[30px]'>
             <PaymentReactionChart />
             <MostUsedPaymentChart />
+            <ServeTime />
           </div>
           <PurchasesChart />
         </div>

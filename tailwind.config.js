@@ -73,6 +73,7 @@ export default {
         'ln-white-blue-2': 'linear-gradient(360deg, #EBF7FF 0%, #FFFFFF 100%)',
         'ln-white-red': 'linear-gradient(180deg, #FFF3F3 0%, #FFFFFF 100%)',
         'ln-white-green': 'linear-gradient(360deg, #EDFFF5 0%, #FFFFFF 100%)',
+        'ln-white-yellow': 'linear-gradient(180deg, #FFFFFF 0%, #FFF6E8 100%)',
         'ln-grey-white': 'linear-gradient(174.32deg, #F8F8F9 -0.3%, rgba(255, 255, 255, 0) 107.82%)',
         'ln-blue-green': 'linear-gradient(225deg, #60EC8E 0%, #5495FC 100%)',
         'ln-blue-green-2': 'linear-gradient(270deg, #31D366 0%, #546AFC 100%)',
@@ -91,13 +92,23 @@ export default {
         'ln-orange-3': 'linear-gradient(360deg, #FFF6E8 0%, #FFFFFF 100%)',
         'ln-blue': 'linear-gradient(137.17deg, #64FBD7 -3.08%, #5383FF 99.14%)',
         'ln-blue-2': 'linear-gradient(180deg, #64FBD7 -0.03%, #5383FF 100.04%)',
+        'ln-blue-3': 'linear-gradient(180deg, #37CFFF 0%, #0D57C6 100.07%, #0F5ED6 100.07%)',
         'ln-grey': 'linear-gradient(303.39deg, #D1E4F2 4.41%, #DEECF6 92.37%)',
         'ln-purple': 'linear-gradient(128.49deg, #CB5DFF 0%, #1D41BE 100%)',
         'ln-red-green': 'linear-gradient(270deg, #31D366 0%, #FF5454 100%)',
         'ln-yellow': 'linear-gradient(199.9deg, #FFFFFF 0.09%, #F6F9DB 99.92%)',
         'ln-green-orange': 'linear-gradient(270deg, #FE7E07 0%, #31D366 143.93%)',
         'ln-orange-purple': 'linear-gradient(270deg, #6D59FF 0%, #FE7E07 143.93%)',
-        'ln-purple-green': 'linear-gradient(270deg, #53D750 0%, #6D59FF 143.93%)'
+        'ln-purple-green': 'linear-gradient(270deg, #53D750 0%, #6D59FF 143.93%)',
+        'ln-pink': 'linear-gradient(360deg, #FBEDFF 0%, #FFFFFF 100%)',
+        'ln-purple-pink': 'linear-gradient(271.86deg, #9C1EBC 26.07%, #5383FF 102.25%)',
+        'ln-purple-orange': 'linear-gradient(270deg, #FF6B00 0%, #9C1EBC 100%)',
+        'ln-yellow-green': 'linear-gradient(270deg, #31D366 0%, #FF6B00 100%)',
+        'ln-icon-button': 'linear-gradient(270deg, #5495FC 0%, #31D366 100%)',
+        'ln-serve-time':
+          'linear-gradient(302.7deg, #FF5FF4 -6.9%, #E669F4 8.29%, #A684F4 41%, #41ADF4 86.57%, #11C1F4 107.6%)',
+        'rg-white':
+          'radial-gradient(77.79% 52.72% at 49.78% 42.22%, #FFFFFF 42%, #F3F8FF 44%, #FFFFFF 49%, #FFFFFF 100%)'
       }
     },
     screens: {
@@ -121,7 +132,9 @@ export default {
       's-11': '0px 0px 55.19px 0px #0000000D',
       's-12': '0px 4px 40px 0px #0000000D',
       's-13': '0px 1px 5px 0px #00000029',
-      's-14': '0px 0px 16.63px 0px #0000000D'
+      's-14': '0px 0px 16.63px 0px #0000000D',
+      's-15': '0px 4.56px 22.78px 0px #00000029',
+      's-16': '0px 0px 80px 0px #0000000D'
     }
   },
   plugins: [
