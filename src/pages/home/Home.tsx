@@ -1,9 +1,10 @@
 import { memo } from 'react'
-import { CurrentReactions, FoodBeverage, RealTimeReport, TodayReport } from '~/sections/home'
+import { CurrentReactions, FoodBeverage, OrderReport, RealTimeReport, TodayReport } from '~/sections/home'
+import Engagement from '~/sections/home/Engagement'
 
 const Home = memo(() => {
   return (
-    <div className=' w-full h-full bg-red-400 relative overflow-hidden'>
+    <div className='w-full h-full bg-red-400 relative'>
       <div className='relative z-20'>
         <FoodBeverage />
       </div>
@@ -50,6 +51,15 @@ const Home = memo(() => {
 
       <CurrentReactions />
       <TodayReport />
+      <Engagement />
+
+      <div className='relative'>
+        <div className='h-[810px] bg-ln-white-5 mt-[151px] relative z-10' />
+
+        <div className='relative z-20 mt-[-1240px]'>
+          <OrderReport />
+        </div>
+      </div>
     </div>
   )
 })

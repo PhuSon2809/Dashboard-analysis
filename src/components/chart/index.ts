@@ -1,1 +1,8 @@
 export { default as RealHoursChart } from './RealHoursChart'
+export { default as TotalViewChart } from './TotalViewChart'
+export { default as ReactionViewChart } from './ReactionViewChart'
+export { default as ReactionMenuChart } from './ReactionMenuChart'
+export { default as ReactionsEnjoyChart } from './ReactionsEnjoyChart'
+export { default as BestSellerChart } from './BestSellerChart'
+export { default as PaymentReactionChart } from './PaymentReactionChart'
+export { default as MostUsedPaymentChart } from './MostUsedPaymentChart'
