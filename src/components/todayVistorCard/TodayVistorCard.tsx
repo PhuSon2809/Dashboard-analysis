@@ -1,8 +1,24 @@
-import { memo } from 'react'
+import { memo, useMemo } from 'react'
 import images from '~/assets'
-import { IncreaseIcon } from '../icons'
+import { DecreaseIcon, IncreaseIcon } from '../icons'
+import { useAppSelector } from '~/redux/configStore'
 
 const TodayVistorCard = memo(() => {
+  const { homeReportCurrent, homeReportOld } = useAppSelector((s) => s.report)
+
+  const percent = useMemo(
+    () =>
+      (((homeReportCurrent?.todayVisitors || 0) - (homeReportOld?.todayVisitors || 0)) /
+        (homeReportOld?.todayVisitors || 0)) *
+      100,
+    [homeReportCurrent, homeReportOld]
+  )
+
+  const isIncrease = useMemo(
+    () => (homeReportCurrent?.todayVisitors || 0) >= (homeReportOld?.todayVisitors || 0),
+    [homeReportCurrent, homeReportOld]
+  )
+
   return (
     <div className='w-[454px] h-[300px] rounded-[32px] bg-white/[.44] backdrop-blur-2xl flex items-center justify-center relative shadow-s-1 overflow-hidden'>
       <div className='size-[450px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
@@ -11,10 +27,12 @@ const TodayVistorCard = memo(() => {
 
       <div className='flex flex-col items-center'>
         <p className='text-[18px]/[27px] font-normal text-grey999/[.64]'>Today's vistors</p>
-        <h5 className='text-[81px]/[105.3px] font-bold'>100</h5>
+        <h5 className='text-[81px]/[105.3px] font-bold'>{homeReportCurrent?.todayVisitors}</h5>
         <div className='flex items-center gap-1'>
-          <IncreaseIcon color='green' className='size-8' />
-          <p className='text-[20px]/[30px] font-medium text-greenNeonMain'>8%</p>
+          {isIncrease ? <IncreaseIcon color='green' /> : <DecreaseIcon color='pink' />}
+          <p className={`text-[16px]/[24px] font-medium ${isIncrease ? 'text-greenNeonMain' : 'text-pinkMain'} `}>
+            {Math.abs(percent).toFixed(2)}%
+          </p>
         </div>
       </div>
       {[

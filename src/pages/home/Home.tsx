@@ -1,9 +1,62 @@
-import { memo } from 'react'
+import { memo, useCallback, useEffect } from 'react'
+import { listDataReport } from '~/assets/mocks/report'
 import { Navbar } from '~/layouts/components/navbar'
+import { useAppDispatch, useAppSelector } from '~/redux/configStore'
+import { setDataKey, setReportHomeDataCurrent, setReportHomeDataOld } from '~/redux/report/report'
 import { CurrentReactions, FoodBeverage, OrderReport, RealTimeReport, TodayReport } from '~/sections/home'
 import Engagement from '~/sections/home/Engagement'
 
 const Home = memo(() => {
+  const dispatch = useAppDispatch()
+
+  const { isFinishTimecount } = useAppSelector((s) => s.timecount)
+  const { dataKey, homeReportCurrent } = useAppSelector((s) => s.report)
+
+  const getRandomIntegerInRange = useCallback((min: number, max: number) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min
+  }, [])
+
+  console.log(
+    'random',
+    homeReportCurrent === null ? 0 : +dataKey === 0 ? 1 : +dataKey === 1 ? 2 : getRandomIntegerInRange(0, 100)
+  )
+
+  useEffect(() => {
+    console.log('homeReportCurrent', homeReportCurrent)
+    if (isFinishTimecount) {
+      dispatch(
+        setDataKey(
+          homeReportCurrent === null ? 0 : +dataKey === 0 ? 1 : +dataKey === 1 ? 2 : getRandomIntegerInRange(0, 100)
+        )
+      )
+      if (+dataKey === 0) {
+        dispatch(setReportHomeDataOld(listDataReport[0]))
+        dispatch(setReportHomeDataCurrent(listDataReport[0]))
+      } else if (+dataKey === 1) {
+        dispatch(setReportHomeDataCurrent(listDataReport[1]))
+      } else if (+dataKey === 2) {
+        dispatch(setReportHomeDataOld(listDataReport[1]))
+        dispatch(setReportHomeDataCurrent(listDataReport[2]))
+      } else {
+        dispatch(setReportHomeDataOld(homeReportCurrent))
+        dispatch(
+          setReportHomeDataCurrent({
+            id: getRandomIntegerInRange(0, 100),
+            currentVisitors: getRandomIntegerInRange(0, 1000),
+            todayVisitors: getRandomIntegerInRange(0, 10000),
+            unhappyVisitors: getRandomIntegerInRange(0, 100),
+            reach: getRandomIntegerInRange(0, 10000),
+            engagement: getRandomIntegerInRange(0, 10000),
+            order: getRandomIntegerInRange(0, 10000),
+            payment: getRandomIntegerInRange(0, 10000),
+            unhappyPersons: getRandomIntegerInRange(0, 100),
+            happyPersons: getRandomIntegerInRange(0, 10000)
+          })
+        )
+      }
+    }
+  }, [isFinishTimecount, dataKey])
+
   return (
     <div className='w-full h-full bg-grey500 relative'>
       <Navbar className='absolute top-5 left-5 z-50' />
