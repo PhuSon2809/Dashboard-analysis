@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import TimelineChart from '~/components/timeline/timelineChart'
+import { TimelineChart } from '~/components/timeline'
 import getRandomColor from '~/utils/randomColor'
 
 const dataMock = [

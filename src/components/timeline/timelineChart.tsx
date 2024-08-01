@@ -34,13 +34,15 @@ const avatars = [
 ]
 
 const TimelineChart: React.FC<ITimeLineChart> = ({ data }) => {
+  const tableHeaderRef = useRef<HTMLDivElement>(null)
+  const tableLeftRef = useRef<HTMLDivElement>(null)
+
+  const [positions, setPositions] = useState<Record<string, number>>({})
   const [contentWidthHeight, setContentWidthHeight] = useState<{
     width: number
     height: number
   }>({ width: 0, height: 0 })
-  const tableHeaderRef = useRef<HTMLDivElement>(null)
-  const tableLeftRef = useRef<HTMLDivElement>(null)
-  const [positions, setPositions] = useState<Record<string, number>>({})
+
   const currentHour = new Date().getHours()
 
   useEffect(() => {
@@ -58,6 +60,7 @@ const TimelineChart: React.FC<ITimeLineChart> = ({ data }) => {
       })
     }
   }, [])
+
   useEffect(() => {
     if (tableHeaderRef.current) {
       const currentHourElement = tableHeaderRef.current.children[currentHour] as HTMLElement
@@ -71,6 +74,7 @@ const TimelineChart: React.FC<ITimeLineChart> = ({ data }) => {
       }
     }
   }, [currentHour])
+
   useEffect(() => {
     const positions: Record<string, number> = {}
     document.querySelectorAll('.table-left-item').forEach((element) => {
@@ -89,6 +93,7 @@ const TimelineChart: React.FC<ITimeLineChart> = ({ data }) => {
     const minutes = date.getUTCMinutes()
     return hours * 100 + (minutes / 60) * 100
   }
+
   const getLimit = (start: string, end: string) => {
     const startDate = new Date(start)
     const endDate = new Date(end)
@@ -103,6 +108,7 @@ const TimelineChart: React.FC<ITimeLineChart> = ({ data }) => {
 
     return diffInHours
   }
+
   return (
     <div className='w-full h-full p-10 overflow-hidden'>
       <div className='min-w-full h-full flex'>

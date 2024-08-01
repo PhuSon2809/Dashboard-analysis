@@ -1,5 +1,4 @@
 import { memo } from 'react'
-import './style.scss'
 
 const ServeTime = memo(() => {
   return (
