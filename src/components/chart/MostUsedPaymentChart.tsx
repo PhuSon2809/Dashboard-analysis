@@ -1,18 +1,8 @@
-import {
-  BarElement,
-  CategoryScale,
-  Chart as ChartJS,
-  Legend,
-  LinearScale,
-  LineElement,
-  PointElement,
-  Title,
-  Tooltip
-} from 'chart.js'
+import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip } from 'chart.js'
 import { memo } from 'react'
 import { Bar } from 'react-chartjs-2'
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, LineElement, PointElement, Legend, Title, Tooltip, Legend)
+ChartJS.register(CategoryScale, LinearScale, BarElement, Legend, Title, Tooltip)
 
 const MostUsedPaymentChart = memo(() => {
   return (

@@ -1,1 +1,1 @@
-export { default as TimelineChart } from './TimelineChart'
+export { default as TimelineChart } from './timelineChart'

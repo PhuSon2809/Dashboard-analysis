@@ -1,7 +1,7 @@
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions, Transition } from '@headlessui/react'
 import { Dispatch, Fragment, memo, ReactNode, SetStateAction } from 'react'
 import { OptionSelect } from '~/@types/common'
-import { CheckIcon, ChevronDown, CloseIcon, SortIcon } from '~/components/icons'
+import { CheckIcon, ChevronDown, CloseIcon } from '~/components/icons'
 
 type SelectFilterProps = {
   label?: string
@@ -40,7 +40,7 @@ const SelectFilter = memo(
                 {leftIcon && leftIcon}
                 {isSortBy && (
                   <>
-                    <SortIcon className='xs:size-[18px] sm:size-5' />
+                    {/* <SortIcon className='xs:size-[18px] sm:size-5' /> */}
                     <div className='h-6 border-0 border-r-[1px] border-solid border-blackMain/[.1]' />
                   </>
                 )}

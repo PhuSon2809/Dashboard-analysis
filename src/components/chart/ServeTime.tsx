@@ -7,8 +7,8 @@ const ServeTime = memo(() => {
 
   const { timecount, isFinishTimecount } = useAppSelector((s) => s.timecount)
 
-  // const duration = 5 * 60 * 1000
-  const duration = 20 * 1000
+  const duration = 5 * 60 * 1000
+  // const duration = 20 * 1000
 
   const [time, setTime] = useState<number>(duration)
 
