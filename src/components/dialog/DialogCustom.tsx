@@ -46,7 +46,7 @@ const DialogCustom = memo(
             </TransitionChild>
           )}
 
-          <div className='fixed inset-0 z-[600] w-screen overflow-y-auto wrapper-content'>
+          <div className='fixed inset-0 z-[600] w-screen overflow-y-auto hidden-scroll'>
             <div
               className={`flex min-h-full xs:px-4 sm:px-0 ${variant !== 'vertical' ? 'sm:pr-[11px]' : ''} ${positionDialog ? positionDialog : 'items-start'} justify-center`}
             >

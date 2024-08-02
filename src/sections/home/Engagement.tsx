@@ -3,9 +3,9 @@ import { Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { MenuCheckTimeChart, ReactionMenuChart, ServeTimeAverageChart } from '~/components/chart'
 import LeaveMenuChart from '~/components/chart/LeaveMenuChart'
-import './styles.scss'
-import { SliderPagination } from '~/components/sliderPagination'
 import { ArrowLeftIcon, ArrowRightIcon } from '~/components/icons'
+import { SliderPagination } from '~/components/sliderPagination'
+import './styles.scss'
 
 const Engagement = memo(() => {
   const swiperRef = useRef<any>(null)

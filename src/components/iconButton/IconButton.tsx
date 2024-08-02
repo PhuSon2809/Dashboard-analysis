@@ -66,7 +66,7 @@ const IconButton = memo(
                 ? 'bg-transparent'
                 : color === 'linear' && variant === 'container'
                   ? 'bg-gradient-to-br from-greenMain to-blueMain'
-                  : 'bg-white/[.44]'
+                  : 'bg-white'
         } 
         ${color === 'default' && variant === 'container' ? 'hover:bg-greyMain' : 'hover:bg-white'} 
         ${variant === 'outline' && color === 'white' ? 'border-blackMain border-2 border-solid' : variant === 'outline' && color === 'default' ? 'border-blackMain/[.22] border-2 border-solid' : ''} 

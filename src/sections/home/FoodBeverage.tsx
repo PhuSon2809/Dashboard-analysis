@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { CurrentViewCard } from '~/components/currentViewCard'
+import { CurrentVisitorCard } from '~/components/currentVisitorCard'
 import { TodayVistorCard } from '~/components/todayVistorCard'
 import { UnhappyVistorCard } from '~/components/unhappyVistorCard'
 
@@ -9,10 +9,9 @@ const FoodBeverage = memo(() => {
       <div className='text-center space-y-4 relative z-20'>
         <h2 className='text-[54px]/[70.2px] font-bold'>Food & Beverage</h2>
         <p className='text-[16px]/[24px] font-normal text-grey999/[.64]'>
-          Elevate your essence with "Vamp one perfume bottle", an embodiment of refined masculinity and timeless <br />
-          sophistication. Crafted for the modern gentleman who exudes confidence and charm, this fragrance captures the{' '}
-          <br />
-          essence of strength and elegance.
+          Here are report of F&B data, refers to the collection of information and metrics related to the food and{' '}
+          <br /> beverage store make informed decisions, improve operations, enhance customer satisfaction, and stay{' '}
+          <br /> competitive in the market.
         </p>
       </div>
 
@@ -23,7 +22,7 @@ const FoodBeverage = memo(() => {
       <div className='size-[434px] bg-[#ECF2F3] rounded-full absolute left-[261px] top-[455px] z-20' />
 
       <div className='w-full mt-[60px] flex items-start justify-center gap-[22px] relative z-30'>
-        <CurrentViewCard />
+        <CurrentVisitorCard />
         <TodayVistorCard />
         <UnhappyVistorCard />
       </div>

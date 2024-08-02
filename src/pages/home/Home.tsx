@@ -1,10 +1,11 @@
-import { memo, useCallback, useEffect } from 'react'
+import { memo, useCallback, useEffect, useRef } from 'react'
 import { listDataReport } from '~/assets/mocks/report'
 import { Navbar } from '~/layouts/components/navbar'
 import { useAppDispatch, useAppSelector } from '~/redux/configStore'
 import { setDataKey, setReportHomeDataCurrent, setReportHomeDataOld } from '~/redux/report/report'
 import { CurrentReactions, FoodBeverage, OrderReport, RealTimeReport, TodayReport } from '~/sections/home'
 import Engagement from '~/sections/home/Engagement'
+import { smoothScrollToElement } from '~/utils/scroll'
 
 const Home = memo(() => {
   const dispatch = useAppDispatch()
@@ -15,11 +16,6 @@ const Home = memo(() => {
   const getRandomIntegerInRange = useCallback((min: number, max: number) => {
     return Math.floor(Math.random() * (max - min + 1)) + min
   }, [])
-
-  console.log(
-    'random',
-    homeReportCurrent === null ? 0 : +dataKey === 0 ? 1 : +dataKey === 1 ? 2 : getRandomIntegerInRange(0, 100)
-  )
 
   useEffect(() => {
     console.log('homeReportCurrent', homeReportCurrent)
@@ -57,14 +53,26 @@ const Home = memo(() => {
     }
   }, [isFinishTimecount, dataKey])
 
+  const foodBeverageRef = useRef<HTMLDivElement>(null)
+  const todayReportRef = useRef<HTMLDivElement>(null)
+
+  const scrollToSection = (id: string) => {
+    const duration = 1000
+    if (id === 'NavTimeIcon' && foodBeverageRef.current) {
+      smoothScrollToElement(foodBeverageRef.current, duration)
+    } else if (id === 'NavPieChartIcon' && todayReportRef.current) {
+      smoothScrollToElement(todayReportRef.current, duration)
+    }
+  }
+
   return (
-    <div className='w-full h-full bg-grey500 relative'>
-      <Navbar className='absolute top-5 left-5 z-50' />
-      <div className='relative z-20'>
+    <div className='max-w-[1440px] w-full h-full bg-grey500 relative'>
+      <Navbar scrollToSection={scrollToSection} />
+      <div ref={foodBeverageRef} className='relative z-20'>
         <FoodBeverage />
       </div>
 
-      <div className='w-full h-[907px] bg-ln-grey-white absolute left-0 top-[332px] flex items-center justify-between z-10'>
+      <div className='w-full h-[907px] bg-ln-grey-white absolute left-0 top-[0px] flex items-center justify-between z-10'>
         <svg width='289' height='907' viewBox='0 0 289 907' fill='none' xmlns='http://www.w3.org/2000/svg'>
           <path d='M0 0C63.3571 0 117.885 44.7698 130.218 106.915L289 907H0V0Z' fill='url(#paint0_linear_25_8393)' />
           <defs>
@@ -106,7 +114,9 @@ const Home = memo(() => {
 
       <div className='overflow-hidden'>
         <CurrentReactions />
-        <TodayReport />
+        <div ref={todayReportRef}>
+          <TodayReport />
+        </div>
         <Engagement />
       </div>
 

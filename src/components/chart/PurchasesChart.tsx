@@ -39,14 +39,14 @@ const PurchasesChart = memo(() => {
   }
 
   return (
-    <div className='size-[365px] bg-ln-orange-3 backdrop-blur-2xl rounded-[32px] shadow-s-11 relative'>
-      <div className='w-[163px] h-11 bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tr-[34px] rounded-bl-[34px] shadow-s-7 absolute -bottom-1 -left-1'>
-        <p className='text-[22px] font-customSemiBold text-transparent bg-clip-text bg-ln-green-orange capitalize'>
+    <div className='size-[535px] bg-ln-orange-3 backdrop-blur-2xl rounded-[32px] shadow-s-11 relative'>
+      <div className='w-[191px] h-[54px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tr-[34px] rounded-bl-[34px] shadow-s-7 absolute -bottom-1 -left-1'>
+        <p className='text-[28px] font-customSemiBold text-transparent bg-clip-text bg-ln-green-orange capitalize'>
           Purchases
         </p>
       </div>
 
-      <div className='w-full h-[250px] absolute left-1/2 transform -translate-x-1/2 top-7'>
+      <div className='w-full h-[400px] absolute left-1/2 transform -translate-x-1/2 top-10'>
         <div className='w-full h-full'>
           <PolarArea
             options={{
@@ -60,7 +60,7 @@ const PurchasesChart = memo(() => {
               },
               plugins: {
                 datalabels: {
-                  font: { size: 14 },
+                  font: { size: 28 },
                   color: '#fff',
                   anchor: 'center',
                   align: 'center',
@@ -102,16 +102,16 @@ const PurchasesChart = memo(() => {
         </div>
       </div>
 
-      <div className='w-full flex items-start justify-center gap-[17px] absolute bottom-[58px]'>
+      <div className='w-full flex items-start justify-center gap-[17px] absolute bottom-[65px]'>
         {listDataSet.map((data) => (
           <div key={data.value} className='flex items-center gap-[6px]'>
             <div
               className={classNames(
-                'size-3 rounded-full',
+                'size-4 rounded-full',
                 data.value === '2-4' ? 'bg-ln-orange-2' : data.value === '5' ? 'bg-ln-orange' : 'bg-ln-blue-2'
               )}
             />
-            <p className='text-[14px]/[14.7px] font-customRegular text-nowrap'>{data.label} Purchases</p>
+            <p className='text-[18px]/[18.9px] font-customRegular text-nowrap'>{data.label} Purchases</p>
           </div>
         ))}
       </div>

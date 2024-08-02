@@ -103,61 +103,14 @@
   border-radius: 5px;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: #8a8a8a;
   border-radius: 5px;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-
-// .table-left {
-
-//   /* Hide scrollbar for Webkit browsers */
-//   ::-webkit-scrollbar {
-//     width: 0px;
-//     height: 0px;
-//     /* For horizontal scrollbar */
-//   }
-
-//   /* Hide scrollbar for IE, Edge and Firefox */
-//   -ms-overflow-style: none;
-//   /* IE and Edge */
-//   scrollbar-width: none;
-//   /* Firefox */
-// }
-
-// .table-container {
-
-//   /* width */
-//   &::-webkit-scrollbar {
-//     width: 2px;
-//   }
-
-//   /* Track */
-//   &::-webkit-scrollbar-track {
-//     background: #d5d5d5;
-//     border-radius: 2px;
-//   }
-
-//   /* Handle */
-//   &::-webkit-scrollbar-thumb {
-//     background: #8a8a8a;
-//     border-radius: 2px;
-//   }
-
-//   /* Handle on hover */
-//   &::-webkit-scrollbar-thumb:hover {
-//     background: #555;
-//   }
-
-//   /* Firefox */
-//   scrollbar-width: thin;
-//   scrollbar-color: #8a8a8a #d5d5d5;
-// }
 
 .mdl-js {
   padding-right: 0 !important;
@@ -169,7 +122,7 @@
   }
 }
 
-.wrapper-content {
+.hidden-scroll {
   overflow: -moz-scrollbars-none !important;
   -ms-overflow-style: none !important;
 

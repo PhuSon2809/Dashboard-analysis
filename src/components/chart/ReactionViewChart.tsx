@@ -8,10 +8,10 @@ import { formatLocaleString } from '~/utils/format'
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels)
 
 const listDataSet = [
-  { value: 'curious', label: 'Curious' },
-  { value: 'normal', label: 'Normal' },
-  { value: 'positive', label: 'Positive' },
-  { value: 'negative', label: 'Negative' }
+  { value: 'disinterested', label: 'Disinterested' },
+  { value: 'attentive', label: 'Attentive' },
+  { value: 'moderately-attentive', label: 'Moderately Attentive' },
+  { value: 'high-attentive', label: 'high-attentive' }
 ]
 
 const ReactionViewChart = memo(() => {
@@ -112,17 +112,17 @@ const ReactionViewChart = memo(() => {
         </div>
       </div>
 
-      <div className='mt-3 flex flex-col items-start justify-center gap-6 absolute bottom-10 right-10'>
+      <div className='mt-3 flex flex-col items-start justify-center gap-6 absolute bottom-5 right-5'>
         {listDataSet.map((data) => (
           <div key={data.value} className='flex items-center gap-[6px]'>
             <div
               className={classNames(
                 'size-3 rounded-[1px]',
-                data.value === 'curious'
+                data.value === 'disinterested'
                   ? 'bg-ln-orange'
-                  : data.value === 'normal'
+                  : data.value === 'attentive'
                     ? 'bg-ln-blue'
-                    : data.value === 'positive'
+                    : data.value === 'moderately-attentive'
                       ? 'bg-ln-grey'
                       : 'bg-[#F2F2F2]'
               )}

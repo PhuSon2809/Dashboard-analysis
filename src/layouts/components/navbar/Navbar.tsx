@@ -1,5 +1,6 @@
+import classNames from 'classnames'
 import { memo, useMemo, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import images from '~/assets'
 import { NavLogoutIcon, NavSettingIcon } from '~/components/icons'
 import NavColumnChartIcon from '~/components/icons/NavColumnChartIcon'
@@ -11,16 +12,17 @@ import NavUserIcon from '~/components/icons/NavUserIcon'
 import { PATH_PUBLIC_APP } from '~/constants/paths'
 
 type NavbarProps = {
-  variant?: 'vertical' | 'horizontal'
   className?: string
+  scrollToSection: (id: string) => void
 }
 
-const Navbar = memo(({ className }: NavbarProps) => {
+const Navbar = memo(({ className, scrollToSection }: NavbarProps) => {
   const navigate = useNavigate()
 
-  const { pathname } = useLocation()
-
   const [itemHover, setItemHover] = useState<string>('')
+  const [itemActive, setItemActive] = useState<string>('')
+  const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false)
+  const [isOpenMenuItem, setIsOpenMenuItem] = useState<boolean>(false)
 
   const configNavbar = useMemo(() => {
     return [
@@ -67,24 +69,64 @@ const Navbar = memo(({ className }: NavbarProps) => {
     ]
   }, [PATH_PUBLIC_APP])
 
+  const listMenuRender = useMemo(
+    () =>
+      isOpenMenuItem
+        ? configNavbar
+        : configNavbar.filter(
+            (menu) => menu.id !== 'NavTimeIcon' && menu.id !== 'NavPieChartIcon' && menu.id !== 'NavColumnChartIcon'
+          ),
+    [isOpenMenuItem, configNavbar]
+  )
+
   return (
     <div
-      className={`py-[26px] px-[22px] bg-white/[.32] backdrop-blur-[40px] rounded-3xl shadow-s-16 flex flex-col items-center gap-[18px] ${className}`}
+      className={classNames(
+        className,
+        isOpenMenu
+          ? 'h-fit py-[26px] px-[22px] bg-white/[.32] backdrop-blur-[40px] rounded-3xl shadow-s-16 top-5 left-5 transform '
+          : 'h-[100px] p-5 top-[30px] left-[17px]',
+        isOpenMenu ? 'max-h-screen' : 'max-h-[100px]',
+        'fixed w-fit z-50 flex flex-col items-center gap-[18px] overflow-hidden transition-all duration-700 ease-in-out'
+      )}
     >
-      <img src={images.logo.logo_e_commerce} alt='logo' className='size-12' />
+      <button
+        onClick={() => {
+          setItemActive('')
+          setIsOpenMenu(!isOpenMenu)
+          setIsOpenMenuItem(false)
+        }}
+        className={classNames(
+          'min-w-12 min-h-12 flex items-center justify-center bg-white shadow-s-19 rounded-full transition-transform duration-1000 ease-in-out',
+          isOpenMenu && 'rotate-[360deg]'
+        )}
+      >
+        <img src={images.logo.logo_metanode} alt='logo-metanode' className='w-8' />
+      </button>
 
       <div className={`flex flex-col gap-1`}>
-        {configNavbar.map((nav) => (
+        {listMenuRender.map((nav) => (
           <div
             key={nav.id}
             onMouseEnter={() => setItemHover(nav.id)}
             onMouseLeave={() => setItemHover('')}
-            onClick={() => navigate(nav.url)}
-            className={`size-12 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 ease-in-out cursor-pointer
-                        ${pathname === nav.url ? 'bg-ln-icon-button backdrop-blur-[40px] shadow-s-16' : 'bg-white'}`}
+            onClick={() => {
+              setItemActive(nav.id)
+              if (nav.id === 'NavDemoIcon') {
+                setIsOpenMenuItem(!isOpenMenuItem)
+              } else if (nav.id === 'NavTimeIcon' || nav.id === 'NavPieChartIcon') {
+                scrollToSection(nav.id)
+              } else {
+                navigate(nav.url)
+              }
+            }}
+            className={classNames(
+              `size-12 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 ease-in-out cursor-pointer`,
+              itemActive === nav.id ? 'bg-ln-icon-button backdrop-blur-[40px] shadow-s-16' : 'bg-transparent'
+            )}
           >
             <div className='min-w-6'>
-              {nav.icon(pathname === nav.url ? 'white' : itemHover === nav.id ? 'linear' : 'black')}
+              {nav.icon(itemActive === nav.id ? 'white' : itemHover === nav.id ? 'linear' : 'black')}
             </div>
           </div>
         ))}

@@ -24,7 +24,7 @@ const CurrentViewCard = memo(() => {
   return (
     <div className='w-[355px] h-[235px] rounded-[32px] bg-white/[.44] backdrop-blur-2xl overflow-hidden shadow-s-1 relative'>
       <div className='w-fit flex flex-col items-center gap-1 mt-[52px] ml-[52px]'>
-        <p className='text-[18px]/[28px] font-normal text-grey999/[.64]'>Current views</p>
+        <p className='text-[18px]/[28px] font-normal text-grey999/[.64]'>Current visitors</p>
         <div className='flex items-center gap-[9px]'>
           <h6 className='text-[36px]/[46.8px] font-bold'>{homeReportCurrent?.currentVisitors}</h6>
           <div className='flex items-center gap-1'>

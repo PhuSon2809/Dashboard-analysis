@@ -1,60 +1,47 @@
-import { Tooltip } from '@radix-ui/themes'
-import React from 'react'
+import classNames from 'classnames'
+import React, { memo, ReactNode } from 'react'
 
 interface AvatarGroupProps {
-  children: React.ReactNode
   limit: number
+  isActive: boolean
+  children: ReactNode
 }
 
-const AvatarGroup: React.FC<AvatarGroupProps> = ({ children, limit }) => {
+const AvatarGroup: React.FC<AvatarGroupProps> = memo(({ children, limit, isActive }) => {
   const avatars = React.Children.toArray(children)
   const extraAvatarsCount = avatars.length - limit
 
   return (
     <div className='flex items-center'>
       {avatars.slice(0, limit).map((avatar, index) => (
-        <div key={index} className='w-10 h-10 -ml-2 first:ml-0'>
+        <div key={index} className='-ml-2 first:ml-0'>
           {avatar}
         </div>
       ))}
       {extraAvatarsCount > 0 && (
-        <Tooltip
-          content={
-            <div className='flex space-x-2'>
-              {avatars.slice(limit).map((avatar, index) => (
-                <div key={index} className='w-10 h-10'>
-                  {avatar}
-                </div>
-              ))}
-            </div>
-          }
+        <div
+          className={classNames(
+            isActive ? 'size-9 text-sm' : 'size-7 text-xs',
+            'pt-[3px] -ml-2 first:ml-0 bg-[#F9F5FF] rounded-full flex items-center justify-center text-[#7F56D9] border-[1.5px] border-solid border-white'
+          )}
         >
-          <div className='w-10 h-10 -ml-2 first:ml-0 bg-gray-200 rounded-full flex items-center justify-center text-gray-600 text-sm cursor-pointer'>
-            +{extraAvatarsCount}
-          </div>
-        </Tooltip>
+          +{extraAvatarsCount}
+        </div>
       )}
     </div>
   )
-}
+})
 
 interface AvatarItemProps {
   src: string
   alt: string
+  isActive: boolean
 }
 
-const AvatarItem: React.FC<AvatarItemProps> = ({ src, alt }) => {
-  return (
-    <div
-      className='w-10 h-10 overflow-hidden rounded-full'
-      style={{
-        border: '2px solid white'
-      }}
-    >
-      <img src={src} alt={alt} className='w-full h-full object-cover' />
-    </div>
-  )
-}
+const AvatarItem: React.FC<AvatarItemProps> = memo(({ src, alt, isActive }) => (
+  <div className={classNames(isActive ? 'size-9' : 'size-7', 'rounded-full border-[1.5px] border-solid border-white')}>
+    <img src={src} alt={alt} className='size-full object-cover object-center' />
+  </div>
+))
 
 export { AvatarGroup, AvatarItem }
-

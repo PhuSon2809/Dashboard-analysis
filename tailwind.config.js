@@ -108,7 +108,11 @@ export default {
         'ln-serve-time':
           'linear-gradient(302.7deg, #FF5FF4 -6.9%, #E669F4 8.29%, #A684F4 41%, #41ADF4 86.57%, #11C1F4 107.6%)',
         'rg-white':
-          'radial-gradient(77.79% 52.72% at 49.78% 42.22%, #FFFFFF 42%, #F3F8FF 44%, #FFFFFF 49%, #FFFFFF 100%)'
+          'radial-gradient(77.79% 52.72% at 49.78% 42.22%, #FFFFFF 42%, #F3F8FF 44%, #FFFFFF 49%, #FFFFFF 100%)',
+        'ln-blue-yellow': 'linear-gradient(128.63deg, #00D1FF 11.01%, #FFEC42 95%, #FFE600 95%)',
+        'ln-pink-2': 'linear-gradient(128.63deg, #F9AB8F 11.01%, #FF52E3 95%)',
+        'ln-pink-blue': 'linear-gradient(135deg, #FFACC6 2.88%, #B6E0F5 100%)',
+        'ln-yellow-red': 'linear-gradient(128.63deg, #EAFF80 11.01%, #FF4A7A 95%)'
       }
     },
     screens: {
@@ -134,7 +138,10 @@ export default {
       's-13': '0px 1px 5px 0px #00000029',
       's-14': '0px 0px 16.63px 0px #0000000D',
       's-15': '0px 4.56px 22.78px 0px #00000029',
-      's-16': '0px 0px 80px 0px #0000000D'
+      's-16': '0px 0px 80px 0px #0000000D',
+      's-17': '3px 3px 4px 0px #00000040 inset',
+      's-18': '0px 4px 64px 0px #0000001A',
+      's-19': '0px 0px 20px 0px #0000001A'
     }
   },
   plugins: [

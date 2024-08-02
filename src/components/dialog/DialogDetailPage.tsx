@@ -12,7 +12,7 @@ const DialogDetailPage = memo(({ children, open, setOpen, className }: DialogDet
   return (
     <Transition show={open} as={Fragment}>
       <Dialog className='relative z-[700]' onClose={setOpen}>
-        <div className='fixed inset-0 z-[100] w-screen overflow-y-auto wrapper-content'>
+        <div className='fixed inset-0 z-[100] w-screen overflow-y-auto hidden-scroll'>
           <div className='min-h-full items-end justify-center sm:items-center'>
             <TransitionChild
               as={Fragment}
@@ -24,7 +24,7 @@ const DialogDetailPage = memo(({ children, open, setOpen, className }: DialogDet
               leaveTo='opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95'
             >
               <DialogPanel
-                className={`sm:w-full sm:h-full sm:min-w-[100vw] sm:min-h-[100vh] sm:max-w-[100vw] sm:max-h-[100vh] bg-white transition-all overflow-y-auto wrapper-content ${className}`}
+                className={`sm:w-full sm:h-full sm:min-w-[100vw] sm:min-h-[100vh] sm:max-w-[100vw] sm:max-h-[100vh] bg-white transition-all overflow-y-auto hidden-scroll ${className}`}
               >
                 {children}
               </DialogPanel>
