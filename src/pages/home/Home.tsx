@@ -18,7 +18,6 @@ const Home = memo(() => {
   }, [])
 
   useEffect(() => {
-    console.log('homeReportCurrent', homeReportCurrent)
     if (isFinishTimecount) {
       dispatch(
         setDataKey(

@@ -19,8 +19,6 @@ const CurrentViewCard = memo(() => {
     [homeReportCurrent, homeReportOld]
   )
 
-  console.log('percent', percent)
-
   return (
     <div className='w-[355px] h-[235px] rounded-[32px] bg-white/[.44] backdrop-blur-2xl overflow-hidden shadow-s-1 relative'>
       <div className='w-fit flex flex-col items-center gap-1 mt-[52px] ml-[52px]'>
@@ -29,7 +27,9 @@ const CurrentViewCard = memo(() => {
           <h6 className='text-[36px]/[46.8px] font-bold'>{homeReportCurrent?.currentVisitors}</h6>
           <div className='flex items-center gap-1'>
             {isIncrease ? <IncreaseIcon color='green' /> : <DecreaseIcon color='pink' />}
-            <p className={`text-[16px]/[24px] font-medium ${isIncrease ? 'text-greenNeonMain' : 'text-pinkMain'} `}>
+            <p
+              className={`text-[16px]/[24px] font-medium ${isIncrease ? 'text-greenNeonMain' : 'text-pinkMain'} transition-colors duration-200 ease-in-out`}
+            >
               {Math.abs(percent).toFixed(2)}%
             </p>
           </div>

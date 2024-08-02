@@ -27,7 +27,9 @@ const UnhappyVistorCard = memo(() => {
           <h6 className='text-[36px]/[46.8px] font-bold'>{homeReportCurrent?.unhappyVisitors}</h6>
           <div className='flex items-center gap-1'>
             {isIncrease ? <IncreaseIcon color='green' /> : <DecreaseIcon color='pink' />}
-            <p className={`text-[16px]/[24px] font-medium ${isIncrease ? 'text-greenNeonMain' : 'text-pinkMain'} `}>
+            <p
+              className={`text-[16px]/[24px] font-medium ${isIncrease ? 'text-greenNeonMain' : 'text-pinkMain'} transition-colors duration-200 ease-in-out`}
+            >
               {Math.abs(percent).toFixed(2)}%
             </p>
           </div>

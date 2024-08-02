@@ -30,7 +30,9 @@ const TodayVistorCard = memo(() => {
         <h5 className='text-[81px]/[105.3px] font-bold'>{homeReportCurrent?.todayVisitors}</h5>
         <div className='flex items-center gap-1'>
           {isIncrease ? <IncreaseIcon color='green' /> : <DecreaseIcon color='pink' />}
-          <p className={`text-[16px]/[24px] font-medium ${isIncrease ? 'text-greenNeonMain' : 'text-pinkMain'} `}>
+          <p
+            className={`text-[16px]/[24px] font-medium ${isIncrease ? 'text-greenNeonMain' : 'text-pinkMain'} transition-colors duration-200 ease-in-out`}
+          >
             {Math.abs(percent).toFixed(2)}%
           </p>
         </div>

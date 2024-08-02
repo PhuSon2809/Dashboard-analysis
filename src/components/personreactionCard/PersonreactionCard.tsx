@@ -25,7 +25,9 @@ const PersonreactionCard = memo(({ person, isActive }: PersonreactionCardProps) 
             ? isActive
               ? images.image.male_white
               : images.image.male_black
-            : images.image.female_black
+            : isActive
+              ? images.image.female_white
+              : images.image.female_black
         }
         alt='avatar'
         className='size-[132px]'
