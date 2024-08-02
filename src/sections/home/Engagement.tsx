@@ -72,7 +72,7 @@ const Engagement = memo(() => {
         <h1 className='w-fit text-[52px] font-customBold text-transparent bg-clip-text bg-ln-purple-red'>ENGAGEMENT</h1>
       </div>
 
-      <div className='flex items-center gap-4 absolute bottom-[120px] left-[750px] z-20'>
+      <div className='flex items-center gap-4 absolute bottom-[120px] left-[750px] z-50'>
         <button ref={prevRef} onClick={() => swiperRef.current?.swiper.slidePrev()}>
           <ArrowLeftIcon className='size-10 cursor-pointer' />
         </button>

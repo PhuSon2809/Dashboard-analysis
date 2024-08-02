@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import { memo, useEffect, useRef, useState } from 'react'
 import { ReactionViewChart, RealHoursChart, TotalViewChart } from '~/components/chart'
 import { ConversionRateCard } from '~/components/conversionRateCard'
 import { OrderIcon, PayIcon, ViewerIcon, VisitorIcon } from '~/components/icons'
@@ -6,8 +6,31 @@ import TodayReportCard from '~/components/todayReportCard/TodayReportCard'
 import { formatLocaleString } from '~/utils/format'
 
 const TodayReport = memo(() => {
+  const reportRef = useRef<HTMLDivElement>(null)
+
+  const [viewing, setViewing] = useState<boolean>(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => setViewing(true), 700)
+        } else {
+          setViewing(false)
+        }
+      },
+      { root: null, threshold: 0.1 }
+    )
+
+    if (reportRef.current) observer.observe(reportRef.current)
+
+    return () => {
+      if (reportRef.current) observer.unobserve(reportRef.current)
+    }
+  }, [])
+
   return (
-    <div className='bg-earth mt-[83px]'>
+    <div ref={reportRef} className='bg-earth mt-[83px]'>
       <div className='h-[332px] px-16 pt-16 flex items-start gap-5 bg-ln-white-2'>
         <RealHoursChart />
         <div className='space-y-5 mt-2'>
@@ -31,27 +54,35 @@ const TodayReport = memo(() => {
         <h5 className='text-[28px]/[18px] font-customSemiBold'>Conversion Rate</h5>
 
         <div className='mt-[59px] ml-[53px] space-y-[26px]'>
-          <ConversionRateCard data={'100.000'} title='Reach/View' />
           <ConversionRateCard
+            viewing={viewing}
+            data={'100.000'}
+            title='Reach/View'
+            className={`${viewing ? 'ml-0' : '-ml-10'}`}
+          />
+          <ConversionRateCard
+            viewing={viewing}
             data={'90.000'}
             title='Engagement/Reach'
             percentage={30}
             dotSize='size-[18px]'
-            className='ml-[110px]'
+            className={`${viewing ? 'ml-[110px]' : '-ml-10'}`}
           />
           <ConversionRateCard
+            viewing={viewing}
             data={'70.000'}
             title='Reach/Order'
             percentage={40}
             dotSize='size-5'
-            className='ml-[152px]'
+            className={`${viewing ? 'ml-[152px]' : '-ml-10'}`}
           />
           <ConversionRateCard
+            viewing={viewing}
             data={'70.000'}
             title='Pay/Order'
             percentage={50}
             dotSize='size-6'
-            className='ml-[182px]'
+            className={`${viewing ? 'ml-[182px]' : '-ml-10'}`}
           />
         </div>
       </div>
