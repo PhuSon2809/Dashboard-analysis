@@ -5,17 +5,17 @@ import { useAppDispatch, useAppSelector } from '~/redux/configStore'
 import { setDataKey, setReportHomeDataCurrent, setReportHomeDataOld } from '~/redux/report/report'
 import { CurrentReactions, FoodBeverage, OrderReport, RealTimeReport, TodayReport } from '~/sections/home'
 import Engagement from '~/sections/home/Engagement'
+import { getRandomIntegerInRange } from '~/utils/random'
 import { smoothScrollToElement } from '~/utils/scroll'
 
 const Home = memo(() => {
   const dispatch = useAppDispatch()
 
+  const foodBeverageRef = useRef<HTMLDivElement>(null)
+  const todayReportRef = useRef<HTMLDivElement>(null)
+
   const { isFinishTimecount } = useAppSelector((s) => s.timecount)
   const { dataKey, homeReportCurrent } = useAppSelector((s) => s.report)
-
-  const getRandomIntegerInRange = useCallback((min: number, max: number) => {
-    return Math.floor(Math.random() * (max - min + 1)) + min
-  }, [])
 
   useEffect(() => {
     if (isFinishTimecount) {
@@ -37,32 +37,32 @@ const Home = memo(() => {
         dispatch(
           setReportHomeDataCurrent({
             id: getRandomIntegerInRange(0, 100),
-            currentVisitors: getRandomIntegerInRange(0, 1000),
-            todayVisitors: getRandomIntegerInRange(0, 10000),
+            currentVisitors: getRandomIntegerInRange(0, 100),
+            todayVisitors: getRandomIntegerInRange(0, 100),
             unhappyVisitors: getRandomIntegerInRange(0, 100),
-            reach: getRandomIntegerInRange(0, 10000),
-            engagement: getRandomIntegerInRange(0, 10000),
-            order: getRandomIntegerInRange(0, 10000),
-            payment: getRandomIntegerInRange(0, 10000),
+            reach: getRandomIntegerInRange(0, 100),
+            engagement: getRandomIntegerInRange(0, 100),
+            order: getRandomIntegerInRange(0, 100),
+            payment: getRandomIntegerInRange(0, 100),
             unhappyPersons: getRandomIntegerInRange(0, 100),
-            happyPersons: getRandomIntegerInRange(0, 10000)
+            happyPersons: getRandomIntegerInRange(0, 1000)
           })
         )
       }
     }
   }, [isFinishTimecount, dataKey])
 
-  const foodBeverageRef = useRef<HTMLDivElement>(null)
-  const todayReportRef = useRef<HTMLDivElement>(null)
-
-  const scrollToSection = (id: string) => {
-    const duration = 1000
-    if (id === 'NavTimeIcon' && foodBeverageRef.current) {
-      smoothScrollToElement(foodBeverageRef.current, duration)
-    } else if (id === 'NavPieChartIcon' && todayReportRef.current) {
-      smoothScrollToElement(todayReportRef.current, duration)
-    }
-  }
+  const scrollToSection = useCallback(
+    (id: string) => {
+      const duration = 1000
+      if (id === 'NavTimeIcon' && foodBeverageRef.current) {
+        smoothScrollToElement(foodBeverageRef.current, duration)
+      } else if (id === 'NavPieChartIcon' && todayReportRef.current) {
+        smoothScrollToElement(todayReportRef.current, duration)
+      }
+    },
+    [foodBeverageRef, todayReportRef]
+  )
 
   return (
     <div className='max-w-[1440px] w-full h-full bg-grey500 relative'>
@@ -71,7 +71,7 @@ const Home = memo(() => {
         <FoodBeverage />
       </div>
 
-      <div className='w-full h-[907px] bg-ln-grey-white absolute left-0 top-[0px] flex items-center justify-between z-10'>
+      <div className='xs:hidden sm:flex w-full h-[907px] bg-ln-grey-white absolute left-0 top-[0px] flex items-center justify-between z-10'>
         <svg width='289' height='907' viewBox='0 0 289 907' fill='none' xmlns='http://www.w3.org/2000/svg'>
           <path d='M0 0C63.3571 0 117.885 44.7698 130.218 106.915L289 907H0V0Z' fill='url(#paint0_linear_25_8393)' />
           <defs>

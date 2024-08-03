@@ -13,7 +13,7 @@ const listDataSet = [
   { value: 'average', label: 'Average' }
 ]
 
-const PaymentReactionChart = memo(() => {
+const PaymentReactionChart = memo(({ isSmall }: { isSmall?: boolean }) => {
   const chartTotalOrderRef = useRef<ChartJS<'doughnut'>>(null)
 
   const gradients = [
@@ -40,8 +40,20 @@ const PaymentReactionChart = memo(() => {
   const total = datasetData.reduce((acc, value) => acc + value, 0)
 
   return (
-    <div className='size-[110px] bg-ln-white-blue-2 backdrop-blur-md rounded-[9.64px] relative shadow-s-14'>
-      <div className='w-[74px] h-[14px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tl-[7.23px] rounded-br-[7.23px] shadow-s-7 absolute -top-[2.11px] -left-[2.11px]'>
+    <div
+      className={classNames(
+        isSmall ? 'size-[110px] rounded-[9.64px]' : 'size-[535px] rounded-[32px]',
+        'bg-ln-white-blue-2 relative shadow-s-14'
+      )}
+    >
+      <div
+        className={classNames(
+          isSmall
+            ? 'w-[74px] h-[14px] rounded-tl-[7.23px] rounded-br-[7.23px] -top-[2.11px] -left-[2.11px]'
+            : 'w-[74px] h-[14px] rounded-tl-[7.23px] rounded-br-[7.23px] -top-[2.11px] -left-[2.11px]',
+          ' bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center shadow-s-7 absolute '
+        )}
+      >
         <p className='text-[6.63px] font-customSemiBold text-transparent bg-clip-text bg-ln-orange-purple'>
           Reaction’s Menu
         </p>

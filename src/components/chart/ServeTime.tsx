@@ -7,8 +7,8 @@ const ServeTime = memo(() => {
 
   const { timecount, isFinishTimecount } = useAppSelector((s) => s.timecount)
 
-  const duration = 5 * 60 * 1000
-  // const duration = 20 * 1000
+  // const duration = 5 * 60 * 1000
+  const duration = 20 * 1000
 
   const [time, setTime] = useState<number>(duration)
 
@@ -25,9 +25,7 @@ const ServeTime = memo(() => {
       dispatch(setTimecount(duration))
       dispatch(setFinishTimecount(true))
     } else {
-      if (isFinishTimecount) {
-        dispatch(setFinishTimecount(false))
-      }
+      if (isFinishTimecount) dispatch(setFinishTimecount(false))
     }
   }, [isFinishTimecount, timecount])
 
@@ -44,7 +42,6 @@ const ServeTime = memo(() => {
     const total_seconds = Math.floor(milliseconds / 1000)
     const minutes = Math.floor(total_seconds / 60)
     const seconds = total_seconds % 60
-
     return { minutes, seconds }
   }, [])
 

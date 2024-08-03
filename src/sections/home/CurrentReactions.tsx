@@ -90,14 +90,14 @@ const CurrentReactions = memo(() => {
 
       <div className='w-full flex gap-28 relative z-10'>
         <div className='pl-[105px]'>
-          <h1 className='text-[54px]/[70.2px] font-bold'>
+          <h1 className='xs:text-[32px]/[42px] sm:text-[54px]/[70.2px] font-bold'>
             Current <br />
             Reactions
           </h1>
 
-          <p className='text-[16px]/[24px] text-grey999/[.64] mt-4'>
-            Elevate your essence with "Vamp one perfume <br /> bottle", an embodiment of refined masculinity <br /> and
-            timeless.
+          <p className='leading-[24px] text-grey999/[.64] mt-4'>
+            Reactions measured during the whole time interval <br /> at an F&B store, reflecting real-time customer{' '}
+            <br /> engagement and satisfaction.
           </p>
 
           <div className='min-w-[472px] flex flex-col gap-[26px] mt-[47px]'>

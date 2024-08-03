@@ -169,27 +169,6 @@ export const hexToBytes = (hex: string) => {
   return bytes
 }
 
-export const convertID = (base64String: string) => {
-  // const rawBytes = Buffer.from(base64String, 'base64')
-  // const hexString = rawBytes.toString('hex')
-  // const productID = BigInt(`0x${hexString}`)
-  // return productID.toString()
-
-  // Decode base64 string to binary string
-  const binaryString = atob(base64String)
-
-  // Convert binary string to hex string
-  let hexString = ''
-  for (let i = 0; i < binaryString.length; i++) {
-    const hex = binaryString.charCodeAt(i).toString(16)
-    hexString += hex.length === 1 ? '0' + hex : hex
-  }
-
-  // Convert hex string to BigInt and then to string
-  const productID = BigInt(`0x${hexString}`)
-  return productID.toString()
-}
-
 export function removeAccents(str: string): string {
   return str
     .normalize('NFD')

@@ -1,6 +1,7 @@
 import logo_e_commerce from '~/assets/logo/logo-ecom-green.svg'
 import logo_white from '~/assets/logo/logo-ecom-white.svg'
 import logo_metanode from '~/assets/logo/logo-metanode.png'
+import logo_fi from '~/assets/logo/logo-fi-ai.png'
 
 import china from '~/assets/flag/china.png'
 import czech_republic from '~/assets/flag/czech-republic.png'
@@ -29,7 +30,7 @@ import unhappy_pink from '~/assets/icons/unhappy-pink.svg'
 import unhappy_vistor from '~/assets/icons/unhappy-vistor.svg'
 
 const images = {
-  logo: { logo_e_commerce, logo_white, logo_metanode },
+  logo: { logo_e_commerce, logo_white, logo_metanode, logo_fi },
   flag: { china, czech_republic, france, indonesia, italy, japan, korea, spain, united_kingdom, vietnam },
   image: {
     current_view_top,

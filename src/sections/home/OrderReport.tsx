@@ -26,7 +26,7 @@ const OrderReport = memo(() => {
         </h3>
 
         <div className='flex items-center gap-[17.6px] absolute -top-0 right-[60px]'>
-          <PaymentReactionChart />
+          <PaymentReactionChart isSmall />
           <MostUsedPaymentChart />
           <ServeTime />
         </div>
@@ -86,6 +86,11 @@ const OrderReport = memo(() => {
           </IconButton>
         </div>
       </div>
+
+      {/* <div className='p-10 flex gap-10'>
+        <PurchasesChart />
+        <PaymentReactionChart />
+      </div> */}
     </div>
   )
 })
