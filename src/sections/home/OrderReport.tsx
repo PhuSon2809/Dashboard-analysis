@@ -19,9 +19,9 @@ const OrderReport = memo(() => {
   const nextRef = useRef<HTMLButtonElement>(null)
 
   return (
-    <div className='h-[1309px] bg-earth-2 pt-[16px]'>
+    <div className='h-[1309px] bg-earth-2 pt-[8px]'>
       <div className='list-chart-order mt-[329px] relative'>
-        <h3 className='w-fit text-[52px] leading-none mb-[49px] font-customBold uppercase text-transparent bg-clip-text bg-ln-red-purple absolute left-[60px] top-5'>
+        <h3 className='w-fit text-[52px] leading-none font-customBold uppercase text-transparent bg-clip-text bg-ln-red-purple absolute left-[60px] top-5'>
           orders
         </h3>
 
@@ -77,7 +77,7 @@ const OrderReport = memo(() => {
           </Swiper>
         </div>
 
-        <div className='flex items-center gap-4 absolute bottom-[25px] left-[60px] z-20'>
+        <div className='flex items-center gap-4 absolute bottom-[60px] left-[60px] z-20'>
           <IconButton size='48' color='white' ref={prevRef} onClick={() => swiperRef.current?.swiper?.slidePrev()}>
             <ArrowLeftIcon className='size-6' />
           </IconButton>
