@@ -1,42 +1,10 @@
-import { memo, useCallback, useEffect, useMemo, useState } from 'react'
-import { useAppDispatch, useAppSelector } from '~/redux/configStore'
-import { setFinishTimecount, setTimecount } from '~/redux/timecount/timecount.slice'
+import { memo, useCallback, useMemo } from 'react'
+import { useAppSelector } from '~/redux/configStore'
 
 const ServeTime = memo(() => {
-  const dispatch = useAppDispatch()
-
-  const { timecount, isFinishTimecount } = useAppSelector((s) => s.timecount)
+  const { homeReportCurrent } = useAppSelector((s) => s.report)
 
   // const duration = 5 * 60 * 1000
-  const duration = 20 * 1000
-
-  const [time, setTime] = useState<number>(duration)
-
-  useEffect(() => {
-    if (timecount !== 0) {
-      setTime(timecount)
-      dispatch(setTimecount(timecount))
-    }
-  }, [])
-
-  useEffect(() => {
-    if (timecount <= 0) {
-      setTime(duration)
-      dispatch(setTimecount(duration))
-      dispatch(setFinishTimecount(true))
-    } else {
-      if (isFinishTimecount) dispatch(setFinishTimecount(false))
-    }
-  }, [isFinishTimecount, timecount])
-
-  useEffect(() => {
-    const timerId = setTimeout(() => {
-      setTime(time - 1000)
-      dispatch(setTimecount(time - 1000))
-    }, 1000)
-
-    return () => clearTimeout(timerId)
-  }, [time])
 
   const getFormattedTime = useCallback((milliseconds: number) => {
     const total_seconds = Math.floor(milliseconds / 1000)
@@ -45,7 +13,8 @@ const ServeTime = memo(() => {
     return { minutes, seconds }
   }, [])
 
-  const formattedTime = useMemo(() => getFormattedTime(time), [time])
+  const formattedTime = useMemo(() => getFormattedTime(homeReportCurrent.serveTime * 1000), [homeReportCurrent])
+  // const formattedTime = useMemo(() => getFormattedTime(duration), [homeReportCurrent])
 
   return (
     <div className='size-[110px] bg-rg-white backdrop-blur-2xl rounded-[9.64px] shadow-s-14 flex items-center justify-center'>

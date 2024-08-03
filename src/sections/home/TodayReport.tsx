@@ -3,10 +3,13 @@ import { ReactionViewChart, RealHoursChart, TotalViewChart } from '~/components/
 import { ConversionRateCard } from '~/components/conversionRateCard'
 import { OrderIcon, PayIcon, ViewerIcon, VisitorIcon } from '~/components/icons'
 import TodayReportCard from '~/components/todayReportCard/TodayReportCard'
-import { formatLocaleString } from '~/utils/format'
+import { useAppSelector } from '~/redux/configStore'
+import { formatLocaleString, formatNumber } from '~/utils/format'
 
 const TodayReport = memo(() => {
   const reportRef = useRef<HTMLDivElement>(null)
+
+  const { homeReportCurrent } = useAppSelector((s) => s.report)
 
   const [viewing, setViewing] = useState<boolean>(false)
 
@@ -36,13 +39,32 @@ const TodayReport = memo(() => {
         <div className='space-y-5 mt-2'>
           <h5 className='text-[28px]/[18px] font-customSemiBold'>Today’s Report</h5>
           <div className='flex items-center gap-5'>
-            <TodayReportCard color='orange' title='Visitor' data={formatLocaleString(578)} icon={<VisitorIcon />} />
-            <TodayReportCard color='blue' title='Viewers' data={formatLocaleString(2578)} icon={<ViewerIcon />} />
-            <TodayReportCard color='red' title='Order' data={formatLocaleString(1072)} icon={<OrderIcon />} />
+            <TodayReportCard
+              color='orange'
+              title='Visitor'
+              data={formatLocaleString(homeReportCurrent.todayReportsOrder)}
+              percent={homeReportCurrent.todayReportsOrderPercent}
+              icon={<VisitorIcon />}
+            />
+            <TodayReportCard
+              color='blue'
+              title='Viewers'
+              data={formatLocaleString(homeReportCurrent.todayReportsPurchase)}
+              percent={homeReportCurrent.todayReportsPurchasePercent}
+              icon={<ViewerIcon />}
+            />
+            <TodayReportCard
+              color='red'
+              title='Order'
+              data={formatLocaleString(homeReportCurrent.todayReportsViewers)}
+              percent={homeReportCurrent.todayReportsViewersPercent}
+              icon={<OrderIcon />}
+            />
             <TodayReportCard
               color='green'
               title='Purchases/Pay'
-              data={formatLocaleString(78)}
+              data={formatLocaleString(homeReportCurrent.todayReportsVisitors)}
+              percent={homeReportCurrent.todayReportsVisitorsPercent}
               icon={<PayIcon />}
               isIncreasing={false}
             />
@@ -56,31 +78,31 @@ const TodayReport = memo(() => {
         <div className='mt-[59px] ml-[53px] space-y-[26px]'>
           <ConversionRateCard
             viewing={viewing}
-            data={'100.000'}
+            data={formatNumber(homeReportCurrent.conversionRateReach)}
             title='Reach/View'
             className={`${viewing ? 'ml-0' : '-ml-10'}`}
           />
           <ConversionRateCard
             viewing={viewing}
-            data={'90.000'}
+            data={formatNumber(homeReportCurrent.conversionRateEngagement)}
             title='Engagement/Reach'
-            percentage={30}
+            percentage={homeReportCurrent.conversionRatePercent1}
             dotSize='size-[18px]'
             className={`${viewing ? 'ml-[110px]' : '-ml-10'}`}
           />
           <ConversionRateCard
             viewing={viewing}
-            data={'70.000'}
+            data={formatNumber(homeReportCurrent.conversionRateOrder)}
             title='Reach/Order'
-            percentage={40}
+            percentage={homeReportCurrent.conversionRatePercent2}
             dotSize='size-5'
             className={`${viewing ? 'ml-[152px]' : '-ml-10'}`}
           />
           <ConversionRateCard
             viewing={viewing}
-            data={'70.000'}
+            data={formatNumber(homeReportCurrent.conversionRatePay)}
             title='Pay/Order'
-            percentage={50}
+            percentage={homeReportCurrent.conversionRatePercent3}
             dotSize='size-6'
             className={`${viewing ? 'ml-[182px]' : '-ml-10'}`}
           />

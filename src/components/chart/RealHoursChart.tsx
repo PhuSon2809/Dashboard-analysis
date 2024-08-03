@@ -10,9 +10,10 @@ import {
   Title,
   Tooltip
 } from 'chart.js'
-import { memo } from 'react'
+import { memo, useMemo } from 'react'
 import { Chart } from 'react-chartjs-2'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
+import { useAppSelector } from '~/redux/configStore'
 
 ChartJS.register(
   CategoryScale,
@@ -29,6 +30,12 @@ ChartJS.register(
 )
 
 const RealHoursChart = memo(() => {
+  const { homeReportCurrent } = useAppSelector((s) => s.report)
+
+  const data = useMemo(() => homeReportCurrent.hourlyVisitors, [homeReportCurrent])
+
+  const datasetData = useMemo(() => Array.from({ length: 10 }).map((_, index) => data?.[`${index + 1}`]), [data])
+
   return (
     <div className='w-[424px] h-[176px] p-3 bg-ln-blue-pink rounded-2xl shadow-s-5'>
       <p className='text-[18px]/[18px] font-customMedium mt-1 ml-1'>Real Hours</p>
@@ -42,7 +49,7 @@ const RealHoursChart = memo(() => {
               {
                 type: 'bar',
                 label: 'Bar Dataset',
-                data: [10, 20, 30, 40, 50, 60, 70, 50, 20, 80],
+                data: datasetData,
                 backgroundColor: (ctx: any) => {
                   const chart = ctx.chart
                   const { ctx: canvasCtx, chartArea } = chart
@@ -67,7 +74,7 @@ const RealHoursChart = memo(() => {
               {
                 type: 'line',
                 label: 'Line Dataset',
-                data: [20, 60, 50, 70, 30, 40, 10, 50, 20, 80],
+                data: datasetData,
                 fill: false,
                 tension: 0.4,
                 pointRadius: 0,

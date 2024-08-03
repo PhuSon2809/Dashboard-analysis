@@ -1,21 +1,23 @@
 import { ArcElement, Chart as ChartJS, Legend, Tooltip, TooltipItem } from 'chart.js'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
 import classNames from 'classnames'
-import { memo, useCallback, useRef } from 'react'
+import { memo, useCallback, useMemo, useRef } from 'react'
 import { Doughnut } from 'react-chartjs-2'
-import { formatLocaleString } from '~/utils/format'
+import { useAppSelector } from '~/redux/configStore'
 
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels)
 
 const listDataSet = [
-  { value: 'disinterested', label: 'Disinterested' },
   { value: 'attentive', label: 'Attentive' },
+  { value: 'disinterested', label: 'Disinterested' },
   { value: 'moderately-attentive', label: 'Moderately Attentive' },
   { value: 'high-attentive', label: 'high-attentive' }
 ]
 
 const ReactionViewChart = memo(() => {
   const chartTotalOrderRef = useRef<ChartJS<'doughnut'>>(null)
+
+  const { homeReportCurrent } = useAppSelector((s) => s.report)
 
   const gradients = [
     { start: '#5383FF', end: '#64FBD7' },
@@ -38,7 +40,16 @@ const ReactionViewChart = memo(() => {
     [gradients]
   )
 
-  const datasetData = [25, 30, 15, 30]
+  const viewChartData = useMemo(() => homeReportCurrent.reactionViewerChart, [homeReportCurrent])
+  const datasetData = useMemo(
+    () => [
+      viewChartData.attentive,
+      viewChartData.disinterested,
+      viewChartData.moderatelyAttentive,
+      viewChartData.highAttentive
+    ],
+    [viewChartData]
+  )
   const total = datasetData.reduce((acc, value) => acc + value, 0)
 
   return (
@@ -61,7 +72,7 @@ const ReactionViewChart = memo(() => {
                   font: { size: 12 },
                   anchor: 'center',
                   align: 'center',
-                  formatter: (value) => `${formatLocaleString(value)}%`,
+                  formatter: (value) => (value > 0 ? `${Number(value).toFixed(2)}%` : ''),
                   color: (context) => ['#0D0D0D', '#FFF', '#0D0D0D', '#0D0D0D'][context.dataIndex] || '#FFF'
                 },
                 legend: { display: false },
@@ -105,7 +116,7 @@ const ReactionViewChart = memo(() => {
         <div className='size-[256.2px] flex items-center justify-center rounded-full border-[2.5px] border-dotted border-[#A6A6A6] absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10'>
           <div className='size-[246.64px] flex items-center justify-center bg-[#F8F8F8] rounded-full'>
             <div className='size-[205.97px] flex flex-col items-center justify-center gap-1 bg-white rounded-full shadow-s-8'>
-              <h3 className='text-[30px]/[45px] font-medium text-[#292D30]'>${510}</h3>
+              <h3 className='text-[30px]/[45px] font-medium text-[#292D30]'>${viewChartData.money}</h3>
               <p className='text-[19px]/[28px] text-[#474B4E]'>December</p>
             </div>
           </div>

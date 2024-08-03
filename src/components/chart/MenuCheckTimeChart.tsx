@@ -3,7 +3,7 @@ import ChartDataLabels from 'chartjs-plugin-datalabels'
 import classNames from 'classnames'
 import { memo, useCallback } from 'react'
 import { Doughnut } from 'react-chartjs-2'
-import { formatLocaleString } from '~/utils/format'
+import { useAppSelector } from '~/redux/configStore'
 
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels)
 
@@ -13,7 +13,12 @@ const listDataSet = [
 ]
 
 const MenuCheckTimeChart = memo(() => {
-  const datasetData = [60, 40]
+  const { homeReportCurrent } = useAppSelector((s) => s.report)
+
+  const datasetData = [
+    homeReportCurrent.ENGAGEMENT?.['Menu Check Time']?.['1'],
+    homeReportCurrent.ENGAGEMENT?.['Menu Check Time']?.['2']
+  ]
 
   const gradients = [
     { start: '#37CFFF', end: '#0D57C6', last: '#0F5ED6' },
@@ -56,7 +61,7 @@ const MenuCheckTimeChart = memo(() => {
                 font: { size: 20 },
                 anchor: 'center',
                 align: 'center',
-                formatter: (value) => `${formatLocaleString(value)}%`,
+                formatter: (value) => (value > 0 ? `${Number(value).toFixed(2)}%` : ''),
                 color: (context) => ['#FFF', '#FFF'][context.dataIndex] || '#FFF'
               }
             }

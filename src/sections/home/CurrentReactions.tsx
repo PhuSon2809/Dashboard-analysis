@@ -10,63 +10,6 @@ import { PersonreactionCard } from '~/components/personreactionCard'
 import './styles.scss'
 import { useAppSelector } from '~/redux/configStore'
 
-const listData = [
-  {
-    id: 1,
-    name: 'Table 1',
-    gender: 1,
-    age: '19 - 24'
-  },
-  {
-    id: 2,
-    name: 'Table 2',
-    gender: 0,
-    age: '19 - 24'
-  },
-  {
-    id: 3,
-    name: 'Table 3',
-    gender: 1,
-    age: '19 - 24'
-  },
-  {
-    id: 4,
-    name: 'Table 4',
-    gender: 0,
-    age: '19 - 24'
-  },
-  {
-    id: 5,
-    name: 'Table 5',
-    gender: 1,
-    age: '19 - 24'
-  },
-  {
-    id: 6,
-    name: 'Table 6',
-    gender: 0,
-    age: '19 - 24'
-  },
-  {
-    id: 7,
-    name: 'Table 7',
-    gender: 1,
-    age: '19 - 24'
-  },
-  {
-    id: 8,
-    name: 'Table 8',
-    gender: 0,
-    age: '19 - 24'
-  },
-  {
-    id: 9,
-    name: 'Table 0',
-    gender: 0,
-    age: '19 - 24'
-  }
-]
-
 const CurrentReactions = memo(() => {
   const swiperRef = useRef<any>(null)
   const prevRef = useRef<HTMLButtonElement>(null)
@@ -74,14 +17,19 @@ const CurrentReactions = memo(() => {
 
   const { homeReportCurrent } = useAppSelector((s) => s.report)
 
-  const [typeActive, setTypeActive] = useState<string>('unhappy')
+  const [typeActive, setTypeActive] = useState<number>(1)
   const [activeSlide, setActiveSlide] = useState<number>(0)
 
-  const listTypePerson = useMemo(() => ['unhappy', 'happy'], [])
+  const listTypePerson = useMemo(() => [0, 1], [])
 
   const handleSlideChange = useCallback(() => {
     if (swiperRef.current && swiperRef.current.swiper) setActiveSlide(swiperRef.current.swiper.realIndex)
   }, [swiperRef])
+
+  const listDataRender = useMemo(
+    () => homeReportCurrent?.currentReactions.filter((p: any) => p.status === typeActive),
+    [typeActive]
+  )
 
   return (
     <div className='pt-[120px] relative'>
@@ -112,7 +60,7 @@ const CurrentReactions = memo(() => {
               >
                 <div className='flex items-center gap-8'>
                   <img
-                    src={type === 'unhappy' ? images.icon.unhappy_pink : images.icon.happy_green}
+                    src={type === 0 ? images.icon.unhappy_pink : images.icon.happy_green}
                     alt={`${type}-icon`}
                     className={classNames(type === typeActive ? 'size-[100px]' : 'size-[68.5px]')}
                   />
@@ -124,7 +72,7 @@ const CurrentReactions = memo(() => {
                         'font-semibold capitalize'
                       )}
                     >
-                      {type}
+                      {type === 0 ? 'Unhappy' : 'Happy'}
                     </h4>
                     <p
                       className={classNames(
@@ -132,7 +80,8 @@ const CurrentReactions = memo(() => {
                         'text-grey999/[.64] mt-1'
                       )}
                     >
-                      {type === 'unhappy' ? homeReportCurrent?.unhappyPersons : homeReportCurrent?.happyPersons} persons
+                      {type === 0 ? homeReportCurrent?.currentReactionUnhappy : homeReportCurrent?.currentReactionHappy}{' '}
+                      persons
                     </p>
                   </div>
                 </div>
@@ -174,7 +123,7 @@ const CurrentReactions = memo(() => {
             }}
             onSlideChange={handleSlideChange}
           >
-            {listData.map((person, index) => {
+            {listDataRender.map((person: any, index: number) => {
               return (
                 <SwiperSlide key={person.id}>
                   <PersonreactionCard person={person} isActive={activeSlide === index} />

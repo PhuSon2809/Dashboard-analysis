@@ -1,17 +1,13 @@
+import classNames from 'classnames'
 import { memo } from 'react'
 import images from '~/assets'
-import useCalculatePercent from '~/hooks/useCalculatePercent'
 import { useAppSelector } from '~/redux/configStore'
 import { DecreaseIcon, IncreaseIcon } from '../icons'
-import classNames from 'classnames'
 
 const CurrentVisitorCard = memo(() => {
-  const { homeReportCurrent, homeReportOld } = useAppSelector((s) => s.report)
+  const { homeReportCurrent } = useAppSelector((s) => s.report)
 
-  const { percent, isIncrease } = useCalculatePercent(
-    Number(homeReportCurrent?.currentVisitors),
-    Number(homeReportOld?.currentVisitors)
-  )
+  const isIncrease = Math.random() >= 0.5
 
   return (
     <div className='w-[355px] h-[235px] rounded-[32px] bg-white/[.44] backdrop-blur-2xl overflow-hidden shadow-s-1 relative'>
@@ -31,7 +27,7 @@ const CurrentVisitorCard = memo(() => {
                 isIncrease ? 'text-greenNeonMain' : 'text-pinkMain'
               )}
             >
-              {percent}%
+              {homeReportCurrent?.currentVisitorsPercent}%
             </p>
           </div>
         </div>

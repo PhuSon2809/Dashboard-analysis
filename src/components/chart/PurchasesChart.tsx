@@ -1,8 +1,9 @@
 import { ArcElement, Chart as ChartJS, Legend, RadialLinearScale, Tooltip } from 'chart.js'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
 import classNames from 'classnames'
-import { memo } from 'react'
+import { memo, useMemo } from 'react'
 import { PolarArea } from 'react-chartjs-2'
+import { useAppSelector } from '~/redux/configStore'
 
 ChartJS.register(Tooltip, Legend, RadialLinearScale, ArcElement, ChartDataLabels)
 
@@ -13,6 +14,13 @@ const listDataSet = [
 ]
 
 const PurchasesChart = memo(() => {
+  const { homeReportCurrent } = useAppSelector((s) => s.report)
+
+  const dataChart = useMemo(() => homeReportCurrent.ORDERS?.['Purchases'], [homeReportCurrent])
+
+  const datasetData = [dataChart?.['1'], dataChart?.['2'], dataChart?.['3']]
+  const datasetSizes = [1.2, 1.5, 2]
+
   const getGradient = (ctx, chartArea, index) => {
     const gradients = [
       {
@@ -63,7 +71,7 @@ const PurchasesChart = memo(() => {
                   color: '#fff',
                   anchor: 'center',
                   align: 'center',
-                  formatter: (value) => `${value}%`
+                  formatter: (value) => `${Number(value).toFixed(2)}%`
                 },
                 legend: { display: false },
                 tooltip: {
@@ -79,7 +87,7 @@ const PurchasesChart = memo(() => {
               labels: ['1', '2-4', '5'],
               datasets: [
                 {
-                  data: [35, 32, 33],
+                  data: datasetData.map((value, index) => value * datasetSizes[index]),
                   backgroundColor: (context) => {
                     const chart = context.chart
                     const { ctx, chartArea } = chart

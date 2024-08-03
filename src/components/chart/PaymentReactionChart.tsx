@@ -1,8 +1,9 @@
 import { ArcElement, Chart as ChartJS, Legend, Tooltip, TooltipItem } from 'chart.js'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
 import classNames from 'classnames'
-import { memo, useCallback, useRef } from 'react'
+import { memo, useCallback, useMemo, useRef } from 'react'
 import { Doughnut } from 'react-chartjs-2'
+import { useAppSelector } from '~/redux/configStore'
 import { formatLocaleString } from '~/utils/format'
 
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels)
@@ -15,6 +16,10 @@ const listDataSet = [
 
 const PaymentReactionChart = memo(({ isSmall }: { isSmall?: boolean }) => {
   const chartTotalOrderRef = useRef<ChartJS<'doughnut'>>(null)
+
+  const { homeReportCurrent } = useAppSelector((s) => s.report)
+
+  const dataChart = useMemo(() => homeReportCurrent.paymentReaction, [homeReportCurrent])
 
   const gradients = [
     { start: '#C15CFF', end: '#FF5454' },
@@ -36,7 +41,8 @@ const PaymentReactionChart = memo(({ isSmall }: { isSmall?: boolean }) => {
     [gradients]
   )
 
-  const datasetData = [25, 40, 35]
+  const datasetData = [dataChart.percent?.['1'], dataChart.percent?.['2'], dataChart.percent?.['3']]
+  // const datasetData = [25, 40, 35]
   const total = datasetData.reduce((acc, value) => acc + value, 0)
 
   return (
@@ -71,7 +77,7 @@ const PaymentReactionChart = memo(({ isSmall }: { isSmall?: boolean }) => {
                   font: { size: 3.62 },
                   anchor: 'center',
                   align: 'center',
-                  formatter: (value) => `${formatLocaleString(value)}%`,
+                  formatter: (value) => (value > 0 ? `${formatLocaleString(value)}%` : ''),
                   color: (context) => ['#0D0D0D', '#FFF', '#FFF'][context.dataIndex] || '#FFF'
                 },
                 legend: { display: false },
@@ -115,6 +121,7 @@ const PaymentReactionChart = memo(({ isSmall }: { isSmall?: boolean }) => {
               <div className='size-[40.99px] flex flex-col items-center justify-center gap-1 bg-white rounded-full shadow-s-13'>
                 <h3 className='text-[8.44px]/[8.86px] font-customSemiBold text-[#292D30]'>
                   {formatLocaleString(2510)}
+                  {/* {formatLocaleString(dataChart?.totalReaction)} */}
                 </h3>
                 <p className='text-[3.62px]/[3.8px] text-[#0D0D0D]'>reaction</p>
               </div>

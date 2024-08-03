@@ -1,7 +1,8 @@
 import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Tooltip } from 'chart.js'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
-import { memo } from 'react'
+import { memo, useMemo } from 'react'
 import { Bar } from 'react-chartjs-2'
+import { useAppSelector } from '~/redux/configStore'
 import { formatLocaleString } from '~/utils/format'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Legend, Tooltip, ChartDataLabels)
@@ -17,6 +18,12 @@ const listFood = [
 ]
 
 const BestSellerChart = memo(() => {
+  const { homeReportCurrent } = useAppSelector((s) => s.report)
+
+  const dataChart = useMemo(() => homeReportCurrent.ORDERS?.['Best Seller'], [homeReportCurrent])
+
+  const datasetData = Array.from({ length: 7 }).map((_, index) => dataChart?.[`${index + 1}`])
+
   return (
     <div className='size-[535px] bg-ln-yellow rounded-[32px] shadow-s-12 relative'>
       <div className='w-[191px] h-[54px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tl-[34px] rounded-br-[34px] shadow-s-7 absolute bottom-7 left-[-30px]'>
@@ -63,7 +70,7 @@ const BestSellerChart = memo(() => {
               labels: listFood.map((food) => food),
               datasets: [
                 {
-                  data: listFood.map((food) => food).map(() => Math.floor(Math.random() * 10000)),
+                  data: datasetData,
                   borderColor: 'rgb(172, 204, 255)',
                   backgroundColor: (ctx) => {
                     const chart = ctx.chart

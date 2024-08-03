@@ -2,11 +2,14 @@ import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
 import { memo, useCallback } from 'react'
 import { Doughnut } from 'react-chartjs-2'
+import { useAppSelector } from '~/redux/configStore'
 
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels)
 
 const LeaveMenuChart = memo(({ isActive }: { isActive: boolean }) => {
-  const datasetData = [20, 80]
+  const { homeReportCurrent } = useAppSelector((s) => s.report)
+
+  const datasetData = [homeReportCurrent.ENGAGEMENT?.['Levea Menu'], 100 - homeReportCurrent.ENGAGEMENT?.['Levea Menu']]
 
   const gradients = [
     { start: '#FF7676', end: '#9C1EBC' },

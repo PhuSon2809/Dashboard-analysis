@@ -1,56 +1,12 @@
-import { memo, useCallback, useEffect, useRef } from 'react'
-import { listDataReport } from '~/assets/mocks/report'
+import { memo, useCallback, useRef } from 'react'
 import { Navbar } from '~/layouts/components/navbar'
-import { useAppDispatch, useAppSelector } from '~/redux/configStore'
-import { setDataKey, setReportHomeDataCurrent, setReportHomeDataOld } from '~/redux/report/report'
 import { CurrentReactions, FoodBeverage, OrderReport, RealTimeReport, TodayReport } from '~/sections/home'
 import Engagement from '~/sections/home/Engagement'
-import { getRandomIntegerInRange } from '~/utils/random'
 import { smoothScrollToElement } from '~/utils/scroll'
 
 const Home = memo(() => {
-  const dispatch = useAppDispatch()
-
   const foodBeverageRef = useRef<HTMLDivElement>(null)
   const todayReportRef = useRef<HTMLDivElement>(null)
-
-  const { isFinishTimecount } = useAppSelector((s) => s.timecount)
-  const { dataKey, homeReportCurrent } = useAppSelector((s) => s.report)
-
-  useEffect(() => {
-    if (isFinishTimecount) {
-      dispatch(
-        setDataKey(
-          homeReportCurrent === null ? 0 : +dataKey === 0 ? 1 : +dataKey === 1 ? 2 : getRandomIntegerInRange(0, 100)
-        )
-      )
-      if (+dataKey === 0) {
-        dispatch(setReportHomeDataOld(listDataReport[0]))
-        dispatch(setReportHomeDataCurrent(listDataReport[0]))
-      } else if (+dataKey === 1) {
-        dispatch(setReportHomeDataCurrent(listDataReport[1]))
-      } else if (+dataKey === 2) {
-        dispatch(setReportHomeDataOld(listDataReport[1]))
-        dispatch(setReportHomeDataCurrent(listDataReport[2]))
-      } else {
-        dispatch(setReportHomeDataOld(homeReportCurrent))
-        dispatch(
-          setReportHomeDataCurrent({
-            id: getRandomIntegerInRange(0, 100),
-            currentVisitors: getRandomIntegerInRange(0, 100),
-            todayVisitors: getRandomIntegerInRange(0, 100),
-            unhappyVisitors: getRandomIntegerInRange(0, 100),
-            reach: getRandomIntegerInRange(0, 100),
-            engagement: getRandomIntegerInRange(0, 100),
-            order: getRandomIntegerInRange(0, 100),
-            payment: getRandomIntegerInRange(0, 100),
-            unhappyPersons: getRandomIntegerInRange(0, 100),
-            happyPersons: getRandomIntegerInRange(0, 1000)
-          })
-        )
-      }
-    }
-  }, [isFinishTimecount, dataKey])
 
   const scrollToSection = useCallback(
     (id: string) => {

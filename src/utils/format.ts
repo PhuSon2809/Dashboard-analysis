@@ -29,6 +29,10 @@ export const formatPrice = (number: number, fix?: number) => {
   return fix ? (number / 1000000).toFixed(fix) : number / 1000000
 }
 
+export function formatNumber(num: number): string {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+}
+
 export const seedPhraseToString = (list) => {
   const rules = {
     1: 'A',

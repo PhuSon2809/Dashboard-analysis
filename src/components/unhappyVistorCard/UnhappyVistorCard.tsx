@@ -1,24 +1,20 @@
+import classNames from 'classnames'
 import { memo } from 'react'
 import images from '~/assets'
-import useCalculatePercent from '~/hooks/useCalculatePercent'
 import { useAppSelector } from '~/redux/configStore'
 import { DecreaseIcon, IncreaseIcon } from '../icons'
-import classNames from 'classnames'
 
 const UnhappyVistorCard = memo(() => {
-  const { homeReportCurrent, homeReportOld } = useAppSelector((s) => s.report)
+  const { homeReportCurrent } = useAppSelector((s) => s.report)
 
-  const { percent, isIncrease } = useCalculatePercent(
-    Number(homeReportCurrent?.unhappyVisitors),
-    Number(homeReportOld?.unhappyVisitors)
-  )
+  const isIncrease = Math.random() >= 0.5
 
   return (
     <div className='w-[355px] h-[235px] rounded-[32px] bg-white/[.44] backdrop-blur-2xl relative shadow-s-1 overflow-hidden'>
       <div className='w-fit flex flex-col items-center gap-1 mt-[52px] ml-[158px]'>
         <p className='text-[18px]/[28px] font-normal text-grey999/[.64]'>Unhappy vistors</p>
         <div className='flex items-center gap-[9px]'>
-          <h6 className='text-[36px]/[46.8px] font-bold'>{homeReportCurrent?.unhappyVisitors}</h6>
+          <h6 className='text-[36px]/[46.8px] font-bold'>{homeReportCurrent?.currentViews}</h6>
           <div className='flex items-center gap-1'>
             {isIncrease ? (
               <IncreaseIcon color='green' className='xs:size-[20px] sm:size-6' />
@@ -31,7 +27,7 @@ const UnhappyVistorCard = memo(() => {
                 isIncrease ? 'text-greenNeonMain' : 'text-pinkMain'
               )}
             >
-              {percent}%
+              {homeReportCurrent?.currentViewsPercent}%
             </p>
           </div>
         </div>

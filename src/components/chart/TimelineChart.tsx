@@ -53,10 +53,10 @@ const TimelineChart = memo(() => {
   const currentHour = new Date().getHours()
   const listDataReport = useMemo(
     () => [
-      homeReportCurrent?.reach,
-      homeReportCurrent?.engagement,
-      homeReportCurrent?.order,
-      homeReportCurrent?.payment
+      homeReportCurrent?.realTimeReportTime?.['10'].realTimeReportReach,
+      homeReportCurrent?.realTimeReportTime?.['10'].realTimeReportEngagement,
+      homeReportCurrent?.realTimeReportTime?.['10'].realTimeReportOrder,
+      homeReportCurrent?.realTimeReportTime?.['10'].realTimePayment
     ],
     [homeReportCurrent]
   )

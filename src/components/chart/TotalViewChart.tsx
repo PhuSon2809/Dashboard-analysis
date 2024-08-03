@@ -1,7 +1,8 @@
 import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip } from 'chart.js'
 import classNames from 'classnames'
-import { memo } from 'react'
+import { memo, useMemo } from 'react'
 import { Bar } from 'react-chartjs-2'
+import { useAppSelector } from '~/redux/configStore'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Legend, Title, Tooltip, Legend)
 
@@ -13,6 +14,16 @@ const listDataSet = [
 ]
 
 const TotalViewChart = memo(() => {
+  const { homeReportCurrent } = useAppSelector((s) => s.report)
+
+  const labels = ['11', '12', '13', '14', '15', '16', '17', '18', '19', '20']
+
+  const chartData = useMemo(() => homeReportCurrent.totalViewersChart.yAxis, [homeReportCurrent])
+  const totalViewData = useMemo(() => labels.map((item) => chartData?.[item]?.[0]), [homeReportCurrent])
+  const viewMenuData = useMemo(() => labels.map((item) => chartData?.[item]?.[1]), [homeReportCurrent])
+  const viewStoriesData = useMemo(() => labels.map((item) => chartData?.[item]?.[2]), [homeReportCurrent])
+  const enterStovesData = useMemo(() => labels.map((item) => chartData?.[item]?.[3]), [homeReportCurrent])
+
   return (
     <div className='w-[639px] h-[450px] px-5 py-8 bg-ln-white-red rounded-[32px] relative'>
       <div className='w-[267px] h-[68px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tr-[34px] rounded-bl-[34px] shadow-s-7 absolute top-[-10px] right-[-10px]'>
@@ -22,11 +33,11 @@ const TotalViewChart = memo(() => {
       <div className='w-full h-[360px]'>
         <Bar
           data={{
-            labels: ['11h', '12h', '13h', '14h', '15h', '16h', '17h', '18h', '19h', '20h'],
+            labels: labels,
             datasets: [
               {
                 label: 'Total View',
-                data: [10, 20, 30, 60, 50, 60, 70, 50, 20, 80],
+                data: totalViewData,
                 backgroundColor: (ctx: any) => {
                   const chart = ctx.chart
                   const { ctx: canvasCtx, chartArea } = chart
@@ -50,7 +61,7 @@ const TotalViewChart = memo(() => {
               },
               {
                 label: 'View menu',
-                data: [70, 50, 60, 20, 30, 60, 20, 50, 30, 40],
+                data: viewMenuData,
                 backgroundColor: (ctx: any) => {
                   const chart = ctx.chart
                   const { ctx: canvasCtx, chartArea } = chart
@@ -74,7 +85,7 @@ const TotalViewChart = memo(() => {
               },
               {
                 label: 'View stories',
-                data: [10, 20, 30, 70, 50, 60, 40, 50, 20, 40],
+                data: viewStoriesData,
                 backgroundColor: (ctx: any) => {
                   const chart = ctx.chart
                   const { ctx: canvasCtx, chartArea } = chart
@@ -98,7 +109,7 @@ const TotalViewChart = memo(() => {
               },
               {
                 label: 'Entered stoves',
-                data: [10, 20, 30, 40, 50, 60, 70, 50, 20, 20],
+                data: enterStovesData,
                 backgroundColor: (ctx: any) => {
                   const chart = ctx.chart
                   const { ctx: canvasCtx, chartArea } = chart

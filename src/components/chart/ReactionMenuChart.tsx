@@ -1,8 +1,9 @@
 import { ArcElement, Chart as ChartJS, Legend, Tooltip, TooltipItem } from 'chart.js'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
 import classNames from 'classnames'
-import { memo, useCallback } from 'react'
+import { memo, useCallback, useMemo } from 'react'
 import { Doughnut } from 'react-chartjs-2'
+import { useAppSelector } from '~/redux/configStore'
 import { formatLocaleString } from '~/utils/format'
 
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels)
@@ -14,6 +15,8 @@ const listDataSet = [
 ]
 
 const ReactionMenuChart = memo(() => {
+  const { homeReportCurrent } = useAppSelector((s) => s.report)
+
   const gradients = [
     { start: '#5383FF', end: '#64FBD7' },
     { start: '#CB5DFF', end: '#1D41BE' },
@@ -34,7 +37,14 @@ const ReactionMenuChart = memo(() => {
     [gradients]
   )
 
-  const datasetData = [25, 40, 35]
+  const numberData = useMemo(() => homeReportCurrent?.["Reaction's Menu"]?.['1'], [homeReportCurrent])
+
+  const datasetData = [
+    homeReportCurrent?.["Reaction's Menu"]?.['2']?.['1'],
+    homeReportCurrent?.["Reaction's Menu"]?.['2']?.['2'],
+    homeReportCurrent?.["Reaction's Menu"]?.['2']?.['3']
+  ]
+
   const total = datasetData.reduce((acc, value) => acc + value, 0)
 
   return (
@@ -55,7 +65,7 @@ const ReactionMenuChart = memo(() => {
                 font: { size: 20 },
                 anchor: 'center',
                 align: 'center',
-                formatter: (value) => `${formatLocaleString(value)}%`,
+                formatter: (value) => (value > 0 ? `${Number(value).toFixed(2)}%` : ''),
                 color: (context) => ['#0D0D0D', '#FFF', '#FFF'][context.dataIndex] || '#FFF'
               },
               legend: { display: false },
@@ -105,7 +115,7 @@ const ReactionMenuChart = memo(() => {
       </div>
 
       <div className='flex items-start justify-center gap-2 absolute bottom-8 left-1/2 transform -translate-x-1/2'>
-        {listDataSet.map((data) => (
+        {listDataSet.map((data, index) => (
           <div
             key={data.value}
             className='w-[195px] h-12 px-3 flex items-center justify-between rounded-lg bg-white/[.44] shadow-s-10'
@@ -125,7 +135,9 @@ const ReactionMenuChart = memo(() => {
             </div>
 
             <div className='w-[50px] h-6 text-[18px] font-customSemiBold bg-[#E5E5EA] rounded-sm flex items-center justify-center'>
-              {formatLocaleString(1139)}
+              {formatLocaleString(
+                index === 0 ? numberData?.['1'] : index === 2 ? numberData?.['2'] : numberData?.['3']
+              )}
             </div>
           </div>
         ))}
