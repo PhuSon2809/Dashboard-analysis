@@ -9,5 +9,6 @@ export const PATH_ERROR = {
 }
 
 export const PATH_PUBLIC_APP = {
-  home: '/'
+  home: '/',
+  analysis: '/analysis'
 }

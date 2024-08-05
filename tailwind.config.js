@@ -6,6 +6,13 @@ const plugin = require('tailwindcss/plugin')
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}', './node_modules/tailwind-datepicker-react/dist/**/*.js'],
   theme: {
+    container: {
+      center: true,
+      padding: '2rem',
+      screens: {
+        '2xl': '1400px'
+      }
+    },
     extend: {
       fontFamily: {
         customThin: ['Thin'],
@@ -55,13 +62,67 @@ export default {
         // purple
         purpleMain: '#9A3EE3',
         //pink
-        pinkMain: '#F04770'
+        pinkMain: '#F04770',
+
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))'
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))'
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))'
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))'
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))'
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))'
+        },
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))'
+        }
+      },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)'
+      },
+      keyframes: {
+        'accordion-down': {
+          from: { height: '0' },
+          to: { height: 'var(--radix-accordion-content-height)' }
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' }
+        }
+      },
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out'
       },
       backgroundImage: {
         'today-vistor-card': "url('/src/assets/bg/bg-vistor-card.png')",
         earth: "url('/src/assets/bg/bg-earth.png')",
         'earth-2': "url('/src/assets/bg/bg-earth-2.png')",
         // linear
+        'primary-gradient': 'linear-gradient(126.38deg, #11B0F2 7.58%, #F200F2 92.42%)',
         'ln-grey-to-b': 'linear-gradient(0deg, #F2F3F5 0%, rgba(242, 243, 245, 0) 105.07%)',
         'ln-white': 'linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%)',
         'ln-white-2': 'linear-gradient(180deg, #F6F9FF 0%, rgba(246, 249, 255, 0) 100%)',
@@ -120,7 +181,9 @@ export default {
       sm: '640px',
       md: '768px',
       lg: '1024px',
-      xl: '1280px'
+      xl: '1280px',
+      '3xl': '1600px',
+      '4xl': '1900px'
     },
     boxShadow: {
       's-1': '0px 0px 80px 0px #1A1A1A0D',
