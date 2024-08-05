@@ -1,24 +1,43 @@
 import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip } from 'chart.js'
+import classNames from 'classnames'
 import { memo, useMemo } from 'react'
 import { Bar } from 'react-chartjs-2'
 import { useAppSelector } from '~/redux/configStore'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Legend, Title, Tooltip)
 
-const MostUsedPaymentChart = memo(() => {
+const MostUsedPaymentChart = memo(({ isSmall }: { isSmall?: boolean }) => {
   const { homeReportCurrent } = useAppSelector((s) => s.report)
 
   const dataChart = useMemo(() => homeReportCurrent?.mostUsedPayment, [homeReportCurrent])
 
   return (
-    <div className='size-[110px] pt-2 pr-[6.03px] bg-ln-white-green backdrop-blur-2xl rounded-[9.64px] shadow-s-14'>
-      <div className='w-[78.05px] h-[14px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tr-[7.23px] rounded-bl-[7.23px] absolute -bottom-[1.21px] -left-[1.21px]'>
-        <p className='text-[6.63px] font-customSemiBold text-transparent bg-clip-text bg-ln-purple-green capitalize'>
+    <div
+      className={classNames(
+        isSmall
+          ? 'most-used-payment-chart size-[110px] rounded-[9.64px] bg-ln-white-green pr-[6.03px] pt-2 shadow-s-14 backdrop-blur-2xl'
+          : 'most-used-payment-chart size-[510px] rounded-[9.64px] bg-ln-white-green pr-[6.03px] pt-2 shadow-s-14 backdrop-blur-2xl'
+      )}
+    >
+      <div
+        className={classNames(
+          isSmall
+            ? 'absolute -bottom-[1.21px] -left-[1.21px] flex h-[14px] w-[78.05px] items-center justify-center rounded-bl-[7.23px] rounded-tr-[7.23px] bg-white/[.44] backdrop-blur-[80px]'
+            : 'absolute bottom-[10px] -left-[1.21px] flex h-[14px] w-[200px] items-center justify-center rounded-bl-[7.23px] rounded-tr-[7.23px] bg-white/[.44] backdrop-blur-[80px]'
+        )}
+      >
+        <p
+          className={classNames(
+            isSmall
+              ? 'bg-ln-purple-green bg-clip-text font-customSemiBold text-[6.63px] capitalize text-transparent'
+              : 'bg-ln-purple-green bg-clip-text font-customSemiBold text-[18px] capitalize text-transparent'
+          )}
+        >
           Most used payment
         </p>
       </div>
 
-      <div className='w-full h-[90px]'>
+      <div className={classNames(isSmall ? 'h-[90px] w-full' : 'h-[90%] w-full')}>
         <Bar
           data={{
             labels: ['QR Pay', 'Cash', 'Take away'],
@@ -49,7 +68,7 @@ const MostUsedPaymentChart = memo(() => {
                 borderColor: 'rgba(140, 225, 133 , 0.3)',
                 borderWidth: 0.5,
                 borderRadius: 2,
-                barThickness: 12.04
+                barThickness: isSmall ? 12.04 : 45.2
               }
             ]
           }}
@@ -72,7 +91,7 @@ const MostUsedPaymentChart = memo(() => {
               x: {
                 display: true,
                 grid: { display: false },
-                ticks: { display: true, font: { size: 4.82 }, color: '#0D0D0D' },
+                ticks: { display: true, font: { size: isSmall ? 4.82 : 18 }, color: '#0D0D0D' },
                 border: { display: true, color: '#000', width: 0.3 }
               },
               y: {

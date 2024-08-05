@@ -1,7 +1,8 @@
+import classNames from 'classnames'
 import { memo, useCallback, useMemo } from 'react'
 import { useAppSelector } from '~/redux/configStore'
 
-const ServeTime = memo(() => {
+const ServeTime = memo(({ isSmall }: { isSmall?: boolean }) => {
   const { homeReportCurrent } = useAppSelector((s) => s.report)
 
   // const duration = 5 * 60 * 1000
@@ -17,12 +18,24 @@ const ServeTime = memo(() => {
   // const formattedTime = useMemo(() => getFormattedTime(duration), [homeReportCurrent])
 
   return (
-    <div className='size-[110px] bg-rg-white backdrop-blur-2xl rounded-[9.64px] shadow-s-14 flex items-center justify-center'>
-      <div className='size-[90px] bg-white rounded-full shadow-s-9 relative flex items-center justify-center'>
+    <div
+      className={classNames(
+        isSmall
+          ? 'serve-time flex size-[110px] items-center justify-center rounded-[9.64px] bg-rg-white shadow-s-14 backdrop-blur-2xl'
+          : 'serve-time flex size-[510px] items-center justify-center rounded-[9.64px] bg-rg-white shadow-s-14 backdrop-blur-2xl'
+      )}
+    >
+      <div
+        className={classNames(
+          isSmall
+            ? 'relative flex size-[90px] items-center justify-center rounded-full bg-white shadow-s-9'
+            : 'relative flex size-[450px] items-center justify-center rounded-full bg-white shadow-s-9'
+        )}
+      >
         <div role='status'>
           <svg
             aria-hidden='true'
-            className='w-[68px] h-[68px] animate-spin-slow'
+            className={classNames('animate-spin-slow', isSmall ? 'h-[68px] w-[68px]' : 'h-[200px] w-[500px]')}
             viewBox='0 0 100 101'
             fill='none'
             xmlns='http://www.w3.org/2000/svg'
@@ -50,14 +63,21 @@ const ServeTime = memo(() => {
           </svg>
         </div>
 
-        <div className='flex flex-col items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
-          <h6 className='text-[14.47px] font-customSemiBold'>
+        <div className='absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 transform flex-col items-center'>
+          <h6 className={classNames('font-customSemiBold', isSmall ? 'text-[14.47px]' : 'text-[20px]')}>
             {(formattedTime.minutes > 0 && formattedTime.minutes) || 0}
             {formattedTime.minutes > 0 && 'm'}
             {formattedTime.seconds || 0}
             {formattedTime.seconds > 0 && 's'}
           </h6>
-          <p className='text-[6.63px] font-customSemiBold text-transparent bg-clip-text bg-ln-serve-time'>Serve Time</p>
+          <p
+            className={classNames(
+              'bg-ln-serve-time bg-clip-text font-customSemiBold text-transparent',
+              isSmall ? 'text-[6.63px]' : 'text-[18px]'
+            )}
+          >
+            Serve Time
+          </p>
         </div>
       </div>
     </div>

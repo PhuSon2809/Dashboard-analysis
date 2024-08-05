@@ -12,7 +12,7 @@ const listDataSet = [
   { value: 'dissatisfied', label: 'Dissatisfied' }
 ]
 
-const ReactionsEnjoyChart = memo(() => {
+const ReactionsEnjoyChart = memo(({ isSmall }: { isSmall?: boolean }) => {
   const { homeReportCurrent } = useAppSelector((s) => s.report)
 
   const dataChart = useMemo(() => homeReportCurrent?.ORDERS?.['Reaction Enjoy Meal'], [homeReportCurrent])
@@ -39,23 +39,39 @@ const ReactionsEnjoyChart = memo(() => {
   )
 
   return (
-    <div className='min-w-[535px] min-h-[535px] bg-ln-pink rounded-[32px] rounded-tr-[80px] shadow-s-10 relative'>
-      <div className='w-[400px] h-[64px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tl-[34px] rounded-br-[34px] shadow-s-7 absolute -top-[6px] -left-[6px]'>
-        <p className='text-[28px] font-customSemiBold text-transparent bg-clip-text bg-ln-red-green capitalize'>
+    <div
+      className={`enjoy-chart relative bg-ln-pink shadow-s-10 ${classNames(
+        isSmall ? 'h-[110px] w-[110px]  round-[20px] ' : 'min-h-[535px] min-w-[535px] rounded-[32px] rounded-tr-[80px]'
+      )}`}
+    >
+      <div
+        className={classNames(
+          'absolute -left-[6px] -top-[6px] flex items-center justify-center rounded-br-[34px] rounded-tl-[34px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px]',
+          isSmall ? 'p-1' : 'h-[64px] w-[400px]'
+        )}
+      >
+        <p
+          className={classNames(
+            'bg-ln-red-green bg-clip-text font-customSemiBold capitalize text-transparent',
+            isSmall ? 'text-[4px]' : 'text-[28px]'
+          )}
+        >
           Reactions enjoy meal
         </p>
       </div>
 
-      <div className='size-[380px] p-[10px] absolute top-[80px] left-1/2 transform -translate-x-1/2 bg-white rounded-full shadow-s-15'>
-        <div className='w-full h-full bg-white rounded-full relative'>
+      <div
+        className={`absolute ${classNames(isSmall ? 'left-1/2 top-[6px] size-[90px] -translate-x-1/2 transform rounded-full bg-white p-[1px] shadow-s-15' : 'left-1/2 top-[80px] size-[380px] -translate-x-1/2 transform rounded-full bg-white p-[10px] shadow-s-15')}`}
+      >
+        <div className='relative h-full w-full rounded-full bg-white'>
           <Doughnut
             className='relative z-50'
             options={{
-              cutout: 115,
+              cutout: isSmall ? 25 : 115,
               plugins: {
                 legend: { display: false },
                 datalabels: {
-                  font: { size: 20 },
+                  font: { size: isSmall ? 8 : 20 },
                   color: '#FFF',
                   align: 'center',
                   anchor: 'center',
@@ -95,21 +111,43 @@ const ReactionsEnjoyChart = memo(() => {
             }}
           />
         </div>
-        <div className='size-[220px] flex items-center justify-center rounded-full border-[2.5px] border-dotted border-[#A6A6A6] absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10'>
-          <div className='size-[200px] flex items-center justify-center bg-[#F8F8F8] rounded-full'>
-            <div className='size-[180px] flex flex-col items-center justify-center gap-1 bg-white rounded-full shadow-s-9'>
-              <p className='text-[60px] text-[#292D30] font-customSemiBold'>{dataChart?.['1']}%</p>
+        <div
+          className={classNames(
+            'absolute left-1/2 top-1/2 z-10 flex -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full border-[2.5px] border-dotted border-[#A6A6A6]',
+            isSmall ? 'size-[90px]' : 'size-[220px]'
+          )}
+        >
+          <div
+            className={classNames(
+              'flex items-center justify-center rounded-full bg-[#F8F8F8]',
+              isSmall ? 'size-[50px]' : 'size-[200px]'
+            )}
+          >
+            <div
+              className={classNames(
+                'flex flex-col items-center justify-center gap-1 rounded-full bg-white shadow-s-9',
+                isSmall ? 'size-[50px]' : 'size-[180px]'
+              )}
+            >
+              <p className={classNames('font-customSemiBold text-[#292D30]', isSmall ? ' ' : 'text-[60px]')}>
+                {dataChart?.['1']}%
+              </p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className='px-14 w-full flex items-center justify-center gap-20 absolute bottom-7'>
+      <div
+        className={classNames(
+          'absolute flex w-full items-center justify-center',
+          isSmall ? 'bottom-0 gap-5' : 'bottom-7 gap-20 px-14'
+        )}
+      >
         {listDataSet.map((data) => (
           <div key={data.value} className='flex items-center gap-[6px]'>
             <div
               className={classNames(
-                'size-[18px] rounded-md',
+                `${isSmall ? 'size-[11px] rounded-sm' : 'size-[18px] rounded-md'}`,
                 data.value === 'satisfied'
                   ? 'bg-ln-orange-2'
                   : data.value === 'dissatisfied'
@@ -117,7 +155,7 @@ const ReactionsEnjoyChart = memo(() => {
                     : 'bg-ln-blue-2'
               )}
             />
-            <p className='text-[18px]/[18.9px]'>{data.label}</p>
+            <p className={classNames(isSmall ? 'text-[5px]/[5px]' : 'text-[18px]/[18.9px]')}>{data.label}</p>
           </div>
         ))}
       </div>

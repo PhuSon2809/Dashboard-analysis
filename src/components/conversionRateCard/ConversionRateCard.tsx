@@ -31,7 +31,7 @@ const ConversionRateCard = memo(({ viewing, dotSize, data, title, percentage, cl
       </div>
 
       {percentage && (
-        <div className='flex items-center gap-3 absolute right-0 -top-[66px]'>
+        <div className='flex items-center gap-3 absolute right-0 z-[999] top-[-50px]'>
           <ArrowBottom />
           <p className='text-[56px] font-customSemiBold text-transparent bg-clip-text bg-ln-red-purple'>
             {percentage}%
