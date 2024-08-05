@@ -89,7 +89,7 @@ const ReactionsEnjoyChart = memo(() => {
                   hoverBackgroundColor: (ctx: any) =>
                     ctx.chart.data.datasets[0].data.map((_: any, index: number) => getGradientColor(ctx, index)),
                   borderWidth: 0,
-                  borderRadius: 7
+                  borderRadius: 5
                 }
               ]
             }}
@@ -98,7 +98,7 @@ const ReactionsEnjoyChart = memo(() => {
         <div className='size-[220px] flex items-center justify-center rounded-full border-[2.5px] border-dotted border-[#A6A6A6] absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10'>
           <div className='size-[200px] flex items-center justify-center bg-[#F8F8F8] rounded-full'>
             <div className='size-[180px] flex flex-col items-center justify-center gap-1 bg-white rounded-full shadow-s-9'>
-              <p className='text-[60px] text-[#292D30] font-customSemiBold'>20%</p>
+              <p className='text-[60px] text-[#292D30] font-customSemiBold'>{dataChart?.['1']}%</p>
             </div>
           </div>
         </div>

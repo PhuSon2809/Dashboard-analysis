@@ -71,7 +71,9 @@ const LeaveMenuChart = memo(({ isActive }: { isActive: boolean }) => {
           />
         </div>
         <div className='size-[306px] flex items-center justify-center rounded-full bg-white absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10'>
-          <p className='text-[80px] text-[#292D30] font-customSemiBold'>20%</p>
+          <p className='text-[80px] text-[#292D30] font-customSemiBold'>
+            {homeReportCurrent?.ENGAGEMENT?.['Levea Menu']}%
+          </p>
         </div>
       </div>
     </div>
