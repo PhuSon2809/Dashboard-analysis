@@ -81,9 +81,15 @@ header {
 
 // ----------------------------- LOADER -------------------
 .loader {
-  background: #eef0f1;
-  width: 100%;
+  background: #EEF0F1;
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   .loader-inner {
     .image-block {
@@ -99,14 +105,6 @@ header {
 }
 
 .transition-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   img {
     width: 500px;

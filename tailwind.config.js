@@ -4,6 +4,7 @@ const plugin = require('tailwindcss/plugin')
 
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: ['class'],
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}', './node_modules/tailwind-datepicker-react/dist/**/*.js'],
   theme: {
     container: {
@@ -216,6 +217,18 @@ export default {
           marginRight: 'auto'
         }
       })
-    })
+    }),
+    require('tailwindcss-animate'),
+    function ({ addUtilities }) {
+      addUtilities({
+        '.bg-clip-text': {
+          'background-clip': 'text',
+          '-webkit-background-clip': 'text'
+        },
+        '.text-transparent': {
+          color: 'transparent'
+        }
+      })
+    }
   ]
 }

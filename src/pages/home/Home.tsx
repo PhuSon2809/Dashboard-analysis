@@ -1,5 +1,6 @@
 import { memo } from 'react'
 import { Link } from 'react-router-dom'
+import unpleash from '~/assets/images/unpleash.svg'
 import { AutoplayVideo } from '~/components/autoplayVideo'
 import { ButtonPrimary } from '~/components/button'
 
@@ -15,7 +16,7 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
               With AI, understand customers in-store with ease
             </h1>
             <ButtonPrimary className=''>
-              <Link to='https://analysis.m.pro/' className='w-full h-full'>
+              <Link to='https://analysis.m.pro/' className='h-full w-full'>
                 <span>Start</span>
               </Link>
             </ButtonPrimary>
@@ -29,6 +30,16 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
             source='https://img.m.pro/fiai-home.mp4'
             defaultImage='https://via.placeholder.com/1920x1080'
           />
+        </div>
+      </div>
+      <div className='unleash-the-power container-wrapper grid grid-cols-3 pt-[150px]'>
+        <div className='flex items-end flex-col mr-[-22%] relative '>
+          <h2 className='text-[56px] pr-[150px]'>Unleash the power</h2>
+          <h1 className='text-[104px] font-bold'>Of Offline </h1>
+          <h2 className='text-[56px]'>Commerce </h2>
+        </div>
+        <div className='col-span-2'>
+          <img src={unpleash} alt='unpleash' className='w-full h-full'/>
         </div>
       </div>
     </div>

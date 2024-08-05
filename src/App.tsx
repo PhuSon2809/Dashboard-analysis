@@ -1,13 +1,13 @@
+import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { Toaster } from 'react-hot-toast'
-import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
 
 import useRouteElements from '~/hooks/useRouteElements'
+import { Cursor } from './components/cursor'
+import { Loader } from './layouts/components/loader'
 import { useAppDispatch, useAppSelector } from './redux/configStore'
 import { fetchReport } from './redux/report/report'
 import { setTimecount } from './redux/timecount/timecount.slice'
-import { Loader } from './layouts/components/loader'
-import { Cursor } from './components/cursor'
 
 function App() {
   const dispatch = useAppDispatch()
@@ -17,38 +17,45 @@ function App() {
   const { timecount } = useAppSelector((s) => s.timecount)
 
   const [loading, setLoading] = useState(true)
-
+  const [showEffect, setShowEffect] = useState(true)
   useEffect(() => {
     if (timecount !== 0) dispatch(setTimecount(timecount))
   }, [])
+  useEffect(() => {
+    if (showEffect) {
+      document.querySelector('body')?.classList.add('loading')
+    } else {
+      document.querySelector('body')?.classList.remove('loading')
+      setTimeout(() => {
+        setLoading(false)
+      }, 5000)
+    }
+  }, [showEffect])
 
   useEffect(() => {
     const duration = 30 * 1000
     if (timecount <= 0) dispatch(setTimecount(duration))
-  }, [timecount])
-
-  useEffect(() => {
     const timerId = setTimeout(() => dispatch(setTimecount(timecount - 1000)), 1000)
-    return () => clearTimeout(timerId)
-  }, [timecount])
-
-  useEffect(() => {
     if (timecount <= 0) dispatch(fetchReport())
+    return () => clearTimeout(timerId)
   }, [timecount])
 
   return (
     <>
       <LayoutGroup>
         <AnimatePresence>
-          {loading ? (
+          {showEffect ? (
             <motion.div key='loader'>
-              <Loader setLoading={setLoading} />
+              <Loader setShowEffect={setShowEffect} />
             </motion.div>
           ) : (
-            <>
-              {routeElements}
-              <Cursor />
-            </>
+            !loading &&
+            !showEffect && (
+              <>
+                {routeElements}
+                <Cursor />
+              </>
+            )
           )}
         </AnimatePresence>
       </LayoutGroup>

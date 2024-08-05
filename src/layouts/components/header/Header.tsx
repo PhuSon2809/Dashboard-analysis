@@ -30,12 +30,12 @@ const Header: React.FunctionComponent<HeaderProps> = memo(() => {
   }, [])
 
   return (
-    <header className='relative z-50 bg-white shadow-md'>
+    <header className='shadow-md relative z-50 bg-white'>
       <div className='header_desktop h-[80px]'>
         <div className='container-wrapper mx-auto flex h-full items-center justify-between'>
           <div className='flex items-center gap-10'>
             <Link to='/' className='text-lg font-bold text-gray-800'>
-              <img src={images.logo.logo_fi} alt='logo-fiai' />
+              <img src={images.logo.logo_fi} alt='logo-fiai' className='w-[50px]' />
             </Link>
             <NavigationMenu>
               <NavigationMenuList>
@@ -46,7 +46,7 @@ const Header: React.FunctionComponent<HeaderProps> = memo(() => {
                       <li className='row-span-3'>
                         <NavigationMenuLink asChild>
                           <a
-                            className='flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md'
+                            className='focus:shadow-md flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none'
                             href='/'
                           >
                             <img src={images.logo.logo_fi} alt='logo-fiai' />
