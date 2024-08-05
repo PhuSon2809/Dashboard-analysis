@@ -17,7 +17,7 @@ const CurrentReactions = memo(() => {
 
   const { homeReportCurrent } = useAppSelector((s) => s.report)
 
-  const [typeActive, setTypeActive] = useState<number>(1)
+  const [typeActive, setTypeActive] = useState<number>(0)
   const [activeSlide, setActiveSlide] = useState<number>(0)
 
   const listTypePerson = useMemo(() => [0, 1], [])
