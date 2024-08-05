@@ -85,7 +85,7 @@ const Navbar = memo(({ className, scrollToSection }: NavbarProps) => {
         className,
         isOpenMenu
           ? 'h-fit py-[26px] px-[22px] bg-white/[.32] backdrop-blur-[40px] rounded-3xl shadow-s-16 top-5 left-5 transform '
-          : 'h-[100px] p-5 top-[30px] left-[17px]',
+          : 'h-[100px] p-5 xs:top-[10px] sm:top-[30px] xs:left-[10px] sm:left-[17px]',
         isOpenMenu ? 'max-h-screen' : 'max-h-[100px]',
         'fixed w-fit z-50 flex flex-col items-center gap-[18px] overflow-hidden transition-all duration-700 ease-in-out'
       )}
@@ -97,11 +97,11 @@ const Navbar = memo(({ className, scrollToSection }: NavbarProps) => {
           setIsOpenMenuItem(false)
         }}
         className={classNames(
-          'min-w-12 min-h-12 flex items-center justify-center bg-white shadow-s-19 rounded-full transition-transform duration-1000 ease-in-out',
-          isOpenMenu && 'rotate-[360deg]'
+          'min-w-[48.01px] min-h-[48.01px] flex items-center justify-center bg-white shadow-s-19 rounded-full transition-transform duration-1000 ease-in-out',
+          isOpenMenu && 'rotate-y-360deg'
         )}
       >
-        <img src={images.logo.logo_metanode} alt='logo-metanode' className='w-8' />
+        <img src={images.logo.logo_fi} alt='logo-fi' className='size-8' />
       </button>
 
       <div className={`flex flex-col gap-1`}>

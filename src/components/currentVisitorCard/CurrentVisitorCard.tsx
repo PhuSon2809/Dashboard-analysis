@@ -1,25 +1,13 @@
-import { memo, useMemo } from 'react'
+import classNames from 'classnames'
+import { memo } from 'react'
 import images from '~/assets'
-import { DecreaseIcon, IncreaseIcon } from '../icons'
 import { useAppSelector } from '~/redux/configStore'
+import { DecreaseIcon, IncreaseIcon } from '../icons'
 
-const CurrentViewCard = memo(() => {
-  const { homeReportCurrent, homeReportOld } = useAppSelector((s) => s.report)
+const CurrentVisitorCard = memo(() => {
+  const { homeReportCurrent } = useAppSelector((s) => s.report)
 
-  const percent = useMemo(
-    () =>
-      (((homeReportCurrent?.currentVisitors || 0) - (homeReportOld?.currentVisitors || 0)) /
-        (homeReportOld?.currentVisitors || 0)) *
-      100,
-    [homeReportCurrent, homeReportOld]
-  )
-
-  const isIncrease = useMemo(
-    () => (homeReportCurrent?.currentVisitors || 0) >= (homeReportOld?.currentVisitors || 0),
-    [homeReportCurrent, homeReportOld]
-  )
-
-  console.log('percent', percent)
+  const isIncrease = Math.random() >= 0.5
 
   return (
     <div className='w-[355px] h-[235px] rounded-[32px] bg-white/[.44] backdrop-blur-2xl overflow-hidden shadow-s-1 relative'>
@@ -28,9 +16,18 @@ const CurrentViewCard = memo(() => {
         <div className='flex items-center gap-[9px]'>
           <h6 className='text-[36px]/[46.8px] font-bold'>{homeReportCurrent?.currentVisitors}</h6>
           <div className='flex items-center gap-1'>
-            {isIncrease ? <IncreaseIcon color='green' /> : <DecreaseIcon color='pink' />}
-            <p className={`text-[16px]/[24px] font-medium ${isIncrease ? 'text-greenNeonMain' : 'text-pinkMain'} `}>
-              {Math.abs(percent).toFixed(2)}%
+            {isIncrease ? (
+              <IncreaseIcon color='green' className='xs:size-[20px] sm:size-6' />
+            ) : (
+              <DecreaseIcon color='pink' className='xs:size-[20px] sm:size-6' />
+            )}
+            <p
+              className={classNames(
+                `xs:text-[13.09px]/[19.4px] sm:text-[16px]/[24px] font-semibold transition-colors duration-200 ease-in-out`,
+                isIncrease ? 'text-greenNeonMain' : 'text-pinkMain'
+              )}
+            >
+              {homeReportCurrent?.currentVisitorsPercent}%
             </p>
           </div>
         </div>
@@ -49,4 +46,4 @@ const CurrentViewCard = memo(() => {
   )
 })
 
-export default CurrentViewCard
+export default CurrentVisitorCard

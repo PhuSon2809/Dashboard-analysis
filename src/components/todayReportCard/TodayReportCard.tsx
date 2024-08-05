@@ -4,6 +4,7 @@ import classNames from 'classnames'
 
 type TodayReportCard = {
   title: string
+  percent: number
   icon: ReactNode
   data: string | number
   color?: 'green' | 'orange' | 'blue' | 'red'

@@ -1,9 +1,35 @@
+import { useEffect } from 'react'
 import { Toaster } from 'react-hot-toast'
 
 import useRouteElements from '~/hooks/useRouteElements'
+import { useAppDispatch, useAppSelector } from './redux/configStore'
+import { fetchReport } from './redux/report/report'
+import { setTimecount } from './redux/timecount/timecount.slice'
 
 function App() {
+  const dispatch = useAppDispatch()
+
   const routeElements = useRouteElements()
+
+  const { timecount } = useAppSelector((s) => s.timecount)
+
+  useEffect(() => {
+    if (timecount !== 0) dispatch(setTimecount(timecount))
+  }, [])
+
+  useEffect(() => {
+    const duration = 30 * 1000
+    if (timecount <= 0) dispatch(setTimecount(duration))
+  }, [timecount])
+
+  useEffect(() => {
+    const timerId = setTimeout(() => dispatch(setTimecount(timecount - 1000)), 1000)
+    return () => clearTimeout(timerId)
+  }, [timecount])
+
+  useEffect(() => {
+    if (timecount <= 0) dispatch(fetchReport())
+  }, [timecount])
 
   return (
     <>

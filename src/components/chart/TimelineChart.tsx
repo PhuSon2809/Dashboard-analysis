@@ -35,7 +35,7 @@ const listTitleChart = ['Reach', 'Engagement', 'Order', 'Payment']
 
 const tooltipContent = [
   'The initial phase of customer interaction where potential customers become aware of the store and its offerings and decide to go inside.',
-  'The initial phase of customer interaction where potential customers become aware of the store and its offerings and decide to go inside.',
+  'Customers show interest by seeking more information about the store, menu, specials, or ambiance through online research or by visiting the store.',
   'The step taken from deciding to order food or drinks to completing the transaction and receiving their order.',
   'The phase of selecting a payment method, completing the transaction, and receiving confirmation.'
 ]
@@ -53,10 +53,10 @@ const TimelineChart = memo(() => {
   const currentHour = new Date().getHours()
   const listDataReport = useMemo(
     () => [
-      homeReportCurrent?.reach,
-      homeReportCurrent?.engagement,
-      homeReportCurrent?.order,
-      homeReportCurrent?.payment
+      homeReportCurrent?.realTimeReportTime?.['10'].realTimeReportReach,
+      homeReportCurrent?.realTimeReportTime?.['10'].realTimeReportEngagement,
+      homeReportCurrent?.realTimeReportTime?.['10'].realTimeReportOrder,
+      homeReportCurrent?.realTimeReportTime?.['10'].realTimePayment
     ],
     [homeReportCurrent]
   )

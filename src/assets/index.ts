@@ -1,6 +1,7 @@
 import logo_e_commerce from '~/assets/logo/logo-ecom-green.svg'
 import logo_white from '~/assets/logo/logo-ecom-white.svg'
 import logo_metanode from '~/assets/logo/logo-metanode.png'
+import logo_fi from '~/assets/logo/logo-fi-ai.png'
 
 import china from '~/assets/flag/china.png'
 import czech_republic from '~/assets/flag/czech-republic.png'
@@ -20,6 +21,7 @@ import dash_line_2 from '~/assets/images/dash-line-2.png'
 import male_black from '~/assets/images/male-black.png'
 import male_white from '~/assets/images/male-white.png'
 import female_black from '~/assets/images/female-black.png'
+import female_white from '~/assets/images/female-white.png'
 
 import bg_vistor_card from '~/assets/bg/bg-vistor-card.png'
 
@@ -28,9 +30,18 @@ import unhappy_pink from '~/assets/icons/unhappy-pink.svg'
 import unhappy_vistor from '~/assets/icons/unhappy-vistor.svg'
 
 const images = {
-  logo: { logo_e_commerce, logo_white, logo_metanode },
+  logo: { logo_e_commerce, logo_white, logo_metanode, logo_fi },
   flag: { china, czech_republic, france, indonesia, italy, japan, korea, spain, united_kingdom, vietnam },
-  image: { current_view_top, current_view_bottom, dash_line, dash_line_2, male_black, male_white, female_black },
+  image: {
+    current_view_top,
+    current_view_bottom,
+    dash_line,
+    dash_line_2,
+    male_black,
+    male_white,
+    female_black,
+    female_white
+  },
   bg: { bg_vistor_card },
   icon: { happy_green, unhappy_pink, unhappy_vistor }
 }

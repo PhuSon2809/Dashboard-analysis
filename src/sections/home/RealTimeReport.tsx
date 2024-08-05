@@ -3,12 +3,12 @@ import { TimelineChart } from '~/components/chart'
 
 const RealTimeReport = memo(() => {
   return (
-    <div className='mt-[120px]'>
-      <div className='text-center space-y-4 relative z-20'>
-        <h2 className='text-[54px]/[70.2px] font-bold'>Real - Time Report</h2>
-        <p className='text-[16px]/[24px] font-normal text-grey999/[.64]'>
-          We offer up-to-the-minute account of current events or data, provided <br /> immediately as the situation
-          unfolds.
+    <div className='xs:px-4 sm:px-0 mt-[120px]'>
+      <div className='xs:space-y-[14px] sm:space-y-4 text-center relative z-20'>
+        <h2 className='xs:text-[32px]/[38px] sm:text-[54px]/[70.2px] font-bold'>Real - Time Report</h2>
+        <p className='xs:leading-[26px] sm:leading-[24px] text-grey999/[.64]'>
+          We offer up-to-the-minute account of <br className='xs:flex sm:hidden' /> current events or data, provided{' '}
+          <br /> immediately as the situation unfolds.
         </p>
       </div>
 

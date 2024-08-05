@@ -68,7 +68,7 @@ export default {
         'ln-white-3': 'linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.44) 100%)',
         'ln-white-4': 'linear-gradient(177.49deg, rgba(242, 243, 245, 0) 2.12%, #F6F6F7 97.93%)',
         'ln-white-5': 'linear-gradient(115.46deg, #F7F9FF 3.98%, #F2F3F5 83.97%)',
-        'ln-white-6': 'linear-gradient(180deg, #FFF3F3 0%, #FFFFFF 100%)',
+        'ln-white-6': 'linear-gradient(360deg, #FFF3F3 0%, #FFFFFF 100%)',
         'ln-white-blue': 'linear-gradient(180deg, #EBF7FF 0%, #FFFFFF 100%)',
         'ln-white-blue-2': 'linear-gradient(360deg, #EBF7FF 0%, #FFFFFF 100%)',
         'ln-white-red': 'linear-gradient(180deg, #FFF3F3 0%, #FFFFFF 100%)',
@@ -116,7 +116,7 @@ export default {
       }
     },
     screens: {
-      xs: { max: '639px' },
+      xs: { max: '640px' },
       sm: '640px',
       md: '768px',
       lg: '1024px',

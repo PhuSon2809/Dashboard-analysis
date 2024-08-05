@@ -11,8 +11,9 @@ import {
   Tooltip
 } from 'chart.js'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
-import { memo } from 'react'
+import { memo, useMemo } from 'react'
 import { Chart } from 'react-chartjs-2'
+import { useAppSelector } from '~/redux/configStore'
 
 ChartJS.register(
   CategoryScale,
@@ -29,6 +30,14 @@ ChartJS.register(
 )
 
 const ServeTimeAverageChart = memo(({ isActive }: { isActive: boolean }) => {
+  const { homeReportCurrent } = useAppSelector((s) => s.report)
+
+  const labels = ['11', '12', '13', '14', '15', '16', '17', '18']
+
+  const datasetData = useMemo(() => homeReportCurrent?.ENGAGEMENT?.['Serve Time Average'], [homeReportCurrent])
+
+  const renderData = useMemo(() => labels.map((item) => datasetData?.[item]), [homeReportCurrent])
+
   return (
     <div className='min-w-[666px] min-h-[666px] p-8 pl-7 pt-10 bg-ln-white-blue-2 rounded-[32px] rounded-br-[80px] shadow-s-10 relative'>
       <div
@@ -43,12 +52,12 @@ const ServeTimeAverageChart = memo(({ isActive }: { isActive: boolean }) => {
         <Chart
           type='bar'
           data={{
-            labels: ['11', '12', '13', '14', '15', '16', '17', '18'],
+            labels,
             datasets: [
               {
                 type: 'bar',
                 label: 'Bar Dataset',
-                data: [10, 20, 30, 40, 50, 60, 70, 50],
+                data: renderData,
                 backgroundColor: (ctx: any) => {
                   const chart = ctx.chart
                   const { ctx: canvasCtx, chartArea } = chart
@@ -74,7 +83,7 @@ const ServeTimeAverageChart = memo(({ isActive }: { isActive: boolean }) => {
               {
                 type: 'line',
                 label: 'Line Dataset',
-                data: [20, 60, 50, 70, 30, 40, 10, 50],
+                data: renderData,
                 fill: false,
                 tension: 0.5,
                 pointRadius: 0.5,

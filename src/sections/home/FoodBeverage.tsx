@@ -5,13 +5,13 @@ import { UnhappyVistorCard } from '~/components/unhappyVistorCard'
 
 const FoodBeverage = memo(() => {
   return (
-    <div className='pt-[106px] relative'>
-      <div className='text-center space-y-4 relative z-20'>
-        <h2 className='text-[54px]/[70.2px] font-bold'>Food & Beverage</h2>
-        <p className='text-[16px]/[24px] font-normal text-grey999/[.64]'>
+    <div className='xs:pt-[57px] sm:pt-[106px] relative'>
+      <div className='xs:px-4 sm:px-0 xs:space-y-[2px] sm:space-y-4 text-center relative z-20'>
+        <h2 className='xs:text-[32px] sm:text-[54px] leading-[70.2px] font-bold'>Food & Beverage</h2>
+        <p className='xs:leading-[26px] sm:leading-[24px] text-grey999/[.64]'>
           Here are report of F&B data, refers to the collection of information and metrics related to the food and{' '}
-          <br /> beverage store make informed decisions, improve operations, enhance customer satisfaction, and stay{' '}
-          <br /> competitive in the market.
+          <br className='xs:hidden sm:flex' /> beverage store make informed decisions, improve operations, enhance
+          customer satisfaction, and stay <br className='xs:hidden sm:flex' /> competitive in the market.
         </p>
       </div>
 
@@ -21,11 +21,14 @@ const FoodBeverage = memo(() => {
 
       <div className='size-[434px] bg-[#ECF2F3] rounded-full absolute left-[261px] top-[455px] z-20' />
 
-      <div className='w-full mt-[60px] flex items-start justify-center gap-[22px] relative z-30'>
+      <div className='w-full xs:mt-[71px] sm:mt-[60px] xs:hidden sm:flex items-start justify-center gap-[22px] relative z-30'>
         <CurrentVisitorCard />
         <TodayVistorCard />
         <UnhappyVistorCard />
       </div>
+      {/* <div className='relative z-30'>
+        <CurrentVisitorCard />
+      </div> */}
     </div>
   )
 })

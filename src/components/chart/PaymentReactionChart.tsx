@@ -1,8 +1,9 @@
 import { ArcElement, Chart as ChartJS, Legend, Tooltip, TooltipItem } from 'chart.js'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
 import classNames from 'classnames'
-import { memo, useCallback, useRef } from 'react'
+import { memo, useCallback, useMemo, useRef } from 'react'
 import { Doughnut } from 'react-chartjs-2'
+import { useAppSelector } from '~/redux/configStore'
 import { formatLocaleString } from '~/utils/format'
 
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels)
@@ -13,8 +14,12 @@ const listDataSet = [
   { value: 'average', label: 'Average' }
 ]
 
-const PaymentReactionChart = memo(() => {
+const PaymentReactionChart = memo(({ isSmall }: { isSmall?: boolean }) => {
   const chartTotalOrderRef = useRef<ChartJS<'doughnut'>>(null)
+
+  const { homeReportCurrent } = useAppSelector((s) => s.report)
+
+  const dataChart = useMemo(() => homeReportCurrent?.paymentReaction, [homeReportCurrent])
 
   const gradients = [
     { start: '#C15CFF', end: '#FF5454' },
@@ -36,12 +41,25 @@ const PaymentReactionChart = memo(() => {
     [gradients]
   )
 
-  const datasetData = [25, 40, 35]
+  const datasetData = [dataChart?.percent?.['1'], dataChart?.percent?.['2'], dataChart?.percent?.['3']]
+  // const datasetData = [25, 40, 35]
   const total = datasetData.reduce((acc, value) => acc + value, 0)
 
   return (
-    <div className='size-[110px] bg-ln-white-blue-2 backdrop-blur-md rounded-[9.64px] relative shadow-s-14'>
-      <div className='w-[74px] h-[14px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tl-[7.23px] rounded-br-[7.23px] shadow-s-7 absolute -top-[2.11px] -left-[2.11px]'>
+    <div
+      className={classNames(
+        isSmall ? 'size-[110px] rounded-[9.64px]' : 'size-[535px] rounded-[32px]',
+        'bg-ln-white-blue-2 relative shadow-s-14'
+      )}
+    >
+      <div
+        className={classNames(
+          isSmall
+            ? 'w-[74px] h-[14px] rounded-tl-[7.23px] rounded-br-[7.23px] -top-[2.11px] -left-[2.11px]'
+            : 'w-[74px] h-[14px] rounded-tl-[7.23px] rounded-br-[7.23px] -top-[2.11px] -left-[2.11px]',
+          ' bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center shadow-s-7 absolute '
+        )}
+      >
         <p className='text-[6.63px] font-customSemiBold text-transparent bg-clip-text bg-ln-orange-purple'>
           Reaction’s Menu
         </p>
@@ -59,7 +77,7 @@ const PaymentReactionChart = memo(() => {
                   font: { size: 3.62 },
                   anchor: 'center',
                   align: 'center',
-                  formatter: (value) => `${formatLocaleString(value)}%`,
+                  formatter: (value) => (value > 0 ? `${formatLocaleString(value)}%` : ''),
                   color: (context) => ['#0D0D0D', '#FFF', '#FFF'][context.dataIndex] || '#FFF'
                 },
                 legend: { display: false },
@@ -103,6 +121,7 @@ const PaymentReactionChart = memo(() => {
               <div className='size-[40.99px] flex flex-col items-center justify-center gap-1 bg-white rounded-full shadow-s-13'>
                 <h3 className='text-[8.44px]/[8.86px] font-customSemiBold text-[#292D30]'>
                   {formatLocaleString(2510)}
+                  {/* {formatLocaleString(dataChart?.totalReaction)} */}
                 </h3>
                 <p className='text-[3.62px]/[3.8px] text-[#0D0D0D]'>reaction</p>
               </div>
