@@ -18,7 +18,7 @@ function App() {
   }, [])
 
   useEffect(() => {
-    const duration = 5 * 60 * 1000
+    const duration = 30 * 1000
     if (timecount <= 0) dispatch(setTimecount(duration))
   }, [timecount])
 
