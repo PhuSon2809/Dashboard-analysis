@@ -16,8 +16,8 @@ const MenuCheckTimeChart = memo(() => {
   const { homeReportCurrent } = useAppSelector((s) => s.report)
 
   const datasetData = [
-    homeReportCurrent.ENGAGEMENT?.['Menu Check Time']?.['1'],
-    homeReportCurrent.ENGAGEMENT?.['Menu Check Time']?.['2']
+    homeReportCurrent?.ENGAGEMENT?.['Menu Check Time']?.['1'],
+    homeReportCurrent?.ENGAGEMENT?.['Menu Check Time']?.['2']
   ]
 
   const gradients = [
@@ -61,7 +61,7 @@ const MenuCheckTimeChart = memo(() => {
                 font: { size: 20 },
                 anchor: 'center',
                 align: 'center',
-                formatter: (value) => (value > 0 ? `${Number(value).toFixed(2)}%` : ''),
+                formatter: (value) => (value > 0 ? `${value}%` : ''),
                 color: (context) => ['#FFF', '#FFF'][context.dataIndex] || '#FFF'
               }
             }

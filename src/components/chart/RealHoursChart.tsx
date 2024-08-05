@@ -32,7 +32,7 @@ ChartJS.register(
 const RealHoursChart = memo(() => {
   const { homeReportCurrent } = useAppSelector((s) => s.report)
 
-  const data = useMemo(() => homeReportCurrent.hourlyVisitors, [homeReportCurrent])
+  const data = useMemo(() => homeReportCurrent?.hourlyVisitors, [homeReportCurrent])
 
   const datasetData = useMemo(() => Array.from({ length: 10 }).map((_, index) => data?.[`${index + 1}`]), [data])
 

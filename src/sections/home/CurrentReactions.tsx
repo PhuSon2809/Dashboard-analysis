@@ -123,7 +123,7 @@ const CurrentReactions = memo(() => {
             }}
             onSlideChange={handleSlideChange}
           >
-            {listDataRender.map((person: any, index: number) => {
+            {listDataRender?.map((person: any, index: number) => {
               return (
                 <SwiperSlide key={person.id}>
                   <PersonreactionCard person={person} isActive={activeSlide === index} />

@@ -15,7 +15,7 @@ const listDataSet = [
 const ReactionsEnjoyChart = memo(() => {
   const { homeReportCurrent } = useAppSelector((s) => s.report)
 
-  const dataChart = useMemo(() => homeReportCurrent.ORDERS?.['Reaction Enjoy Meal'], [homeReportCurrent])
+  const dataChart = useMemo(() => homeReportCurrent?.ORDERS?.['Reaction Enjoy Meal'], [homeReportCurrent])
 
   const datasetData = [dataChart?.['1'], dataChart?.['2']]
 
@@ -38,8 +38,6 @@ const ReactionsEnjoyChart = memo(() => {
     [gradients]
   )
 
-  const total = datasetData.reduce((acc, value) => acc + value, 0)
-
   return (
     <div className='min-w-[535px] min-h-[535px] bg-ln-pink rounded-[32px] rounded-tr-[80px] shadow-s-10 relative'>
       <div className='w-[400px] h-[64px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tl-[34px] rounded-br-[34px] shadow-s-7 absolute -top-[6px] -left-[6px]'>
@@ -61,7 +59,7 @@ const ReactionsEnjoyChart = memo(() => {
                   color: '#FFF',
                   align: 'center',
                   anchor: 'center',
-                  formatter: (value) => (value > 0 ? `${Number(value).toFixed(2)}%` : '')
+                  formatter: (value) => (value > 0 ? `${value}%` : '')
                 },
                 tooltip: {
                   position: 'nearest',
@@ -75,8 +73,7 @@ const ReactionsEnjoyChart = memo(() => {
                     label: function (tooltipItem: TooltipItem<'doughnut'>) {
                       const dataset = tooltipItem.chart.data.datasets[tooltipItem.datasetIndex]
                       const currentValue = dataset.data[tooltipItem.dataIndex] as number
-                      const percentage = (currentValue / total) * 100
-                      return `${percentage}%`
+                      return `${currentValue}%`
                     }
                   }
                 }

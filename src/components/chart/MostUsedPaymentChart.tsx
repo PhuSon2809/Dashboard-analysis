@@ -8,7 +8,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Legend, Title, Tooltip)
 const MostUsedPaymentChart = memo(() => {
   const { homeReportCurrent } = useAppSelector((s) => s.report)
 
-  const dataChart = useMemo(() => homeReportCurrent.mostUsedPayment, [homeReportCurrent])
+  const dataChart = useMemo(() => homeReportCurrent?.mostUsedPayment, [homeReportCurrent])
 
   return (
     <div className='size-[110px] pt-2 pr-[6.03px] bg-ln-white-green backdrop-blur-2xl rounded-[9.64px] shadow-s-14'>

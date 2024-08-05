@@ -13,7 +13,7 @@ const ServeTime = memo(() => {
     return { minutes, seconds }
   }, [])
 
-  const formattedTime = useMemo(() => getFormattedTime(homeReportCurrent.serveTime * 1000), [homeReportCurrent])
+  const formattedTime = useMemo(() => getFormattedTime(homeReportCurrent?.serveTime * 1000), [homeReportCurrent])
   // const formattedTime = useMemo(() => getFormattedTime(duration), [homeReportCurrent])
 
   return (
@@ -52,9 +52,10 @@ const ServeTime = memo(() => {
 
         <div className='flex flex-col items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
           <h6 className='text-[14.47px] font-customSemiBold'>
-            {formattedTime.minutes > 0 && formattedTime.minutes}
+            {(formattedTime.minutes > 0 && formattedTime.minutes) || 0}
             {formattedTime.minutes > 0 && 'm'}
-            {formattedTime.seconds}s
+            {formattedTime.seconds || 0}
+            {formattedTime.seconds > 0 && 's'}
           </h6>
           <p className='text-[6.63px] font-customSemiBold text-transparent bg-clip-text bg-ln-serve-time'>Serve Time</p>
         </div>

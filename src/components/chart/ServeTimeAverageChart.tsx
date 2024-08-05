@@ -34,7 +34,7 @@ const ServeTimeAverageChart = memo(({ isActive }: { isActive: boolean }) => {
 
   const labels = ['11', '12', '13', '14', '15', '16', '17', '18']
 
-  const datasetData = useMemo(() => homeReportCurrent.ENGAGEMENT?.['Serve Time Average'], [homeReportCurrent])
+  const datasetData = useMemo(() => homeReportCurrent?.ENGAGEMENT?.['Serve Time Average'], [homeReportCurrent])
 
   const renderData = useMemo(() => labels.map((item) => datasetData?.[item]), [homeReportCurrent])
 

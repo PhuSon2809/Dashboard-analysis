@@ -20,7 +20,7 @@ const listFood = [
 const BestSellerChart = memo(() => {
   const { homeReportCurrent } = useAppSelector((s) => s.report)
 
-  const dataChart = useMemo(() => homeReportCurrent.ORDERS?.['Best Seller'], [homeReportCurrent])
+  const dataChart = useMemo(() => homeReportCurrent?.ORDERS?.['Best Seller'], [homeReportCurrent])
 
   const datasetData = Array.from({ length: 7 }).map((_, index) => dataChart?.[`${index + 1}`])
 

@@ -42,29 +42,29 @@ const TodayReport = memo(() => {
             <TodayReportCard
               color='orange'
               title='Visitor'
-              data={formatLocaleString(homeReportCurrent.todayReportsOrder)}
-              percent={homeReportCurrent.todayReportsOrderPercent}
+              data={formatLocaleString(homeReportCurrent?.todayReportsOrder || 0)}
+              percent={homeReportCurrent?.todayReportsOrderPercent || 0}
               icon={<VisitorIcon />}
             />
             <TodayReportCard
               color='blue'
               title='Viewers'
-              data={formatLocaleString(homeReportCurrent.todayReportsPurchase)}
-              percent={homeReportCurrent.todayReportsPurchasePercent}
+              data={formatLocaleString(homeReportCurrent?.todayReportsPurchase || 0)}
+              percent={homeReportCurrent?.todayReportsPurchasePercent || 0}
               icon={<ViewerIcon />}
             />
             <TodayReportCard
               color='red'
               title='Order'
-              data={formatLocaleString(homeReportCurrent.todayReportsViewers)}
-              percent={homeReportCurrent.todayReportsViewersPercent}
+              data={formatLocaleString(homeReportCurrent?.todayReportsViewers || 0)}
+              percent={homeReportCurrent?.todayReportsViewersPercent || 0}
               icon={<OrderIcon />}
             />
             <TodayReportCard
               color='green'
               title='Purchases/Pay'
-              data={formatLocaleString(homeReportCurrent.todayReportsVisitors)}
-              percent={homeReportCurrent.todayReportsVisitorsPercent}
+              data={formatLocaleString(homeReportCurrent?.todayReportsVisitors || 0)}
+              percent={homeReportCurrent?.todayReportsVisitorsPercent || 0}
               icon={<PayIcon />}
               isIncreasing={false}
             />
@@ -78,31 +78,31 @@ const TodayReport = memo(() => {
         <div className='mt-[59px] ml-[53px] space-y-[26px]'>
           <ConversionRateCard
             viewing={viewing}
-            data={formatNumber(homeReportCurrent.conversionRateReach)}
+            data={formatNumber(homeReportCurrent?.conversionRateReach || 0)}
             title='Reach/View'
             className={`${viewing ? 'ml-0' : '-ml-10'}`}
           />
           <ConversionRateCard
             viewing={viewing}
-            data={formatNumber(homeReportCurrent.conversionRateEngagement)}
+            data={formatNumber(homeReportCurrent?.conversionRateEngagement || 0)}
             title='Engagement/Reach'
-            percentage={homeReportCurrent.conversionRatePercent1}
+            percentage={homeReportCurrent?.conversionRatePercent1 || 0}
             dotSize='size-[18px]'
             className={`${viewing ? 'ml-[110px]' : '-ml-10'}`}
           />
           <ConversionRateCard
             viewing={viewing}
-            data={formatNumber(homeReportCurrent.conversionRateOrder)}
+            data={formatNumber(homeReportCurrent?.conversionRateOrder || 0)}
             title='Reach/Order'
-            percentage={homeReportCurrent.conversionRatePercent2}
+            percentage={homeReportCurrent?.conversionRatePercent2 || 0}
             dotSize='size-5'
             className={`${viewing ? 'ml-[152px]' : '-ml-10'}`}
           />
           <ConversionRateCard
             viewing={viewing}
-            data={formatNumber(homeReportCurrent.conversionRatePay)}
+            data={formatNumber(homeReportCurrent?.conversionRatePay || 0)}
             title='Pay/Order'
-            percentage={homeReportCurrent.conversionRatePercent3}
+            percentage={homeReportCurrent?.conversionRatePercent3 || 0}
             dotSize='size-6'
             className={`${viewing ? 'ml-[182px]' : '-ml-10'}`}
           />

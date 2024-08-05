@@ -45,8 +45,6 @@ const ReactionMenuChart = memo(() => {
     homeReportCurrent?.["Reaction's Menu"]?.['2']?.['3']
   ]
 
-  const total = datasetData.reduce((acc, value) => acc + value, 0)
-
   return (
     <div className='min-w-[666px] min-h-[666px] bg-ln-blue-pink-2 rounded-[32px] rounded-tr-[80px] shadow-s-10 relative'>
       <div className='w-[267px] h-[68px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tl-[34px] rounded-br-[34px] shadow-s-7 absolute -top-2 -left-2'>
@@ -65,7 +63,7 @@ const ReactionMenuChart = memo(() => {
                 font: { size: 20 },
                 anchor: 'center',
                 align: 'center',
-                formatter: (value) => (value > 0 ? `${Number(value).toFixed(2)}%` : ''),
+                formatter: (value) => (value > 0 ? `${value}%` : ''),
                 color: (context) => ['#0D0D0D', '#FFF', '#FFF'][context.dataIndex] || '#FFF'
               },
               legend: { display: false },
@@ -81,8 +79,7 @@ const ReactionMenuChart = memo(() => {
                   label: function (tooltipItem: TooltipItem<'doughnut'>) {
                     const dataset = tooltipItem.chart.data.datasets[tooltipItem.datasetIndex]
                     const currentValue = dataset.data[tooltipItem.dataIndex] as number
-                    const percentage = (currentValue / total) * 100
-                    return `${percentage}%`
+                    return `${currentValue}%`
                   }
                 }
               }

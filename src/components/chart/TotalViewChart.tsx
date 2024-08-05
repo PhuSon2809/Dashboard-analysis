@@ -18,7 +18,7 @@ const TotalViewChart = memo(() => {
 
   const labels = ['11', '12', '13', '14', '15', '16', '17', '18', '19', '20']
 
-  const chartData = useMemo(() => homeReportCurrent.totalViewersChart.yAxis, [homeReportCurrent])
+  const chartData = useMemo(() => homeReportCurrent?.totalViewersChart.yAxis, [homeReportCurrent])
   const totalViewData = useMemo(() => labels.map((item) => chartData?.[item]?.[0]), [homeReportCurrent])
   const viewMenuData = useMemo(() => labels.map((item) => chartData?.[item]?.[1]), [homeReportCurrent])
   const viewStoriesData = useMemo(() => labels.map((item) => chartData?.[item]?.[2]), [homeReportCurrent])

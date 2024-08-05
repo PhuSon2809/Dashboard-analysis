@@ -19,7 +19,7 @@ const PaymentReactionChart = memo(({ isSmall }: { isSmall?: boolean }) => {
 
   const { homeReportCurrent } = useAppSelector((s) => s.report)
 
-  const dataChart = useMemo(() => homeReportCurrent.paymentReaction, [homeReportCurrent])
+  const dataChart = useMemo(() => homeReportCurrent?.paymentReaction, [homeReportCurrent])
 
   const gradients = [
     { start: '#C15CFF', end: '#FF5454' },
@@ -41,7 +41,7 @@ const PaymentReactionChart = memo(({ isSmall }: { isSmall?: boolean }) => {
     [gradients]
   )
 
-  const datasetData = [dataChart.percent?.['1'], dataChart.percent?.['2'], dataChart.percent?.['3']]
+  const datasetData = [dataChart?.percent?.['1'], dataChart?.percent?.['2'], dataChart?.percent?.['3']]
   // const datasetData = [25, 40, 35]
   const total = datasetData.reduce((acc, value) => acc + value, 0)
 

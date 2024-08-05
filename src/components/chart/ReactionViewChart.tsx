@@ -40,17 +40,16 @@ const ReactionViewChart = memo(() => {
     [gradients]
   )
 
-  const viewChartData = useMemo(() => homeReportCurrent.reactionViewerChart, [homeReportCurrent])
+  const viewChartData = useMemo(() => homeReportCurrent?.reactionViewerChart, [homeReportCurrent])
   const datasetData = useMemo(
     () => [
-      viewChartData.attentive,
-      viewChartData.disinterested,
-      viewChartData.moderatelyAttentive,
-      viewChartData.highAttentive
+      viewChartData?.attentive,
+      viewChartData?.disinterested,
+      viewChartData?.moderatelyAttentive,
+      viewChartData?.highAttentive
     ],
     [viewChartData]
   )
-  const total = datasetData.reduce((acc, value) => acc + value, 0)
 
   return (
     <div className='w-[639px] h-[521px] bg-ln-white-blue rounded-[32px] relative'>
@@ -72,7 +71,7 @@ const ReactionViewChart = memo(() => {
                   font: { size: 12 },
                   anchor: 'center',
                   align: 'center',
-                  formatter: (value) => (value > 0 ? `${Number(value).toFixed(2)}%` : ''),
+                  formatter: (value) => (value > 0 ? `${value}%` : ''),
                   color: (context) => ['#0D0D0D', '#FFF', '#0D0D0D', '#0D0D0D'][context.dataIndex] || '#FFF'
                 },
                 legend: { display: false },
@@ -88,8 +87,7 @@ const ReactionViewChart = memo(() => {
                     label: function (tooltipItem: TooltipItem<'doughnut'>) {
                       const dataset = tooltipItem.chart.data.datasets[tooltipItem.datasetIndex]
                       const currentValue = dataset.data[tooltipItem.dataIndex] as number
-                      const percentage = (currentValue / total) * 100
-                      return `${percentage}%`
+                      return `${currentValue}%`
                     }
                   }
                 }
@@ -106,7 +104,7 @@ const ReactionViewChart = memo(() => {
                     ctx.chart.data.datasets[0].data.map((_: any, index: number) => getGradientColor(ctx, index)),
                   borderRadius: 5,
                   borderWidth: 0,
-                  spacing: 6
+                  spacing: 3
                 }
               ]
             }}
@@ -116,7 +114,7 @@ const ReactionViewChart = memo(() => {
         <div className='size-[256.2px] flex items-center justify-center rounded-full border-[2.5px] border-dotted border-[#A6A6A6] absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10'>
           <div className='size-[246.64px] flex items-center justify-center bg-[#F8F8F8] rounded-full'>
             <div className='size-[205.97px] flex flex-col items-center justify-center gap-1 bg-white rounded-full shadow-s-8'>
-              <h3 className='text-[30px]/[45px] font-medium text-[#292D30]'>${viewChartData.money}</h3>
+              <h3 className='text-[30px]/[45px] font-medium text-[#292D30]'>${viewChartData?.money}</h3>
               <p className='text-[19px]/[28px] text-[#474B4E]'>December</p>
             </div>
           </div>
