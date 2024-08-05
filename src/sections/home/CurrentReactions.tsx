@@ -27,7 +27,7 @@ const CurrentReactions = memo(() => {
   }, [swiperRef])
 
   const listDataRender = useMemo(
-    () => homeReportCurrent?.currentReactions.filter((p: any) => p.status === typeActive),
+    () => homeReportCurrent?.currentReactions?.filter((p: any) => p.status === typeActive),
     [typeActive]
   )
 

@@ -1,5 +1,6 @@
 import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Tooltip } from 'chart.js'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
+import classNames from 'classnames'
 import { memo, useMemo } from 'react'
 import { Bar } from 'react-chartjs-2'
 import { useAppSelector } from '~/redux/configStore'
@@ -17,7 +18,7 @@ const listFood = [
   'Margherita Pizza'
 ]
 
-const BestSellerChart = memo(() => {
+const BestSellerChart = memo(({ isSmall }: { isSmall?: boolean }) => {
   const { homeReportCurrent } = useAppSelector((s) => s.report)
 
   const dataChart = useMemo(() => homeReportCurrent?.ORDERS?.['Best Seller'], [homeReportCurrent])
@@ -25,15 +26,30 @@ const BestSellerChart = memo(() => {
   const datasetData = Array.from({ length: 7 }).map((_, index) => dataChart?.[`${index + 1}`])
 
   return (
-    <div className='size-[535px] bg-ln-yellow rounded-[32px] shadow-s-12 relative'>
-      <div className='w-[191px] h-[54px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tl-[34px] rounded-br-[34px] shadow-s-7 absolute bottom-7 left-[-30px]'>
-        <p className='text-[28px] font-customSemiBold text-transparent bg-clip-text bg-ln-blue-green-2 capitalize'>
+    <div
+      className={classNames(
+        'best-seller-chart relativerounded-[32px] bg-ln-yellow shadow-s-12',
+        isSmall ? 'size-[110px]' : 'size-[520px]'
+      )}
+    >
+      <div
+        className={classNames(
+          'absolute flex items-center justify-center rounded-br-[34px] rounded-tl-[34px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px]',
+          isSmall ? 'top-[-10px] h-[20px] w-[50px]' : 'bottom-[22%] left-[-30px] h-[54px] w-[191px]'
+        )}
+      >
+        <p
+          className={classNames(
+            'bg-ln-blue-green-2 bg-clip-text font-customSemiBold capitalize text-transparent',
+            isSmall ? 'text-[6px]' : 'text-[28px]'
+          )}
+        >
           Best Seller
         </p>
       </div>
 
-      <div className='w-full h-[420px] px-8 pt-5'>
-        <div className='w-full h-full'>
+      <div className={classNames('w-full px-2', isSmall ? 'h-[100px]' : 'h-[420px] px-8 pt-5')}>
+        <div className='h-full w-full'>
           <Bar
             options={{
               indexAxis: 'y',
@@ -41,7 +57,7 @@ const BestSellerChart = memo(() => {
               maintainAspectRatio: false,
               plugins: {
                 datalabels: {
-                  font: { size: 14 },
+                  font: { size: isSmall ? 5 : 16 },
                   color: '#000',
                   anchor: 'end',
                   align: 'start',
@@ -62,7 +78,7 @@ const BestSellerChart = memo(() => {
                   display: true,
                   grid: { display: false },
                   border: { display: false },
-                  ticks: { display: true, color: 'rgb(13, 13, 13)', font: { size: 16 } }
+                  ticks: { display: true, color: 'rgb(13, 13, 13)', font: { size: isSmall ? 5 : 16 } }
                 }
               }
             }}

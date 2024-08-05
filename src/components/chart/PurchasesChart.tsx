@@ -13,7 +13,7 @@ const listDataSet = [
   { value: '5', label: '5' }
 ]
 
-const PurchasesChart = memo(() => {
+const PurchasesChart = memo(({ isSmall }: { isSmall?: boolean }) => {
   const { homeReportCurrent } = useAppSelector((s) => s.report)
 
   const dataChart = useMemo(() => homeReportCurrent?.ORDERS?.['Purchases'], [homeReportCurrent])
@@ -45,15 +45,37 @@ const PurchasesChart = memo(() => {
   }
 
   return (
-    <div className='size-[535px] bg-ln-orange-3 rounded-[32px] shadow-s-11 relative'>
-      <div className='w-[228px] h-[64px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tr-[34px] rounded-bl-[34px] shadow-s-7 absolute -bottom-[30px] -left-[6px]'>
-        <p className='text-[28px] font-customSemiBold text-transparent bg-clip-text bg-ln-green-orange capitalize'>
+    <div
+      className={classNames(
+        'purchases-chart relative bg-ln-orange-3 shadow-s-11',
+        isSmall ? 'w-[130px] h-[120px] rounded-[10px] ' : 'size-[520px] rounded-[32px]'
+      )}
+    >
+      <div
+        className={classNames(
+          'absolute flex items-center justify-center bg-white/[.44] shadow-s-7 backdrop-blur-[80px]',
+          isSmall
+            ? 'left-[-10px] top-[-10px] h-[20px] w-[80px] rounded-bl-[10px] rounded-tr-[10px]'
+            : '-bottom-[30px] -left-[6px] h-[64px] w-[228px] rounded-bl-[34px] rounded-tr-[34px]'
+        )}
+      >
+        <p
+          className={classNames(
+            'bg-ln-green-orange bg-clip-text font-customSemiBold capitalize text-transparent',
+            isSmall ? 'text-[5px]' : 'text-[28px]'
+          )}
+        >
           Purchases
         </p>
       </div>
 
-      <div className='w-full h-[400px] absolute left-1/2 transform -translate-x-1/2 top-10'>
-        <div className='w-full h-full'>
+      <div
+        className={classNames(
+          'absolute left-1/2 top-10 w-full -translate-x-1/2 transform',
+          isSmall ? 'h-[50px]' : 'h-[400px]'
+        )}
+      >
+        <div className='h-full w-full'>
           <PolarArea
             options={{
               responsive: true,
@@ -66,7 +88,7 @@ const PurchasesChart = memo(() => {
               },
               plugins: {
                 datalabels: {
-                  font: { size: 28 },
+                  font: { size: isSmall ? 8 : 20 },
                   color: '#fff',
                   anchor: 'center',
                   align: 'center',
@@ -108,16 +130,23 @@ const PurchasesChart = memo(() => {
         </div>
       </div>
 
-      <div className='px-10 w-full flex items-center justify-between absolute bottom-[60px]'>
+      <div
+        className={classNames(
+          'absolute flex w-full items-center justify-between',
+          isSmall ? 'bottom-[5px]' : 'bottom-[60px] px-10'
+        )}
+      >
         {listDataSet.map((data, i) => (
           <div key={`${data.value}-${i}`} className='flex items-center gap-[6px]'>
             <div
               className={classNames(
-                'size-[18px] rounded-md',
+                `${isSmall ? 'size-[5px]' : 'size-[18px] rounded-md'}`,
                 data.value === '2-4' ? 'bg-ln-orange-2' : data.value === '5' ? 'bg-ln-orange' : 'bg-ln-blue-2'
               )}
             />
-            <p className='text-[18px]/[18.9px] text-nowrap'>{data.label} Purchases</p>
+            <p className={classNames(isSmall ? 'text-nowrap text-[5px]/[5px]' : 'text-nowrap text-[18px]/[18.9px]')}>
+              {data.label} Purchases
+            </p>
           </div>
         ))}
       </div>

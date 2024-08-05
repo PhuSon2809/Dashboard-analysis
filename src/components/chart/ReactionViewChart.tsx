@@ -11,7 +11,7 @@ const listDataSet = [
   { value: 'attentive', label: 'Attentive' },
   { value: 'disinterested', label: 'Disinterested' },
   { value: 'moderately-attentive', label: 'Moderately Attentive' },
-  { value: 'high-attentive', label: 'high-attentive' }
+  { value: 'High-attentive', label: 'High-attentive' }
 ]
 
 const ReactionViewChart = memo(() => {
@@ -50,16 +50,17 @@ const ReactionViewChart = memo(() => {
     ],
     [viewChartData]
   )
-
+ const maxDataValue = useMemo(() => Math.max(...datasetData), [datasetData])
+  console.log(datasetData)
   return (
-    <div className='w-[639px] h-[521px] bg-ln-white-blue rounded-[32px] relative'>
-      <div className='w-[267px] h-[68px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tr-[34px] rounded-bl-[34px] shadow-s-7 absolute top-[-10px] right-[-10px]'>
-        <p className='text-[28px] font-customSemiBold text-transparent bg-clip-text bg-ln-blue-purple'>
+    <div className='relative h-[521px] w-[639px] rounded-[32px] bg-ln-white-blue'>
+      <div className='absolute right-[-10px] top-[-10px] flex h-[68px] w-[267px] items-center justify-center rounded-bl-[34px] rounded-tr-[34px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px]'>
+        <p className='bg-ln-blue-purple bg-clip-text font-customSemiBold text-[28px] text-transparent'>
           Reaction viewers
         </p>
       </div>
 
-      <div className='size-[400px] absolute top-[71px] left-[36px]'>
+      <div className='absolute left-[36px] top-[71px] size-[400px]'>
         <div className='relative'>
           <Doughnut
             className='relative z-50'
@@ -111,17 +112,17 @@ const ReactionViewChart = memo(() => {
           />
         </div>
 
-        <div className='size-[256.2px] flex items-center justify-center rounded-full border-[2.5px] border-dotted border-[#A6A6A6] absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10'>
-          <div className='size-[246.64px] flex items-center justify-center bg-[#F8F8F8] rounded-full'>
-            <div className='size-[205.97px] flex flex-col items-center justify-center gap-1 bg-white rounded-full shadow-s-8'>
-              <h3 className='text-[30px]/[45px] font-medium text-[#292D30]'>${viewChartData?.money}</h3>
-              <p className='text-[19px]/[28px] text-[#474B4E]'>December</p>
+        <div className='absolute left-1/2 top-1/2 z-10 flex size-[256.2px] -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full border-[2.5px] border-dotted border-[#A6A6A6]'>
+          <div className='flex size-[246.64px] items-center justify-center rounded-full bg-[#F8F8F8]'>
+            <div className='flex size-[205.97px] flex-col items-center justify-center gap-1 rounded-full bg-white shadow-s-8'>
+              <h3 className='text-[30px]/[45px] font-medium text-[#292D30]'>{maxDataValue}%</h3>
+              <p className='text-[19px]/[28px] text-[#474B4E]'>Disinterested</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className='mt-3 flex flex-col items-start justify-center gap-6 absolute bottom-5 right-5'>
+      <div className='absolute bottom-5 right-5 mt-3 flex flex-col items-start justify-center gap-6'>
         {listDataSet.map((data) => (
           <div key={data.value} className='flex items-center gap-[6px]'>
             <div

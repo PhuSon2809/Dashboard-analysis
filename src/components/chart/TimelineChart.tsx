@@ -120,8 +120,8 @@ const TimelineChart = memo(() => {
   }, [timeMarkers])
 
   return (
-    <div className='w-full h-full p-10'>
-      <div className='min-w-full h-full flex'>
+    <div className='h-full w-full p-10'>
+      <div className='flex h-full min-w-full'>
         <div ref={tableLeftRef} className='table-left min-w-[200px] pt-[84px]'>
           {titleRenders.map((item) => (
             <p
@@ -136,18 +136,18 @@ const TimelineChart = memo(() => {
             </p>
           ))}
         </div>
-        <div className='table-container w-full flex flex-col flex-grow relative'>
-          <div ref={tableHeaderRef} className='h-full w-full flex flex-1 items-center gap-20 relative hidden-scroll'>
+        <div className='table-container relative flex w-full flex-grow flex-col'>
+          <div ref={tableHeaderRef} className='hidden-scroll relative flex h-full w-full flex-1 items-center gap-20'>
             {timeMarkers.map((hour, index) => (
               <div
                 key={index}
                 ref={index <= 5 ? (el) => el && (markerRefs.current[index] = el) : null}
-                className='min-w-[42px] h-full flex flex-col items-center gap-8'
+                className='flex h-full min-w-[42px] flex-col items-center gap-8'
               >
                 <p
                   className={classNames(
                     'table-header-item font-medium',
-                    +hour === currentHour ? 'text-blackMaim' : 'text-[#999999] '
+                    +hour === currentHour ? 'text-blackMaim' : 'text-[#999999]'
                   )}
                 >
                   {`${hour.padStart(2, '0')}:00`}
@@ -159,7 +159,7 @@ const TimelineChart = memo(() => {
             ))}
           </div>
           <div className='absolute inset-0'>
-            <div className='table-content h-full flex items-end relative'>
+            <div className='table-content relative flex h-full items-end'>
               {titleRenders.map((item, index) => {
                 const isHeightest = item.id === isHeightestItem?.id
                 const top = (positions[`${item.title}-${item.id}`] || 0) - (isHeightest ? 60 : 50)
@@ -170,8 +170,8 @@ const TimelineChart = memo(() => {
                     <div
                       ref={(el) => el && (itemRefs.current[index] = el)}
                       className={classNames(
-                        'time-line-items rounded-xl text-white text-center absolute flex transition-all duration-200 ease-in-out',
-                        isHeightest ? 'h-20 px-8 shadow-s-17' : 'h-[60px] px-[18px]',
+                        'time-line-items absolute flex rounded-xl text-center text-white transition-all duration-200 ease-in-out',
+                        isHeightest ? 'h-[60px] px-8 shadow-s-17 hover:h-20' : 'h-[60px] px-[18px] hover:h-20',
                         index === 0
                           ? 'bg-ln-blue-yellow'
                           : index === 1
@@ -187,7 +187,7 @@ const TimelineChart = memo(() => {
                     >
                       <div
                         className={classNames(
-                          'w-full h-full flex items-center justify-between cursor-pointer',
+                          'flex h-full w-full cursor-pointer items-center justify-between',
                           isHeightest ? 'gap-[30px]' : 'gap-[70px]'
                         )}
                       >
@@ -199,21 +199,8 @@ const TimelineChart = memo(() => {
                         >
                           {item?.count} persons
                         </span>
-                        <AvatarGroup
-                          limit={
-                            Number(item.count) > 40
-                              ? 8
-                              : Number(item.count) > 30
-                                ? 6
-                                : Number(item.count) > 9
-                                  ? 4
-                                  : Number(item.count) < 9
-                                    ? 2
-                                    : 2
-                          }
-                          isActive={isHeightest}
-                        >
-                          {avatars.slice(0, item.count).map((avatar, index) => (
+                        <AvatarGroup limit={4} isActive={isHeightest}>
+                          {avatars.slice(0, 12).map((avatar, index) => (
                             <AvatarItem key={index} src={avatar.src} alt={avatar.alt} isActive={isHeightest} />
                           ))}
                         </AvatarGroup>

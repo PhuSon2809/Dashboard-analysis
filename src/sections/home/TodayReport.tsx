@@ -33,11 +33,11 @@ const TodayReport = memo(() => {
   }, [])
 
   return (
-    <div ref={reportRef} className='bg-earth mt-[83px]'>
-      <div className='h-[332px] px-16 pt-16 flex items-start gap-5 bg-ln-white-2'>
+    <div ref={reportRef} className='mt-[83px] bg-earth'>
+      <div className='flex h-[332px] items-start gap-5 bg-ln-white-2 px-16 pt-16'>
         <RealHoursChart />
-        <div className='space-y-5 mt-2'>
-          <h5 className='text-[28px]/[18px] font-customSemiBold'>Today’s Report</h5>
+        <div className='mt-2 space-y-5'>
+          <h5 className='font-customSemiBold text-[28px]/[18px]'>Today’s Report</h5>
           <div className='flex items-center gap-5'>
             <TodayReportCard
               color='orange'
@@ -73,28 +73,29 @@ const TodayReport = memo(() => {
       </div>
 
       <div className='ml-[731px]'>
-        <h5 className='text-[28px]/[18px] font-customSemiBold'>Conversion Rate</h5>
+        <h5 className='font-customSemiBold text-[28px]/[18px]'>Conversion Rate</h5>
 
-        <div className='mt-[59px] ml-[53px] space-y-[26px]'>
+        <div className='ml-[53px] mt-[59px] space-y-[26px]'>
           <ConversionRateCard
             viewing={viewing}
             data={formatNumber(homeReportCurrent?.conversionRateReach || 0)}
             title='Reach/View'
             className={`${viewing ? 'ml-0' : '-ml-10'}`}
+            percentage={homeReportCurrent?.conversionRatePercent1 || 0}
           />
           <ConversionRateCard
             viewing={viewing}
             data={formatNumber(homeReportCurrent?.conversionRateEngagement || 0)}
             title='Engagement/Reach'
-            percentage={homeReportCurrent?.conversionRatePercent1 || 0}
+            percentage={homeReportCurrent?.conversionRatePercent2 || 0}
             dotSize='size-[18px]'
             className={`${viewing ? 'ml-[110px]' : '-ml-10'}`}
           />
           <ConversionRateCard
             viewing={viewing}
             data={formatNumber(homeReportCurrent?.conversionRateOrder || 0)}
-            title='Reach/Order'
-            percentage={homeReportCurrent?.conversionRatePercent2 || 0}
+            title='Order/Engagement'
+            percentage={homeReportCurrent?.conversionRatePercent3 || 0}
             dotSize='size-5'
             className={`${viewing ? 'ml-[152px]' : '-ml-10'}`}
           />
@@ -109,15 +110,15 @@ const TodayReport = memo(() => {
         </div>
       </div>
 
-      <div className='flex items-end justify-center gap-5 mt-[168px]'>
+      <div className='mt-[168px] flex items-end justify-center gap-5'>
         <div className='space-y-8'>
-          <h1 className='w-fit text-[52px] leading-none font-customBold text-transparent bg-clip-text bg-ln-purple-red uppercase'>
+          <h1 className='w-fit bg-ln-purple-red bg-clip-text font-customBold text-[52px] uppercase leading-none text-transparent'>
             reach
           </h1>
           <TotalViewChart />
         </div>
         <div className='space-y-8'>
-          <h1 className='text-[54px]/[70.2px] leading-none font-customBold text-blackMain mb-[60px]'>
+          <h1 className='mb-[60px] font-customBold text-[54px]/[70.2px] leading-none text-blackMain'>
             Customer Journey
           </h1>
           <ReactionViewChart />
