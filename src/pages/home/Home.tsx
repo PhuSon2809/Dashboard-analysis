@@ -16,7 +16,7 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
               With AI, understand customers in-store with ease
             </h1>
             <ButtonPrimary className=''>
-              <Link to='https://analysis.m.pro/' className='h-full w-full'>
+              <Link to='/analysis' className='h-full w-full'>
                 <span>Start</span>
               </Link>
             </ButtonPrimary>
@@ -33,13 +33,13 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
         </div>
       </div>
       <div className='unleash-the-power container-wrapper grid grid-cols-3 pt-[150px]'>
-        <div className='flex items-end flex-col mr-[-22%] relative '>
-          <h2 className='text-[56px] pr-[150px]'>Unleash the power</h2>
+        <div className='relative mr-[-22%] flex flex-col items-end'>
+          <h2 className='pr-[150px] text-[56px]'>Unleash the power</h2>
           <h1 className='text-[104px] font-bold'>Of Offline </h1>
           <h2 className='text-[56px]'>Commerce </h2>
         </div>
         <div className='col-span-2'>
-          <img src={unpleash} alt='unpleash' className='w-full h-full'/>
+          <img src={unpleash} alt='unpleash' className='h-full w-full' />
         </div>
       </div>
     </div>
