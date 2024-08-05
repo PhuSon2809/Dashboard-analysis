@@ -21,13 +21,13 @@ const Home = memo(() => {
   )
 
   return (
-    <div className='max-w-[1440px] w-full h-full bg-grey500 relative'>
+    <div className='relative h-full w-full max-w-[1440px] bg-grey500'>
       <Navbar scrollToSection={scrollToSection} />
       <div ref={foodBeverageRef} className='relative z-20'>
         <FoodBeverage />
       </div>
 
-      <div className='xs:hidden sm:flex w-full h-[907px] bg-ln-grey-white absolute left-0 top-[0px] flex items-center justify-between z-10'>
+      <div className='absolute left-0 top-[0px] z-10 flex h-[907px] w-full items-center justify-between bg-ln-grey-white xs:hidden sm:flex'>
         <svg width='289' height='907' viewBox='0 0 289 907' fill='none' xmlns='http://www.w3.org/2000/svg'>
           <path d='M0 0C63.3571 0 117.885 44.7698 130.218 106.915L289 907H0V0Z' fill='url(#paint0_linear_25_8393)' />
           <defs>
@@ -76,7 +76,7 @@ const Home = memo(() => {
       </div>
 
       <div className='relative'>
-        <div className='h-[810px] bg-ln-white-5 mt-[151px] relative z-10' />
+        <div className='relative z-10 mt-[151px] h-[810px] bg-ln-white-5' />
 
         <div className='relative z-20 mt-[-1240px]'>
           <OrderReport />
