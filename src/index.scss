@@ -165,3 +165,8 @@
 .rotate-y-360deg {
   animation: rotateY 1s ease-in-out;
 }
+.instagram-text {
+  background: linear-gradient(92.82deg, #11B0F2 12.54%, #F200F2 87.46%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
