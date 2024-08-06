@@ -10,8 +10,8 @@ const CurrentVisitorCard = memo(() => {
   const isIncrease = Math.random() >= 0.5
 
   return (
-    <div className='w-[355px] h-[235px] rounded-[32px] bg-white/[.44] backdrop-blur-2xl overflow-hidden shadow-s-1 relative'>
-      <div className='w-fit flex flex-col items-center gap-1 mt-[52px] ml-[52px]'>
+    <div className=' relative h-[235px] w-[355px] overflow-hidden rounded-[32px] bg-white/[.44] shadow-s-1 backdrop-blur-2xl'>
+      <div className='ml-[52px] mt-[52px] flex w-fit flex-col items-center gap-1'>
         <p className='text-[18px]/[28px] font-normal text-grey999/[.64]'>Current visitors</p>
         <div className='flex items-center gap-[9px]'>
           <h6 className='text-[36px]/[46.8px] font-bold'>{homeReportCurrent?.currentVisitors}</h6>
@@ -23,7 +23,7 @@ const CurrentVisitorCard = memo(() => {
             )}
             <p
               className={classNames(
-                `xs:text-[13.09px]/[19.4px] sm:text-[16px]/[24px] font-semibold transition-colors duration-200 ease-in-out`,
+                `font-semibold transition-colors duration-200 ease-in-out xs:text-[13.09px]/[19.4px] sm:text-[16px]/[24px]`,
                 isIncrease ? 'text-greenNeonMain' : 'text-pinkMain'
               )}
             >
@@ -35,12 +35,12 @@ const CurrentVisitorCard = memo(() => {
       <img
         src={images.image.current_view_top}
         alt='shipping-top'
-        className='w-[200px] absolute right-[-42px] bottom-[32px] z-10 rotate-[1.72deg] '
+        className='absolute bottom-[32px] right-[-42px] z-10 w-[200px] rotate-[1.72deg]'
       />
       <img
         src={images.image.current_view_bottom}
         alt='shipping-bottom'
-        className='w-[220px] rotate-[13.63deg] absolute right-[-35px] bottom-[-85px]'
+        className='absolute bottom-[-85px] right-[-35px] w-[220px] rotate-[13.63deg]'
       />
     </div>
   )

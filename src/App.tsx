@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Toaster } from 'react-hot-toast'
-
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import useRouteElements from '~/hooks/useRouteElements'
 import { useAppDispatch, useAppSelector } from './redux/configStore'
 import { fetchReport } from './redux/report/report'
@@ -15,20 +16,20 @@ function App() {
 
   useEffect(() => {
     if (timecount !== 0) dispatch(setTimecount(timecount))
+    AOS.init({
+      startEvent: 'DOMContentLoaded',
+      duration: 1000, // Thời gian hiệu ứng (ms)
+      offset: 200, // Khoảng cách bắt đầu hiệu ứng
+      once: true // Hiệu ứng chỉ xảy ra một lần
+    })
   }, [])
 
   useEffect(() => {
     const duration = 30 * 1000
     if (timecount <= 0) dispatch(setTimecount(duration))
-  }, [timecount])
-
-  useEffect(() => {
     const timerId = setTimeout(() => dispatch(setTimecount(timecount - 1000)), 1000)
-    return () => clearTimeout(timerId)
-  }, [timecount])
-
-  useEffect(() => {
     if (timecount <= 0) dispatch(fetchReport())
+    return () => clearTimeout(timerId)
   }, [timecount])
 
   return (

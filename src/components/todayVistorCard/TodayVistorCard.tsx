@@ -10,14 +10,14 @@ const TodayVistorCard = memo(() => {
   const isIncrease = Math.random() >= 0.5
 
   return (
-    <div className='xs:w-[294px] xs:h-[194px] sm:w-[454px] sm:h-[300px] xs:rounded-[20.7px] sm:rounded-[32px] bg-white/[.44] backdrop-blur-2xl flex items-center justify-center relative shadow-s-1 overflow-hidden'>
-      <div className='xs:size-[292px] sm:size-[450px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
-        <img src={images.bg.bg_vistor_card} alt='bg-vistor-card' className='size-full object-center object-cover' />
+    <div className='relative  flex flex-shrink-0 items-center justify-center overflow-hidden bg-white/[.44] shadow-s-1 backdrop-blur-2xl xs:h-[194px] xs:w-[294px] xs:rounded-[20.7px] sm:h-[300px] sm:w-[454px] sm:rounded-[32px]'>
+      <div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform xs:size-[292px] sm:size-[450px]'>
+        <img src={images.bg.bg_vistor_card} alt='bg-vistor-card' className='size-full object-cover object-center' />
       </div>
 
       <div className='flex flex-col items-center'>
-        <p className='xs:text-[11.46px]/[17.46px] sm:text-[18px]/[27px] text-grey999/[.64]'>Today's vistors</p>
-        <h5 className='xs:text-[52.38px]/[68.1px] sm:text-[81px]/[105.3px] font-bold'>
+        <p className='text-grey999/[.64] xs:text-[11.46px]/[17.46px] sm:text-[18px]/[27px]'>Today's vistors</p>
+        <h5 className='font-bold xs:text-[52.38px]/[68.1px] sm:text-[81px]/[105.3px]'>
           {homeReportCurrent?.todayVisitors}
         </h5>
         <div className='flex items-center gap-1'>
@@ -28,7 +28,7 @@ const TodayVistorCard = memo(() => {
           )}
           <p
             className={classNames(
-              `xs:text-[13.09px]/[19.4px] sm:text-[16px]/[24px] font-semibold transition-colors duration-200 ease-in-out`,
+              `font-semibold transition-colors duration-200 ease-in-out xs:text-[13.09px]/[19.4px] sm:text-[16px]/[24px]`,
               isIncrease ? 'text-greenNeonMain' : 'text-pinkMain'
             )}
           >

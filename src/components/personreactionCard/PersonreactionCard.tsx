@@ -3,8 +3,8 @@ import { memo } from 'react'
 import { Gender } from '~/@types/enums'
 import { Person } from '~/@types/models'
 import images from '~/assets'
-import { FemaleIcon, MaleIcon, PhoneIcon } from '../icons'
 import { Button } from '../button'
+import { FemaleIcon, MaleIcon, PhoneIcon } from '../icons'
 
 type PersonreactionCardProps = {
   isActive?: boolean
@@ -15,8 +15,8 @@ const PersonreactionCard = memo(({ person, isActive }: PersonreactionCardProps) 
   return (
     <div
       className={classNames(
-        isActive ? ' bg-ln-blue-green' : 'bg-grey100',
-        'rounded-2xl w-[345px] h-[533px] flex flex-col items-center justify-center transition duration-300 ease-in-out'
+        isActive ? 'bg-ln-blue-green' : 'bg-grey100',
+        'flex h-[533px] w-[345px] flex-col items-center justify-center rounded-2xl transition duration-300 ease-in-out'
       )}
     >
       <img
@@ -35,9 +35,9 @@ const PersonreactionCard = memo(({ person, isActive }: PersonreactionCardProps) 
       <h3
         className={classNames(
           isActive
-            ? 'text-[36px]/[46.8px] text-white font-bold mt-8'
-            : 'text-[30px]/[24px] text-blackMain font-medium mt-10',
-          'text-center px-3'
+            ? 'mt-8 text-[36px]/[46.8px] font-bold text-white'
+            : 'mt-10 text-[30px]/[24px] font-medium text-blackMain',
+          'px-3 text-center'
         )}
       >
         {person.name}
@@ -52,10 +52,10 @@ const PersonreactionCard = memo(({ person, isActive }: PersonreactionCardProps) 
 
       {isActive && (
         <>
-          <p className='text-[20px]/[30px] text-white mt-4 mb-[94px]'>Age: {person.age}</p>
+          <p className='mb-[94px] mt-4 text-[20px]/[30px] text-white'>Age: {person.age}</p>
           <Button
             iconLeft={<PhoneIcon />}
-            className='w-[241px] bg-white rounded-2xl'
+            className='w-[241px] rounded-2xl bg-white'
             classNameText='flex item-center justify-center capitalize text-blackMain'
           >
             Talk Action

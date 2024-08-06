@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { memo, ReactNode } from 'react'
+import { ReactNode } from 'react'
 import { DecreaseIcon, IncreaseIcon } from '../icons'
 
 type TodayReportCard = {
@@ -11,9 +11,9 @@ type TodayReportCard = {
   isIncreasing?: boolean
 }
 
-const TodayReportCard = memo(({ title, icon, data, color, isIncreasing = true }: TodayReportCard) => {
+const TodayReportCard = ({ title, icon, data, color, isIncreasing = true }: TodayReportCard) => {
   return (
-    <div className='relative flex h-[132px] w-[202px] flex-col items-start justify-between rounded-2xl bg-white/[.44] p-4 shadow-s-4 backdrop-blur-2xl'>
+    <div className='relative flex h-[132px] w-[300px] flex-col items-start justify-between rounded-2xl bg-[#dbdbdb] p-4 shadow-s-4 backdrop-blur-2xl lg:w-[202px]'>
       <p className='font-customMedium text-[18px]/[18px] capitalize'>{title}</p>
       <p className='font-customSemiBold text-[32px]/[33.6px]'>{data}</p>
 
@@ -44,6 +44,6 @@ const TodayReportCard = memo(({ title, icon, data, color, isIncreasing = true }:
       </div>
     </div>
   )
-})
+}
 
 export default TodayReportCard
