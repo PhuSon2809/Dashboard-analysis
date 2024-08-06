@@ -1,7 +1,7 @@
-import { useEffect } from 'react'
-import { Toaster } from 'react-hot-toast'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import { useEffect } from 'react'
+import { Toaster } from 'react-hot-toast'
 import useRouteElements from '~/hooks/useRouteElements'
 import { useAppDispatch, useAppSelector } from './redux/configStore'
 import { fetchReport } from './redux/report/report'
@@ -25,7 +25,7 @@ function App() {
   }, [])
 
   useEffect(() => {
-    const duration = 30 * 1000
+    const duration = 10 * 1000
     if (timecount <= 0) dispatch(setTimecount(duration))
     const timerId = setTimeout(() => dispatch(setTimecount(timecount - 1000)), 1000)
     if (timecount <= 0) dispatch(fetchReport())
