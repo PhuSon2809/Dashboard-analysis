@@ -63,7 +63,7 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
               <span className="text-[18px] md:text-[20px]">We provide solution tailored with specific industry, give our clients a special seamless experience with top advance technology AI. Connect tech and people together</span>
             </div>
           </div>
-          <div className='flex flex-1 w-full' data-aos="fade-up">
+          <div className='flex flex-1 w-full mb-10' data-aos="fade-up">
             <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
               <SwiperSlide>
                 <ListGridListen />
