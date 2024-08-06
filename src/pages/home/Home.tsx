@@ -2,6 +2,7 @@ import { memo } from 'react'
 import { Link } from 'react-router-dom'
 import unpleash from '~/assets/images/unpleash.svg'
 import { AutoplayVideo } from '~/components/autoplayVideo'
+import Banner3D from '~/components/banner/banner3D'
 import { ButtonPrimary } from '~/components/button'
 import ListGridListen from '~/components/ListGridListen'
 import React from 'react';
@@ -19,17 +20,20 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
   return (
     <div className='h-auto bg-[#F4F7F9]'>
       <div className='carousel relative'>
-        <div className='flex min-h-screen w-full justify-center lg:pt-[200px]'>
+        <div className='flex min-h-screen w-full justify-center lg:pt-[100px]'>
           <div className='flex flex-col items-center gap-14'>
             <h1 className='max-w-[800px] text-center text-[52px] font-semibold capitalize'>
               With AI, understand customers in-store with ease
             </h1>
             <ButtonPrimary className=''>
-              <Link to='/analysis' className='h-full w-full'>
+              <Link to='http://pre.fi.ai' className='h-full w-full'>
                 <span>Start</span>
               </Link>
             </ButtonPrimary>
           </div>
+        </div>
+        <div className='absolute left-0 top-0'>
+          <Banner3D />
         </div>
       </div>
       <div className='accurate-count'>

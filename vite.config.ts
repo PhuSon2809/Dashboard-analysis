@@ -5,6 +5,7 @@ import path from 'path'
 export default defineConfig({
   base: './',
   plugins: [react()],
+  assetsInclude: ['**/*.glb'],
   server: {
     port: 3000
   },
