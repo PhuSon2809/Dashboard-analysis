@@ -176,3 +176,14 @@
     background-repeat: no-repeat;
   }
 }
+
+.radix-themes.rt-TooltipContent.rt-r-max-w {
+  background-color: #ffffff !important;
+
+  p {
+    color: #000000 !important;
+  }
+  svg {
+    fill: #ffffff !important;
+  }
+}

@@ -1,3 +1,4 @@
+import { Tooltip } from '@radix-ui/themes'
 import classNames from 'classnames'
 import { memo, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -29,42 +30,50 @@ const Navbar = memo(({ className, scrollToSection }: NavbarProps) => {
       {
         url: '',
         id: 'NavUserIcon',
-        icon: (color: string) => <NavUserIcon color={color} className='size-6' />
+        icon: (color: string) => <NavUserIcon color={color} className='size-6' />,
+        title: 'About Us'
       },
       {
         url: PATH_PUBLIC_APP.home,
         id: 'NavDemoIcon',
-        icon: (color: string) => <NavDemoIcon color={color} className='size-6' />
+        icon: (color: string) => <NavDemoIcon color={color} className='size-6' />,
+        title: 'Demo'
       },
       {
         url: '',
         id: 'NavTimeIcon',
-        icon: (color: string) => <NavTimeIcon color={color} className='size-6' />
+        icon: (color: string) => <NavTimeIcon color={color} className='size-6' />,
+        title: 'Real Time Report'
       },
       {
         url: '',
         id: 'NavPieChartIcon',
-        icon: (color: string) => <NavPieChartIcon color={color} className='size-6' />
+        icon: (color: string) => <NavPieChartIcon color={color} className='size-6' />,
+        title: 'Daily Report'
       },
       {
         url: '',
         id: 'NavColumnChartIcon',
-        icon: (color: string) => <NavColumnChartIcon color={color} className='size-6' />
+        icon: (color: string) => <NavColumnChartIcon color={color} className='size-6' />,
+        title: 'Deep Analysis'
       },
       {
         url: '',
         id: 'NavCrownIcon',
-        icon: (color: string) => <NavCrownIcon color={color} className='size-6' />
+        icon: (color: string) => <NavCrownIcon color={color} className='size-6' />,
+        title: 'Pro Plan'
       },
       {
         url: '',
         id: 'NavSettingIcon',
-        icon: (color: string) => <NavSettingIcon color={color} className='size-6' />
+        icon: (color: string) => <NavSettingIcon color={color} className='size-6' />,
+        title: 'Setting'
       },
       {
         url: '',
         id: 'NavLogoutIcon',
-        icon: (color: string) => <NavLogoutIcon color={color} className='size-6' />
+        icon: (color: string) => <NavLogoutIcon color={color} className='size-6' />,
+        title: 'Logout'
       }
     ]
   }, [PATH_PUBLIC_APP])
@@ -78,13 +87,14 @@ const Navbar = memo(({ className, scrollToSection }: NavbarProps) => {
           ),
     [isOpenMenuItem, configNavbar]
   )
+  console.log(listMenuRender)
 
   return (
     <div
       className={classNames(
         className,
         isOpenMenu
-          ? 'h-fit py-[26px] px-[22px] bg-white/[.32] backdrop-blur-[40px] rounded-3xl shadow-s-16 top-5 left-5 transform '
+          ? 'h-fit py-[26px] px-[22px] bg-[#ebebeb] backdrop-blur-[40px] rounded-3xl shadow-s-16 top-5 left-5 transform '
           : 'h-[100px] p-5 xs:top-[10px] sm:top-[30px] xs:left-[10px] sm:left-[17px]',
         isOpenMenu ? 'max-h-screen' : 'max-h-[100px]',
         'fixed w-fit z-50 flex flex-col items-center gap-[18px] overflow-hidden transition-all duration-700 ease-in-out'
@@ -106,29 +116,30 @@ const Navbar = memo(({ className, scrollToSection }: NavbarProps) => {
 
       <div className={`flex flex-col gap-1`}>
         {listMenuRender.map((nav) => (
-          <div
-            key={nav.id}
-            onMouseEnter={() => setItemHover(nav.id)}
-            onMouseLeave={() => setItemHover('')}
-            onClick={() => {
-              setItemActive(nav.id)
-              if (nav.id === 'NavDemoIcon') {
-                setIsOpenMenuItem(!isOpenMenuItem)
-              } else if (nav.id === 'NavTimeIcon' || nav.id === 'NavPieChartIcon') {
-                scrollToSection(nav.id)
-              } else {
-                navigate(nav.url)
-              }
-            }}
-            className={classNames(
-              `size-12 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 ease-in-out cursor-pointer`,
-              itemActive === nav.id ? 'bg-ln-icon-button backdrop-blur-[40px] shadow-s-16' : 'bg-transparent'
-            )}
-          >
-            <div className='min-w-6'>
-              {nav.icon(itemActive === nav.id ? 'white' : itemHover === nav.id ? 'linear' : 'black')}
+          <Tooltip side='right' content={nav.title} key={nav.id}>
+            <div
+              onMouseEnter={() => setItemHover(nav.id)}
+              onMouseLeave={() => setItemHover('')}
+              onClick={() => {
+                setItemActive(nav.id)
+                if (nav.id === 'NavDemoIcon') {
+                  setIsOpenMenuItem(!isOpenMenuItem)
+                } else if (nav.id === 'NavTimeIcon' || nav.id === 'NavPieChartIcon') {
+                  scrollToSection(nav.id)
+                } else {
+                  navigate(nav.url)
+                }
+              }}
+              className={classNames(
+                `size-12 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 ease-in-out cursor-pointer`,
+                itemActive === nav.id ? 'bg-ln-icon-button backdrop-blur-[40px] shadow-s-16' : 'bg-transparent'
+              )}
+            >
+              <div className='min-w-6'>
+                {nav.icon(itemActive === nav.id ? 'white' : itemHover === nav.id ? 'linear' : 'black')}
+              </div>
             </div>
-          </div>
+          </Tooltip>
         ))}
       </div>
     </div>
