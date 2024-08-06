@@ -7,8 +7,8 @@ import images from '~/assets'
 import { IconButton } from '~/components/iconButton'
 import { ArrowLeftIcon, ArrowRightIcon, ChevronRight } from '~/components/icons'
 import { PersonreactionCard } from '~/components/personreactionCard'
-import './styles.scss'
 import { useAppSelector } from '~/redux/configStore'
+import './styles.scss'
 
 const CurrentReactions = memo(() => {
   const swiperRef = useRef<any>(null)
@@ -32,37 +32,41 @@ const CurrentReactions = memo(() => {
   )
 
   return (
-    <div className='pt-[120px] relative'>
+    <div className='relative pt-[120px]'>
       <img src={images.image.dash_line} alt='dash-line' className='absolute left-[317px] top-0' />
       <img src={images.image.dash_line_2} alt='dash-line-2' className='absolute right-[-29px] top-[385px]' />
 
-      <div className='w-full flex gap-28 relative z-10'>
-        <div className='pl-[105px]'>
-          <h1 className='xs:text-[32px]/[42px] sm:text-[54px]/[70.2px] font-bold'>
+      <div className='relative z-10 flex w-full flex-col gap-28 lg:flex-row'>
+        <div className='flex w-full flex-col px-3 lg:pl-[105px]'>
+          <h1 className='font-bold xs:text-[32px]/[42px] sm:text-[54px]/[70.2px]'>
             Current <br />
             Reactions
           </h1>
 
-          <p className='leading-[24px] text-grey999/[.64] mt-4'>
+          <p className='mt-4 font-semibold leading-[24px] text-grey999/[.64]'>
             Reactions measured during the whole time interval <br /> at an F&B store, reflecting real-time customer{' '}
             <br /> engagement and satisfaction.
           </p>
 
-          <div className='min-w-[472px] flex flex-col gap-[26px] mt-[47px]'>
+          <div className='mt-[47px] flex flex-col gap-[26px] lg:min-w-[472px]'>
             {listTypePerson.map((type) => (
               <div
                 key={type}
                 onClick={() => setTypeActive(type)}
                 className={classNames(
-                  type === typeActive ? 'w-[472px] h-[164px] py-8' : 'w-[292px] h-[120px] py-6 cursor-pointer',
-                  'px-6 bg-grey100 rounded-3xl flex items-center justify-between transition-all duration-300 ease-in-out'
+                  type === typeActive
+                    ? 'py-5 lg:h-[164px] lg:w-[472px] lg:py-8'
+                    : 'w-[250px] cursor-pointer lg:h-[120px] lg:w-[292px] lg:py-6',
+                  'flex h-[100px] items-center justify-between rounded-3xl bg-grey100 px-6 transition-all duration-300 ease-in-out'
                 )}
               >
                 <div className='flex items-center gap-8'>
                   <img
                     src={type === 0 ? images.icon.unhappy_pink : images.icon.happy_green}
                     alt={`${type}-icon`}
-                    className={classNames(type === typeActive ? 'size-[100px]' : 'size-[68.5px]')}
+                    className={classNames(
+                      type === typeActive ? 'size-[60px] lg:size-[100px]' : 'size-[50px] lg:size-[68.5px]'
+                    )}
                   />
 
                   <div>
@@ -76,8 +80,8 @@ const CurrentReactions = memo(() => {
                     </h4>
                     <p
                       className={classNames(
-                        type === typeActive ? 'text-[16px]/[24px]' : 'text-[14px]/[21px] ',
-                        'text-grey999/[.64] mt-1'
+                        type === typeActive ? 'text-[16px]/[24px]' : 'text-[14px]/[21px]',
+                        'mt-1 text-grey999/[.64]'
                       )}
                     >
                       {type === 0 ? homeReportCurrent?.currentReactionUnhappy : homeReportCurrent?.currentReactionHappy}{' '}
@@ -93,7 +97,7 @@ const CurrentReactions = memo(() => {
             ))}
           </div>
         </div>
-        <div className='list-person w-[800px] pt-[30px] pr-[97px]'>
+        <div className='list-person pt-[30px] lg:w-[800px] lg:pr-[97px]'>
           <Swiper
             ref={swiperRef}
             loop
@@ -102,6 +106,7 @@ const CurrentReactions = memo(() => {
             slidesPerView={1}
             initialSlide={2}
             freeMode={true}
+            centeredSlides={true}
             creativeEffect={{
               perspective: true,
               limitProgress: 3,
@@ -131,7 +136,7 @@ const CurrentReactions = memo(() => {
               )
             })}
           </Swiper>
-          <div className='flex items-center justify-center gap-4 mt-10 pr-7'>
+          <div className='mt-10 flex items-center justify-center gap-4 pr-7'>
             <IconButton size='48' ref={prevRef} onClick={() => swiperRef.current?.swiper?.slidePrev()}>
               <ArrowLeftIcon className='size-6' />
             </IconButton>
