@@ -42,28 +42,32 @@ const TodayReport = () => {
             <TodayReportCard
               color='orange'
               title='Visitor'
-              data={formatLocaleString(homeReportCurrent?.todayReportsOrder || 0)}
+              // data={formatLocaleString(homeReportCurrent?.todayReportsOrder || 0)}
+              data={formatLocaleString(homeReportCurrent?.todayReportsVisitors || 0)}
               percent={homeReportCurrent?.todayReportsOrderPercent || 0}
               icon={<VisitorIcon />}
             />
             <TodayReportCard
               color='blue'
               title='Viewers'
-              data={formatLocaleString(homeReportCurrent?.todayReportsPurchase || 0)}
+              // data={formatLocaleString(homeReportCurrent?.todayReportsPurchase || 0)}
+              data={formatLocaleString(homeReportCurrent?.todayReportsViewers || 0)}
               percent={homeReportCurrent?.todayReportsPurchasePercent || 0}
               icon={<ViewerIcon />}
             />
             <TodayReportCard
               color='red'
               title='Order'
-              data={formatLocaleString(homeReportCurrent?.todayReportsViewers || 0)}
+              // data={formatLocaleString(homeReportCurrent?.todayReportsViewers || 0)}
+              data={formatLocaleString(homeReportCurrent?.todayReportsPurchase || 0)}
               percent={homeReportCurrent?.todayReportsViewersPercent || 0}
               icon={<OrderIcon />}
             />
             <TodayReportCard
               color='green'
               title='Purchases/Pay'
-              data={formatLocaleString(homeReportCurrent?.todayReportsVisitors || 0)}
+              // data={formatLocaleString(homeReportCurrent?.todayReportsVisitors || 0)}
+              data={formatLocaleString(homeReportCurrent?.todayReportsOrder || 0)}
               percent={homeReportCurrent?.todayReportsVisitorsPercent || 0}
               icon={<PayIcon />}
               isIncreasing={false}

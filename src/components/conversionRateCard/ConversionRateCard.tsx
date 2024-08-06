@@ -26,7 +26,7 @@ const ConversionRateCard = ({ viewing, dotSize, data, title, percentage, classNa
       />
       <div
         className={classNames(
-          'shadow-6 flex h-[88px] w-[362px] items-center justify-between rounded-[9px] bg-ln-white-3 px-5 backdrop-blur-2xl'
+          'shadow-6 flex h-[88px] w-[362px] items-center justify-between rounded-[9px] bg-ln-white-3 px-5 bg-white backdrop-blur-2xl'
         )}
       >
         <p className='font-customSemiBold text-[32px]/[18px]'>{data}</p>

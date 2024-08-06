@@ -13,7 +13,7 @@ type TodayReportCard = {
 
 const TodayReportCard = ({ title, icon, data, color, isIncreasing = true }: TodayReportCard) => {
   return (
-    <div className='relative flex h-[132px] w-[300px] flex-col items-start justify-between rounded-2xl bg-[#dbdbdb] p-4 shadow-s-4 backdrop-blur-2xl lg:w-[202px]'>
+    <div className='relative flex h-[132px] w-[300px] flex-col items-start justify-between rounded-2xl bg-white/[.44] p-4 shadow-s-4 backdrop-blur-2xl lg:w-[202px]'>
       <p className='font-customMedium text-[18px]/[18px] capitalize'>{title}</p>
       <p className='font-customSemiBold text-[32px]/[33.6px]'>{data}</p>
 
@@ -24,7 +24,7 @@ const TodayReportCard = ({ title, icon, data, color, isIncreasing = true }: Toda
           <DecreaseIcon color='pink' className='size-[15px]' />
         )}
         <p className={`mt-[4px] text-[12px]/[12px] ${isIncreasing ? 'text-greenLighter' : 'text-pinkMain'}`}>
-          10% <span className='text-[#8E8E93]'>{title === 'Viewers' ? 'since yesterday' : 'since last week'}</span>
+          10% <span className='text-[#8E8E93]'>{'since yesterday'}</span>
         </p>
       </div>
 

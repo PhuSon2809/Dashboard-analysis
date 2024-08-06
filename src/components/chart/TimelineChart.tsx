@@ -20,16 +20,26 @@ const avatars = [
   { src: AvatarImg4, alt: 'Avatar 5' },
   { src: AvatarImg5, alt: 'Avatar 6' },
   { src: AvatarImg6, alt: 'Avatar 7' },
-  { src: AvatarImg7, alt: 'Avatar 8' },
-  { src: AvatarImg, alt: 'Avatar 1' },
-  { src: AvatarImg1, alt: 'Avatar 2' },
-  { src: AvatarImg2, alt: 'Avatar 3' },
-  { src: AvatarImg3, alt: 'Avatar 4' },
-  { src: AvatarImg4, alt: 'Avatar 5' },
-  { src: AvatarImg5, alt: 'Avatar 6' },
-  { src: AvatarImg6, alt: 'Avatar 7' },
   { src: AvatarImg7, alt: 'Avatar 8' }
 ]
+
+const generateAvatars = (count) => {
+  // Lấy các avatar thực tế từ mảng avatars
+  const realAvatars = avatars.slice(0, Math.min(count, avatars.length))
+
+  // Nếu count lớn hơn số avatar thực tế, tạo các avatar ảo
+  if (count > avatars.length) {
+    const fakeAvatars = new Array(count - avatars.length).fill(null).map((_, index) => ({
+      src: `https://via.placeholder.com/150?text=Avatar+${avatars.length + index + 1}`, // Placeholder image
+      alt: `Avatar ${avatars.length + index + 1}`
+    }))
+
+    // Gộp các avatar thực tế và ảo
+    return [...realAvatars, ...fakeAvatars]
+  }
+
+  return realAvatars
+}
 
 const listTitleChart = ['Reach', 'Engagement', 'Order', 'Payment']
 
@@ -50,7 +60,41 @@ const TimelineChart = memo(() => {
 
   const { homeReportCurrent } = useAppSelector((s) => s.report)
 
-  const currentHour = new Date().getHours()
+  const [currentHour, setCurrentHour] = useState(new Date().getHours())
+  const [currentMinute, setCurrentMinute] = useState(new Date().getMinutes())
+  const [timeMarkers, setTimeMarkers] = useState<string[]>([])
+  const [positions, setPositions] = useState<Record<string, number>>({})
+  const [itemWidths, setItemWidths] = useState<Record<number, number>>({})
+  const [distanceBetweenItems, setDistanceBetweenItems] = useState(0)
+  const [hoveredItemId, setHoveredItemId] = useState<number | null>(null)
+
+  // tính toán vị trí right của các item
+  const positonRight = useMemo(() => {
+    const lastMarker = +timeMarkers[timeMarkers.length - 1]
+    const positionStart = 50
+    const totalMinutesInHour = 60
+
+    // Tính tổng số phút từ giờ hiện tại và phút hiện tại
+    const currentTotalMinutes = currentHour * totalMinutesInHour + currentMinute
+    const lastMarkerTotalMinutes = lastMarker * totalMinutesInHour
+
+    // left = vị trí bắt đầu + khoảng cách giữa các item * (tổng số phút marker cuối - tổng số phút hiện tại)
+    const left =
+      positionStart + distanceBetweenItems * ((lastMarkerTotalMinutes - currentTotalMinutes) / totalMinutesInHour)
+
+    return left
+  }, [currentHour, currentMinute, distanceBetweenItems, timeMarkers])
+
+  // cập nhật giờ mỗi phút
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const now = new Date()
+      setCurrentHour(now.getHours())
+      setCurrentMinute(now.getMinutes())
+    }, 60000) // Cập nhật mỗi phút
+
+    return () => clearInterval(interval)
+  }, [])
   const listDataReport = useMemo(
     () => [
       homeReportCurrent?.realTimeReportTime?.['10'].realTimeReportReach,
@@ -60,7 +104,7 @@ const TimelineChart = memo(() => {
     ],
     [homeReportCurrent]
   )
-
+  // tính toán dữ liệu cho từng item
   const titleRenders = useMemo(
     () =>
       listTitleChart.map((title, i) => ({ id: i + 1, title, count: listDataReport[i], content: tooltipContent[i] })),
@@ -71,12 +115,19 @@ const TimelineChart = memo(() => {
     () => titleRenders.reduce((max, item) => (Number(item.count) > Number(max.count) ? item : max), titleRenders[0]),
     [titleRenders]
   )
+  // tính khoảng cách giữa các item
 
-  const [timeMarkers, setTimeMarkers] = useState<string[]>([])
-  const [positions, setPositions] = useState<Record<string, number>>({})
-  const [itemWidths, setItemWidths] = useState<Record<number, number>>({})
-  const [widthUpToSixthMarker, setWidthUpToSixthMarker] = useState<number>(0)
-
+  useEffect(() => {
+    if (markerRefs.current.length > 1) {
+      const firstItem = markerRefs.current[0]
+      const secondItem = markerRefs.current[1]
+      if (firstItem && secondItem) {
+        const distance = secondItem.offsetLeft - firstItem.offsetLeft
+        setDistanceBetweenItems(distance)
+      }
+    }
+  }, [timeMarkers])
+  // tính toán marker cho timeline
   useEffect(() => {
     const currentDate = new Date()
     const markers: string[] = []
@@ -97,27 +148,31 @@ const TimelineChart = memo(() => {
     setPositions(positions)
   }, [titleRenders])
 
+  const calculateWidths = (titleRenders) => {
+    const maxItem = titleRenders.reduce((max, item) => (item.count > max.count ? item : max), titleRenders[0])
+    const maxCount = maxItem.count
+
+    return titleRenders.map((item) => {
+      if (item.count === maxCount) {
+        return 400 // giá trị tối đa
+      }
+      const width = 200 + Math.floor((item.count - 1) / 5)
+      return Math.min(width, 380) // đảm bảo không vượt quá 380px
+    })
+  }
+
   useEffect(() => {
     const updateWidths = () => {
-      const newItemWidths: Record<number, number> = {}
-      itemRefs.current.forEach((item, index) => {
-        if (item) newItemWidths[index] = item.offsetWidth
+      const newItemWidths = calculateWidths(titleRenders)
+      const widthMap = {}
+      newItemWidths.forEach((width, index) => {
+        widthMap[index] = width
       })
-      setItemWidths(newItemWidths)
+      setItemWidths(widthMap)
     }
 
-    requestAnimationFrame(updateWidths)
+    updateWidths()
   }, [titleRenders])
-
-  useEffect(() => {
-    if (markerRefs.current.length >= 6) {
-      const width = markerRefs.current.slice(0, 6).reduce((totalWidth, marker) => {
-        if (marker) return totalWidth + marker.offsetWidth
-        return totalWidth
-      }, 0)
-      setWidthUpToSixthMarker(width)
-    }
-  }, [timeMarkers])
 
   return (
     <div className='h-full w-full p-10'>
@@ -129,7 +184,7 @@ const TimelineChart = memo(() => {
               data-id={`${item.title}-${item.id}`}
               className={classNames(
                 'table-left-item h-[110px] text-blackMain',
-                item.id === isHeightestItem?.id ? 'text-[24px]/[36px] font-semibold' : 'text-[18px]/[27px] font-medium'
+                item.id === hoveredItemId ? 'text-[24px]/[36px] font-semibold' : 'text-[18px]/[27px] font-medium'
               )}
             >
               {item.title}
@@ -142,7 +197,7 @@ const TimelineChart = memo(() => {
               <div
                 key={index}
                 ref={index <= 5 ? (el) => el && (markerRefs.current[index] = el) : null}
-                className='flex h-full min-w-[42px] flex-col items-center gap-8'
+                className='time-items flex h-full min-w-[42px] flex-col items-center gap-8'
               >
                 <p
                   className={classNames(
@@ -163,50 +218,42 @@ const TimelineChart = memo(() => {
               {titleRenders.map((item, index) => {
                 const isHeightest = item.id === isHeightestItem?.id
                 const top = (positions[`${item.title}-${item.id}`] || 0) - (isHeightest ? 60 : 50)
-                const left = widthUpToSixthMarker + (80 * 5 - 10) - itemWidths[index]
 
                 return (
-                  <TooltipCustom position='right' key={item.id} content={item.content}>
-                    <div
-                      ref={(el) => el && (itemRefs.current[index] = el)}
-                      className={classNames(
-                        'time-line-items absolute flex rounded-xl text-center text-white transition-all duration-200 ease-in-out',
-                        isHeightest ? 'h-[60px] px-8 shadow-s-17 hover:h-20' : 'h-[60px] px-[18px] hover:h-20',
-                        index === 0
-                          ? 'bg-ln-blue-yellow'
-                          : index === 1
-                            ? 'bg-ln-pink-2'
-                            : index === 2
-                              ? 'bg-ln-pink-blue'
-                              : 'bg-ln-yellow-red'
-                      )}
-                      style={{
-                        left: `${left}px`,
-                        top: `${top}px`
-                      }}
-                    >
+                  item?.count > 0 && (
+                    <TooltipCustom position='right' key={item.id} content={item.content}>
                       <div
+                        onMouseEnter={() => setHoveredItemId(item.id)}
+                        onMouseLeave={() => setHoveredItemId(null)}
+                        ref={(el) => el && (itemRefs.current[index] = el)}
                         className={classNames(
-                          'flex h-full w-full cursor-pointer items-center justify-between',
-                          isHeightest ? 'gap-[30px]' : 'gap-[70px]'
+                          'time-line-items absolute flex min-w-[170px] rounded-xl text-center text-white transition-all duration-200 ease-in-out',
+                          isHeightest ? 'h-[60px] px-8 shadow-s-17 hover:h-20' : 'h-[60px] px-[18px] hover:h-20',
+                          index === 0
+                            ? 'bg-ln-blue-yellow'
+                            : index === 1
+                              ? 'bg-ln-pink-2'
+                              : index === 2
+                                ? 'bg-ln-pink-blue'
+                                : 'bg-ln-yellow-red'
                         )}
+                        style={{
+                          right: `${positonRight}px`,
+                          top: `${top}px`,
+                          width: itemWidths[index]
+                        }}
                       >
-                        <span
-                          className={classNames(
-                            'text-nowrap',
-                            isHeightest ? 'text-[20px]/[30px] font-semibold' : 'text-[16px]/[24px] font-medium'
-                          )}
-                        >
-                          {item?.count} persons
-                        </span>
-                        <AvatarGroup limit={4} isActive={isHeightest}>
-                          {avatars.slice(0, 12).map((avatar, index) => (
-                            <AvatarItem key={index} src={avatar.src} alt={avatar.alt} isActive={isHeightest} />
-                          ))}
-                        </AvatarGroup>
+                        <div className={classNames('flex h-full w-full cursor-pointer items-center justify-between')}>
+                          <span className={classNames('text-[16px]/[24px]')}>{item?.count} persons</span>
+                          <AvatarGroup limit={isHeightest ? 4 : 1}>
+                            {generateAvatars(item.count).map((avatar, index) => (
+                              <AvatarItem key={index} src={avatar.src} alt={avatar.alt} />
+                            ))}
+                          </AvatarGroup>
+                        </div>
                       </div>
-                    </div>
-                  </TooltipCustom>
+                    </TooltipCustom>
+                  )
                 )
               })}
             </div>
