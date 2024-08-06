@@ -21,7 +21,7 @@ const Home = memo(() => {
   )
 
   return (
-    <div className='relative h-full w-full max-w-[1440px] bg-grey500'>
+    <div className='relative h-full w-full max-w-[1440px] overflow-x-hidden bg-grey500'>
       <Navbar scrollToSection={scrollToSection} />
       <div ref={foodBeverageRef} className='relative z-20'>
         <FoodBeverage />

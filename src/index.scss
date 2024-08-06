@@ -157,6 +157,7 @@
   0% {
     transform: rotateY(0deg);
   }
+
   100% {
     transform: rotateY(360deg);
   }
@@ -164,4 +165,14 @@
 
 .rotate-y-360deg {
   animation: rotateY 1s ease-in-out;
+}
+
+.bg-earth {
+  background-image: url('./assets/bg/bg-earth.png');
+
+  @media screen and (max-width: 768px) {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 }
