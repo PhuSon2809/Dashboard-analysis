@@ -3,11 +3,10 @@ import React, { memo, ReactNode } from 'react'
 
 interface AvatarGroupProps {
   limit: number
-  isActive: boolean
   children: ReactNode
 }
 
-const AvatarGroup: React.FC<AvatarGroupProps> = memo(({ children, limit, isActive }) => {
+const AvatarGroup: React.FC<AvatarGroupProps> = memo(({ children, limit }) => {
   const avatars = React.Children.toArray(children)
   const extraAvatarsCount = avatars.length - limit
 
@@ -21,8 +20,7 @@ const AvatarGroup: React.FC<AvatarGroupProps> = memo(({ children, limit, isActiv
       {extraAvatarsCount > 0 && (
         <div
           className={classNames(
-            isActive ? 'size-9 text-sm' : 'size-7 text-xs',
-            'pt-[3px] -ml-2 first:ml-0 bg-[#F9F5FF] rounded-full flex items-center justify-center text-[#7F56D9] border-[1.5px] border-solid border-white'
+            '-ml-2 flex size-[40px] items-center justify-center rounded-full border-[1.5px] border-solid border-white bg-[#F9F5FF] pt-[3px] text-xs text-[#7F56D9] first:ml-0'
           )}
         >
           +{extraAvatarsCount}
@@ -35,11 +33,10 @@ const AvatarGroup: React.FC<AvatarGroupProps> = memo(({ children, limit, isActiv
 interface AvatarItemProps {
   src: string
   alt: string
-  isActive: boolean
 }
 
-const AvatarItem: React.FC<AvatarItemProps> = memo(({ src, alt, isActive }) => (
-  <div className={classNames(isActive ? 'size-9' : 'size-7', 'rounded-full border-[1.5px] border-solid border-white')}>
+const AvatarItem: React.FC<AvatarItemProps> = memo(({ src, alt }) => (
+  <div className={classNames('size-9', 'rounded-full border-[1.5px] border-solid border-white')}>
     <img src={src} alt={alt} className='size-full object-cover object-center' />
   </div>
 ))

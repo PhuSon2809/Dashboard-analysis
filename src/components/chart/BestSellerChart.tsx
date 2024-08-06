@@ -28,14 +28,14 @@ const BestSellerChart = memo(({ isSmall }: { isSmall?: boolean }) => {
   return (
     <div
       className={classNames(
-        'best-seller-chart relativerounded-[32px] bg-ln-yellow shadow-s-12',
-        isSmall ? 'size-[110px]' : 'size-[520px]'
+        'best-seller-chart relative bg-ln-yellow shadow-s-12',
+        isSmall ? 'size-[110px] rounded-lg' : 'size-[520px] rounded-[32px]'
       )}
     >
       <div
         className={classNames(
           'absolute flex items-center justify-center rounded-br-[34px] rounded-tl-[34px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px]',
-          isSmall ? 'top-[-10px] h-[20px] w-[50px]' : 'bottom-[22%] left-[-30px] h-[54px] w-[191px]'
+          isSmall ? 'top-[-10px] h-[20px] w-[50px]' : 'bottom-[2%] left-[-30px] h-[54px] w-[191px]'
         )}
       >
         <p

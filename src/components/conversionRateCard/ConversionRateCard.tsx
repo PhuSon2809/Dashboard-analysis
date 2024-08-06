@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { memo } from 'react'
+
 import { ArrowBottom } from '../icons'
 
 type ConversionRateCardProps = {
@@ -11,9 +11,12 @@ type ConversionRateCardProps = {
   percentage?: number
 }
 
-const ConversionRateCard = memo(({ viewing, dotSize, data, title, percentage, className }: ConversionRateCardProps) => {
+const ConversionRateCard = ({ viewing, dotSize, data, title, percentage, className }: ConversionRateCardProps) => {
   return (
-    <div className={`w-fit flex items-center gap-6 relative ${className} transition-all duration-500 ease-in-out`}>
+    <div
+      className={`relative flex w-fit items-center gap-6 ${className} transition-all duration-500 ease-in-out`}
+      data-aos='fade-left'
+    >
       <div
         className={classNames(
           dotSize ? dotSize : 'size-4',
@@ -23,23 +26,23 @@ const ConversionRateCard = memo(({ viewing, dotSize, data, title, percentage, cl
       />
       <div
         className={classNames(
-          'w-[362px] h-[88px] px-5 bg-ln-white-3 backdrop-blur-2xl rounded-[9px] shadow-6 flex items-center justify-between'
+          'shadow-6 flex h-[88px] w-[362px] items-center justify-between rounded-[9px] bg-ln-white-3 px-5 backdrop-blur-2xl'
         )}
       >
-        <p className='text-[32px]/[18px] font-customSemiBold'>{data}</p>
-        <p className='text-[20px]/[20px] font-customMedium text-[#8E8E93]'>{title}</p>
+        <p className='font-customSemiBold text-[32px]/[18px]'>{data}</p>
+        <p className='font-customMedium text-[20px]/[20px] text-[#8E8E93]'>{title}</p>
       </div>
 
       {percentage && (
-        <div className='flex items-center gap-3 absolute right-0 z-[999] top-[-50px]'>
+        <div className='absolute right-0 top-[-50px] z-[999] flex items-center gap-3'>
           <ArrowBottom />
-          <p className='text-[56px] font-customSemiBold text-transparent bg-clip-text bg-ln-red-purple'>
+          <p className='bg-ln-red-purple bg-clip-text font-customSemiBold text-[56px] text-transparent'>
             {percentage}%
           </p>
         </div>
       )}
     </div>
   )
-})
+}
 
 export default ConversionRateCard

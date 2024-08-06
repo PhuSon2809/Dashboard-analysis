@@ -55,27 +55,27 @@ const PaymentReactionChart = memo(({ isSmall }: { isSmall?: boolean }) => {
       <div
         className={classNames(
           isSmall
-            ? '-left-[2.11px] -top-[2.11px] h-[14px] w-[74px] rounded-br-[7.23px] rounded-tl-[7.23px]'
-            : '-left-[7.11px] -top-[9.11px] h-[30px] w-[200px] rounded-br-[7.23px] rounded-tl-[7.23px]',
+            ? '-left-[7px] -top-[5px] h-[14px] w-[74px] rounded-br-[7.23px] rounded-tl-[7.23px]'
+            : '-left-[7.11px] -top-[9.11px] h-[50px] w-[200px] rounded-br-[32px] rounded-tl-[32px]',
           'absolute flex items-center justify-center bg-white/[.44] shadow-s-7 backdrop-blur-[80px]'
         )}
       >
         <p
-          className={`bg-ln-orange-purple bg-clip-text font-customSemiBold text-transparent ${classNames(isSmall ? 'text-[6.63px]' : 'text-[18px]')}`}
+          className={`bg-ln-orange-purple bg-clip-text font-bold text-transparent ${classNames(isSmall ? 'text-[6.63px]' : 'text-[18px]')}`}
         >
-          Reaction’s Menu
+          Payment Reaction
         </p>
       </div>
 
       <div
-        className={`absolute ${classNames(isSmall ? 'left-1/2 top-[15.64px] size-[80px] -translate-x-1/2 transform' : 'left-1/2 top-[15.64px] size-[420px] -translate-x-1/2 transform')}`}
+        className={`absolute ${classNames(isSmall ? 'left-1/2 top-[15.64px] size-[80px] -translate-x-1/2 transform' : 'left-1/2 top-[40px] size-[420px] -translate-x-1/2 transform')}`}
       >
         <div className='h-full w-full'>
           <Doughnut
             className='relative z-50'
             ref={chartTotalOrderRef}
             options={{
-              cutout: isSmall ? 27 : 50,
+              cutout: isSmall ? 25 : 100,
               plugins: {
                 datalabels: {
                   font: { size: isSmall ? 3.62 : 18 },
@@ -123,28 +123,33 @@ const PaymentReactionChart = memo(({ isSmall }: { isSmall?: boolean }) => {
           <div
             className={classNames(
               'absolute left-1/2 top-1/2 z-10 flex -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full border-[1px] border-dotted border-[#A6A6A6]',
-              isSmall ? 'size-[100.72px]' : 'size-[42.72px]'
+              isSmall ? 'size-[90.72px]' : 'size-[190px]'
             )}
           >
-            <div className='flex size-[100.4px] items-center justify-center rounded-full bg-[#F8F8F8]'>
+            <div
+              className={classNames(
+                'flex items-center justify-center rounded-full bg-[#F8F8F8]',
+                isSmall ? 'size-[100.4px]' : ''
+              )}
+            >
               <div
                 className={classNames(
-                  'flex size-[40.99px] flex-col items-center justify-center gap-1 rounded-full bg-white shadow-s-13', isSmall ? 'size-[40.99px]' : 'size-[80.99px]'
+                  'flex flex-col items-center justify-center gap-1 rounded-full bg-white shadow-s-13',
+                  isSmall ? 'size-[40.99px]' : 'size-[150px]'
                 )}
               >
                 <h3
                   className={classNames(
                     isSmall
                       ? 'font-customSemiBold text-[8.44px]/[8.86px] text-[#292D30]'
-                      : 'font-customSemiBold text-[13px]/[18px] text-[#292D30]'
+                      : 'text-[35px]/[30px] font-bold text-[#292D30]'
                   )}
                 >
                   {formatLocaleString(2510)}
-                  {/* {formatLocaleString(dataChart?.totalReaction)} */}
                 </h3>
                 <p
                   className={classNames(
-                    isSmall ? 'text-[3.62px]/[3.8px] text-[#0D0D0D]' : 'text-[13px]/[13px] text-[#0D0D0D]'
+                    isSmall ? 'text-[3.62px]/[3.8px] text-[#0D0D0D]' : 'text-[19px]/[13px] text-[#0D0D0D]'
                   )}
                 >
                   reaction
@@ -155,12 +160,17 @@ const PaymentReactionChart = memo(({ isSmall }: { isSmall?: boolean }) => {
         </div>
       </div>
 
-      <div className='absolute bottom-[6.63px] left-1/2 flex -translate-x-1/2 transform items-start justify-center gap-[6.52px]'>
+      <div
+        className={classNames(
+          'absolute bottom-[6.63px] left-1/2 flex -translate-x-1/2 transform items-start justify-center',
+          isSmall ? 'gap-[6.52px]' : 'gap-[20px]'
+        )}
+      >
         {listDataSet.map((data) => (
-          <div key={data.value} className='flex items-center gap-[2px]'>
+          <div key={data.value} className={classNames('flex items-center', isSmall ? 'gap-[2px]' : 'gap-[10px]')}>
             <div
               className={classNames(
-                `${isSmall ? 'h-[4.82px] w-[1px] rounded-[1.05px]' : 'h-[10px] w-[10px] rounded-[2px]'}`,
+                `${isSmall ? 'h-[4.82px] w-[1px] rounded-[1.05px]' : 'h-[20px] w-[5px] rounded-[2px]'}`,
                 (() => {
                   if (data.value === 'satisfied') {
                     return 'bg-[#0D0D0D]'

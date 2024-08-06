@@ -48,7 +48,7 @@ const PurchasesChart = memo(({ isSmall }: { isSmall?: boolean }) => {
     <div
       className={classNames(
         'purchases-chart relative bg-ln-orange-3 shadow-s-11',
-        isSmall ? 'w-[130px] h-[120px] rounded-[10px] ' : 'size-[520px] rounded-[32px]'
+        isSmall ? 'h-[120px] w-[130px] rounded-[10px]' : 'size-[520px] rounded-[32px]'
       )}
     >
       <div
@@ -71,8 +71,8 @@ const PurchasesChart = memo(({ isSmall }: { isSmall?: boolean }) => {
 
       <div
         className={classNames(
-          'absolute left-1/2 top-10 w-full -translate-x-1/2 transform',
-          isSmall ? 'h-[50px]' : 'h-[400px]'
+          'absolute left-1/2 w-full -translate-x-1/2 transform',
+          isSmall ? 'top-3 h-[90px]' : 'top-10 h-[400px]'
         )}
       >
         <div className='h-full w-full'>
@@ -133,7 +133,7 @@ const PurchasesChart = memo(({ isSmall }: { isSmall?: boolean }) => {
       <div
         className={classNames(
           'absolute flex w-full items-center justify-between',
-          isSmall ? 'bottom-[5px]' : 'bottom-[60px] px-10'
+          isSmall ? 'bottom-[10px]' : 'bottom-[60px] px-10'
         )}
       >
         {listDataSet.map((data, i) => (

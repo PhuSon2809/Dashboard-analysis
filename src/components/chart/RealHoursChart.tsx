@@ -4,15 +4,15 @@ import {
   Chart as ChartJS,
   Legend,
   LinearScale,
+  LineController,
   LineElement,
   PointElement,
-  LineController,
   Title,
   Tooltip
 } from 'chart.js'
-import { memo, useMemo } from 'react'
-import { Chart } from 'react-chartjs-2'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
+import { useMemo } from 'react'
+import { Chart } from 'react-chartjs-2'
 import { useAppSelector } from '~/redux/configStore'
 
 ChartJS.register(
@@ -29,7 +29,7 @@ ChartJS.register(
   ChartDataLabels
 )
 
-const RealHoursChart = memo(() => {
+const RealHoursChart = () => {
   const { homeReportCurrent } = useAppSelector((s) => s.report)
 
   const data = useMemo(() => homeReportCurrent?.hourlyVisitors, [homeReportCurrent])
@@ -37,8 +37,8 @@ const RealHoursChart = memo(() => {
   const datasetData = useMemo(() => Array.from({ length: 10 }).map((_, index) => data?.[`${index + 1}`]), [data])
 
   return (
-    <div className='w-[424px] h-[176px] p-3 bg-ln-blue-pink rounded-2xl shadow-s-5'>
-      <p className='text-[18px]/[18px] font-customMedium mt-1 ml-1'>Real Hours</p>
+    <div className='w-[300px] rounded-2xl bg-ln-blue-pink p-3 shadow-s-5 lg:h-[176px] lg:w-[424px]'>
+      <p className='ml-1 mt-1 font-customMedium text-[18px]/[18px]'>Real Hours</p>
 
       <div className='h-[135px]'>
         <Chart
@@ -110,6 +110,6 @@ const RealHoursChart = memo(() => {
       </div>
     </div>
   )
-})
+}
 
 export default RealHoursChart

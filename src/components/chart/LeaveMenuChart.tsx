@@ -34,17 +34,17 @@ const LeaveMenuChart = memo(({ isActive }: { isActive: boolean }) => {
   )
 
   return (
-    <div className='min-w-[666px] min-h-[666px] bg-ln-pink rounded-[32px] rounded-tr-[80px] shadow-s-10 relative'>
+    <div className='relative min-h-[666px] min-w-[666px] rounded-[32px] rounded-tr-[80px] bg-ln-pink shadow-s-10'>
       <div
-        className={`w-[267px] h-[68px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tl-[34px] rounded-br-[34px] shadow-s-7 absolute ${!isActive ? '-left-5 bottom-8' : '-left-10 bottom-10'} transition duration-300 ease-in-out`}
+        className={`absolute flex h-[68px] w-[280px] items-center justify-center rounded-br-[34px] rounded-tl-[34px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px] ${!isActive ? '-left-5 bottom-8' : '-left-10 bottom-10'} transition duration-300 ease-in-out`}
       >
-        <p className='text-[28px] font-customSemiBold text-transparent bg-clip-text bg-ln-purple-pink capitalize'>
-          % leave menu
+        <p className='bg-ln-purple-pink bg-clip-text font-customSemiBold text-[28px] capitalize text-transparent'>
+          % menu leave rate
         </p>
       </div>
 
-      <div className='size-[480px] p-[10px] absolute top-[70px] left-1/2 transform -translate-x-1/2 bg-white rounded-full shadow-s-15'>
-        <div className='w-full h-full bg-[#D1D1D6] rounded-full'>
+      <div className='absolute left-1/2 top-[70px] size-[480px] -translate-x-1/2 transform rounded-full bg-white p-[10px] shadow-s-15'>
+        <div className='h-full w-full rounded-full bg-[#D1D1D6]'>
           <Doughnut
             options={{
               cutout: 154,
@@ -70,8 +70,8 @@ const LeaveMenuChart = memo(({ isActive }: { isActive: boolean }) => {
             }}
           />
         </div>
-        <div className='size-[306px] flex items-center justify-center rounded-full bg-white absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10'>
-          <p className='text-[80px] text-[#292D30] font-customSemiBold'>20%</p>
+        <div className='absolute left-1/2 top-1/2 z-10 flex size-[306px] -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full bg-white'>
+          <p className='font-customSemiBold text-[80px] text-[#292D30]'>20%</p>
         </div>
       </div>
     </div>

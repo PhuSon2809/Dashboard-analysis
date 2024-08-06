@@ -41,12 +41,12 @@ const ReactionsEnjoyChart = memo(({ isSmall }: { isSmall?: boolean }) => {
   return (
     <div
       className={`enjoy-chart relative bg-ln-pink shadow-s-10 ${classNames(
-        isSmall ? 'h-[110px] w-[110px]  round-[20px] ' : 'min-h-[535px] min-w-[535px] rounded-[32px] rounded-tr-[80px]'
+        isSmall ? 'h-[110px] w-[110px] rounded-[10px]' : 'min-h-[535px] min-w-[535px] rounded-[32px] rounded-tr-[80px]'
       )}`}
     >
       <div
         className={classNames(
-          'absolute -left-[6px] -top-[6px] flex items-center justify-center rounded-br-[34px] rounded-tl-[34px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px]',
+          'absolute -left-[6px] -top-[6px] flex items-center justify-center rounded-br-[7px] rounded-tl-[7px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px]',
           isSmall ? 'p-1' : 'h-[64px] w-[400px]'
         )}
       >
@@ -67,11 +67,11 @@ const ReactionsEnjoyChart = memo(({ isSmall }: { isSmall?: boolean }) => {
           <Doughnut
             className='relative z-50'
             options={{
-              cutout: isSmall ? 25 : 115,
+              cutout: isSmall ? 30 : 115,
               plugins: {
                 legend: { display: false },
                 datalabels: {
-                  font: { size: isSmall ? 8 : 20 },
+                  font: { size: isSmall ? 5 : 20 },
                   color: '#FFF',
                   align: 'center',
                   anchor: 'center',
@@ -140,14 +140,14 @@ const ReactionsEnjoyChart = memo(({ isSmall }: { isSmall?: boolean }) => {
       <div
         className={classNames(
           'absolute flex w-full items-center justify-center',
-          isSmall ? 'bottom-0 gap-5' : 'bottom-7 gap-20 px-14'
+          isSmall ? 'bottom-1 gap-5' : 'bottom-7 gap-20 px-14'
         )}
       >
         {listDataSet.map((data) => (
           <div key={data.value} className='flex items-center gap-[6px]'>
             <div
               className={classNames(
-                `${isSmall ? 'size-[11px] rounded-sm' : 'size-[18px] rounded-md'}`,
+                `${isSmall ? 'size-[5px] rounded-sm' : 'size-[18px] rounded-md'}`,
                 data.value === 'satisfied'
                   ? 'bg-ln-orange-2'
                   : data.value === 'dissatisfied'

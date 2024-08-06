@@ -16,14 +16,14 @@ const MostUsedPaymentChart = memo(({ isSmall }: { isSmall?: boolean }) => {
       className={classNames(
         isSmall
           ? 'most-used-payment-chart size-[110px] rounded-[9.64px] bg-ln-white-green pr-[6.03px] pt-2 shadow-s-14 backdrop-blur-2xl'
-          : 'most-used-payment-chart size-[510px] rounded-[9.64px] bg-ln-white-green pr-[6.03px] pt-2 shadow-s-14 backdrop-blur-2xl'
+          : 'most-used-payment-chart size-[510px] rounded-[32px] bg-ln-white-green pr-[6.03px] pt-2 shadow-s-14 backdrop-blur-2xl'
       )}
     >
       <div
         className={classNames(
           isSmall
-            ? 'absolute -bottom-[1.21px] -left-[1.21px] flex h-[14px] w-[78.05px] items-center justify-center rounded-bl-[7.23px] rounded-tr-[7.23px] bg-white/[.44] backdrop-blur-[80px]'
-            : 'absolute bottom-[10px] -left-[1.21px] flex h-[14px] w-[200px] items-center justify-center rounded-bl-[7.23px] rounded-tr-[7.23px] bg-white/[.44] backdrop-blur-[80px]'
+            ? 'absolute -bottom-[2px] -left-[3px] flex h-[14px] w-[78.05px] items-center justify-center rounded-bl-[4px] rounded-tr-[4px] bg-white/[.44] backdrop-blur-[80px]'
+            : 'absolute -left-[10px] bottom-[0px] flex h-[50px] w-[200px] items-center justify-center rounded-bl-[32px] rounded-tr-[32px] bg-[#FBFCFE]'
         )}
       >
         <p

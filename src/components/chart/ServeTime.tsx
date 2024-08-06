@@ -22,7 +22,7 @@ const ServeTime = memo(({ isSmall }: { isSmall?: boolean }) => {
       className={classNames(
         isSmall
           ? 'serve-time flex size-[110px] items-center justify-center rounded-[9.64px] bg-rg-white shadow-s-14 backdrop-blur-2xl'
-          : 'serve-time flex size-[510px] items-center justify-center rounded-[9.64px] bg-rg-white shadow-s-14 backdrop-blur-2xl'
+          : 'serve-time flex size-[510px] items-center justify-center rounded-[32px] bg-rg-white shadow-s-14 backdrop-blur-2xl'
       )}
     >
       <div
@@ -35,7 +35,7 @@ const ServeTime = memo(({ isSmall }: { isSmall?: boolean }) => {
         <div role='status'>
           <svg
             aria-hidden='true'
-            className={classNames('animate-spin-slow', isSmall ? 'h-[68px] w-[68px]' : 'h-[200px] w-[500px]')}
+            className={classNames('animate-spin-slow', isSmall ? 'h-[68px] w-[68px]' : 'h-[350px] w-[500px]')}
             viewBox='0 0 100 101'
             fill='none'
             xmlns='http://www.w3.org/2000/svg'
@@ -64,7 +64,7 @@ const ServeTime = memo(({ isSmall }: { isSmall?: boolean }) => {
         </div>
 
         <div className='absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 transform flex-col items-center'>
-          <h6 className={classNames('font-customSemiBold', isSmall ? 'text-[14.47px]' : 'text-[20px]')}>
+          <h6 className={classNames('font-customSemiBold', isSmall ? 'text-[14.47px]' : 'text-[30px]')}>
             {(formattedTime.minutes > 0 && formattedTime.minutes) || 0}
             {formattedTime.minutes > 0 && 'm'}
             {formattedTime.seconds || 0}
@@ -73,7 +73,7 @@ const ServeTime = memo(({ isSmall }: { isSmall?: boolean }) => {
           <p
             className={classNames(
               'bg-ln-serve-time bg-clip-text font-customSemiBold text-transparent',
-              isSmall ? 'text-[6.63px]' : 'text-[18px]'
+              isSmall ? 'text-[6.63px]' : 'text-[30px]'
             )}
           >
             Serve Time
