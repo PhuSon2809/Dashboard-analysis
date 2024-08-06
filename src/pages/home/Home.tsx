@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import unpleash from '~/assets/images/unpleash.svg'
 import { AutoplayVideo } from '~/components/autoplayVideo'
 import { ButtonPrimary } from '~/components/button'
+import ListGridListen from '~/components/ListGridListen'
 
 interface IHomePageProps {}
 
@@ -40,6 +41,19 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
         </div>
         <div className='col-span-2'>
           <img src={unpleash} alt='unpleash' className='h-full w-full' />
+        </div>
+      </div>
+      <div className='w-full h-screen container-wrapper'>
+        <div className='w-full h-full pt-10 flex items-center flex-col justify-center'>
+          <div className='w-full text-center flex items-center justify-center flex-col'>
+            <h2 className="font-bold text-[50px] md:text-[64px]" data-aos="fade-up">Listen to our customers</h2>
+            <div className='w-full text-center max-w-[600px]' data-aos="fade-up">
+              <span className="text-[18px] md:text-[20px]">We provide solution tailored with specific industry, give our clients a special seamless experience with top advance technology AI. Connect tech and people together</span>
+            </div>
+          </div>
+          <div className='flex flex-1 w-full bg-slate-700' data-aos="fade-up">
+            <ListGridListen />
+          </div>
         </div>
       </div>
     </div>
