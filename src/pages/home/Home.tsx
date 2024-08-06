@@ -4,16 +4,11 @@ import unpleash from '~/assets/images/unpleash.svg'
 import { AutoplayVideo } from '~/components/autoplayVideo'
 import { ButtonPrimary } from '~/components/button'
 import ListGridListen from '~/components/ListGridListen'
-import React from 'react';
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Pagination } from 'swiper/modules'
+import { InStore } from '~/sections/home'
 
-// import required modules
-import { Pagination } from 'swiper/modules';
-
-interface IHomePageProps { }
+interface IHomePageProps {}
 
 const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
   return (
@@ -34,7 +29,7 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
       </div>
       <div className='accurate-count'>
         <div className='container-wrapper flex flex-col gap-10'>
-          <h1 className='mt-[100px] text-center font-bold text-[50px] md:text-[64px]'>Accurate Count and Analyze</h1>
+          <h1 className='mt-[100px] text-center text-[50px] font-bold md:text-[64px]'>Accurate Count and Analyze</h1>
           <AutoplayVideo
             source='https://img.m.pro/fiai-home.mp4'
             defaultImage='https://via.placeholder.com/1920x1080'
@@ -51,16 +46,21 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
           <img src={unpleash} alt='unpleash' className='h-full w-full' />
         </div>
       </div>
-      <div className='w-full min-h-screen container-wrapper'>
-        <div className='w-full min-h-screen pt-10 flex items-center flex-col justify-center'>
-          <div className='w-full text-center flex items-center justify-center flex-col'>
-            <h2 className="font-bold text-[50px] md:text-[64px]" data-aos="fade-up">Listen to our customers</h2>
-            <div className='w-full text-center max-w-[600px]' data-aos="fade-up">
-              <span className="text-[18px] md:text-[20px]">We provide solution tailored with specific industry, give our clients a special seamless experience with top advance technology AI. Connect tech and people together</span>
+      <div className='container-wrapper min-h-screen w-full'>
+        <div className='flex min-h-screen w-full flex-col items-center justify-center pt-10'>
+          <div className='flex w-full flex-col items-center justify-center text-center'>
+            <h2 className='text-[50px] font-bold md:text-[64px]' data-aos='fade-up'>
+              Listen to our customers
+            </h2>
+            <div className='w-full max-w-[600px] text-center' data-aos='fade-up'>
+              <span className='text-[18px] md:text-[20px]'>
+                We provide solution tailored with specific industry, give our clients a special seamless experience with
+                top advance technology AI. Connect tech and people together
+              </span>
             </div>
           </div>
-          <div className='flex flex-1 w-full' data-aos="fade-up">
-            <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
+          <div className='flex w-full flex-1' data-aos='fade-up'>
+            <Swiper pagination={true} modules={[Pagination]} className='mySwiper'>
               <SwiperSlide>
                 <ListGridListen />
               </SwiperSlide>
@@ -73,6 +73,10 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
             </Swiper>
           </div>
         </div>
+      </div>
+
+      <div className='bg-instore container min-h-screen w-full'>
+        <InStore />
       </div>
     </div>
   )

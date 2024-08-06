@@ -122,6 +122,7 @@ export default {
         'today-vistor-card': "url('/src/assets/bg/bg-vistor-card.png')",
         earth: "url('/src/assets/bg/bg-earth.png')",
         'earth-2': "url('/src/assets/bg/bg-earth-2.png')",
+        instore: "url('/src/assets/bg/bg-instore.png')",
         // linear
         'primary-gradient': 'linear-gradient(126.38deg, #11B0F2 7.58%, #F200F2 92.42%)',
         'ln-grey-to-b': 'linear-gradient(0deg, #F2F3F5 0%, rgba(242, 243, 245, 0) 105.07%)',
@@ -174,7 +175,9 @@ export default {
         'ln-blue-yellow': 'linear-gradient(128.63deg, #00D1FF 11.01%, #FFEC42 95%, #FFE600 95%)',
         'ln-pink-2': 'linear-gradient(128.63deg, #F9AB8F 11.01%, #FF52E3 95%)',
         'ln-pink-blue': 'linear-gradient(135deg, #FFACC6 2.88%, #B6E0F5 100%)',
-        'ln-yellow-red': 'linear-gradient(128.63deg, #EAFF80 11.01%, #FF4A7A 95%)'
+        'ln-yellow-red': 'linear-gradient(128.63deg, #EAFF80 11.01%, #FF4A7A 95%)',
+        'ln-rg-purple':
+          'linear-gradient(0deg, #030303, #030303), radial-gradient(28.98% 110.94% at 43.75% -31.25%, rgba(24, 17, 24, 0.53) 21.25%, #000000 100%), radial-gradient(80.68% 51.24% at 19.32% 40.62%, #1864B7 0%, rgba(23, 61, 102, 0.88) 100%), radial-gradient(130.16% 129.69% at 63.64% -12.5%, #DF28FB 0%, rgba(86, 84, 74, 0.12) 100%), radial-gradient(42.85% 184.29% at 15.34% 39.06%, rgba(131, 113, 243, 0.5) 0%, rgba(69, 156, 236, 0) 100%)'
       }
     },
     screens: {
@@ -205,7 +208,8 @@ export default {
       's-16': '0px 0px 80px 0px #0000000D',
       's-17': '3px 3px 4px 0px #00000040 inset',
       's-18': '0px 4px 64px 0px #0000001A',
-      's-19': '0px 0px 20px 0px #0000001A'
+      's-19': '0px 0px 20px 0px #0000001A',
+      's-20': '0px 4.23px 33.85px 0px #0000001A'
     }
   },
   plugins: [
