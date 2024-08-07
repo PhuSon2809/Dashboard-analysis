@@ -87,7 +87,7 @@ const Footer: React.FunctionComponent<IFooterProps> = memo(() => {
         <div className='font-bold text-[white]'>Fi Ai</div>
       </div>
       <div className='mt-[20px] flex flex-col justify-between gap-8 md:flex-row'>
-        <div className='flex flex-col gap-2'>
+        <div className='flex flex-1 flex-col gap-2'>
           <div className='font-bold text-[white]'>Product</div>
           {ProductFooter.map((item) => (
             <div key={item.key}>
@@ -95,7 +95,7 @@ const Footer: React.FunctionComponent<IFooterProps> = memo(() => {
             </div>
           ))}
         </div>
-        <div className='flex flex-col gap-2'>
+        <div className='flex flex-1 flex-col gap-2'>
           <div className='font-bold text-[white]'>Help</div>
           {HelpFooter.map((item) => (
             <div className='' key={item.key}>
@@ -103,7 +103,7 @@ const Footer: React.FunctionComponent<IFooterProps> = memo(() => {
             </div>
           ))}
         </div>
-        <div className='flex flex-col gap-2'>
+        <div className='flex flex-1 flex-col gap-2'>
           <div className='font-bold text-[white]'>Contact Us</div>
           <div className='text-[14px] font-light text-[white] opacity-70'>+1 891 989-11-91</div>
           <div className='text-[14px] font-light text-[white] opacity-70'>help@logai.com</div>

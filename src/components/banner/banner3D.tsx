@@ -1,9 +1,9 @@
-import { Html, Stage, useAnimations, useGLTF, useProgress } from '@react-three/drei'
+import { Stage, useAnimations, useGLTF } from '@react-three/drei'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Suspense, useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import * as THREE from 'three'
 import { ButtonPrimary } from '../button'
-import { Link } from 'react-router-dom'
 
 interface ModelProps {
   model: { name: string }
@@ -75,10 +75,12 @@ const Banner3D = () => {
         style={{
           opacity,
           transform: `rotate(${rotation}deg)`,
-          transition: 'opacity 0.5s, transform 0.5s'
+          transition: 'opacity 0.5s, transform 0.5s',
+          zIndex: 10,
+          position: 'relative'
         }}
       >
-        <h1 className='max-w-[800px] text-center text-[52px] font-semibold capitalize'>
+        <h1 className='max-w-[800px] text-center text-[32px] font-semibold capitalize md:text-[52px]'>
           With AI, understand customers in-store with ease
         </h1>
         <ButtonPrimary className='z-[99999]'>
@@ -87,7 +89,7 @@ const Banner3D = () => {
           </Link>
         </ButtonPrimary>
       </div>
-      <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', position: 'relative' }}>
+      <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', position: 'relative', zIndex: '2' }}>
         <div
           style={{
             width: '100%',
