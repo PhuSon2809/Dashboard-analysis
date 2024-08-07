@@ -18,9 +18,9 @@ function App() {
     if (timecount !== 0) dispatch(setTimecount(timecount))
     AOS.init({
       startEvent: 'DOMContentLoaded',
-      duration: 1000, // Thời gian hiệu ứng (ms)
-      offset: 200, // Khoảng cách bắt đầu hiệu ứng
-      once: true // Hiệu ứng chỉ xảy ra một lần
+      duration: 1000,
+      offset: 200,
+      once: true
     })
   }, [])
 

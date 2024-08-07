@@ -17,7 +17,23 @@ const OrderReport = memo(() => {
   const swiperRef = useRef<any>(null)
   const prevRef = useRef<HTMLButtonElement>(null)
   const nextRef = useRef<HTMLButtonElement>(null)
+  const [center, setCenter] = useState(false)
 
+  const handleResize = () => {
+    const width = window.innerWidth
+    if (width < 1024) {
+      setCenter(true)
+    } else {
+      setCenter(false)
+    }
+  }
+  useEffect(() => {
+    window.addEventListener('resize', handleResize)
+    handleResize() // Call once to set initial value
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
   const charts = [
     { component: <ReactionsEnjoyChart />, key: 'ReactionsEnjoyChart' },
     { component: <BestSellerChart />, key: 'BestSellerChart' },
@@ -69,13 +85,13 @@ const OrderReport = memo(() => {
   }, [])
 
   return (
-    <div className='h-[1309px] bg-earth-2 px-5 pt-[8px]'>
-      <div className='list-chart-order relative mt-[329px] flex flex-col gap-5'>
-        <h3 className='w-fit bg-ln-red-purple bg-clip-text font-customBold text-[52px] uppercase leading-none text-transparent'>
+    <div className='lg:h-[1309px] bg-earth-2 h-[800px] px-5 pt-[8px]'>
+      <div className='list-chart-order relative  lg:mt-[329px] flex flex-col lg:gap-5 '>
+        <h3 className='w-fit bg-ln-red-purple bg-clip-text font-customBold lg:text-[52px] text-[32px] uppercase leading-none text-transparent'>
           orders
         </h3>
 
-        <div className='swiper-preview absolute mt-10 flex w-full items-center justify-end gap-[17.6px]'>
+        <div className='swiper-preview lg:absolute mt-10 flex  flex-wrap lg:flex-row w-full lg:items-center items-end justify-end gap-[17.6px] '>
           {previewCharts.map((chart, index) => (
             <div key={index} className='swiper-preview-items'>
               {chart.component}
@@ -88,6 +104,7 @@ const OrderReport = memo(() => {
             ref={swiperRef}
             loop
             grabCursor
+            centeredSlides={center}
             slidesPerView={3}
             spaceBetween={70}
             pagination={{ clickable: true }}
@@ -95,6 +112,12 @@ const OrderReport = memo(() => {
             navigation={{
               prevEl: prevRef.current ? prevRef.current : undefined,
               nextEl: nextRef.current ? nextRef.current : undefined
+            }}
+            breakpoints={{
+              0: { slidesPerView: 1, spaceBetween: 70 },
+              640: { slidesPerView: 1, spaceBetween: 70 },
+              768: { slidesPerView: 1, spaceBetween: 70 },
+              1024: { slidesPerView: 3, spaceBetween: 70 }
             }}
             onInit={(swiper) => {
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment

@@ -67,7 +67,7 @@ const Home = memo(() => {
         <RealTimeReport />
       </div>
 
-      <div className='overflow-hidden'>
+      <div className='overflow-hidden px-4 lg:px-0'>
         <CurrentReactions />
         <div ref={todayReportRef}>
           <TodayReport />
@@ -76,9 +76,9 @@ const Home = memo(() => {
       </div>
 
       <div className='relative'>
-        <div className='relative z-10 mt-[151px] h-[810px] bg-ln-white-5' />
+        <div className='relative z-10 lg:mt-[151px] lg:h-[810px] bg-ln-white-5' />
 
-        <div className='relative z-20 mt-[-1240px]'>
+        <div className='relative z-20 mt-[20px] lg:mt-[-1240px]'>
           <OrderReport />
         </div>
       </div>

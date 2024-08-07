@@ -3,9 +3,11 @@
     .swiper-wrapper {
       margin-left: 160px;
       align-items: center;
+
       .swiper-slide {
         transition: all 0.3s ease-in-out;
         opacity: 0 !important;
+
         .card {
           transition: all 0.3s ease-in-out;
           opacity: 0 !important;
@@ -16,6 +18,7 @@
       .swiper-slide-prev,
       .swiper-slide-next {
         opacity: 1 !important;
+
         .card {
           opacity: 1 !important;
         }
@@ -27,10 +30,23 @@
 .list-chart {
   .swiper {
     height: 700px;
+
+    @media screen and (max-width: 480px) {
+      height: 100%;
+
+    }
+
     .swiper-wrapper {
       margin-top: 20px;
       margin-left: 64px;
       align-items: center;
+
+      @media screen and (max-width: 768px) {
+
+        margin-left: 0;
+
+      }
+
       .swiper-slide {
         transition: all 0.5s ease-in-out;
         transform: scale(0.6);
@@ -41,11 +57,19 @@
         transform: scale(1);
         opacity: 1 !important;
       }
+
       .swiper-slide-next {
         opacity: 1 !important;
-        & + .swiper-slide {
+
+        &+.swiper-slide {
           margin-left: -150px;
           opacity: 1 !important;
+
+          @media screen and (max-width: 768px) {
+
+            margin-left: 0;
+
+          }
         }
       }
     }
@@ -55,10 +79,18 @@
 .list-chart-order {
   .swiper {
     height: 650px;
+
     .swiper-wrapper {
       margin-top: 40px;
       margin-left: -30px;
       align-items: center;
+
+      @media screen and (max-width: 768px) {
+
+        margin-left: 0;
+
+      }
+
       .swiper-slide {
         transition: all 0.5s ease-in-out;
         transform: scale(0.685);
@@ -68,11 +100,13 @@
       .swiper-slide-active {
         opacity: 1 !important;
       }
+
       .swiper-slide-next {
         transform: scale(1);
         opacity: 1 !important;
         margin-bottom: 0px !important;
-        & + .swiper-slide {
+
+        &+.swiper-slide {
           margin-left: 20px;
           opacity: 1 !important;
         }

@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { memo, useCallback, useMemo, useRef, useState } from 'react'
-import { EffectCreative, Navigation } from 'swiper/modules'
+import { Autoplay, EffectCreative, Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import images from '~/assets'
@@ -28,7 +28,7 @@ const CurrentReactions = memo(() => {
 
   const listDataRender = useMemo(
     () => homeReportCurrent?.currentReactions?.filter((p: any) => p.status === typeActive),
-    [typeActive]
+    [typeActive, homeReportCurrent]
   )
 
   return (
@@ -121,7 +121,7 @@ const CurrentReactions = memo(() => {
                 scale: 0.56
               }
             }}
-            modules={[EffectCreative, Navigation]}
+            modules={[EffectCreative, Navigation, Autoplay]}
             navigation={{
               prevEl: prevRef.current ? prevRef.current : undefined,
               nextEl: nextRef.current ? nextRef.current : undefined

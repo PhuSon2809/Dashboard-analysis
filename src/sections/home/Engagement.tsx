@@ -1,4 +1,4 @@
-import { memo, useCallback, useRef, useState } from 'react'
+import { memo, useCallback, useEffect, useRef, useState } from 'react'
 import { Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { MenuCheckTimeChart, ReactionMenuChart, ServeTimeAverageChart } from '~/components/chart'
@@ -11,9 +11,23 @@ const Engagement = memo(() => {
   const swiperRef = useRef<any>(null)
   const prevRef = useRef<HTMLButtonElement>(null)
   const nextRef = useRef<HTMLButtonElement>(null)
-
+  const [center, setCenter] = useState(false)
   const [activeSlide, setActiveSlide] = useState<number>(0)
-
+  const handleResize = () => {
+    const width = window.innerWidth
+    if (width < 1024) {
+      setCenter(true)
+    } else {
+      setCenter(false)
+    }
+  }
+  useEffect(() => {
+    window.addEventListener('resize', handleResize)
+    handleResize() // Call once to set initial value
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
   const handleGoToSlide = useCallback(
     (index: number) => {
       if (swiperRef.current && swiperRef.current.swiper) {
@@ -29,11 +43,12 @@ const Engagement = memo(() => {
   }, [swiperRef])
 
   return (
-    <div className='list-chart w-[1730px] h-[810px] mt-[191px] flex items-center gap-2 bg-ln-white-4 overflow-hidden relative'>
+    <div className='list-chart lg:px-0 lg:w-[1730px] lg:h-[810px] h-[600px] mt-[191px] flex items-center gap-2 bg-ln-white-4 overflow-hidden relative'>
       <Swiper
         ref={swiperRef}
         loop
         grabCursor
+        centeredSlides={center}
         slidesPerView={3}
         pagination={{ clickable: true }}
         modules={[Pagination, Navigation]}
@@ -53,6 +68,15 @@ const Engagement = memo(() => {
           swiper.params.navigation.nextEl = nextRef.current
           swiper.navigation.update()
         }}
+        breakpoints={{
+          300: {
+            slidesPerView: 1,
+            spaceBetween: 20
+          },
+          1024: {
+            slidesPerView: 3
+          }
+        }}
       >
         <SwiperSlide>
           <ReactionMenuChart />
@@ -68,11 +92,13 @@ const Engagement = memo(() => {
         </SwiperSlide>
       </Swiper>
 
-      <div className='absolute top-[110px] left-[750px]'>
-        <h1 className='w-fit text-[52px] font-customBold text-transparent bg-clip-text bg-ln-purple-red'>ENGAGEMENT</h1>
+      <div className='absolute lg:top-[110px] top-10 lg:left-[750px] left-0'>
+        <h1 className='w-fit lg:text-[52px] text-[32px] font-customBold text-transparent bg-clip-text bg-ln-purple-red'>
+          ENGAGEMENT
+        </h1>
       </div>
 
-      <div className='flex items-center gap-4 absolute bottom-[120px] left-[750px] z-50'>
+      <div className='flex items-center gap-4 absolute bottom-0 lg:bottom-[100px] lg:left-[750px] z-50'>
         <button ref={prevRef} onClick={() => swiperRef.current?.swiper.slidePrev()}>
           <ArrowLeftIcon className='size-10 cursor-pointer' />
         </button>

@@ -34,11 +34,11 @@ const TodayReport = () => {
 
   return (
     <div ref={reportRef} className='mt-[83px] bg-earth px-4 lg:px-0'>
-      <div className='flex flex-col items-start gap-5 bg-ln-white-2 lg:h-[332px] lg:flex-row lg:px-16 lg:pt-16'>
+      <div className='flex flex-col lg:items-start items-center gap-5 bg-ln-white-2 lg:h-[332px] lg:flex-row lg:px-16 lg:pt-16'>
         <RealHoursChart />
-        <div className='mt-2 space-y-5'>
+        <div className='mt-2 space-y-5 w-full'>
           <h5 className='font-customSemiBold text-[28px]/[18px]'>Today’s Report</h5>
-          <div className='grid grid-cols-1 items-center gap-5 px-4 md:grid-cols-2 lg:flex lg:px-0'>
+          <div className='grid grid-cols-1 w-full  items-center gap-5 sm:gap-12 sm:px-0 px-4 sm:grid-cols-2 lg:flex lg:px-0'>
             <TodayReportCard
               color='orange'
               title='Visitor'
@@ -76,15 +76,15 @@ const TodayReport = () => {
         </div>
       </div>
 
-      <div className='lg:ml-[731px]'>
-        <h5 className='font-customSemiBold text-[28px]/[18px]'>Conversion Rate</h5>
+      <div className='lg:ml-[731px] mt-10 lg:mt-0'>
+        <h5 className='font-customSemiBold text-[28px]/[18px] text-right lg:text-left'>Conversion Rate</h5>
 
-        <div className='ml-[53px] mt-[59px] space-y-[26px]'>
+        <div className='sm:ml-[53px] mt-[59px] space-y-[26px]'>
           <ConversionRateCard
             viewing={viewing}
             data={formatNumber(homeReportCurrent?.conversionRateReach || 0)}
             title='Reach/View'
-            className={`${viewing ? 'ml-0' : '-ml-10'}`}
+            className={`${viewing ? 'pl-0' : '-pl-10'}`}
             percentage={homeReportCurrent?.conversionRatePercent1 || 0}
           />
           <ConversionRateCard
@@ -93,7 +93,7 @@ const TodayReport = () => {
             title='Engagement/Reach'
             percentage={homeReportCurrent?.conversionRatePercent2 || 0}
             dotSize='size-[18px]'
-            className={` ${viewing ? 'ml-[110px]' : '-ml-10'}`}
+            className={` ${viewing ? 'sm:pl-[110px] pl-[30px]' : '-pl-10'}`}
           />
           <ConversionRateCard
             viewing={viewing}
@@ -101,7 +101,7 @@ const TodayReport = () => {
             title='Order/Engagement'
             percentage={homeReportCurrent?.conversionRatePercent3 || 0}
             dotSize='size-5'
-            className={` ${viewing ? 'ml-[152px]' : '-ml-10'}`}
+            className={` ${viewing ? 'pl-[50px] sm:pl-[152px]' : '-pl-10'}`}
           />
           <ConversionRateCard
             viewing={viewing}
@@ -109,20 +109,20 @@ const TodayReport = () => {
             title='Pay/Order'
             percentage={homeReportCurrent?.conversionRatePercent3 || 0}
             dotSize='size-6'
-            className={` ${viewing ? 'ml-[182px]' : '-ml-10'}`}
+            className={` ${viewing ? 'pl-[60px] sm:pl-[182px]' : '-pl-10'}`}
           />
         </div>
       </div>
 
-      <div className='mt-[168px] flex items-end justify-center gap-5'>
+      <div className='mt-[168px] lg:flex items-end justify-center gap-5'>
         <div className='space-y-8'>
-          <h1 className='w-fit bg-ln-purple-red bg-clip-text font-customBold text-[52px] uppercase leading-none text-transparent'>
+          <h1 className='w-fit bg-ln-purple-red bg-clip-text font-customBold lg:text-[52px] text-[40px] uppercase leading-none text-transparent'>
             reach
           </h1>
           <TotalViewChart />
         </div>
         <div className='space-y-8'>
-          <h1 className='mb-[60px] font-customBold text-[54px]/[70.2px] leading-none text-blackMain'>
+          <h1 className='my-[30px] lg:mb-[60px] font-customBold text-[32px] lg:text-[54px]/[70.2px] leading-none text-blackMain'>
             Customer Journey
           </h1>
           <ReactionViewChart />
