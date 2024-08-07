@@ -1,18 +1,9 @@
-import { memo } from 'react'
+import React, { memo } from 'react'
 import { Link } from 'react-router-dom'
 import unpleash from '~/assets/images/unpleash.svg'
 import { AutoplayVideo } from '~/components/autoplayVideo'
 import Banner3D from '~/components/banner/banner3D'
 import { ButtonPrimary } from '~/components/button'
-import React from 'react'
-
-// Import Swiper React components
-
-// import required modules
-
-import ListGridListen from '~/components/ListGridListen'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Pagination } from 'swiper/modules'
 import { InStore, ListenToOurCustomer } from '~/sections/home'
 
 interface IHomePageProps {}
