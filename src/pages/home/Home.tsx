@@ -21,7 +21,7 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
     <div className='h-auto bg-[#F4F7F9]'>
       <div className='carousel relative'>
         <div className='flex min-h-screen w-full justify-center lg:pt-[100px]'>
-          <div className='flex flex-col items-center gap-14'>
+          {/* <div className='flex flex-col items-center gap-14'>
             <h1 className='max-w-[800px] text-center text-[52px] font-semibold capitalize'>
               With AI, understand customers in-store with ease
             </h1>
@@ -30,7 +30,7 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
                 <span>Start</span>
               </Link>
             </ButtonPrimary>
-          </div>
+          </div> */}
         </div>
         <div className='absolute left-0 top-0'>
           <Banner3D />

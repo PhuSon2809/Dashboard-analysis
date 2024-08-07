@@ -11,7 +11,11 @@ const BaseLayout = memo(() => {
       <Header />
       <Outlet />
       <Footer />
-      <ScrollToTop smooth component={<IconBxChevronUp className='rounded-full bg-secondary text-white' />} />
+      <ScrollToTop
+        className='mb-[160px]'
+        smooth
+        component={<IconBxChevronUp className='rounded-full bg-secondary text-black' />}
+      />
     </main>
   )
 })

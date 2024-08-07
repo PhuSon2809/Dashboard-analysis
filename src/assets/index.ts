@@ -28,6 +28,9 @@ import bg_vistor_card from '~/assets/bg/bg-vistor-card.png'
 import happy_green from '~/assets/icons/happy-green.svg'
 import unhappy_pink from '~/assets/icons/unhappy-pink.svg'
 import unhappy_vistor from '~/assets/icons/unhappy-vistor.svg'
+import icon_instagram from '~/assets/icons/instagram.svg'
+import icon_facebook from '~/assets/icons/facebook.svg'
+import icon_social from '~/assets/icons/social.svg'
 
 const images = {
   logo: { logo_e_commerce, logo_white, logo_metanode, logo_fi },
@@ -43,7 +46,7 @@ const images = {
     female_white
   },
   bg: { bg_vistor_card },
-  icon: { happy_green, unhappy_pink, unhappy_vistor }
+  icon: { happy_green, unhappy_pink, unhappy_vistor, icon_instagram, icon_facebook, icon_social }
 }
 
 export default images
