@@ -70,7 +70,7 @@ const Footer: React.FunctionComponent<IFooterProps> = memo(() => {
         </div>
         <div className='font-bold text-[white]'>Fi Ai</div>
       </div>
-      <div className='mt-[20px] flex justify-between'>
+      <div className='mt-[20px] flex flex-col justify-between gap-8 md:flex-row'>
         <div className='flex flex-col gap-2'>
           <div className='font-bold text-[white]'>Product</div>
           {ProductFooter.map((item) => (
