@@ -26,6 +26,7 @@ import planet_1 from '~/assets/images/planet-1.png'
 import planet_2 from '~/assets/images/planet-2.png'
 import planet_3 from '~/assets/images/planet-3.png'
 import planet_4 from '~/assets/images/planet-4.png'
+import customerReact from '~/assets/images/customerReact.png'
 
 import bg_vistor_card from '~/assets/bg/bg-vistor-card.png'
 
@@ -51,7 +52,8 @@ const images = {
     planet_1,
     planet_2,
     planet_3,
-    planet_4
+    planet_4,
+    customerReact
   },
   bg: { bg_vistor_card },
   icon: { happy_green, unhappy_pink, unhappy_vistor, learning, plugplay, compliance }

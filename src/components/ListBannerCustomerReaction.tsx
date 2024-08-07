@@ -24,14 +24,21 @@ const ItemBannerCustomerReaction = ({
   console.log('isOdd', isOdd)
   return (
     <React.Fragment>
-      <div className={classNames('h-[33%] w-full')}>
-        <div className={classNames('flex items-center gap-5', className)}>
-          <div className={classNames('size-[90px] shrink-0 overflow-hidden rounded-full')}>
+      <div className={classNames('h-full w-full')}>
+        <div className={classNames('flex h-full items-center gap-5', className)}>
+          <div className={classNames('size-[90px] shrink-0 overflow-hidden rounded-full', 'lg:size-[10vw]')}>
             <img src={img} className='h-full' alt='' />
           </div>
-          <div className={classNames('relative flex-1 rounded-[18px] p-4', classWrapContent)}>
-            <p className='max-w-[300px] text-[12px]/[16px]'>{content}</p>
-            <IoMdQuote className={classNames('absolute text-[28px]', classIcon)} />
+          <div className={classNames('relative flex h-full flex-1 items-center rounded-[18px] p-4', classWrapContent)}>
+            <p
+              className={classNames(
+                'line-clamp-4 max-w-[300px] text-[12px]/[14px]',
+                'leading-[1.3] md:max-w-[500px] md:text-[18px]'
+              )}
+            >
+              {content}
+            </p>
+            <IoMdQuote className={classNames('absolute text-[28px]', classIcon, 'md:text-[20px]', 'lg:text-[40px]')} />
           </div>
         </div>
       </div>
@@ -55,7 +62,7 @@ const ListBannerCustomerReaction = () => {
         content:
           'This technology is really impressive. Using AI to improve our understanding of in-store customers will help us serve them better.',
         className: 'bg-[#9FB9C2A3] rounded-[18px] rounded-br-[48px] flex-row-reverse !items-end',
-        classIcon: '-top-3 left-4 rotate-[180deg] text-[#D3E1E4]',
+        classIcon: classNames('-top-3 left-4 rotate-[180deg] text-[#D3E1E4]', 'md:-top-6'),
         classWrapContent: ''
       },
       {
@@ -72,7 +79,7 @@ const ListBannerCustomerReaction = () => {
 
   return (
     <React.Fragment>
-      <div className='flex h-full w-full flex-col gap-5 p-5'>
+      <div className={classNames('flex h-full w-full flex-col justify-center gap-3 p-5', 'md:p-0')}>
         {reactionData.map((item, i) => (
           <ItemBannerCustomerReaction key={i} {...item} idx={i} />
         ))}
