@@ -49,7 +49,7 @@ body {
   line-height: 1;
   overflow-x: hidden;
   font-family: 'SVN-Gilroy', sans-serif;
-  background: #F4F7F9;
+  background: #f4f7f9;
 }
 
 /* Custom Scrollbar */
@@ -82,7 +82,7 @@ header {
 
 // ----------------------------- LOADER -------------------
 .loader {
-  background: #EEF0F1;
+  background: #eef0f1;
   position: absolute;
   top: 0;
   left: 0;
@@ -106,7 +106,6 @@ header {
 }
 
 .transition-image {
-
   img {
     width: 500px;
     display: flex;
@@ -138,6 +137,7 @@ header {
   pointer-events: none;
   position: fixed;
   transform: translate(-50%, -50%);
+  z-index: 9999;
 }
 
 .cursor::after {

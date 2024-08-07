@@ -5,6 +5,8 @@ import { AutoplayVideo } from '~/components/autoplayVideo'
 import Banner3D from '~/components/banner/banner3D'
 import { ButtonPrimary } from '~/components/button'
 import { InStore, ListenToOurCustomer } from '~/sections/home'
+import CustomerReaction from '~/sections/home/CustomerReaction'
+import InStoreExperienceToday from '~/sections/home/InStoreExperienceToday'
 
 interface IHomePageProps {}
 
@@ -47,10 +49,12 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
           <img src={unpleash} alt='unpleash' className='h-full w-full' />
         </div>
       </div>
-      <ListenToOurCustomer />
       <div className='mx-auto min-h-screen w-full max-w-[1440px] bg-instore xs:bg-[length:640px_100%] sm:bg-cover'>
         <InStore />
       </div>
+      <CustomerReaction />
+      <ListenToOurCustomer />
+      <InStoreExperienceToday />
     </div>
   )
 })

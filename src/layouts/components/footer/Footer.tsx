@@ -63,7 +63,7 @@ const HelpFooter = [
 
 const Footer: React.FunctionComponent<IFooterProps> = memo(() => {
   return (
-    <div className='gap-[24px] rounded-b-none rounded-t-[44px] bg-[#0D0D0D] p-[32px] px-[40px]'>
+    <div className='gap-[24px] rounded-b-none rounded-t-[44px] bg-[#0D0D0D] p-[32px] px-[40px] z-50 relative'>
       <div className='flex items-center gap-2 border-b border-white border-opacity-70 pb-[20px]'>
         <div className='h-[34px] w-[34px]'>
           <img src={logo} alt='logo' className='h-[100%] w-[100%]' />
