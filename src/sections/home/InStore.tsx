@@ -28,11 +28,11 @@ const InStore = memo(() => {
   }, [])
 
   return (
-    <div ref={reportRef} className='relative sm:pt-24 md:pt-20'>
+    <div ref={reportRef} className='relative xs:pt-24 sm:pt-24 md:pt-20'>
       <h3
         className={classNames(
           'absolute font-semibold uppercase transition-all ease-in-out xs:text-[32px]/[43px] sm:left-[20px] sm:text-[40px]/[50px] md:left-[45px] md:text-[64px]/[72px]',
-          viewing ? 'opacity-100 sm:top-[8%] md:top-[16%]' : 'opacity-0 sm:top-[20%] md:top-[30%]'
+          viewing ? 'opacity-100 xs:top-[2%] xs:ml-4 sm:top-[5%] md:top-[16%]' : 'opacity-0 sm:top-[20%] md:top-[30%]'
         )}
         style={{ transitionDuration: '2500ms' }}
       >
@@ -42,32 +42,47 @@ const InStore = memo(() => {
       <img
         src={images.image.planet_1}
         alt='planet-1'
-        className='sm:-ml-[50px] sm:mt-[0px] sm:w-[560px] md:-ml-[30px] md:mt-[85px] md:w-fit'
+        className='overflow-hidden xs:-ml-[97%] xs:mt-[-10%] xs:min-w-[852px] xs:rotate-[18deg] sm:-ml-[180px] sm:mt-[-20px] sm:w-[852px] sm:rotate-0 md:-ml-[0px] md:mt-[85px] md:size-fit'
       />
       <img
         src={images.image.planet_2}
         alt='planet-2'
-        className='translateY-5s absolute sm:-left-4 sm:top-[73%] sm:w-[140px] md:-left-6 md:top-[78.5%] md:w-fit'
+        className='translateY-5s absolute xs:-left-4 xs:top-[71%] xs:w-[120px] sm:-left-4 sm:top-[75%] sm:w-[140px] md:-left-3 md:top-[78.3%] md:w-fit'
       />
       <img
         src={images.image.planet_3}
         alt='planet-3'
-        className='translateY-5s absolute sm:left-[60%] sm:top-[50px] sm:w-[100px] md:left-[47%] md:top-[160px] md:w-fit'
+        className='translateY-5s absolute xs:hidden sm:left-[60%] sm:top-[50px] sm:hidden sm:w-[100px] md:left-[47%] md:top-[160px] md:flex md:w-fit'
       />
       <img
         src={images.image.planet_4}
         alt='planet-4'
-        className='translateY-5s absolute sm:left-5 sm:top-[28%] md:left-20 md:top-[34%]'
+        className='translateY-5s absolute z-20 xs:right-0 xs:top-[12%] xs:w-[110px] sm:right-[35%] sm:top-[70%] md:left-20 md:top-[34%] md:w-fit'
+      />
+      <img
+        src={images.image.planet_2}
+        alt='planet-5'
+        className='translateY-5s absolute xs:-right-6 xs:top-[-6%] xs:flex xs:w-[120px] sm:right-[20%] sm:top-[-5%] sm:w-[140px] md:hidden md:w-fit'
+      />
+      <img
+        src={images.image.planet_4}
+        alt='planet-6'
+        className='translateY-5s absolute z-20 xs:right-[10%] xs:top-[37%] xs:flex xs:w-[70px] sm:right-[-5%] sm:top-[30%] md:left-20 md:top-[34%] md:hidden'
+      />
+      <img
+        src={images.image.planet_4}
+        alt='planet-7'
+        className='translateY-5s absolute xs:right-[18%] xs:top-[63%] xs:flex xs:w-[60px] sm:left-5 sm:top-[28%] md:left-20 md:top-[34%] md:hidden md:w-fit'
       />
 
-      <div className='absolute left-[41.3%] top-[22%] xs:hidden md:block'>
+      <div className='absolute xs:left-[4%] xs:top-[18%] sm:left-[34.5%] sm:top-[24%] md:left-[41.8%] md:top-[22%]'>
         <BoxContentInStore
           duration='1000'
           icon={images.icon.learning}
           title='Advanced AI deep learning'
           content='Smarter AI and deeper analyze for better know your customer need'
           size='small'
-          className={`mb-[92px] ml-[232px]`}
+          className={`xs:mb-7 xs:ml-0 sm:mb-16 sm:ml-auto md:mb-[92px] md:ml-[232px]`}
         />
         <BoxContentInStore
           duration='1300'
@@ -75,7 +90,7 @@ const InStore = memo(() => {
           title='Plug-and-Play'
           content='No professional skill needed, just easily DIY the setup process'
           size='medium'
-          className={`mb-[122px] ml-[156px]`}
+          className={`xs:mb-7 xs:ml-auto sm:mb-16 sm:ml-auto md:mb-[122px] md:ml-[156px]`}
         />
         <BoxContentInStore
           duration='1600'
@@ -83,32 +98,7 @@ const InStore = memo(() => {
           title='GDPR & CCPA compliance'
           content='100% anonymous and protect end-users identity'
           size='large'
-        />
-      </div>
-
-      <div className='absolute left-[41.3%] top-[22%] xs:block md:hidden'>
-        <BoxContentInStore
-          duration='1000'
-          icon={images.icon.learning}
-          title='Advanced AI deep learning'
-          content='Smarter AI and deeper analyze for better know your customer need'
-          size='small'
-          className={`mb-[92px] ml-[232px]`}
-        />
-        <BoxContentInStore
-          duration='1300'
-          icon={images.icon.plugplay}
-          title='Plug-and-Play'
-          content='No professional skill needed, just easily DIY the setup process'
-          size='medium'
-          className={`mb-[122px] ml-[156px]`}
-        />
-        <BoxContentInStore
-          duration='1600'
-          icon={images.icon.compliance}
-          title='GDPR & CCPA compliance'
-          content='100% anonymous and protect end-users identity'
-          size='large'
+          className='xs:ml-auto sm:ml-0 md:ml-0'
         />
       </div>
     </div>
