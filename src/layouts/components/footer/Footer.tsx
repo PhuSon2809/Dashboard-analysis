@@ -1,5 +1,6 @@
 import { memo } from 'react'
 import logo from '~/assets/logo/logo-fi-ai.png'
+import images from '~/assets'
 
 interface IFooterProps {}
 
@@ -61,6 +62,21 @@ const HelpFooter = [
   }
 ]
 
+const listIcon = [
+  {
+    icon: images.icon.icon_instagram,
+    key: 'instagram'
+  },
+  {
+    icon: images.icon.icon_facebook,
+    key: 'facebook'
+  },
+  {
+    icon: images.icon.icon_social,
+    key: 'social'
+  }
+]
+
 const Footer: React.FunctionComponent<IFooterProps> = memo(() => {
   return (
     <div className='gap-[24px] rounded-b-none rounded-t-[44px] bg-[#0D0D0D] p-[32px] px-[40px] z-50 relative'>
@@ -70,7 +86,7 @@ const Footer: React.FunctionComponent<IFooterProps> = memo(() => {
         </div>
         <div className='font-bold text-[white]'>Fi Ai</div>
       </div>
-      <div className='mt-[20px] flex justify-between'>
+      <div className='mt-[20px] flex flex-col justify-between gap-8 md:flex-row'>
         <div className='flex flex-col gap-2'>
           <div className='font-bold text-[white]'>Product</div>
           {ProductFooter.map((item) => (
@@ -92,6 +108,16 @@ const Footer: React.FunctionComponent<IFooterProps> = memo(() => {
           <div className='text-[14px] font-light text-[white] opacity-70'>+1 891 989-11-91</div>
           <div className='text-[14px] font-light text-[white] opacity-70'>help@logai.com</div>
         </div>
+      </div>
+      <div className='flex items-center justify-end gap-2 rounded-full'>
+        {listIcon?.map((item) => (
+          <div
+            className='flex h-[40px] w-[40px] items-center justify-center rounded-full p-[10px]'
+            style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
+          >
+            <img src={item.icon} alt={item.key} className='h-[24px] w-[24px]' />
+          </div>
+        ))}
       </div>
     </div>
   )

@@ -36,6 +36,9 @@ import unhappy_vistor from '~/assets/icons/unhappy-vistor.svg'
 import learning from '~/assets/icons/learning.png'
 import plugplay from '~/assets/icons/plugplay.png'
 import compliance from '~/assets/icons/compliance.png'
+import icon_instagram from '~/assets/icons/instagram.svg'
+import icon_facebook from '~/assets/icons/facebook.svg'
+import icon_social from '~/assets/icons/social.svg'
 
 const images = {
   logo: { logo_e_commerce, logo_white, logo_metanode, logo_fi },
@@ -56,7 +59,7 @@ const images = {
     customerReact
   },
   bg: { bg_vistor_card },
-  icon: { happy_green, unhappy_pink, unhappy_vistor, learning, plugplay, compliance }
+  icon: { happy_green, unhappy_pink, unhappy_vistor, learning, plugplay, compliance, icon_instagram, icon_facebook, icon_social }
 }
 
 export default images

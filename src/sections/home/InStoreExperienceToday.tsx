@@ -33,7 +33,7 @@ const InStoreExperienceToday = () => {
 
   return (
     <React.Fragment>
-      <div className='relative'>
+      <div className='relative pb-8'>
         <div className='relative z-50 mx-auto flex min-h-screen w-full max-w-[1440px] flex-col items-center justify-center text-center xs:bg-[length:640px_100%] sm:bg-cover'>
           <div ref={loadingRef} className='aspect-square w-full sm:size-[400px]' key={status} />
           <div>
