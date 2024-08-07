@@ -1,5 +1,6 @@
 import classNames from 'classnames'
 import { FC, memo } from 'react'
+import useResponsive from '~/hooks/useResponsive'
 
 interface IBoxContentInStore {
   duration?: string
@@ -13,12 +14,14 @@ interface IBoxContentInStore {
 
 const BoxContentInStore: FC<IBoxContentInStore> = memo(
   ({ duration, className, title, content, icon, size = 'small' }) => {
+    const mdDown = useResponsive('down', 'md')
+
     return (
       <div
-        data-aos='fade-up'
+        data-aos={mdDown ? 'fade-down' : 'fade-up'}
         data-aos-duration={duration}
         className={classNames(
-          'shadow-s-20 relative box-content flex items-center bg-white/[.64] backdrop-blur-[125px] transition-all duration-1000 ease-in-out',
+          'relative box-content flex items-center bg-white/[.64] shadow-s-20 backdrop-blur-[125px] transition-all duration-1000 ease-in-out',
           size === 'small'
             ? 'h-[110px] w-[509px] gap-[22.56px] rounded-[66.25px] pr-[22.21px]'
             : size === 'medium'
@@ -33,10 +36,10 @@ const BoxContentInStore: FC<IBoxContentInStore> = memo(
           className={classNames(
             'absolute',
             size === 'small'
-              ? 'left-[-8%] top-[-40%]'
+              ? 'left-[-8%] top-[-40.5%]'
               : size === 'medium'
-                ? 'left-[-6.5%] top-[-35.5%]'
-                : 'left-[-5.5%] top-[-29.4%]'
+                ? 'left-[-6.5%] top-[-35.1%]'
+                : 'left-[-5.5%] top-[-29.6%]'
           )}
         />
 

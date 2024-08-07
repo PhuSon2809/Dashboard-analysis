@@ -75,7 +75,7 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
         </div>
       </div>
 
-      <div className='bg-instore container min-h-screen w-full'>
+      <div className='container min-h-screen w-full bg-instore bg-cover'>
         <InStore />
       </div>
     </div>
