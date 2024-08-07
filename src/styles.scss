@@ -475,7 +475,7 @@ header {
     left: 0;
     width: 100%;
     scale: 1.5;
-    z-index: -1;
+    z-index: 1;
     height: 100%;
     background-position: center;
     background-image: url('./assets/bg/bg.png');
@@ -630,13 +630,18 @@ header {
   &::before {
     content: '';
     position: absolute;
-    top: 0;
+    top: -1%;
     left: 0;
     width: 100%;
     scale: 1;
-    z-index: -1;
+    z-index: 1;
     height: 100%;
-    background-position: center;
-    background-image: url('./assets/images/bg-2.png');
+    // background-position: center;
+    background-image: url('../public/bg-2.png');
+  }
+
+  .accurate-container {
+    z-index: 2;
+    position: relative;
   }
 }

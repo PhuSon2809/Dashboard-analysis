@@ -1,18 +1,15 @@
-import { memo } from 'react'
-import { Link } from 'react-router-dom'
-import unpleash from '~/assets/images/unpleash.svg'
+import React, { memo } from 'react'
 import { AutoplayVideo } from '~/components/autoplayVideo'
 import Banner3D from '~/components/banner/banner3D'
-import { ButtonPrimary } from '~/components/button'
 import ListGridListen from '~/components/ListGridListen'
-import React from 'react';
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
 // import required modules
-import { Pagination } from 'swiper/modules';
+import { Pagination } from 'swiper/modules'
+import Unleash from '~/components/unleash'
 
 interface IHomePageProps { }
 
@@ -37,15 +34,15 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
         </div>
       </div>
       <div className='accurate-count'>
-        <div className='container-wrapper flex flex-col gap-10'>
-          <h1 className='mt-[100px] text-center font-bold text-[50px] md:text-[64px]'>Accurate Count and Analyze</h1>
+        <div className='container-wrapper accurate-container flex flex-col gap-10'>
+          <h1 className='md:mt-[100px] text-center font-bold md:text-[50px] md:text-[64px] text-[36px] mt-[50px]'>Accurate Count and Analyze</h1>
           <AutoplayVideo
             source='https://img.m.pro/fiai-home.mp4'
             defaultImage='https://via.placeholder.com/1920x1080'
           />
         </div>
       </div>
-      <div className='unleash-the-power container-wrapper grid grid-cols-3 py-[150px]'>
+      {/* <div className='unleash-the-power container-wrapper grid grid-cols-3 py-[150px]'>
         <div className='relative mr-[-22%] flex flex-col items-end'>
           <h2 className='pr-[150px] text-[56px]'>Unleash the power</h2>
           <h1 className='text-[104px] font-bold'>Of Offline </h1>
@@ -54,6 +51,9 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
         <div className='col-span-2'>
           <img src={unpleash} alt='unpleash' className='h-full w-full' />
         </div>
+      </div> */}
+      <div>
+        <Unleash />
       </div>
       <div className='w-full min-h-screen container-wrapper'>
         <div className='w-full min-h-screen pt-10 flex items-center flex-col justify-center'>
