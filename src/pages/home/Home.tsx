@@ -5,7 +5,7 @@ import { AutoplayVideo } from '~/components/autoplayVideo'
 import Banner3D from '~/components/banner/banner3D'
 import { ButtonPrimary } from '~/components/button'
 import React from 'react'
-import ListenToOurCustomer from '~/sections/home/ListenToOurCustomer'
+
 // Import Swiper React components
 
 // import required modules
@@ -13,7 +13,7 @@ import ListenToOurCustomer from '~/sections/home/ListenToOurCustomer'
 import ListGridListen from '~/components/ListGridListen'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination } from 'swiper/modules'
-import { InStore } from '~/sections/home'
+import { InStore, ListenToOurCustomer } from '~/sections/home'
 
 interface IHomePageProps {}
 
