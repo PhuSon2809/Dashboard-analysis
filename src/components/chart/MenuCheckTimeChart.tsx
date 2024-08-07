@@ -22,7 +22,7 @@ const MenuCheckTimeChart = memo(() => {
     const width = window.innerWidth
     if (width < 480) {
       setCustom({
-        cutout: '70',
+        cutout: '50',
         size: 13
       })
     } else if (width < 1024) {
@@ -71,7 +71,7 @@ const MenuCheckTimeChart = memo(() => {
   )
 
   return (
-    <div className='lg:min-w-[666px] mt-20 min-w-[300px] h-[400px] lg:min-h-[666px] bg-ln-white-yellow lg:rounded-[32px] rounded-[20px] rounded-tr-[50px] lg:rounded-tr-[80px] lg:shadow-s-10 relative'>
+    <div className='lg:min-w-[666px] mt-20 sm:mt-[7rem] lg:mt-0 min-w-[300px] h-[400px] lg:min-h-[666px] bg-ln-white-yellow lg:rounded-[32px] rounded-[20px] rounded-tr-[50px] lg:rounded-tr-[80px] lg:shadow-s-10 relative'>
       <div
         className={`lg:w-[300px] w-[200px] lg:h-[68px] h-[40px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tl-[34px] rounded-br-[34px] shadow-s-7 absolute -top-2 -left-2`}
       >
@@ -82,6 +82,7 @@ const MenuCheckTimeChart = memo(() => {
 
       <div className='lg:size-[480px] size-[300px] p-[10px] absolute top-10 lg:top-[85px] left-1/2 transform -translate-x-1/2 bg-white rounded-full shadow-s-15'>
         <Doughnut
+          className='relative z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'
           options={{
             cutout: custom.cutout,
             plugins: {

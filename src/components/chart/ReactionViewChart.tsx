@@ -1,7 +1,7 @@
 import { ArcElement, Chart as ChartJS, Legend, Tooltip, TooltipItem } from 'chart.js'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
 import classNames from 'classnames'
-import { memo, useCallback, useMemo, useRef } from 'react'
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Doughnut } from 'react-chartjs-2'
 import { useAppSelector } from '~/redux/configStore'
 
@@ -16,9 +16,33 @@ const listDataSet = [
 
 const ReactionViewChart = memo(() => {
   const chartTotalOrderRef = useRef<ChartJS<'doughnut'>>(null)
-
+  const [custom, setCustom] = useState({
+    cutout: '50%',
+    size: 20
+  })
   const { homeReportCurrent } = useAppSelector((s) => s.report)
+  const handleResize = () => {
+    const width = window.innerWidth
+    if (width < 480) {
+      setCustom({
+        cutout: '100',
+        size: 15
+      })
+    } else {
+      setCustom({
+        cutout: '130',
+        size: 20
+      })
+    }
+  }
 
+  useEffect(() => {
+    window.addEventListener('resize', handleResize)
+    handleResize() // Call once to set initial value
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
   const gradients = [
     { start: '#5383FF', end: '#64FBD7' },
     { start: '#FF6B00', end: '#FABF26' },
@@ -50,23 +74,23 @@ const ReactionViewChart = memo(() => {
     ],
     [viewChartData]
   )
- const maxDataValue = useMemo(() => Math.max(...datasetData), [datasetData])
+  const maxDataValue = useMemo(() => Math.max(...datasetData), [datasetData])
   console.log(datasetData)
   return (
-    <div className='relative h-[521px] w-[639px] rounded-[32px] bg-ln-white-blue'>
+    <div className='relative h-[521px] lg:w-[639px] rounded-[32px] bg-ln-white-blue'>
       <div className='absolute right-[-10px] top-[-10px] flex h-[68px] w-[267px] items-center justify-center rounded-bl-[34px] rounded-tr-[34px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px]'>
         <p className='bg-ln-blue-purple bg-clip-text font-customSemiBold text-[28px] text-transparent'>
           Reaction viewers
         </p>
       </div>
 
-      <div className='absolute left-[36px] top-[71px] size-[400px]'>
+      <div className='absolute left-[36px] top-[71px] size-[250px] xs-min:size-[350px] lg:size-[400px]'>
         <div className='relative'>
           <Doughnut
             className='relative z-50'
             ref={chartTotalOrderRef}
             options={{
-              cutout: 132,
+              cutout: custom.cutout,
               plugins: {
                 datalabels: {
                   font: { size: 12 },
@@ -122,9 +146,9 @@ const ReactionViewChart = memo(() => {
         </div>
       </div>
 
-      <div className='absolute bottom-5 right-5 mt-3 flex flex-col items-start justify-center gap-6'>
+      <div className='absolute bottom-5 right-5 mt-3 flex flex-col lg:items-start items-end justify-center gap-6'>
         {listDataSet.map((data) => (
-          <div key={data.value} className='flex items-center gap-[6px]'>
+          <div key={data.value} className='flex items-center lg:flex-row flex-row-reverse  gap-[6px]'>
             <div
               className={classNames(
                 'size-3 rounded-[1px]',

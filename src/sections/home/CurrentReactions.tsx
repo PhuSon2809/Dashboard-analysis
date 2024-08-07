@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { memo, useCallback, useMemo, useRef, useState } from 'react'
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Autoplay, EffectCreative, Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
@@ -19,7 +19,22 @@ const CurrentReactions = memo(() => {
 
   const [typeActive, setTypeActive] = useState<number>(0)
   const [activeSlide, setActiveSlide] = useState<number>(0)
-
+  const [center, setCenter] = useState(false)
+  const handleResize = () => {
+    const width = window.innerWidth
+    if (width < 1024) {
+      setCenter(true)
+    } else {
+      setCenter(false)
+    }
+  }
+  useEffect(() => {
+    window.addEventListener('resize', handleResize)
+    handleResize() // Call once to set initial value
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
   const listTypePerson = useMemo(() => [0, 1], [])
 
   const handleSlideChange = useCallback(() => {
@@ -102,11 +117,11 @@ const CurrentReactions = memo(() => {
             ref={swiperRef}
             loop
             grabCursor
+            centeredSlides={center}
             effect={'creative'}
             slidesPerView={1}
             initialSlide={2}
             freeMode={true}
-            centeredSlides={true}
             creativeEffect={{
               perspective: true,
               limitProgress: 3,

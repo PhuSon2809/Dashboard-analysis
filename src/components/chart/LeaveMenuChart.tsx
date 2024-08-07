@@ -63,7 +63,7 @@ const LeaveMenuChart = memo(({ isActive }: { isActive: boolean }) => {
   )
 
   return (
-    <div className='lg:min-w-[666px] mt-20 min-w-[300px] h-[400px] lg:min-h-[666px]  lg:rounded-[32px] rounded-[20px] rounded-tr-[50px] lg:rounded-tr-[80px] lg:shadow-s-10 relative bg-ln-pink '>
+    <div className='lg:min-w-[666px] mt-20 xs-min:mt-[7rem] lg:mt-0 min-w-[300px] h-[400px] lg:min-h-[666px]  lg:rounded-[32px] rounded-[20px] rounded-tr-[50px] lg:rounded-tr-[80px] lg:shadow-s-10 relative bg-ln-pink '>
       <div
         className={`absolute flex lg:h-[68px] sm:h-[40px] w-[200px] lg:w-[280px] items-center justify-center lg:rounded-br-[34px] rounded-br-[15px] lg:rounded-tl-[34px] rounded-tl-[20px] z-[9999] bg-white/[.44] shadow-s-7 backdrop-blur-[80px] ${!isActive ? '-left-5 bottom-8' : 'lg:-left-10 left-[-10px] lg:bottom-10 bottom-2'} transition duration-300 ease-in-out`}
       >

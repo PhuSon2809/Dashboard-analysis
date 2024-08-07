@@ -39,7 +39,7 @@ const ServeTimeAverageChart = memo(({ isActive }: { isActive: boolean }) => {
   const renderData = useMemo(() => labels.map((item) => datasetData?.[item]), [homeReportCurrent])
 
   return (
-    <div className='lg:min-w-[666px] mt-20 min-w-[300px] h-[400px] lg:min-h-[666px] bg-ln-white-blue-2 lg:rounded-[32px] rounded-[20px] rounded-tr-[50px] lg:rounded-tr-[80px] lg:shadow-s-10 relative'>
+    <div className='lg:min-w-[666px] mt-20 xs-min:mt-[7rem] lg:mt-0 min-w-[300px] h-[400px] lg:min-h-[666px] bg-ln-white-blue-2 lg:rounded-[32px] rounded-[20px] rounded-tr-[50px] lg:rounded-tr-[80px] lg:shadow-s-10 relative'>
       <div
         className={`lg:w-[340px] w-[200px] h-[40px] lg:h-[68px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tl-[34px] rounded-br-[34px] shadow-s-7 absolute ${!isActive ? '-left-5 bottom-8' : 'lg:-left-10 lg:bottom-10  bottom-3'} transition duration-300 ease-in-out`}
       >

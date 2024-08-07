@@ -4,6 +4,17 @@
       margin-left: 160px;
       align-items: center;
 
+      @media screen and (max-width: 480px) {
+
+        margin-left: 0;
+
+      }
+      
+      @media screen and (max-width: 768px) {
+
+        margin-left: 100px;
+        
+      }
       .swiper-slide {
         transition: all 0.3s ease-in-out;
         opacity: 0 !important;
@@ -47,6 +58,7 @@
 
       }
 
+
       .swiper-slide {
         transition: all 0.5s ease-in-out;
         transform: scale(0.6);
@@ -56,6 +68,8 @@
       .swiper-slide-active {
         transform: scale(1);
         opacity: 1 !important;
+
+
       }
 
       .swiper-slide-next {
@@ -99,6 +113,12 @@
 
       .swiper-slide-active {
         opacity: 1 !important;
+
+        @media screen and (max-width: 480px) {
+
+          margin-left: -50px;
+
+        }
       }
 
       .swiper-slide-next {
