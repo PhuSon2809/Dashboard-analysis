@@ -8,7 +8,7 @@ import { Loader } from './layouts/components/loader'
 import { useAppDispatch, useAppSelector } from './redux/configStore'
 import { fetchReport } from './redux/report/report'
 import { setTimecount } from './redux/timecount/timecount.slice'
-import AOS from 'aos' 
+import AOS from 'aos'
 import 'aos/dist/aos.css'
 
 function App() {
@@ -42,19 +42,21 @@ function App() {
     return () => clearTimeout(timerId)
   }, [timecount])
 
-  useEffect(() => { 
-    AOS.init({ 
-      startEvent: 'DOMContentLoaded', 
-      duration: 1000, // Thời gian hiệu ứng (ms) 
-      offset: 200, // Khoảng cách bắt đầu hiệu ứng 
+  useEffect(() => {
+    AOS.init({
+      startEvent: 'DOMContentLoaded',
+      duration: 1000, // Thời gian hiệu ứng (ms)
+      offset: 200, // Khoảng cách bắt đầu hiệu ứng
       once: false
-    }) 
+    })
   }, [])
 
   return (
     <>
       <LayoutGroup>
-        <AnimatePresence>
+        {routeElements}
+
+        {/* <AnimatePresence>
           {showEffect ? (
             <motion.div key='loader'>
               <Loader setShowEffect={setShowEffect} />
@@ -68,7 +70,7 @@ function App() {
               </>
             )
           )}
-        </AnimatePresence>
+        </AnimatePresence> */}
       </LayoutGroup>
 
       <Toaster
