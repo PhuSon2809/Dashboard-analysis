@@ -54,7 +54,7 @@ function App() {
   return (
     <>
       <LayoutGroup>
-        {/* <AnimatePresence>
+        <AnimatePresence>
           {showEffect ? (
             <motion.div key='loader'>
               <Loader setShowEffect={setShowEffect} />
@@ -68,8 +68,7 @@ function App() {
               </>
             )
           )}
-        </AnimatePresence> */}
-        {routeElements}
+        </AnimatePresence>
       </LayoutGroup>
 
       <Toaster
