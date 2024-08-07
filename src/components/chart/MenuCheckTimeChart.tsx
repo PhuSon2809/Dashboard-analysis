@@ -1,7 +1,7 @@
 import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
 import classNames from 'classnames'
-import { memo, useCallback } from 'react'
+import { memo, useCallback, useEffect, useState } from 'react'
 import { Doughnut } from 'react-chartjs-2'
 import { useAppSelector } from '~/redux/configStore'
 
@@ -14,7 +14,37 @@ const listDataSet = [
 
 const MenuCheckTimeChart = memo(() => {
   const { homeReportCurrent } = useAppSelector((s) => s.report)
+  const [custom, setCustom] = useState({
+    cutout: '50%',
+    size: 20
+  })
+  const handleResize = () => {
+    const width = window.innerWidth
+    if (width < 480) {
+      setCustom({
+        cutout: '70',
+        size: 13
+      })
+    } else if (width < 1024) {
+      setCustom({
+        cutout: '100',
+        size: 15
+      })
+    } else {
+      setCustom({
+        cutout: '155',
+        size: 20
+      })
+    }
+  }
 
+  useEffect(() => {
+    window.addEventListener('resize', handleResize)
+    handleResize() // Call once to set initial value
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
   const datasetData = [
     homeReportCurrent?.ENGAGEMENT?.['Menu Check Time']?.['1'],
     homeReportCurrent?.ENGAGEMENT?.['Menu Check Time']?.['2']
@@ -41,24 +71,24 @@ const MenuCheckTimeChart = memo(() => {
   )
 
   return (
-    <div className='min-w-[666px] min-h-[666px] bg-ln-white-yellow rounded-[32px] rounded-bl-[80px] shadow-s-10 relative'>
+    <div className='lg:min-w-[666px] mt-20 min-w-[300px] h-[400px] lg:min-h-[666px] bg-ln-white-yellow lg:rounded-[32px] rounded-[20px] rounded-tr-[50px] lg:rounded-tr-[80px] lg:shadow-s-10 relative'>
       <div
-        className={`w-[300px] h-[68px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tl-[34px] rounded-br-[34px] shadow-s-7 absolute -top-2 -left-2`}
+        className={`lg:w-[300px] w-[200px] lg:h-[68px] h-[40px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tl-[34px] rounded-br-[34px] shadow-s-7 absolute -top-2 -left-2`}
       >
-        <p className='text-[28px] font-customSemiBold text-transparent bg-clip-text bg-ln-purple-orange capitalize'>
+        <p className='lg:text-[28px] font-customSemiBold text-transparent bg-clip-text bg-ln-purple-orange capitalize'>
           Menu check time
         </p>
       </div>
 
-      <div className='size-[480px] p-[10px] absolute top-[85px] left-1/2 transform -translate-x-1/2 bg-white rounded-full shadow-s-15'>
+      <div className='lg:size-[480px] size-[300px] p-[10px] absolute top-10 lg:top-[85px] left-1/2 transform -translate-x-1/2 bg-white rounded-full shadow-s-15'>
         <Doughnut
           options={{
-            cutout: 155,
+            cutout: custom.cutout,
             plugins: {
               legend: { display: false },
               tooltip: { enabled: false },
               datalabels: {
-                font: { size: 20 },
+                font: { size: custom.size },
                 anchor: 'center',
                 align: 'center',
                 formatter: (value) => (value > 0 ? `${value}%` : ''),
@@ -81,16 +111,19 @@ const MenuCheckTimeChart = memo(() => {
           }}
         />
 
-        <div className='size-[303px] flex items-center justify-center rounded-full border-[2.5px] border-dotted border-[#A6A6A6] absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10' />
+        <div className='lg:size-[303px] flex items-center justify-center rounded-full border-[2.5px] border-dotted border-[#A6A6A6] absolute left-1/2 lg:top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10' />
       </div>
 
-      <div className='flex items-start justify-center gap-8 absolute bottom-8 left-1/2 transform -translate-x-1/2'>
+      <div className='flex w-full items-start justify-center lg:gap-8 gap-4 absolute lg:bottom-8 bottom-2 left-1/2 transform -translate-x-1/2'>
         {listDataSet.map((data) => (
           <div key={data.value} className='flex items-center gap-2'>
             <div
-              className={classNames('size-[16px] rounded-[4px]', data.value === '>5' ? 'bg-ln-blue-3' : 'bg-ln-orange')}
+              className={classNames(
+                'lg:size-[16px] size-[10px] rounded-[4px]',
+                data.value === '>5' ? 'bg-ln-blue-3' : 'bg-ln-orange'
+              )}
             />
-            <p className='text-[18px]/[20px] font-customRegular capitalize'>{data.label} minutes</p>
+            <p className='lg:text-[18px]/[20px] font-customRegular capitalize'>{data.label} minutes</p>
           </div>
         ))}
       </div>

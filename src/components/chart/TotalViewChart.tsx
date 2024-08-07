@@ -25,12 +25,14 @@ const TotalViewChart = memo(() => {
   const enterStovesData = useMemo(() => labels.map((item) => chartData?.[item]?.[3]), [homeReportCurrent])
 
   return (
-    <div className='w-[639px] h-[450px] px-5 py-8 bg-ln-white-red rounded-[32px] relative'>
-      <div className='w-[267px] h-[68px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tr-[34px] rounded-bl-[34px] shadow-s-7 absolute top-[-10px] right-[-10px]'>
-        <p className='text-[28px] font-customSemiBold text-transparent bg-clip-text bg-ln-blue-purple'>Total viewers</p>
+    <div className='lg:w-[639px] h-[300px] lg:h-[450px] px-5 py-8 bg-ln-white-red rounded-[20px] lg:rounded-[32px] relative'>
+      <div className='lg:w-[267px] w-[150px] lg:h-[68px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tr-[34px] rounded-bl-[34px] shadow-s-7 absolute top-[-10px] right-[-10px]'>
+        <p className='lg:text-[28px] font-customSemiBold text-transparent bg-clip-text bg-ln-blue-purple'>
+          Total viewers
+        </p>
       </div>
 
-      <div className='w-full h-[360px]'>
+      <div className='w-full h-[200px] lg:h-[360px]'>
         <Bar
           data={{
             labels: labels,
@@ -166,12 +168,12 @@ const TotalViewChart = memo(() => {
         />
       </div>
 
-      <div className='mt-3 flex items-center justify-center gap-6'>
+      <div className='mt-3 flex items-center justify-center  gap-[3px] lg:gap-6'>
         {listDataSet.map((data) => (
-          <div key={data.value} className='flex items-center gap-[6px]'>
+          <div key={data.value} className='flex items-center gap-[2px] sm:gap-[6px]'>
             <div
               className={classNames(
-                'size-3 rounded-[1px]',
+                'size-[6px] sm:size-3 rounded-[1px]',
                 data.value === 'total-view'
                   ? 'bg-ln-green-to-b'
                   : data.value === 'view-menu'
@@ -181,7 +183,7 @@ const TotalViewChart = memo(() => {
                       : 'bg-ln-blue-pink'
               )}
             />
-            <p className='font-customRegular'>{data.label}</p>
+            <p className='font-customRegular text-[10px] sm:text-[18px]'>{data.label}</p>
           </div>
         ))}
       </div>

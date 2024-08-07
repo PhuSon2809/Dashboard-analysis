@@ -41,7 +41,7 @@ const ReactionsEnjoyChart = memo(({ isSmall }: { isSmall?: boolean }) => {
   return (
     <div
       className={`enjoy-chart relative bg-ln-pink shadow-s-10 ${classNames(
-        isSmall ? 'h-[110px] w-[110px] rounded-[10px]' : 'min-h-[535px] min-w-[535px] rounded-[32px] rounded-tr-[80px]'
+        isSmall ? 'h-[110px] w-[110px] rounded-[10px]' : 'min-h-[535px]  min-w-[535px] rounded-[32px] rounded-tr-[80px]'
       )}`}
     >
       <div

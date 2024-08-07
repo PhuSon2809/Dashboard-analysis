@@ -4,14 +4,14 @@ import {
   Chart as ChartJS,
   Legend,
   LinearScale,
+  LineController,
   LineElement,
   PointElement,
-  LineController,
   Title,
   Tooltip
 } from 'chart.js'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
-import { memo, useMemo } from 'react'
+import { memo, useEffect, useMemo, useState } from 'react'
 import { Chart } from 'react-chartjs-2'
 import { useAppSelector } from '~/redux/configStore'
 
@@ -39,16 +39,16 @@ const ServeTimeAverageChart = memo(({ isActive }: { isActive: boolean }) => {
   const renderData = useMemo(() => labels.map((item) => datasetData?.[item]), [homeReportCurrent])
 
   return (
-    <div className='min-w-[666px] min-h-[666px] p-8 pl-7 pt-10 bg-ln-white-blue-2 rounded-[32px] rounded-br-[80px] shadow-s-10 relative'>
+    <div className='lg:min-w-[666px] mt-20 min-w-[300px] h-[400px] lg:min-h-[666px] bg-ln-white-blue-2 lg:rounded-[32px] rounded-[20px] rounded-tr-[50px] lg:rounded-tr-[80px] lg:shadow-s-10 relative'>
       <div
-        className={`w-[340px] h-[68px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tl-[34px] rounded-br-[34px] shadow-s-7 absolute ${!isActive ? '-left-5 bottom-8' : '-left-10 bottom-10'} transition duration-300 ease-in-out`}
+        className={`lg:w-[340px] w-[200px] h-[40px] lg:h-[68px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tl-[34px] rounded-br-[34px] shadow-s-7 absolute ${!isActive ? '-left-5 bottom-8' : 'lg:-left-10 lg:bottom-10  bottom-3'} transition duration-300 ease-in-out`}
       >
-        <p className='text-[28px] font-customSemiBold text-transparent bg-clip-text bg-ln-yellow-green capitalize'>
+        <p className='lg:text-[28px] font-customSemiBold text-transparent bg-clip-text bg-ln-yellow-green capitalize'>
           Serve time average
         </p>
       </div>
 
-      <div className='h-[500px]'>
+      <div className='lg:h-[500px] h-[330px] relative top-4'>
         <Chart
           type='bar'
           data={{
