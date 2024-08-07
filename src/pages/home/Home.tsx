@@ -10,6 +10,11 @@ import ListenToOurCustomer from '~/sections/home/ListenToOurCustomer'
 
 // import required modules
 
+import ListGridListen from '~/components/ListGridListen'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Pagination } from 'swiper/modules'
+import { InStore } from '~/sections/home'
+
 interface IHomePageProps {}
 
 const Home: React.FunctionComponent<IHomePageProps> = memo(() => {

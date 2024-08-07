@@ -25,7 +25,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <App />
         </Theme>
       </Provider>
-    </BrowserRouter>{' '}
+    </BrowserRouter>
   </HelmetProvider>
 )
 

@@ -20,17 +20,17 @@ function App() {
 
   const [loading, setLoading] = useState(true)
   const [showEffect, setShowEffect] = useState(true)
+
   useEffect(() => {
     if (timecount !== 0) dispatch(setTimecount(timecount))
   }, [])
+
   useEffect(() => {
     if (showEffect) {
       document.querySelector('body')?.classList.add('loading')
     } else {
       document.querySelector('body')?.classList.remove('loading')
-      setTimeout(() => {
-        setLoading(false)
-      }, 5000)
+      setTimeout(() => setLoading(false), 5000)
     }
   }, [showEffect])
 
@@ -54,9 +54,7 @@ function App() {
   return (
     <>
       <LayoutGroup>
-        {routeElements}
-
-        {/* <AnimatePresence>
+        <AnimatePresence>
           {showEffect ? (
             <motion.div key='loader'>
               <Loader setShowEffect={setShowEffect} />
@@ -70,7 +68,7 @@ function App() {
               </>
             )
           )}
-        </AnimatePresence> */}
+        </AnimatePresence>
       </LayoutGroup>
 
       <Toaster

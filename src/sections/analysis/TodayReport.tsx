@@ -42,7 +42,7 @@ const TodayReport = memo(() => {
             <TodayReportCard
               color='orange'
               title='Visitor'
-              data={formatLocaleString(homeReportCurrent?.todayReportsOrder || 0)}
+              data={formatLocaleString(homeReportCurrent?.todayReportsVisitors || 0)}
               percent={homeReportCurrent?.todayReportsOrderPercent || 0}
               icon={<VisitorIcon />}
             />
@@ -63,7 +63,7 @@ const TodayReport = memo(() => {
             <TodayReportCard
               color='green'
               title='Purchases/Pay'
-              data={formatLocaleString(homeReportCurrent?.todayReportsVisitors || 0)}
+              data={formatLocaleString(homeReportCurrent?.todayReportsOrder || 0)}
               percent={homeReportCurrent?.todayReportsVisitorsPercent || 0}
               icon={<PayIcon />}
               isIncreasing={false}
