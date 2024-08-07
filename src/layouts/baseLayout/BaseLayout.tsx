@@ -8,14 +8,14 @@ import IconBxChevronUp from '~/components/icons/chevUp'
 const BaseLayout = memo(() => {
   return (
     <main className='font-proxima text-light min-h-screen w-full'>
-      <Header />
+      {/* <Header /> */}
       <Outlet />
       <Footer />
-      <ScrollToTop
+      {/* <ScrollToTop
         style={{ zIndex: '100' }}
         smooth
         component={<IconBxChevronUp className='rounded-full bg-secondary text-white' />}
-      />
+      /> */}
     </main>
   )
 })

@@ -1,15 +1,28 @@
+import classNames from 'classnames'
 import React from 'react'
 import ListBannerCustomerReaction from '~/components/ListBannerCustomerReaction'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { Pagination } from 'swiper/modules'
 
 const CustomerReaction = () => {
   return (
     <React.Fragment>
-      <div className='relative z-50 mx-auto flex w-full max-w-[1440px] flex-col xs:bg-[length:640px_100%] sm:bg-cover'>
-        <div className='flex h-[600px] w-full bg-slate-500'>
-          <div className='flex-1'>12312</div>
-          <div className='flex-1'>
-            <ListBannerCustomerReaction />
-          </div>
+      <div className={classNames('flex w-full flex-col', 'md:flex-row')}>
+        <div className='h-10 w-full flex-1'>aa</div>
+        <div className={classNames('md:w-1/2')}>
+          <Swiper pagination={true} modules={[Pagination]} className='mySwiper w-full'>
+            <SwiperSlide>
+              <ListBannerCustomerReaction />
+            </SwiperSlide>
+            <SwiperSlide>
+              <ListBannerCustomerReaction />
+            </SwiperSlide>
+            <SwiperSlide>
+              <ListBannerCustomerReaction />
+            </SwiperSlide>
+          </Swiper>
         </div>
       </div>
     </React.Fragment>

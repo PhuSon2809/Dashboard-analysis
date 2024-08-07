@@ -50,7 +50,7 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
         </div>
       </div>
       <div className='mx-auto min-h-screen w-full max-w-[1440px] bg-instore xs:bg-[length:640px_100%] sm:bg-cover'>
-        <InStore />
+        {/* <InStore /> */}
       </div>
       <CustomerReaction />
       <ListenToOurCustomer />

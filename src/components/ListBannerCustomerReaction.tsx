@@ -1,22 +1,81 @@
-import React from 'react'
+import classNames from 'classnames'
+import React, { useMemo } from 'react'
+import { IoMdQuote } from 'react-icons/io'
 
-const ItemBannerCustomerReaction = () => {
+const imgLink =
+  'https://s3-alpha-sig.figma.com/img/7166/a9a8/38a5bc68b173caf93c5210e403b39a48?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Bv1P8rJ~ujrqEO1mDl3Qy6lJM2A2OZVkepA0xzEBQYsTvfhrjxNUjjiqr966bJR-WkLj3zhsAp~rlsZKExsTQSgHeXsSSEj2F094KS1wRYzqz8I5Iex2ZV3T3OTkhy9LmsEpjqfna0PNFCnMyKXyexIvv7nu6XaswovoOl3b4wSoDckvgifVXKtqZi-tBQ7i9hrXolL5GaAGrT4UzNi0kkBq480HgSfE2AdCZw6-Jo2-6javDbKnG5X2DRK4v3GA4V9aBhCj6SYh8TocxdQnkt8wPDn12g40O-~QvyhUlWOTLotY7RRh89TsNRMgWWP0wz0PonbAeaxLjGC5NmFLIg__'
+interface IItemBannerCustomerReaction {
+  img: string
+  content: string
+  className: string
+  idx: number
+  classIcon: string
+  classWrapContent: string
+}
+const ItemBannerCustomerReaction = ({
+  img,
+  content,
+  className,
+  idx,
+  classIcon,
+  classWrapContent
+}: IItemBannerCustomerReaction) => {
+  const isOdd = idx % 2 === 0
+  console.log('isOdd', isOdd)
   return (
     <React.Fragment>
-      <div className='h-[33%] w-full bg-slate-100'>
-        <div className='h-full bg-slate-900'></div>
+      <div className={classNames('h-[33%] w-full')}>
+        <div className={classNames('flex items-center gap-5', className)}>
+          <div className={classNames('size-[90px] shrink-0 overflow-hidden rounded-full')}>
+            <img src={img} className='h-full' alt='' />
+          </div>
+          <div className={classNames('relative flex-1 rounded-[18px] p-4', classWrapContent)}>
+            <p className='max-w-[300px] text-[12px]/[16px]'>{content}</p>
+            <IoMdQuote className={classNames('absolute text-[28px]', classIcon)} />
+          </div>
+        </div>
       </div>
     </React.Fragment>
   )
 }
 
 const ListBannerCustomerReaction = () => {
+  const reactionData = useMemo(
+    () => [
+      {
+        img: imgLink,
+        content:
+          'Wow, this AI solution could revolutionize how we understand our in-store customers. I’m definitely interested.',
+        className: '',
+        classIcon: 'right-2 top-2 text-[#D3E1E4]',
+        classWrapContent: 'bg-[#C6DDDEA3] pr-8'
+      },
+      {
+        img: imgLink,
+        content:
+          'This technology is really impressive. Using AI to improve our understanding of in-store customers will help us serve them better.',
+        className: 'bg-[#9FB9C2A3] rounded-[18px] rounded-br-[48px] flex-row-reverse !items-end',
+        classIcon: '-top-3 left-4 rotate-[180deg] text-[#D3E1E4]',
+        classWrapContent: ''
+      },
+      {
+        img: imgLink,
+        content:
+          'This is truly a major leap forward. An AI tool that provides better customer understanding would be a significant competitive advantage.',
+        className: '',
+        classIcon: 'right-2 bottom-2 text-black',
+        classWrapContent: 'bg-[#E3E5E9] pr-8'
+      }
+    ],
+    []
+  )
+
   return (
     <React.Fragment>
       <div className='flex h-full w-full flex-col gap-5 p-5'>
-        <ItemBannerCustomerReaction />
-        <ItemBannerCustomerReaction />
-        <ItemBannerCustomerReaction />
+        {reactionData.map((item, i) => (
+          <ItemBannerCustomerReaction key={i} {...item} idx={i} />
+        ))}
       </div>
     </React.Fragment>
   )
