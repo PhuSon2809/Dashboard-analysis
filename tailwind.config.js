@@ -122,6 +122,7 @@ export default {
         'today-vistor-card': "url('/src/assets/bg/bg-vistor-card.png')",
         earth: "url('/src/assets/bg/bg-earth.png')",
         'earth-2': "url('/src/assets/bg/bg-earth-2.png')",
+        instore: "url('/src/assets/bg/bg-instore.png')",
         // linear
         'primary-gradient': 'linear-gradient(126.38deg, #11B0F2 7.58%, #F200F2 92.42%)',
         'ln-grey-to-b': 'linear-gradient(0deg, #F2F3F5 0%, rgba(242, 243, 245, 0) 105.07%)',
@@ -205,7 +206,8 @@ export default {
       's-16': '0px 0px 80px 0px #0000000D',
       's-17': '3px 3px 4px 0px #00000040 inset',
       's-18': '0px 4px 64px 0px #0000001A',
-      's-19': '0px 0px 20px 0px #0000001A'
+      's-19': '0px 0px 20px 0px #0000001A',
+      's-20': '0px 4.23px 33.85px 0px #0000001A'
     }
   },
   plugins: [

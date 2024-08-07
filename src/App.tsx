@@ -8,7 +8,7 @@ import { Loader } from './layouts/components/loader'
 import { useAppDispatch, useAppSelector } from './redux/configStore'
 import { fetchReport } from './redux/report/report'
 import { setTimecount } from './redux/timecount/timecount.slice'
-import AOS from 'aos' 
+import AOS from 'aos'
 import 'aos/dist/aos.css'
 
 function App() {
@@ -20,17 +20,17 @@ function App() {
 
   const [loading, setLoading] = useState(true)
   const [showEffect, setShowEffect] = useState(true)
+
   useEffect(() => {
     if (timecount !== 0) dispatch(setTimecount(timecount))
   }, [])
+
   useEffect(() => {
     if (showEffect) {
       document.querySelector('body')?.classList.add('loading')
     } else {
       document.querySelector('body')?.classList.remove('loading')
-      setTimeout(() => {
-        setLoading(false)
-      }, 5000)
+      setTimeout(() => setLoading(false), 5000)
     }
   }, [showEffect])
 
@@ -42,18 +42,18 @@ function App() {
     return () => clearTimeout(timerId)
   }, [timecount])
 
-  useEffect(() => { 
-    AOS.init({ 
-      startEvent: 'DOMContentLoaded', 
-      duration: 1000, // Thời gian hiệu ứng (ms) 
-      offset: 200, // Khoảng cách bắt đầu hiệu ứng 
+  useEffect(() => {
+    AOS.init({
+      startEvent: 'DOMContentLoaded',
+      duration: 1000, // Thời gian hiệu ứng (ms)
+      offset: 200, // Khoảng cách bắt đầu hiệu ứng
       once: false
-    }) 
+    })
   }, [])
 
   return (
     <>
-      <LayoutGroup>
+      {/* <LayoutGroup>
         <AnimatePresence>
           {showEffect ? (
             <motion.div key='loader'>
@@ -69,7 +69,8 @@ function App() {
             )
           )}
         </AnimatePresence>
-      </LayoutGroup>
+      </LayoutGroup> */}
+      {routeElements}
 
       <Toaster
         position='top-center'

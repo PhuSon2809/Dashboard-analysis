@@ -22,12 +22,19 @@ import male_black from '~/assets/images/male-black.png'
 import male_white from '~/assets/images/male-white.png'
 import female_black from '~/assets/images/female-black.png'
 import female_white from '~/assets/images/female-white.png'
+import planet_1 from '~/assets/images/planet-1.png'
+import planet_2 from '~/assets/images/planet-2.png'
+import planet_3 from '~/assets/images/planet-3.png'
+import planet_4 from '~/assets/images/planet-4.png'
 
 import bg_vistor_card from '~/assets/bg/bg-vistor-card.png'
 
 import happy_green from '~/assets/icons/happy-green.svg'
 import unhappy_pink from '~/assets/icons/unhappy-pink.svg'
 import unhappy_vistor from '~/assets/icons/unhappy-vistor.svg'
+import learning from '~/assets/icons/learning.png'
+import plugplay from '~/assets/icons/plugplay.png'
+import compliance from '~/assets/icons/compliance.png'
 
 const images = {
   logo: { logo_e_commerce, logo_white, logo_metanode, logo_fi },
@@ -40,10 +47,14 @@ const images = {
     male_black,
     male_white,
     female_black,
-    female_white
+    female_white,
+    planet_1,
+    planet_2,
+    planet_3,
+    planet_4
   },
   bg: { bg_vistor_card },
-  icon: { happy_green, unhappy_pink, unhappy_vistor }
+  icon: { happy_green, unhappy_pink, unhappy_vistor, learning, plugplay, compliance }
 }
 
 export default images

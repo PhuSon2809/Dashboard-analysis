@@ -170,11 +170,28 @@
   }
 }
 
+@keyframes CustomTranslateY {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
 .rotate-y-360deg {
   animation: rotateY 1s ease-in-out;
 }
+
+.translateY-5s {
+  animation: CustomTranslateY 3s ease-in-out infinite;
+}
+
 .instagram-text {
-  background: linear-gradient(92.82deg, #11B0F2 12.54%, #F200F2 87.46%);
+  background: linear-gradient(92.82deg, #11b0f2 12.54%, #f200f2 87.46%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
