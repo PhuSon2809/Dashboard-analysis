@@ -15,15 +15,15 @@ const CustomerReaction = () => {
       <div
         data-aos='fade-up'
         className={classNames(
-          'mb-5 flex w-full flex-col items-center justify-center px-5',
-          'md:aspect-[2] md:flex-row md:gap-8'
+          'flex w-full flex-col items-center justify-center px-5',
+          'container-wrapper md:aspect-[2] md:flex-row md:gap-8'
         )}
       >
         <div className={classNames('relative flex-1')}>
           <div className='absolute left-5 top-0'>
             <p
               className={classNames(
-                'max-w-[180px] text-[36px]/[40px] font-bold',
+                'title-wrap max-w-[180px] font-bold leading-[30px] md:text-[36px]/[40px]',
                 'lg:max-w-[400px] lg:text-[44px]/[50px]'
               )}
             >
