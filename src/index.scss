@@ -183,7 +183,18 @@
   p {
     color: #000000 !important;
   }
+
   svg {
     fill: #ffffff !important;
   }
+}
+
+.bg-payment-v2-orange {
+  background: linear-gradient(308.49deg, #CB2C2C 0%, #FF9432 100%);
+}
+.bg-payment-v2-purple {
+  background: linear-gradient(128.49deg, #CB5DFF 0%, #1D41BE 100%);
+}
+.bg-payment-v2-blue {
+  background: linear-gradient(144.83deg, #64FBD7 20.65%, #5383FF 59.41%);
 }

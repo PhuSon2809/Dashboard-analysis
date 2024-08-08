@@ -1,4 +1,6 @@
 import { memo, useCallback, useRef } from 'react'
+import MostUsedPaymentV2 from '~/components/pay/mostUsedPaymentV2'
+import PaymentReactionChartV2 from '~/components/pay/paymentReactionChartV2'
 import { Navbar } from '~/layouts/components/navbar'
 import { CurrentReactions, FoodBeverage, OrderReport, RealTimeReport, TodayReport } from '~/sections/home'
 import Engagement from '~/sections/home/Engagement'
@@ -81,6 +83,10 @@ const Home = memo(() => {
         <div className='relative z-20 mt-[20px] lg:mt-[-1240px]'>
           <OrderReport />
         </div>
+      </div>
+      <div className='my-[168px] py-5 lg:flex items-center justify-around gap-5 overflow-hidden '>
+        <PaymentReactionChartV2 />
+        <MostUsedPaymentV2 />
       </div>
     </div>
   )
