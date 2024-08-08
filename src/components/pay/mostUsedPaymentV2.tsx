@@ -2,7 +2,7 @@ import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Toolt
 import ChartDataLabels from 'chartjs-plugin-datalabels'
 import classNames from 'classnames'
 import * as React from 'react'
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { Bar } from 'react-chartjs-2'
 import { useAppSelector } from '~/redux/configStore'
 interface IMostUsedPaymentV2Props {}
@@ -13,32 +13,32 @@ const listPayment = ['Digital wallet', 'Cash', 'Credit Debit card']
 const MostUsedPaymentV2: React.FunctionComponent<IMostUsedPaymentV2Props> = () => {
   const { homeReportCurrent } = useAppSelector((s) => s.report)
   const dataChart = useMemo(() => homeReportCurrent?.mostUsedPayment, [homeReportCurrent])
-  const [custom, setCustom] = useState({
-    cutout: '50%',
-    size: 20
-  })
-  const handleResize = () => {
-    const width = window.innerWidth
-    if (width < 780) {
-      setCustom({
-        cutout: '80',
-        size: 8
-      })
-    } else {
-      setCustom({
-        cutout: '130',
-        size: 4.5
-      })
-    }
-  }
+  // const [custom, setCustom] = useState({
+  //   cutout: '50%',
+  //   size: 20
+  // })
+  // const handleResize = () => {
+  //   const width = window.innerWidth
+  //   if (width < 780) {
+  //     setCustom({
+  //       cutout: '80',
+  //       size: 8
+  //     })
+  //   } else {
+  //     setCustom({
+  //       cutout: '130',
+  //       size: 4.5
+  //     })
+  //   }
+  // }
 
-  useEffect(() => {
-    window.addEventListener('resize', handleResize)
-    handleResize() // Call once to set initial value
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
+  // useEffect(() => {
+  //   window.addEventListener('resize', handleResize)
+  //   handleResize() // Call once to set initial value
+  //   return () => {
+  //     window.removeEventListener('resize', handleResize)
+  //   }
+  // }, [])
 
   const datasetData = Array.from({ length: 7 }).map((_, index) => dataChart?.[`${index + 1}`])
   const gradients = [
@@ -126,12 +126,15 @@ const MostUsedPaymentV2: React.FunctionComponent<IMostUsedPaymentV2Props> = () =
                     if (!chartArea) return gradients[0].start
 
                     const { width, height } = chartArea
-                    return datasetData.map((_, index) => {
+                    const gradientCache = datasetData.map((_, index) => {
                       const gradient = canvasCtx.createLinearGradient(0, 0, width, height)
                       gradient.addColorStop(0, gradients[index % gradients.length].start)
                       gradient.addColorStop(1, gradients[index % gradients.length].end)
                       return gradient
                     })
+
+                    const index = ctx.dataIndex
+                    return gradientCache[index]
                   },
 
                   hoverBackgroundColor: (ctx) => {
@@ -141,12 +144,15 @@ const MostUsedPaymentV2: React.FunctionComponent<IMostUsedPaymentV2Props> = () =
                     if (!chartArea) return gradients[0].start
 
                     const { width, height } = chartArea
-                    return datasetData.map((_, index) => {
+                    const gradientCache = datasetData.map((_, index) => {
                       const gradient = canvasCtx.createLinearGradient(0, 0, width, height)
                       gradient.addColorStop(0, gradients[index % gradients.length].start)
                       gradient.addColorStop(1, gradients[index % gradients.length].end)
                       return gradient
                     })
+
+                    const index = ctx.dataIndex
+                    return gradientCache[index]
                   },
                   barThickness: 50
                 }
