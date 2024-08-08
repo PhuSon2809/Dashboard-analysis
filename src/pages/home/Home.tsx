@@ -27,7 +27,9 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
             </ButtonPrimary>
           </div> */}
         </div>
-        <div className='absolute left-0 top-0 z-50'>{/* <Banner3D /> */}</div>
+        <div className='absolute left-0 top-0 z-50'>
+          <Banner3D />
+        </div>
       </div>
       <div className='accurate-count'>
         <div className='container-wrapper flex flex-col gap-10'>
