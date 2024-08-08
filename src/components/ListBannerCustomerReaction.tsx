@@ -24,10 +24,15 @@ const ItemBannerCustomerReaction = ({
   console.log('isOdd', isOdd)
   return (
     <React.Fragment>
-      <div className={classNames('h-full w-full')}>
+      <div className={classNames('w-full', 'md:h-1/3')}>
         <div className={classNames('flex h-full items-center gap-5', className)}>
-          <div className={classNames('size-[90px] shrink-0 overflow-hidden rounded-full', 'lg:size-[10vw]')}>
-            <img src={img} className='h-full' alt='' />
+          <div
+            className={classNames(
+              'aspect-square size-[90px] shrink-0 overflow-hidden rounded-full',
+              'md:h-2/3 md:w-auto'
+            )}
+          >
+            <img src={img} className='h-full object-cover' alt='' />
           </div>
           <div className={classNames('relative flex h-full flex-1 items-center rounded-[18px] p-4', classWrapContent)}>
             <p
@@ -54,7 +59,7 @@ const ListBannerCustomerReaction = () => {
         content:
           'Wow, this AI solution could revolutionize how we understand our in-store customers. I’m definitely interested.',
         className: '',
-        classIcon: 'right-2 top-2 text-[#D3E1E4]',
+        classIcon: 'right-[2%] top-[8%] text-[#D3E1E4]',
         classWrapContent: 'bg-[#C6DDDEA3] pr-8'
       },
       {
@@ -62,7 +67,7 @@ const ListBannerCustomerReaction = () => {
         content:
           'This technology is really impressive. Using AI to improve our understanding of in-store customers will help us serve them better.',
         className: 'bg-[#9FB9C2A3] rounded-[18px] rounded-br-[48px] flex-row-reverse !items-end',
-        classIcon: classNames('-top-3 left-4 rotate-[180deg] text-[#D3E1E4]', 'md:-top-6'),
+        classIcon: classNames('top-0 translate-y-[-50%] left-4 rotate-[180deg] text-[#D3E1E4]'),
         classWrapContent: ''
       },
       {
@@ -70,7 +75,7 @@ const ListBannerCustomerReaction = () => {
         content:
           'This is truly a major leap forward. An AI tool that provides better customer understanding would be a significant competitive advantage.',
         className: '',
-        classIcon: 'right-2 bottom-2 text-black',
+        classIcon: 'right-[2%] bottom-[8%] text-black',
         classWrapContent: 'bg-[#E3E5E9] pr-8'
       }
     ],

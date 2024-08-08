@@ -2,6 +2,7 @@ import React from 'react'
 import InfoUser from './InfoUser'
 import ArrowListen from '~/assets/icons/ArrowListen'
 import classNames from 'classnames'
+import { motion } from 'framer-motion'
 
 const classArrow = 'size-12 md:size-[5vw] absolute transform'
 const classText = 'text-sm absolute font-bold'
@@ -91,8 +92,8 @@ const data = [
           className={classNames(
             classArrow,
             '-left-[52px] top-8 max-w-sm rotate-[-90deg]',
-            'sm:left-auto sm:right-0 sm:translate-x-[100%] sm:translate-y-[-24%] sm:rotate-[90deg] sm:scale-x-[-1]',
-            'lg:bottom-0 lg:left-0 lg:right-auto lg:translate-x-[-1vw]'
+            // 'sm:left-auto sm:right-0 sm:translate-x-[100%] sm:translate-y-[-24%] sm:rotate-[90deg] sm:scale-x-[-1]',
+            'lg:bottom-0 lg:left-0 lg:right-auto lg:top-auto lg:translate-x-[-1vw]'
           )}
         />
         <span

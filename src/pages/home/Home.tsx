@@ -27,9 +27,7 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
             </ButtonPrimary>
           </div> */}
         </div>
-        <div className='absolute left-0 top-0 z-50'>
-          <Banner3D />
-        </div>
+        <div className='absolute left-0 top-0 z-50'>{/* <Banner3D /> */}</div>
       </div>
       <div className='accurate-count'>
         <div className='container-wrapper flex flex-col gap-10'>
@@ -54,7 +52,7 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
         <Unleash />
       </div>
       <div className='mx-auto min-h-screen w-full max-w-[1440px] bg-instore xs:bg-[length:640px_100%] sm:bg-cover'>
-        {/* <InStore /> */}
+        <InStore />
       </div>
       <CustomerReaction />
       <ListenToOurCustomer />
