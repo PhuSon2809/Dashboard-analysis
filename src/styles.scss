@@ -468,18 +468,18 @@ header {
   height: 100vh;
   overflow: hidden;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    scale: 1.5;
-    z-index: 1;
-    height: 100%;
-    background-position: center;
-    background-image: url('./assets/bg/bg.png');
-  }
+  // &::before {
+  //   content: '';
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   scale: 1.5;
+  //   z-index: 1;
+  //   height: 100%;
+  //   background-position: center;
+  //   background-image: url('./assets/bg/bg.png');
+  // }
 
   .radial-1 {
     position: absolute;

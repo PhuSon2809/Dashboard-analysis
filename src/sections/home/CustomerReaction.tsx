@@ -13,7 +13,7 @@ const CustomerReaction = () => {
       <div
         className={classNames(
           'flex w-full flex-col items-center justify-center px-5',
-          'md:aspect-[2] md:flex-row md:gap-8'
+          'container-wrapper md:aspect-[2] md:flex-row md:gap-8'
         )}
       >
         <div className={classNames('relative flex-1')}>

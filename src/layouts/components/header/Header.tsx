@@ -1,4 +1,5 @@
-import { memo, useEffect } from 'react'
+import { memo, useEffect, useState } from 'react'
+import { FaBars } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
 import images from '~/assets'
 import menuBar from '~/common/menubar'
@@ -17,6 +18,11 @@ import {
 interface HeaderProps {}
 
 const Header: React.FunctionComponent<HeaderProps> = memo(() => {
+  const [isMenuOpen, setMenuOpen] = useState(false)
+
+  const toggleMenu = () => {
+    setMenuOpen(!isMenuOpen)
+  }
   useEffect(() => {
     window.addEventListener('scroll', function () {
       const header = document.querySelector('header')
@@ -30,8 +36,8 @@ const Header: React.FunctionComponent<HeaderProps> = memo(() => {
   }, [])
 
   return (
-    <header className='shadow-md relative z-50 bg-white'>
-      <div className='header_desktop h-[80px]'>
+    <header className='shadow-md fixed left-0 top-0 z-[9999] w-[100%] bg-white'>
+      <div className='header_desktop hidden h-[80px] lg:block'>
         <div className='container-wrapper mx-auto flex h-full items-center justify-between'>
           <div className='flex items-center gap-10'>
             <Link to='/' className='text-lg font-bold text-gray-800'>
@@ -104,6 +110,24 @@ const Header: React.FunctionComponent<HeaderProps> = memo(() => {
             </ButtonPrimary>
           </div>
         </div>
+      </div>
+
+      <div className='flex items-center justify-between bg-gray-100 p-4 md:hidden lg:hidden'>
+        <button onClick={toggleMenu} className='text-2xl'>
+          <FaBars />
+        </button>
+        <button className='rounded-full bg-gradient-to-r from-purple-400 to-blue-500 px-6 py-2 text-white'>
+          SIGN IN
+        </button>
+        {isMenuOpen && (
+          <div className='shadow-lg absolute left-4 top-16 z-10 rounded-md bg-white p-6'>
+            <ul className='space-y-2'>
+              <li className='cursor-pointer hover:text-blue-500'>Home</li>
+              <li className='cursor-pointer hover:text-blue-500'>About</li>
+              <li className='cursor-pointer hover:text-blue-500'>Contact</li>
+            </ul>
+          </div>
+        )}
       </div>
     </header>
   )
