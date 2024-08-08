@@ -75,7 +75,7 @@ const Unleash = () => {
         <h2 className='title-wrap font-bold md:text-[40px] lg:pl-[30%] lg:text-[56px] lg:font-medium'>Commerce </h2>
       </div>
       <div
-        className='relative top-[160px] ml-auto h-full w-[100%] md:top-[300px] lg:w-[60%]'
+        className='relative top-[160px] ml-auto h-full w-[100%] md:top-[300px] lg:top-[120px] lg:w-[60%]'
         style={{
           backgroundImage: `url(${unpleash})`,
           backgroundSize: 'contain',
