@@ -15,8 +15,8 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
         <Banner3D />
       </div>
       <div className='accurate-count' data-aos='fade-up'>
-        <div className='container-wrapper flex flex-col gap-10'>
-          <h1 className='title-wrap z-10 mt-[100px] text-center font-bold md:text-[64px]'>
+        <div className='container-wrapper flex flex-col gap-10 accurate-container'>
+          <h1 className='title-wrap mt-[100px] text-center font-bold md:text-[64px]'>
             Accurate Count And Analyze
           </h1>
           <AutoplayVideo
@@ -35,7 +35,7 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
         </div>
       </div>
       <div className='mx-auto min-h-screen w-full max-w-[1440px] bg-instore xs:bg-[length:640px_100%] sm:bg-cover'>
-        <InStore />
+        {/* <InStore /> */}
       </div>
       <CustomerReaction />
       <ListenToOurCustomer />
