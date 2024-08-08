@@ -18,8 +18,8 @@ function App() {
 
   const { timecount } = useAppSelector((s) => s.timecount)
 
-  const [loading, setLoading] = useState(true)
-  const [showEffect, setShowEffect] = useState(true)
+  const [loading, setLoading] = useState(false)
+  const [showEffect, setShowEffect] = useState(false)
 
   useEffect(() => {
     if (timecount !== 0) dispatch(setTimecount(timecount))
@@ -56,7 +56,7 @@ function App() {
       <LayoutGroup>
         <AnimatePresence>
           {showEffect ? (
-            <motion.div key='loader'>
+            <motion.div key='loader' >
               <Loader setShowEffect={setShowEffect} />
             </motion.div>
           ) : (
