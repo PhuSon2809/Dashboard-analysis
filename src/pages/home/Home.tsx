@@ -16,15 +16,23 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
       </div>
       <div className='accurate-count' data-aos='fade-up'>
         <div className='container-wrapper flex flex-col gap-10'>
-          <h1 className='mt-[100px] text-center text-[50px] font-bold md:text-[64px]'>Accurate Count and Analyze</h1>
+          <h1 className='title-wrap z-10 mt-[100px] text-center font-bold md:text-[64px]'>
+            Accurate Count And Analyze
+          </h1>
           <AutoplayVideo
             source='https://img.m.pro/fiai-home.mp4'
             defaultImage='https://via.placeholder.com/1920x1080'
           />
         </div>
       </div>
-      <div>
-        <Unleash />
+      <Unleash />
+      <div className='accurate-count' data-aos='fade-up'>
+        <div className='container-wrapper flex flex-col gap-10'>
+          <AutoplayVideo
+            source='https://img.m.pro/fiai-banner-3d.mp4'
+            defaultImage='https://via.placeholder.com/1920x1080'
+          />
+        </div>
       </div>
       <div className='mx-auto min-h-screen w-full max-w-[1440px] bg-instore xs:bg-[length:640px_100%] sm:bg-cover'>
         <InStore />

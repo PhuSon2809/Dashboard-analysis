@@ -76,7 +76,7 @@ const Banner3D = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768)
+      setIsMobile(window.innerWidth <= 1024)
     }
 
     handleResize()
@@ -102,7 +102,7 @@ const Banner3D = () => {
     >
       <div className='absolute left-0 top-0 z-50'>
         <div
-          className='mt-[100px] flex flex-col items-center gap-7 px-5 md:mt-[200px] md:gap-14'
+          className='mt-[120px] flex flex-col items-center gap-7 px-5 md:mt-[200px] md:gap-14'
           style={{
             opacity: isMobile ? 1 : opacity,
             transform: isMobile ? 'none' : `rotate(${rotation}deg) translateY(${translateY}px) rotateX(${rotateX}deg)`,
@@ -111,7 +111,7 @@ const Banner3D = () => {
             position: 'relative'
           }}
         >
-          <h1 className='max-w-[800px] text-center text-[30px] font-semibold capitalize md:text-[52px]'>
+          <h1 className='title-wrap max-w-[800px] text-center font-semibold capitalize md:text-[52px]'>
             With AI, understand customers in-store with ease
           </h1>
           <ButtonPrimary className='z-[99999]'>
@@ -122,7 +122,7 @@ const Banner3D = () => {
         </div>
         <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', position: 'relative', zIndex: '2' }}>
           {isMobile ? (
-            <div className='mx-auto mt-4 h-[280px] w-[80%]'>
+            <div className='mx-auto mt-4 h-[auto] w-[80%]'>
               <img
                 src={bannerImage}
                 alt='Banner'

@@ -112,15 +112,17 @@ const Header: React.FunctionComponent<HeaderProps> = memo(() => {
         </div>
       </div>
 
-      <div className='flex items-center justify-between bg-gray-100 p-4 md:hidden lg:hidden'>
-        <button onClick={toggleMenu} className='text-2xl'>
+      <div className='flex items-center justify-between bg-gray-100 p-4 lg:hidden'>
+        <button onClick={toggleMenu} className='rounded-[50%] bg-white p-[16px] text-2xl'>
           <FaBars />
         </button>
-        <button className='rounded-full bg-gradient-to-r from-purple-400 to-blue-500 px-6 py-2 text-white'>
-          SIGN IN
-        </button>
+        <ButtonPrimary>
+          <Link to='/#' className=''>
+            SIGN IN
+          </Link>
+        </ButtonPrimary>
         {isMenuOpen && (
-          <div className='shadow-lg absolute left-4 top-16 z-10 rounded-md bg-white p-6'>
+          <div className='shadow-lg absolute left-10 top-16 z-10 rounded-md bg-white p-8'>
             <ul className='space-y-2'>
               <li className='cursor-pointer hover:text-blue-500'>Home</li>
               <li className='cursor-pointer hover:text-blue-500'>About</li>

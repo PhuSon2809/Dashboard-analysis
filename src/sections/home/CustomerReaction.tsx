@@ -20,7 +20,7 @@ const CustomerReaction = () => {
           <div className='absolute left-5 top-0'>
             <p
               className={classNames(
-                'max-w-[180px] text-[36px]/[40px] font-bold',
+                'title-wrap max-w-[180px] font-bold leading-[30px] md:text-[36px]/[40px]',
                 'lg:max-w-[400px] lg:text-[44px]/[50px]'
               )}
             >
