@@ -10,7 +10,7 @@ const TodayVistorCard = memo(() => {
   const isIncrease = Math.random() >= 0.5
 
   return (
-    <div className='relative  flex flex-shrink-0 items-center justify-center overflow-hidden bg-white/[.44] shadow-s-1 backdrop-blur-2xl xs:h-[194px] xs:w-[294px] xs:rounded-[20.7px] sm:h-[300px] sm:w-[454px] sm:rounded-[32px]'>
+    <div className='relative  flex flex-shrink-0 items-center justify-center overflow-hidden bg-white/[.44] lg:shadow-s-1 backdrop-blur-2xl w-full  h-[235px] lg:h-[300px] lg:w-[454px] rounded-[32px]'>
       <div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform xs:size-[292px] sm:size-[450px]'>
         <img src={images.bg.bg_vistor_card} alt='bg-vistor-card' className='size-full object-cover object-center' />
       </div>

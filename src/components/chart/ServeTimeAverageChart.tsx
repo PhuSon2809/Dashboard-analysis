@@ -11,7 +11,7 @@ import {
   Tooltip
 } from 'chart.js'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
-import { memo, useEffect, useMemo, useState } from 'react'
+import { memo, useMemo } from 'react'
 import { Chart } from 'react-chartjs-2'
 import { useAppSelector } from '~/redux/configStore'
 

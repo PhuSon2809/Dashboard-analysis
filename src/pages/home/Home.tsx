@@ -67,7 +67,7 @@ const Home = memo(() => {
         <RealTimeReport />
       </div>
 
-      <div className='overflow-hidden px-4 lg:px-0'>
+      <div className='overflow-hidden  lg:px-0'>
         <CurrentReactions />
         <div ref={todayReportRef}>
           <TodayReport />

@@ -1,4 +1,5 @@
 import { memo } from 'react'
+import Carousel from '~/components/carousel/carousel'
 import { CurrentVisitorCard } from '~/components/currentVisitorCard'
 import { TodayVistorCard } from '~/components/todayVistorCard'
 import { UnhappyVistorCard } from '~/components/unhappyVistorCard'
@@ -21,10 +22,15 @@ const FoodBeverage = memo(() => {
 
       <div className='absolute left-[150px] top-[455px] z-20 size-[200px] rounded-full bg-[#ECF2F3] lg:left-[261px] lg:top-[455px] lg:size-[434px]' />
 
-      <div className='relative z-30 flex w-full items-start justify-center gap-[22px] xs:mt-[71px] sm:mt-[60px]'>
-        <CurrentVisitorCard />
-        <TodayVistorCard />
-        <UnhappyVistorCard />
+      <div className='relative z-30  xs:mt-[71px] sm:mt-[60px]'>
+        <div className='lg:hidden px-4'>
+          <Carousel listData={[<CurrentVisitorCard />, <TodayVistorCard />, <UnhappyVistorCard />]} />
+        </div>
+        <div className=' w-full items-start justify-center gap-[22px] hidden lg:flex'>
+          <CurrentVisitorCard />
+          <TodayVistorCard />
+          <UnhappyVistorCard />
+        </div>
       </div>
     </div>
   )

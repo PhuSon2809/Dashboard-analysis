@@ -43,7 +43,7 @@ const Engagement = memo(() => {
   }, [swiperRef])
 
   return (
-    <div className='list-chart lg:px-0 lg:w-[1730px] lg:h-[810px] h-[600px] mt-[191px] flex items-center gap-2 bg-ln-white-4 overflow-hidden relative'>
+    <div className='list-chart px-4 lg:px-0 lg:w-[1730px] lg:h-[810px] h-[600px] mt-[191px] flex items-center gap-2 bg-ln-white-4 overflow-hidden relative'>
       <Swiper
         ref={swiperRef}
         loop
@@ -71,7 +71,7 @@ const Engagement = memo(() => {
         breakpoints={{
           300: {
             slidesPerView: 1,
-            spaceBetween: 20
+            spaceBetween: 80
           },
           1024: {
             slidesPerView: 3
@@ -92,7 +92,7 @@ const Engagement = memo(() => {
         </SwiperSlide>
       </Swiper>
 
-      <div className='absolute lg:top-[110px] top-10 lg:left-[750px] left-0'>
+      <div className='absolute lg:top-[110px] top-10 lg:left-[750px] left-0 px-4'>
         <h1 className='w-fit lg:text-[52px] text-[32px] font-customBold text-transparent bg-clip-text bg-ln-purple-red'>
           ENGAGEMENT
         </h1>

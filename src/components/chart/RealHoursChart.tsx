@@ -37,7 +37,7 @@ const RealHoursChart = () => {
   const datasetData = useMemo(() => Array.from({ length: 10 }).map((_, index) => data?.[`${index + 1}`]), [data])
 
   return (
-    <div className='w-[300px] xs-min:w-full xs-min:h-[230px] rounded-2xl bg-ln-blue-pink p-3 shadow-s-5 lg:h-[176px] lg:w-[424px]'>
+    <div className='w-full xs-min:h-[230px] rounded-2xl bg-ln-blue-pink p-3 shadow-s-5 lg:h-[176px] lg:w-[424px]'>
       <p className='ml-1 mt-1 font-customMedium text-[18px]/[18px]'>Real Hours</p>
 
       <div className='h-[135px]'>

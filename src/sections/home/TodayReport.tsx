@@ -33,8 +33,8 @@ const TodayReport = () => {
   }, [])
 
   return (
-    <div ref={reportRef} className='mt-[83px] bg-earth px-4 lg:px-0'>
-      <div className='flex flex-col lg:items-start items-center gap-5 bg-ln-white-2 lg:h-[332px] lg:flex-row lg:px-16 lg:pt-16'>
+    <div ref={reportRef} className='mt-[83px] bg-earth '>
+      <div className='flex flex-col lg:items-start items-center gap-5 bg-ln-white-2 lg:h-[332px] lg:flex-row  px-4 lg:px-16 lg:pt-16'>
         <RealHoursChart />
         <div className='mt-2 space-y-5 w-full'>
           <h5 className='font-customSemiBold text-[28px]/[18px]'>Today’s Report</h5>
@@ -76,7 +76,7 @@ const TodayReport = () => {
         </div>
       </div>
 
-      <div className='lg:ml-[731px] mt-10 lg:mt-0'>
+      <div className='lg:ml-[731px] mt-10 lg:mt-0 px-4'>
         <h5 className='font-customSemiBold text-[28px]/[18px] text-right lg:text-left'>Conversion Rate</h5>
 
         <div className='sm:ml-[53px] mt-[59px] space-y-[26px]'>
@@ -115,13 +115,13 @@ const TodayReport = () => {
       </div>
 
       <div className='mt-[168px] lg:flex items-end justify-center gap-5'>
-        <div className='space-y-8'>
+        <div className='space-y-8 px-4 '>
           <h1 className='w-fit bg-ln-purple-red bg-clip-text font-customBold lg:text-[52px] text-[40px] uppercase leading-none text-transparent'>
             reach
           </h1>
           <TotalViewChart />
         </div>
-        <div className='space-y-8'>
+        <div className='space-y-8 px-4'>
           <h1 className='my-[30px] lg:mb-[60px] font-customBold text-[32px] lg:text-[54px]/[70.2px] leading-none text-blackMain'>
             Customer Journey
           </h1>

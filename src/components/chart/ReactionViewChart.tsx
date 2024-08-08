@@ -16,16 +16,16 @@ const listDataSet = [
 
 const ReactionViewChart = memo(() => {
   const chartTotalOrderRef = useRef<ChartJS<'doughnut'>>(null)
+  const { homeReportCurrent } = useAppSelector((s) => s.report)
   const [custom, setCustom] = useState({
     cutout: '50%',
     size: 20
   })
-  const { homeReportCurrent } = useAppSelector((s) => s.report)
   const handleResize = () => {
     const width = window.innerWidth
     if (width < 480) {
       setCustom({
-        cutout: '100',
+        cutout: '80',
         size: 15
       })
     } else {
@@ -78,8 +78,8 @@ const ReactionViewChart = memo(() => {
   console.log(datasetData)
   return (
     <div className='relative h-[521px] lg:w-[639px] rounded-[32px] bg-ln-white-blue'>
-      <div className='absolute right-[-10px] top-[-10px] flex h-[68px] w-[267px] items-center justify-center rounded-bl-[34px] rounded-tr-[34px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px]'>
-        <p className='bg-ln-blue-purple bg-clip-text font-customSemiBold text-[28px] text-transparent'>
+      <div className='absolute right-[-10px] top-[-10px] flex lg:h-[68px] w-[200px] lg:w-[267px] items-center justify-center rounded-bl-[34px] rounded-tr-[34px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px]'>
+        <p className='bg-ln-blue-purple bg-clip-text font-customSemiBold lg:text-[28px] text-transparent'>
           Reaction viewers
         </p>
       </div>
@@ -96,7 +96,7 @@ const ReactionViewChart = memo(() => {
                   font: { size: 12 },
                   anchor: 'center',
                   align: 'center',
-                  formatter: (value) => (value > 0 ? `${value}%` : ''),
+                  formatter: (value) => (value > 0 ? (value > 5 ? `${value}%` : value) : ''),
                   color: (context) => ['#0D0D0D', '#FFF', '#0D0D0D', '#0D0D0D'][context.dataIndex] || '#FFF'
                 },
                 legend: { display: false },
@@ -136,7 +136,7 @@ const ReactionViewChart = memo(() => {
           />
         </div>
 
-        <div className='absolute left-1/2 top-1/2 z-10 flex size-[256.2px] -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full border-[2.5px] border-dotted border-[#A6A6A6]'>
+        <div className='absolute left-1/2 top-1/2 z-10 flex size-[100px] lg:size-[256.2px] -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full border-[2.5px] border-dotted border-[#A6A6A6]'>
           <div className='flex size-[246.64px] items-center justify-center rounded-full bg-[#F8F8F8]'>
             <div className='flex size-[205.97px] flex-col items-center justify-center gap-1 rounded-full bg-white shadow-s-8'>
               <h3 className='text-[30px]/[45px] font-medium text-[#292D30]'>{maxDataValue}%</h3>

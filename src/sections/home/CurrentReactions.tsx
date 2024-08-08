@@ -47,7 +47,7 @@ const CurrentReactions = memo(() => {
   )
 
   return (
-    <div className='relative pt-[120px]'>
+    <div className='relative pt-[120px] px-4'>
       <img src={images.image.dash_line} alt='dash-line' className='absolute left-[317px] top-0' />
       <img src={images.image.dash_line_2} alt='dash-line-2' className='absolute right-[-29px] top-[385px]' />
 
@@ -122,6 +122,20 @@ const CurrentReactions = memo(() => {
             slidesPerView={1}
             initialSlide={2}
             freeMode={true}
+            breakpoints={{
+              320: {
+                slidesPerView: 1,
+                spaceBetween: 0
+              },
+              768: {
+                slidesPerView: 1,
+                spaceBetween: 0
+              },
+              1024: {
+                slidesPerView: 1,
+                spaceBetween: 0
+              }
+            }}
             creativeEffect={{
               perspective: true,
               limitProgress: 3,

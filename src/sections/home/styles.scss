@@ -4,17 +4,26 @@
       margin-left: 160px;
       align-items: center;
 
+      @media screen and (max-width: 1024px) {
+
+        margin-left: 220px;
+
+      }
+
+      @media screen and (max-width: 768px) {
+
+        margin-left: 100px;
+
+      }
+
       @media screen and (max-width: 480px) {
 
         margin-left: 0;
 
       }
-      
-      @media screen and (max-width: 768px) {
 
-        margin-left: 100px;
-        
-      }
+
+
       .swiper-slide {
         transition: all 0.3s ease-in-out;
         opacity: 0 !important;
@@ -29,6 +38,12 @@
       .swiper-slide-prev,
       .swiper-slide-next {
         opacity: 1 !important;
+
+        @media screen and (max-width: 480px) {
+
+          border-radius: 20px;
+
+        }
 
         .card {
           opacity: 1 !important;

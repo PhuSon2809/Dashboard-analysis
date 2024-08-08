@@ -21,21 +21,24 @@ const ServeTime = memo(({ isSmall }: { isSmall?: boolean }) => {
     <div
       className={classNames(
         isSmall
-          ? 'serve-time flex size-[110px] items-center justify-center rounded-[9.64px] bg-rg-white shadow-s-14 backdrop-blur-2xl'
-          : 'serve-time flex size-[510px] items-center justify-center rounded-[32px] bg-rg-white shadow-s-14 backdrop-blur-2xl'
+          ? 'serve-time flex h-[150px] w-[300px] lg:size-[110px] items-center justify-center rounded-[9.64px] bg-rg-white shadow-s-14 backdrop-blur-2xl'
+          : 'serve-time flex size-[440px] md:size-[510px] items-center justify-center rounded-[32px] bg-rg-white shadow-s-14 backdrop-blur-2xl'
       )}
     >
       <div
         className={classNames(
           isSmall
-            ? 'relative flex size-[90px] items-center justify-center rounded-full bg-white shadow-s-9'
-            : 'relative flex size-[450px] items-center justify-center rounded-full bg-white shadow-s-9'
+            ? 'relative flex size-[130px] lg:size-[90px] items-center justify-center rounded-full bg-white shadow-s-9'
+            : 'relative flex size-[400px] sm:size-[450px] items-center justify-center rounded-full bg-white shadow-s-9'
         )}
       >
         <div role='status'>
           <svg
             aria-hidden='true'
-            className={classNames('animate-spin-slow', isSmall ? 'h-[68px] w-[68px]' : 'h-[350px] w-[500px]')}
+            className={classNames(
+              'animate-spin-slow',
+              isSmall ? 'h-[100px] w-[100px] lg:h-[68px] lg:w-[68px]' : 'h-[350px] w-[500px]'
+            )}
             viewBox='0 0 100 101'
             fill='none'
             xmlns='http://www.w3.org/2000/svg'
@@ -73,7 +76,7 @@ const ServeTime = memo(({ isSmall }: { isSmall?: boolean }) => {
           <p
             className={classNames(
               'bg-ln-serve-time bg-clip-text font-customSemiBold text-transparent',
-              isSmall ? 'text-[6.63px]' : 'text-[30px]'
+              isSmall ? 'text-[10px] lg:text-[6.63px]' : 'text-[30px]'
             )}
           >
             Serve Time

@@ -1,7 +1,7 @@
 import { ArcElement, Chart as ChartJS, Legend, Tooltip, TooltipItem } from 'chart.js'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
 import classNames from 'classnames'
-import { memo, useCallback, useMemo, useRef } from 'react'
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Doughnut } from 'react-chartjs-2'
 import { useAppSelector } from '~/redux/configStore'
 import { formatLocaleString } from '~/utils/format'
@@ -18,7 +18,32 @@ const PaymentReactionChart = memo(({ isSmall }: { isSmall?: boolean }) => {
   const chartTotalOrderRef = useRef<ChartJS<'doughnut'>>(null)
 
   const { homeReportCurrent } = useAppSelector((s) => s.report)
+  const [custom, setCustom] = useState({
+    cutout: '50%',
+    size: 20
+  })
+  const handleResize = () => {
+    const width = window.innerWidth
+    if (width < 480) {
+      setCustom({
+        cutout: '80',
+        size: 8
+      })
+    } else {
+      setCustom({
+        cutout: '130',
+        size: 3.62
+      })
+    }
+  }
 
+  useEffect(() => {
+    window.addEventListener('resize', handleResize)
+    handleResize() // Call once to set initial value
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
   const dataChart = useMemo(() => homeReportCurrent?.paymentReaction, [homeReportCurrent])
 
   const gradients = [
@@ -48,27 +73,29 @@ const PaymentReactionChart = memo(({ isSmall }: { isSmall?: boolean }) => {
   return (
     <div
       className={classNames(
-        isSmall ? 'payment-reaction-chart size-[110px] rounded-[9.64px]' : 'size-[520px] rounded-[32px]',
+        isSmall
+          ? 'payment-reaction-chart h-[150px] w-[300px] lg:size-[110px] rounded-[9.64px]'
+          : 'w-[450px] h-[500px] lg:size-[520px] rounded-[32px]',
         'payment-reaction-chart relative bg-ln-white-blue-2 shadow-s-14'
       )}
     >
       <div
         className={classNames(
           isSmall
-            ? '-left-[7px] -top-[5px] h-[14px] w-[74px] rounded-br-[7.23px] rounded-tl-[7.23px]'
+            ? '-left-[7px] -top-[5px] h-[14px] w-[140px] p-3 lg:p-0 lg:w-[74px] rounded-br-[7.23px] rounded-tl-[7.23px]'
             : '-left-[7.11px] -top-[9.11px] h-[50px] w-[200px] rounded-br-[32px] rounded-tl-[32px]',
           'absolute flex items-center justify-center bg-white/[.44] shadow-s-7 backdrop-blur-[80px]'
         )}
       >
         <p
-          className={`bg-ln-orange-purple bg-clip-text font-bold text-transparent ${classNames(isSmall ? 'text-[6.63px]' : 'text-[18px]')}`}
+          className={`bg-ln-orange-purple bg-clip-text font-bold text-transparent ${classNames(isSmall ? 'text-[10px] lg:text-[6.63px]' : 'text-[18px]')}`}
         >
           Payment Reaction
         </p>
       </div>
 
       <div
-        className={`absolute ${classNames(isSmall ? 'left-1/2 top-[15.64px] size-[80px] -translate-x-1/2 transform' : 'left-1/2 top-[40px] size-[420px] -translate-x-1/2 transform')}`}
+        className={`absolute ${classNames(isSmall ? 'left-1/2 top-[15.64px]  size-[110px] lg:size-[80px] -translate-x-1/2 transform' : 'left-1/2 top-[40px] size-[420px] -translate-x-1/2 transform')}`}
       >
         <div className='h-full w-full'>
           <Doughnut
@@ -78,7 +105,7 @@ const PaymentReactionChart = memo(({ isSmall }: { isSmall?: boolean }) => {
               cutout: isSmall ? 25 : 100,
               plugins: {
                 datalabels: {
-                  font: { size: isSmall ? 3.62 : 18 },
+                  font: { size: isSmall ? custom.size : 18 },
                   anchor: 'center',
                   align: 'center',
                   formatter: (value) => (value > 0 ? `${formatLocaleString(value)}%` : ''),
@@ -129,19 +156,19 @@ const PaymentReactionChart = memo(({ isSmall }: { isSmall?: boolean }) => {
             <div
               className={classNames(
                 'flex items-center justify-center rounded-full bg-[#F8F8F8]',
-                isSmall ? 'size-[100.4px]' : ''
+                isSmall ? 'lg:size-[100.4px] size-[110px]' : ''
               )}
             >
               <div
                 className={classNames(
                   'flex flex-col items-center justify-center gap-1 rounded-full bg-white shadow-s-13',
-                  isSmall ? 'size-[40.99px]' : 'size-[150px]'
+                  isSmall ? 'lg:size-[40.99px] size-[80px]' : 'size-[150px]'
                 )}
               >
                 <h3
                   className={classNames(
                     isSmall
-                      ? 'font-customSemiBold text-[8.44px]/[8.86px] text-[#292D30]'
+                      ? 'font-customSemiBold text-[11px] lg:text-[8.44px]/[8.86px] text-[#292D30]'
                       : 'text-[35px]/[30px] font-bold text-[#292D30]'
                   )}
                 >
@@ -149,7 +176,9 @@ const PaymentReactionChart = memo(({ isSmall }: { isSmall?: boolean }) => {
                 </h3>
                 <p
                   className={classNames(
-                    isSmall ? 'text-[3.62px]/[3.8px] text-[#0D0D0D]' : 'text-[19px]/[13px] text-[#0D0D0D]'
+                    isSmall
+                      ? 'text-[10px] lg:text-[3.62px]/[3.8px] text-[#0D0D0D]'
+                      : 'text-[19px]/[13px] text-[#0D0D0D]'
                   )}
                 >
                   reaction
@@ -170,7 +199,7 @@ const PaymentReactionChart = memo(({ isSmall }: { isSmall?: boolean }) => {
           <div key={data.value} className={classNames('flex items-center', isSmall ? 'gap-[2px]' : 'gap-[10px]')}>
             <div
               className={classNames(
-                `${isSmall ? 'h-[4.82px] w-[1px] rounded-[1.05px]' : 'h-[20px] w-[5px] rounded-[2px]'}`,
+                `${isSmall ? 'lg:h-[4.82px] lg:w-[1px] size-[10px] rounded-[1.05px]' : 'h-[20px] w-[5px] rounded-[2px]'}`,
                 (() => {
                   if (data.value === 'satisfied') {
                     return 'bg-[#0D0D0D]'
@@ -185,7 +214,7 @@ const PaymentReactionChart = memo(({ isSmall }: { isSmall?: boolean }) => {
             <p
               className={classNames(
                 isSmall
-                  ? 'font-customRegular text-[4.82px]/[4.82px] capitalize'
+                  ? 'font-customRegular text-[10px] lg:text-[4.82px]/[4.82px] capitalize'
                   : 'font-customRegular text-[18px]/[18px] capitalize'
               )}
             >

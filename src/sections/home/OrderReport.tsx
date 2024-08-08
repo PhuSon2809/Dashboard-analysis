@@ -91,7 +91,7 @@ const OrderReport = memo(() => {
           orders
         </h3>
 
-        <div className='swiper-preview lg:absolute mt-10 flex  flex-wrap lg:flex-row w-full lg:items-center items-end justify-end gap-[17.6px] '>
+        <div className='swiper-preview lg:absolute mt-10 flex  flex-wrap lg:flex-row w-full items-center justify-center  lg:justify-end gap-[17.6px] '>
           {previewCharts.map((chart, index) => (
             <div key={index} className='swiper-preview-items'>
               {chart.component}

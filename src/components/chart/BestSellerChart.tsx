@@ -1,7 +1,7 @@
 import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Tooltip } from 'chart.js'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
 import classNames from 'classnames'
-import { memo, useMemo } from 'react'
+import { memo, useEffect, useMemo, useState } from 'react'
 import { Bar } from 'react-chartjs-2'
 import { useAppSelector } from '~/redux/configStore'
 import { formatLocaleString } from '~/utils/format'
@@ -20,7 +20,32 @@ const listFood = [
 
 const BestSellerChart = memo(({ isSmall }: { isSmall?: boolean }) => {
   const { homeReportCurrent } = useAppSelector((s) => s.report)
+  const [custom, setCustom] = useState({
+    cutout: '50%',
+    size: 20
+  })
+  const handleResize = () => {
+    const width = window.innerWidth
+    if (width < 780) {
+      setCustom({
+        cutout: '80',
+        size: 8
+      })
+    } else {
+      setCustom({
+        cutout: '130',
+        size: 4.5
+      })
+    }
+  }
 
+  useEffect(() => {
+    window.addEventListener('resize', handleResize)
+    handleResize() // Call once to set initial value
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
   const dataChart = useMemo(() => homeReportCurrent?.ORDERS?.['Best Seller'], [homeReportCurrent])
 
   const datasetData = Array.from({ length: 7 }).map((_, index) => dataChart?.[`${index + 1}`])
@@ -29,26 +54,28 @@ const BestSellerChart = memo(({ isSmall }: { isSmall?: boolean }) => {
     <div
       className={classNames(
         'best-seller-chart relative bg-ln-yellow shadow-s-12',
-        isSmall ? 'size-[110px] rounded-lg' : 'size-[520px] rounded-[32px]'
+        isSmall ? 'h-[150px] w-[300px] lg:size-[110px] rounded-lg' : 'size-[460px] sm:size-[520px] rounded-[32px]'
       )}
     >
       <div
         className={classNames(
-          'absolute flex items-center justify-center rounded-br-[34px] rounded-tl-[34px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px]',
-          isSmall ? 'top-[-10px] h-[20px] w-[50px]' : 'bottom-[2%] left-[-30px] h-[54px] w-[191px]'
+          'absolute flex items-center justify-center bg-white/[.44] shadow-s-7 backdrop-blur-[80px]',
+          isSmall
+            ? 'top-[-10px] h-[20px] rounded-tl-[30px]  rounded-br-[30px] w-[100px] lg:w-[50px]'
+            : 'lg:bottom-[2%] bottom-0 left-0 lg:left-[-30px] h-[54px] w-[191px] rounded-tr-[34px] rounded-bl-[34px] '
         )}
       >
         <p
           className={classNames(
             'bg-ln-blue-green-2 bg-clip-text font-customSemiBold capitalize text-transparent',
-            isSmall ? 'text-[6px]' : 'text-[28px]'
+            isSmall ? 'text-[10px] lg:text-[6px]' : 'text-[28px]'
           )}
         >
           Best Seller
         </p>
       </div>
 
-      <div className={classNames('w-full px-2', isSmall ? 'h-[100px]' : 'h-[420px] px-8 pt-5')}>
+      <div className={classNames('w-full px-2', isSmall ? 'h-[150px] pt-4 lg:h-[100px]' : 'h-[420px] px-8 pt-5')}>
         <div className='h-full w-full'>
           <Bar
             options={{
@@ -57,10 +84,10 @@ const BestSellerChart = memo(({ isSmall }: { isSmall?: boolean }) => {
               maintainAspectRatio: false,
               plugins: {
                 datalabels: {
-                  font: { size: isSmall ? 5 : 16 },
+                  font: { size: isSmall ? custom.size : 16 },
                   color: '#000',
-                  anchor: 'end',
-                  align: 'start',
+                  anchor: 'center',
+                  align: 'center',
                   formatter: (value) => formatLocaleString(value)
                 },
                 legend: { display: false },
@@ -78,7 +105,7 @@ const BestSellerChart = memo(({ isSmall }: { isSmall?: boolean }) => {
                   display: true,
                   grid: { display: false },
                   border: { display: false },
-                  ticks: { display: true, color: 'rgb(13, 13, 13)', font: { size: isSmall ? 5 : 16 } }
+                  ticks: { display: true, color: 'rgb(13, 13, 13)', font: { size: isSmall ? custom.size : 16 } }
                 }
               }
             }}
@@ -104,7 +131,7 @@ const BestSellerChart = memo(({ isSmall }: { isSmall?: boolean }) => {
                     gradient.addColorStop(0, '#53D750')
                     return gradient
                   },
-                  barThickness: 28
+                  barThickness: isSmall ? 15 : 28
                 }
               ]
             }}

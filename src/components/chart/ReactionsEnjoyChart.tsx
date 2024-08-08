@@ -1,7 +1,7 @@
 import { ArcElement, Chart as ChartJS, Legend, Tooltip, TooltipItem } from 'chart.js'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
 import classNames from 'classnames'
-import { memo, useCallback, useMemo } from 'react'
+import { memo, useCallback, useEffect, useMemo, useState } from 'react'
 import { Doughnut } from 'react-chartjs-2'
 import { useAppSelector } from '~/redux/configStore'
 
@@ -16,7 +16,31 @@ const ReactionsEnjoyChart = memo(({ isSmall }: { isSmall?: boolean }) => {
   const { homeReportCurrent } = useAppSelector((s) => s.report)
 
   const dataChart = useMemo(() => homeReportCurrent?.ORDERS?.['Reaction Enjoy Meal'], [homeReportCurrent])
-
+  const [custom, setCustom] = useState({
+    cutout: '50%',
+    size: 20
+  })
+  const handleResize = () => {
+    const width = window.innerWidth
+    if (width < 480) {
+      setCustom({
+        cutout: '80',
+        size: 8
+      })
+    } else {
+      setCustom({
+        cutout: '130',
+        size: 4.5
+      })
+    }
+  }
+  useEffect(() => {
+    window.addEventListener('resize', handleResize)
+    handleResize() // Call once to set initial value
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
   const datasetData = [dataChart?.['1'], dataChart?.['2']]
 
   const gradients = [
@@ -41,19 +65,23 @@ const ReactionsEnjoyChart = memo(({ isSmall }: { isSmall?: boolean }) => {
   return (
     <div
       className={`enjoy-chart relative bg-ln-pink shadow-s-10 ${classNames(
-        isSmall ? 'h-[110px] w-[110px] rounded-[10px]' : 'min-h-[535px]  min-w-[535px] rounded-[32px] rounded-tr-[80px]'
+        isSmall
+          ? 'h-[150px] w-[300px] lg:size-[110px] rounded-[10px]'
+          : 'min-w-[450px] min-h-[535px]  lg:min-w-[535px] rounded-[32px] rounded-tr-[80px]'
       )}`}
     >
       <div
         className={classNames(
-          'absolute -left-[6px] -top-[6px] flex items-center justify-center rounded-br-[7px] rounded-tl-[7px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px]',
-          isSmall ? 'p-1' : 'h-[64px] w-[400px]'
+          'absolute lg:-left-[6px]  flex items-center justify-center rounded-tl-[20px] rounded-br-[20px]  bg-white/[.44] shadow-s-7 backdrop-blur-[80px]',
+          isSmall
+            ? 'p-1 left-0 -top-[15px]'
+            : 'h-[64px] w-[400px] rounded-br-[32px] rounded-tl-[32px]  left-3 -top-[6px]'
         )}
       >
         <p
           className={classNames(
-            'bg-ln-red-green bg-clip-text font-customSemiBold capitalize text-transparent',
-            isSmall ? 'text-[4px]' : 'text-[28px]'
+            'bg-ln-red-green bg-clip-text font-customSemiBold capitalize text-transparent p-1',
+            isSmall ? 'text-[10px] lg:text-[4px]' : 'text-[28px]'
           )}
         >
           Reactions enjoy meal
@@ -61,7 +89,7 @@ const ReactionsEnjoyChart = memo(({ isSmall }: { isSmall?: boolean }) => {
       </div>
 
       <div
-        className={`absolute ${classNames(isSmall ? 'left-1/2 top-[6px] size-[90px] -translate-x-1/2 transform rounded-full bg-white p-[1px] shadow-s-15' : 'left-1/2 top-[80px] size-[380px] -translate-x-1/2 transform rounded-full bg-white p-[10px] shadow-s-15')}`}
+        className={`absolute ${classNames(isSmall ? 'left-1/2 top-[15px] lg:top-[6px] size-[120px] lg:size-[90px] -translate-x-1/2 transform rounded-full bg-white p-[1px] shadow-s-15' : 'left-1/2 top-[80px] size-[380px] -translate-x-1/2 transform rounded-full bg-white p-[10px] shadow-s-15')}`}
       >
         <div className='relative h-full w-full rounded-full bg-white'>
           <Doughnut
@@ -71,7 +99,7 @@ const ReactionsEnjoyChart = memo(({ isSmall }: { isSmall?: boolean }) => {
               plugins: {
                 legend: { display: false },
                 datalabels: {
-                  font: { size: isSmall ? 5 : 20 },
+                  font: { size: isSmall ? custom.size : 20 },
                   color: '#FFF',
                   align: 'center',
                   anchor: 'center',
@@ -155,7 +183,9 @@ const ReactionsEnjoyChart = memo(({ isSmall }: { isSmall?: boolean }) => {
                     : 'bg-ln-blue-2'
               )}
             />
-            <p className={classNames(isSmall ? 'text-[5px]/[5px]' : 'text-[18px]/[18.9px]')}>{data.label}</p>
+            <p className={classNames(isSmall ? 'text-[10px] lg:text-[5px]/[5px]' : 'text-[18px]/[18.9px]')}>
+              {data.label}
+            </p>
           </div>
         ))}
       </div>

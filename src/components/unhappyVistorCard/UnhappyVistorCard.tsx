@@ -10,7 +10,7 @@ const UnhappyVistorCard = memo(() => {
   const isIncrease = Math.random() >= 0.5
 
   return (
-    <div className='w-[355px] h-[235px] rounded-[32px] bg-white/[.44] backdrop-blur-2xl relative shadow-s-1 overflow-hidden'>
+    <div className='w-full lg:w-[355px] h-[235px] rounded-[32px] bg-white/[.44] backdrop-blur-2xl relative lg:shadow-s-1 overflow-hidden'>
       <div className='w-fit flex flex-col items-center gap-1 mt-[52px] ml-[158px]'>
         <p className='text-[18px]/[28px] font-normal text-grey999/[.64]'>Unhappy vistors</p>
         <div className='flex items-center gap-[9px]'>

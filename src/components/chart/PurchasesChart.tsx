@@ -48,21 +48,23 @@ const PurchasesChart = memo(({ isSmall }: { isSmall?: boolean }) => {
     <div
       className={classNames(
         'purchases-chart relative bg-ln-orange-3 shadow-s-11',
-        isSmall ? 'h-[120px] w-[130px] rounded-[10px]' : 'size-[520px] rounded-[32px]'
+        isSmall
+          ? 'h-[150px] w-[300px] lg:h-[120px] lg:w-[130px] rounded-[10px]'
+          : 'size-[470px] sm:size-[520px] rounded-[32px]'
       )}
     >
       <div
         className={classNames(
           'absolute flex items-center justify-center bg-white/[.44] shadow-s-7 backdrop-blur-[80px]',
           isSmall
-            ? 'left-[-10px] top-[-10px] h-[20px] w-[80px] rounded-bl-[10px] rounded-tr-[10px]'
+            ? 'left-[-10px] top-[-10px] w-[100px] h-[30px] lg:h-[20px] lg:w-[80px] rounded-bl-[10px] rounded-tr-[10px]'
             : '-bottom-[30px] -left-[6px] h-[64px] w-[228px] rounded-bl-[34px] rounded-tr-[34px]'
         )}
       >
         <p
           className={classNames(
             'bg-ln-green-orange bg-clip-text font-customSemiBold capitalize text-transparent',
-            isSmall ? 'text-[5px]' : 'text-[28px]'
+            isSmall ? 'text-[10px] lg:text-[5px]' : 'text-[28px]'
           )}
         >
           Purchases
@@ -72,7 +74,7 @@ const PurchasesChart = memo(({ isSmall }: { isSmall?: boolean }) => {
       <div
         className={classNames(
           'absolute left-1/2 w-full -translate-x-1/2 transform',
-          isSmall ? 'top-3 h-[90px]' : 'top-10 h-[400px]'
+          isSmall ? 'lg:top-3 top-4 size-[130px] lg:h-[90px]' : 'top-10  h-[400px]'
         )}
       >
         <div className='h-full w-full'>
@@ -133,18 +135,22 @@ const PurchasesChart = memo(({ isSmall }: { isSmall?: boolean }) => {
       <div
         className={classNames(
           'absolute flex w-full items-center justify-between',
-          isSmall ? 'bottom-[10px]' : 'bottom-[60px] px-10'
+          isSmall ? 'bottom-[10px] px-2 lg:px-0' : 'bottom-[60px] gap-2 px-10'
         )}
       >
         {listDataSet.map((data, i) => (
           <div key={`${data.value}-${i}`} className='flex items-center gap-[6px]'>
             <div
               className={classNames(
-                `${isSmall ? 'size-[5px]' : 'size-[18px] rounded-md'}`,
+                `${isSmall ? 'size-[5px]' : 'size-[10px] md:size-[18px] rounded-md'}`,
                 data.value === '2-4' ? 'bg-ln-orange-2' : data.value === '5' ? 'bg-ln-orange' : 'bg-ln-blue-2'
               )}
             />
-            <p className={classNames(isSmall ? 'text-nowrap text-[5px]/[5px]' : 'text-nowrap text-[18px]/[18.9px]')}>
+            <p
+              className={classNames(
+                isSmall ? 'text-nowrap text-[10px] lg:text-[5px]/[5px]' : 'text-nowrap text-[18px]/[18.9px]'
+              )}
+            >
               {data.label} Purchases
             </p>
           </div>

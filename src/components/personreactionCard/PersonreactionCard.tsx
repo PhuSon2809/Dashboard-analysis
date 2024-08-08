@@ -16,7 +16,7 @@ const PersonreactionCard = memo(({ person, isActive }: PersonreactionCardProps) 
     <div
       className={classNames(
         isActive ? 'bg-ln-blue-green' : 'bg-grey100',
-        'flex h-[533px] w-[345px] flex-col items-center justify-center rounded-2xl transition duration-300 ease-in-out'
+        'flex h-[533px] xs-min:w-[345px] flex-col items-center justify-center rounded-2xl transition duration-300 ease-in-out'
       )}
     >
       <img

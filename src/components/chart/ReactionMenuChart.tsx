@@ -41,7 +41,13 @@ const ReactionMenuChart = memo(() => {
   )
   const handleResize = () => {
     const width = window.innerWidth
-    if (width < 1024) {
+
+    if (width < 480) {
+      setCustom({
+        cutout: '70',
+        size: 10
+      })
+    } else if (width < 1024) {
       setCustom({
         cutout: '70',
         size: 15
@@ -71,13 +77,13 @@ const ReactionMenuChart = memo(() => {
 
   return (
     <div className='lg:min-w-[666px] mt-20 xs-min:mt-[7rem] lg:mt-0 lg:min-h-[666px] min-w-[300px] min-h-[400px] sm:min-h-[500px] bg-ln-blue-pink-2 rounded-[32px] rounded-tr-[80px] shadow-s-10 relative'>
-      <div className='lg:w-[267px] w-[200px] lg:h-[68px] h-[40px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tl-[34px] rounded-br-[34px] shadow-s-7 absolute -top-2 -left-2'>
+      <div className='lg:w-[267px] w-[150px] lg:h-[68px] h-[40px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tl-[34px] rounded-br-[34px] shadow-s-7 absolute -top-2 -left-2'>
         <p className='lg:text-[28px] font-customSemiBold text-transparent bg-clip-text bg-ln-blue-purple'>
           Reaction’s Menu
         </p>
       </div>
 
-      <div className='lg:size-[480px] w-full h-[200px] absolute top-[70px] left-1/2 transform -translate-x-1/2'>
+      <div className='lg:size-[480px] w-full h-[200px] absolute top-[75px] left-1/2 transform -translate-x-1/2'>
         <Doughnut
           className='relative z-50 left-1/2 lg:-translate-x-0 -translate-x-1/2 sm:left-[50%] lg:left-0 lg:top-0 top-[50%] -translate-y-1/2 lg:-translate-y-0 size-[290px!important] lg:size-[100%!important] '
           options={{
@@ -87,7 +93,7 @@ const ReactionMenuChart = memo(() => {
                 font: { size: custom.size },
                 anchor: 'center',
                 align: 'center',
-                formatter: (value) => (value > 0 ? `${value}%` : ''),
+                formatter: (value) => (value > 0 ? (value > 1 ? `${value}%` : value) : ''),
                 color: (context) => ['#0D0D0D', '#FFF', '#FFF'][context.dataIndex] || '#FFF'
               },
               legend: { display: false },

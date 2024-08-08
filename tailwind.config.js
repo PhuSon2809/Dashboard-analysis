@@ -117,6 +117,7 @@ export default {
     },
     screens: {
       'xs-min': '480px',
+      's-max': { max: '480px' },
       xs: { max: '640px' },
       sm: '640px',
       md: '768px',
