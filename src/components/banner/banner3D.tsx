@@ -57,7 +57,7 @@ const Banner3D = () => {
         setRotation(scrollY * -0.05)
       } else {
         setOpacity(0)
-        setRotation(40) // Continue to tilt after fade out
+        // setRotation(40) // Continue to tilt after fade out
       }
     }
 
