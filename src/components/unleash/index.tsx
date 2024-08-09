@@ -43,7 +43,7 @@ const Unleash = () => {
     const handleScroll = () => {
       const scrollY = window.scrollY
       if (!isMobileOrTablet && scrollY > 1700 && scrollY < 2400) {
-        setRotationY(scrollY * -0.0001886)
+        setRotationY(scrollY * -0.0006886)
       }
     }
 
@@ -99,7 +99,7 @@ const Unleash = () => {
         <Canvas
           shadows
           camera={{
-            position: isMobileOrTablet ? [0, 0, 6] : [0, 0, 8]
+            position: isMobileOrTablet ? [0, 0, 6] : [-8, 0, 8]
             // fov: 35,
             // near: 1,
             // far: 30
@@ -110,8 +110,8 @@ const Unleash = () => {
           <MyModel
             model={{ name: 'IHVtsHAQU7cF91LAuAlKN5.glb' }}
             rotationY={rotationY}
-            scale={isMobileOrTablet ? [0.6, 0.6, 0.6] : [1, 1, 1]}
-            position={isMobileOrTablet ? [0, -1, 0] : [0, -3, 0]}
+            scale={isMobileOrTablet ? [0.6, 0.6, 0.6] : [1.2, 1.2, 1.2]}
+            position={isMobileOrTablet ? [0, -1, 0] : [0, -4, 0]}
           />
         </Canvas>
       </div>
