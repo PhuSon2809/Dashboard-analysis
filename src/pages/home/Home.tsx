@@ -11,9 +11,7 @@ interface IHomePageProps {}
 const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
   return (
     <div className='h-auto bg-[#F4F7F9]'>
-      <div>
         <Banner3D />
-      </div>
       <div className='accurate-count' data-aos='fade-up'>
         <div className='container-wrapper accurate-container flex flex-col gap-10'>
           <h1 className='title-wrap mt-[100px] text-center font-bold md:text-[64px]'>Accurate Count And Analyze</h1>

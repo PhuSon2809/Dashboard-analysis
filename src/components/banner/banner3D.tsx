@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import * as THREE from 'three'
 import { ButtonPrimary } from '../button'
 import bannerImage from '~/assets/bg/banner.png'
+import classNames from 'classnames'
 
 interface ModelProps {
   model: { name: string }
@@ -89,7 +90,7 @@ const Banner3D = () => {
 
   return (
     <div
-      className='carousel relative'
+      className='carousel relative w-full h-screen'
       style={{
         backgroundImage: 'url(/bg.png)',
         backgroundSize: 'cover',
@@ -99,7 +100,7 @@ const Banner3D = () => {
         transition: 'opacity 0.5s'
       }}
     >
-      <div className='absolute left-0 top-0 z-50'>
+      <div className='w-full h-full flex items-center justify-center flex-col'>
         <div
           className='mt-[120px] flex flex-col items-center gap-7 px-5 md:mt-[200px] md:gap-14'
           style={{
@@ -119,16 +120,18 @@ const Banner3D = () => {
             </Link>
           </ButtonPrimary>
         </div>
-        <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', position: 'relative', zIndex: '2' }}>
+        {/* <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', position: 'relative', zIndex: '2' }}> */}
+        <div className={classNames("relative", !isMobile && "w-screen h-screen overflow-hidden z-[2]")}>
           {isMobile ? (
-            <div className='mx-auto mt-4 h-[65vh] w-[100%]'>
+            <div className='mt-4 w-full'>
               <img
                 src={bannerImage}
                 alt='Banner'
-                style={{
-                  width: '100%',
-                  height: '100%'
-                }}
+                // style={{
+                  // width: '100%',
+                  // height: '100%'
+                // }}
+                className='w-full h-auto'
               />
             </div>
           ) : (
