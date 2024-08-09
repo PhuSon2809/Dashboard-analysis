@@ -24,7 +24,7 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
         </div>
       </div>
       <Unleash />
-      <div data-aos='fade-up' className='mt-[250] md:mt-0'>
+      <div data-aos='fade-up' className='mt-[180px] md:mt-0'>
         <div className='container-wrapper flex flex-col gap-10'>
           <AutoplayVideo
             source='https://img.m.pro/fiai-banner-3d.mp4'
@@ -32,7 +32,7 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
           />
         </div>
       </div>
-      <div className='mx-auto min-h-screen w-full max-w-[1440px] bg-instore xs:bg-[length:640px_100%] sm:bg-cover'>
+      <div className='mx-auto min-h-screen w-full max-w-[1440px] overflow-hidden bg-instore xs:bg-[length:640px_100%] sm:bg-cover mt-[20px]'>
         <InStore />
       </div>
       <CustomerReaction />

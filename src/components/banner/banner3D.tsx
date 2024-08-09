@@ -90,20 +90,14 @@ const Banner3D = () => {
   return (
     <div
       className='carousel relative'
-      style={
-        isMobile
-          ? {
-              background: 'white'
-            }
-          : {
-              backgroundImage: 'url(/bg.png)',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-              opacity: bgOpacity,
-              transition: 'opacity 0.5s'
-            }
-      }
+      style={{
+        backgroundImage: 'url(/bg.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        opacity: bgOpacity,
+        transition: 'opacity 0.5s'
+      }}
     >
       <div className='absolute left-0 top-0 z-50'>
         <div

@@ -42,8 +42,8 @@ const Unleash = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY
-      if (!isMobileOrTablet && scrollY > 1800 && scrollY < 2800) {
-        setRotationY(scrollY * -0.01)
+      if (!isMobileOrTablet && scrollY > 1700 && scrollY < 2400) {
+        setRotationY(scrollY * -0.0001886)
       }
     }
 
@@ -68,7 +68,7 @@ const Unleash = () => {
   }, [])
 
   return (
-    <div className='unleash-the-power container-wrapper relative flex h-screen flex-col items-center gap-[24px] py-[150px] lg:flex-row'>
+    <div className='unleash-the-power container-wrapper relative flex h-screen flex-col items-center gap-[24px] py-[80px] md:py-[100px] lg:flex-row'>
       <div className='absolute z-[1000] flex w-[100%] flex-col'>
         <h2 className='title-wrap font-bold md:text-[40px] lg:text-[56px]'>Unleash the power</h2>
         <h1 className='text-[50px] font-bold md:text-[56px] lg:pl-[18%] lg:text-[104px]'>
@@ -77,7 +77,7 @@ const Unleash = () => {
         <h2 className='title-wrap font-bold md:text-[40px] lg:pl-[30%] lg:text-[56px] lg:font-medium'>
           Comme<span className='lg:text-white'>rce</span>{' '}
         </h2>
-        <div className='flex max-w-[500px] flex-col items-end'>
+        <div className='flex max-w-[500px] flex-col items-start md:items-end'>
           <span>
             We offer AI assistant solutions that free store owners from daily tasks, saving time, costs, and manpower.
             Simplify your operations and enhance efficiency effortlessly.
@@ -89,7 +89,7 @@ const Unleash = () => {
         </div>
       </div>
       <div
-        className='bg-unpleash relative top-[300px] ml-auto h-full w-[100%] md:top-[300px] lg:top-[120px] lg:w-[60%]'
+        className='bg-unpleash relative top-[400px] ml-auto h-full w-[100%] md:top-[300px] lg:top-[120px] lg:w-[60%]'
         style={{
           backgroundSize: 'contain',
           backgroundPosition: 'center',
@@ -110,8 +110,8 @@ const Unleash = () => {
           <MyModel
             model={{ name: 'IHVtsHAQU7cF91LAuAlKN5.glb' }}
             rotationY={rotationY}
-            scale={isMobileOrTablet ? [0.6, 0.6, 0.6] : [1.2, 1.2, 1.2]}
-            position={isMobileOrTablet ? [0, -1, 0] : [0, -4, 0]}
+            scale={isMobileOrTablet ? [0.6, 0.6, 0.6] : [1, 1, 1]}
+            position={isMobileOrTablet ? [0, -1, 0] : [0, -3, 0]}
           />
         </Canvas>
       </div>
