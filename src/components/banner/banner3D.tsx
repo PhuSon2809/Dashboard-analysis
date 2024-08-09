@@ -121,7 +121,7 @@ const Banner3D = () => {
         </div>
         <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', position: 'relative', zIndex: '2' }}>
           {isMobile ? (
-            <div className='mx-auto mt-4 h-[auto] w-[100%]'>
+            <div className='mx-auto mt-4 h-[65vh] w-[100%]'>
               <img
                 src={bannerImage}
                 alt='Banner'
