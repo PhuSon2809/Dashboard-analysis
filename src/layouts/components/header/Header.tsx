@@ -2,12 +2,9 @@ import { memo, useEffect, useState } from 'react'
 import { FaBars } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
 import images from '~/assets'
-import menuBar from '~/common/menubar'
 import { ButtonPrimary } from '~/components/button'
 import {
-  ListItem,
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
@@ -47,7 +44,7 @@ const Header: React.FunctionComponent<HeaderProps> = memo(() => {
               <NavigationMenuList>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
-                  <NavigationMenuContent>
+                  {/* <NavigationMenuContent>
                     <ul className='grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]'>
                       <li className='row-span-3'>
                         <NavigationMenuLink asChild>
@@ -74,11 +71,11 @@ const Header: React.FunctionComponent<HeaderProps> = memo(() => {
                         Styles for headings, paragraphs, lists...etc
                       </ListItem>
                     </ul>
-                  </NavigationMenuContent>
+                  </NavigationMenuContent> */}
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger>Components</NavigationMenuTrigger>
-                  <NavigationMenuContent>
+                  {/* <NavigationMenuContent>
                     <ul className='grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]'>
                       {menuBar.map((component) => (
                         <ListItem key={component.title} title={component.title} href={component.href}>
@@ -86,7 +83,7 @@ const Header: React.FunctionComponent<HeaderProps> = memo(() => {
                         </ListItem>
                       ))}
                     </ul>
-                  </NavigationMenuContent>
+                  </NavigationMenuContent> */}
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <Link to='/docs'>

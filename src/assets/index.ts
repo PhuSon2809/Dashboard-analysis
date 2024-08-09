@@ -26,6 +26,15 @@ import planet_1 from '~/assets/images/planet-1.png'
 import planet_2 from '~/assets/images/planet-2.png'
 import planet_3 from '~/assets/images/planet-3.png'
 import planet_4 from '~/assets/images/planet-4.png'
+import user1 from '~/assets/images/use1.jpg'
+import user2 from '~/assets/images/use2.jpg'
+import user3 from '~/assets/images/use3.jpg'
+import user4 from '~/assets/images/use4.png'
+import user5 from '~/assets/images/use5.png'
+import user6 from '~/assets/images/use6.png'
+import user7 from '~/assets/images/use7.png'
+import user8 from '~/assets/images/use8.png'
+import user9 from '~/assets/images/use9.png'
 import customerReact from '~/assets/images/customerReact.png'
 
 import bg_vistor_card from '~/assets/bg/bg-vistor-card.png'
@@ -56,7 +65,17 @@ const images = {
     planet_2,
     planet_3,
     planet_4,
-    customerReact
+    customerReact,
+    user1,
+    user2,
+    user3,
+    user4,
+    user5,
+    user6,
+    user7,
+    user8,
+    user9,
+    bg_vistor_card
   },
   bg: { bg_vistor_card },
   icon: { happy_green, unhappy_pink, unhappy_vistor, learning, plugplay, compliance, icon_instagram, icon_facebook, icon_social }

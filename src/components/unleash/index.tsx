@@ -1,8 +1,8 @@
 import { useAnimations, useGLTF } from '@react-three/drei'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useEffect, useRef, useState } from 'react'
+import { GoArrowRight } from 'react-icons/go'
 import * as THREE from 'three'
-import unpleash from '~/assets/images/unpleash.svg'
 
 interface ModelProps {
   model: { name: string }
@@ -70,16 +70,27 @@ const Unleash = () => {
   return (
     <div className='unleash-the-power container-wrapper relative flex h-screen flex-col items-center gap-[24px] py-[150px] lg:flex-row'>
       <div className='absolute z-[1000] flex w-[100%] flex-col'>
-        <h2 className='title-wrap font-bold md:text-[40px] lg:text-[56px] lg:font-medium'>Unleash the power</h2>
+        <h2 className='title-wrap font-bold md:text-[40px] lg:text-[56px]'>Unleash the power</h2>
         <h1 className='text-[50px] font-bold md:text-[56px] lg:pl-[18%] lg:text-[104px]'>
           Of Offli<span className='lg:text-white'>ne</span>{' '}
         </h1>
-        <h2 className='title-wrap font-bold md:text-[40px] lg:pl-[30%] lg:text-[56px] lg:font-medium'>Comme<span className='lg:text-white'>rce</span> </h2>
+        <h2 className='title-wrap font-bold md:text-[40px] lg:pl-[30%] lg:text-[56px] lg:font-medium'>
+          Comme<span className='lg:text-white'>rce</span>{' '}
+        </h2>
+        <div className='flex max-w-[500px] flex-col items-end'>
+          <span>
+            We offer AI assistant solutions that free store owners from daily tasks, saving time, costs, and manpower.
+            Simplify your operations and enhance efficiency effortlessly.
+          </span>
+          <button className='btn-gradien-astronaut mt-8'>
+            Get started
+            <GoArrowRight />
+          </button>
+        </div>
       </div>
       <div
-        className='relative top-[160px] ml-auto h-full w-[100%] md:top-[300px] lg:top-[120px] lg:w-[60%]'
+        className='bg-unpleash relative top-[300px] ml-auto h-full w-[100%] md:top-[300px] lg:top-[120px] lg:w-[60%]'
         style={{
-          backgroundImage: `url(${unpleash})`,
           backgroundSize: 'contain',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'

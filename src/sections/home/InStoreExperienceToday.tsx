@@ -38,7 +38,8 @@ const InStoreExperienceToday = () => {
           <div ref={loadingRef} className='aspect-square w-full sm:size-[400px]' key={status} />
           <div>
             <h2 className='text-[30px] font-bold md:text-[64px]'>
-              Create a more intelligent <br /> in-store experience today!
+              {/* Create a more intelligent <br /> in-store experience today! */}
+              Liberate yourself <br /> and all store owners now!
             </h2>
           </div>
           <button className='btn-gradien-astronaut mt-8'>

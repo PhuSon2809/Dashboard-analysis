@@ -1,9 +1,8 @@
 import classNames from 'classnames'
 import React, { useMemo } from 'react'
 import { IoMdQuote } from 'react-icons/io'
+import images from '~/assets'
 
-const imgLink =
-  'https://s3-alpha-sig.figma.com/img/7166/a9a8/38a5bc68b173caf93c5210e403b39a48?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Bv1P8rJ~ujrqEO1mDl3Qy6lJM2A2OZVkepA0xzEBQYsTvfhrjxNUjjiqr966bJR-WkLj3zhsAp~rlsZKExsTQSgHeXsSSEj2F094KS1wRYzqz8I5Iex2ZV3T3OTkhy9LmsEpjqfna0PNFCnMyKXyexIvv7nu6XaswovoOl3b4wSoDckvgifVXKtqZi-tBQ7i9hrXolL5GaAGrT4UzNi0kkBq480HgSfE2AdCZw6-Jo2-6javDbKnG5X2DRK4v3GA4V9aBhCj6SYh8TocxdQnkt8wPDn12g40O-~QvyhUlWOTLotY7RRh89TsNRMgWWP0wz0PonbAeaxLjGC5NmFLIg__'
 interface IItemBannerCustomerReaction {
   img: string
   content: string
@@ -55,7 +54,7 @@ const ListBannerCustomerReaction = () => {
   const reactionData = useMemo(
     () => [
       {
-        img: imgLink,
+        img: images.image.user1,
         content:
           'Wow, this AI solution could revolutionize how we understand our in-store customers. I’m definitely interested.',
         className: '',
@@ -63,7 +62,7 @@ const ListBannerCustomerReaction = () => {
         classWrapContent: 'bg-[#C6DDDEA3] pr-8'
       },
       {
-        img: imgLink,
+        img: images.image.user2,
         content:
           'This technology is really impressive. Using AI to improve our understanding of in-store customers will help us serve them better.',
         className: 'bg-[#9FB9C2A3] rounded-[18px] rounded-br-[48px] flex-row-reverse !items-end',
@@ -71,7 +70,7 @@ const ListBannerCustomerReaction = () => {
         classWrapContent: ''
       },
       {
-        img: imgLink,
+        img: images.image.user3,
         content:
           'This is truly a major leap forward. An AI tool that provides better customer understanding would be a significant competitive advantage.',
         className: '',

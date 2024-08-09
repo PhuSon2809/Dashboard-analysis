@@ -90,15 +90,20 @@ const Banner3D = () => {
   return (
     <div
       className='carousel relative'
-      style={{
-        background: isMobile ? 'white' : 'none',
-        backgroundImage: isMobile ? 'none' : 'url(/bg.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        opacity: bgOpacity,
-        transition: 'opacity 0.5s'
-      }}
+      style={
+        isMobile
+          ? {
+              background: 'white'
+            }
+          : {
+              backgroundImage: 'url(/bg.png)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              opacity: bgOpacity,
+              transition: 'opacity 0.5s'
+            }
+      }
     >
       <div className='absolute left-0 top-0 z-50'>
         <div
@@ -111,7 +116,7 @@ const Banner3D = () => {
             position: 'relative'
           }}
         >
-          <h1 className='title-wrap max-w-[800px] text-center font-semibold capitalize md:text-[52px]'>
+          <h1 className='title-wrap max-w-[800px] text-center font-bold capitalize md:text-[52px]'>
             With AI, understand customers in-store with ease
           </h1>
           <ButtonPrimary className='z-[99999]'>

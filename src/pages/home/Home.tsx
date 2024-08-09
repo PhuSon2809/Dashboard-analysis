@@ -15,10 +15,8 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
         <Banner3D />
       </div>
       <div className='accurate-count' data-aos='fade-up'>
-        <div className='container-wrapper flex flex-col gap-10 accurate-container'>
-          <h1 className='title-wrap mt-[100px] text-center font-bold md:text-[64px]'>
-            Accurate Count And Analyze
-          </h1>
+        <div className='container-wrapper accurate-container flex flex-col gap-10'>
+          <h1 className='title-wrap mt-[100px] text-center font-bold md:text-[64px]'>Accurate Count And Analyze</h1>
           <AutoplayVideo
             source='https://img.m.pro/fiai-home.mp4'
             defaultImage='https://via.placeholder.com/1920x1080'
@@ -26,7 +24,7 @@ const Home: React.FunctionComponent<IHomePageProps> = memo(() => {
         </div>
       </div>
       <Unleash />
-      <div data-aos='fade-up'>
+      <div data-aos='fade-up' className='mt-[250] md:mt-0'>
         <div className='container-wrapper flex flex-col gap-10'>
           <AutoplayVideo
             source='https://img.m.pro/fiai-banner-3d.mp4'

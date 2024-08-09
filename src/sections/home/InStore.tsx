@@ -28,7 +28,7 @@ const InStore = memo(() => {
   }, [])
 
   return (
-    <div ref={reportRef} className='relative xs:pt-24 sm:pt-24 md:pt-20'>
+    <div ref={reportRef} className='relative overflow-hidden xs:pt-24 sm:pt-24 md:pt-20'>
       <h3
         className={classNames(
           'absolute font-semibold uppercase transition-all ease-in-out xs:text-[32px]/[43px] sm:left-[20px] sm:text-[40px]/[50px] md:left-[45px] md:text-[64px]/[72px]',
@@ -36,7 +36,8 @@ const InStore = memo(() => {
         )}
         style={{ transitionDuration: '2500ms' }}
       >
-        Build a smarter <br /> in-store <br /> experience today!
+        {/* Build a smarter <br /> in-store <br /> experience today! */}
+        Free yourself <br /> with top <br /> tier technologies
       </h3>
 
       <img
@@ -79,8 +80,8 @@ const InStore = memo(() => {
         <BoxContentInStore
           duration='1000'
           icon={images.icon.learning}
-          title='Advanced AI deep learning'
-          content='Smarter AI and deeper analyze for better know your customer need'
+          title='Advanced combination AI & Blockchain'
+          content='Ensures data is stored accurately and securely on-chain'
           size='small'
           className={`xs:mb-7 xs:ml-0 sm:mb-16 sm:ml-auto md:mb-[92px] md:ml-[232px]`}
         />
@@ -88,7 +89,7 @@ const InStore = memo(() => {
           duration='1300'
           icon={images.icon.plugplay}
           title='Plug-and-Play'
-          content='No professional skill needed, just easily DIY the setup process'
+          content='No professional skill needed, supports virtual training tailored to each store'
           size='medium'
           className={`xs:mb-7 xs:ml-auto sm:mb-16 sm:ml-auto md:mb-[122px] md:ml-[156px]`}
         />

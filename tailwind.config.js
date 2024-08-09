@@ -124,6 +124,7 @@ export default {
         earth: "url('/src/assets/bg/bg-earth.png')",
         'earth-2': "url('/src/assets/bg/bg-earth-2.png')",
         instore: "url('/src/assets/bg/bg-instore.png')",
+        unpleash: "url('/src/assets/images/unpleash.svg')",
         // linear
         'primary-gradient': 'linear-gradient(126.38deg, #11B0F2 7.58%, #F200F2 92.42%)',
         'ln-grey-to-b': 'linear-gradient(0deg, #F2F3F5 0%, rgba(242, 243, 245, 0) 105.07%)',

@@ -1,17 +1,17 @@
-import React from 'react'
-import InfoUser from './InfoUser'
-import ArrowListen from '~/assets/icons/ArrowListen'
 import classNames from 'classnames'
-import { motion } from 'framer-motion'
+import React from 'react'
+import ArrowListen from '~/assets/icons/ArrowListen'
+import InfoUser from './InfoUser'
+import images from '~/assets'
 
 const classArrow = 'size-12 md:size-[5vw] absolute transform'
 const classText = 'text-sm absolute font-bold'
 
 const data = [
   {
-    name: 'Dulce Press 1',
+    name: 'Dulce Press',
     des: 'United States',
-    avatar: 'https://i.pinimg.com/736x/45/1c/60/451c60a1725dbdd7b2f4c8337c4a024b.jpg',
+    avatar: images.image.user4,
     className: classNames('rotate-[5deg]', 'sm:rotate-[0deg]', 'lg:rotate-[15deg]'),
     role: (
       <div className=''>
@@ -39,9 +39,9 @@ const data = [
     )
   },
   {
-    name: 'Dulce Press 2',
-    des: 'United States',
-    avatar: 'https://i.pinimg.com/736x/45/1c/60/451c60a1725dbdd7b2f4c8337c4a024b.jpg',
+    name: 'Ruben Rosser',
+    des: 'Canada',
+    avatar: images.image.user5,
     className: classNames(
       'rotate-[-10deg] flex-row-reverse',
       'sm:rotate-[0deg]',
@@ -49,9 +49,9 @@ const data = [
     )
   },
   {
-    name: 'Dulce Press 3',
-    des: 'United States',
-    avatar: 'https://i.pinimg.com/736x/45/1c/60/451c60a1725dbdd7b2f4c8337c4a024b.jpg',
+    name: 'Jordyn Dias',
+    des: 'Germany',
+    avatar: images.image.user6,
     className: classNames('rotate-[-10deg]', 'sm:rotate-[0deg]', 'lg:rotate-[-5deg] lg:translate-y-[-30%]'),
     role: (
       <div className=''>
@@ -78,9 +78,9 @@ const data = [
     )
   },
   {
-    name: 'Dulce Press 4',
-    des: 'United States',
-    avatar: 'https://i.pinimg.com/736x/45/1c/60/451c60a1725dbdd7b2f4c8337c4a024b.jpg',
+    name: 'Carla Vaccaro',
+    des: 'United Kingdom',
+    avatar: images.image.user7,
     className: classNames(
       'rotate-[5deg] flex-row-reverse',
       'sm:rotate-[0deg]',
@@ -110,9 +110,9 @@ const data = [
     )
   },
   {
-    name: 'Dulce Press 5',
-    des: 'United States',
-    avatar: 'https://i.pinimg.com/736x/45/1c/60/451c60a1725dbdd7b2f4c8337c4a024b.jpg',
+    name: 'Alfredo Franci',
+    des: 'France',
+    avatar: images.image.user8,
     className: classNames(
       'rotate-[-5deg]',
       'sm:rotate-[0deg]',
@@ -120,9 +120,9 @@ const data = [
     )
   },
   {
-    name: 'Dulce Press 6',
-    des: 'United States',
-    avatar: 'https://i.pinimg.com/736x/45/1c/60/451c60a1725dbdd7b2f4c8337c4a024b.jpg',
+    name: 'Maren Korsgaard',
+    des: 'Australia',
+    avatar: images.image.user9,
     className: classNames('rotate-[5deg] flex-row-reverse', 'sm:rotate-[0deg]', 'lg:rotate-[12deg] '),
     role: (
       <div className=''>

@@ -37,27 +37,27 @@ const HelpFooter = [
     key: 'my-account'
   },
   {
-    title: 'Legal & Privacy',
+    title: 'GDPR & CCPA Compliance Agreement',
     key: 'legal-privacy'
   },
   {
-    title: 'Gift Cards Terms and Conditions',
+    title: 'Privacy Policy',
     key: 'gift-cards'
   },
   {
-    title: 'Do Not Sell My Personal Information',
+    title: 'Service Level Agreement',
     key: 'do-not-sell'
   },
   {
-    title: 'Our Commitment To Accessibility',
+    title: 'Support Policy',
     key: 'our-commitment'
   },
   {
-    title: 'Report a Scan',
+    title: 'Terms & Conditions',
     key: 'report-scan'
   },
   {
-    title: 'Cookies Notice & Settings',
+    title: 'WEEE Compliance',
     key: 'cookies-notice'
   }
 ]
@@ -79,7 +79,7 @@ const listIcon = [
 
 const Footer: React.FunctionComponent<IFooterProps> = memo(() => {
   return (
-    <div className='gap-[24px] rounded-b-none rounded-t-[44px] bg-[#0D0D0D] p-[32px] px-[40px] z-50 relative'>
+    <div className='relative z-50 gap-[24px] rounded-b-none rounded-t-[44px] bg-[#0D0D0D] p-[32px] px-[40px]'>
       <div className='flex items-center gap-2 border-b border-white border-opacity-70 pb-[20px]'>
         <div className='h-[34px] w-[34px]'>
           <img src={logo} alt='logo' className='h-[100%] w-[100%]' />
@@ -105,8 +105,8 @@ const Footer: React.FunctionComponent<IFooterProps> = memo(() => {
         </div>
         <div className='flex flex-1 flex-col gap-2'>
           <div className='font-bold text-[white]'>Contact Us</div>
-          <div className='text-[14px] font-light text-[white] opacity-70'>+1 891 989-11-91</div>
-          <div className='text-[14px] font-light text-[white] opacity-70'>help@logai.com</div>
+          <div className='text-[14px] font-light text-[white] opacity-70'>+358 9 2316 1426</div>
+          <div className='text-[14px] font-light text-[white] opacity-70'>contact@fi.ai</div>
         </div>
       </div>
       <div className='flex items-center justify-end gap-2 rounded-full'>
