@@ -4,7 +4,7 @@ import { Suspense, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import * as THREE from 'three'
 import { ButtonPrimary } from '../button'
-import bannerImage from '~/assets/bg/banner.jpg'
+import bannerImage from '~/assets/bg/banner.png'
 
 interface ModelProps {
   model: { name: string }
@@ -127,7 +127,7 @@ const Banner3D = () => {
         </div>
         <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', position: 'relative', zIndex: '2' }}>
           {isMobile ? (
-            <div className='mx-auto mt-4 h-[auto] w-[80%]'>
+            <div className='mx-auto mt-4 h-[auto] w-[100%]'>
               <img
                 src={bannerImage}
                 alt='Banner'
