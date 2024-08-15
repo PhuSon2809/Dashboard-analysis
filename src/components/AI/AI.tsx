@@ -102,7 +102,7 @@ const AIQuestion: React.FC<IAIQuestionProps> = () => {
           ...prev,
           {
             id: null,
-            text: `It appears that you does not have administrative rights. If you require access to these features, please contact the system administrator for further assistance.`,
+            text: `You do not have admin rights, please choose 1 of 3 demo options above the chat box.`,
             type: 'ai'
           }
         ])
@@ -181,7 +181,11 @@ const AIQuestion: React.FC<IAIQuestionProps> = () => {
                   className={`flex flex-col  items-center justify-center w-full max-w-[200px] min-h-[50px] leading-1.5 px-4 border-gray-200 text-white bg-[#898989] opacity-50 hover:opacity-100 hover:bg-[#494949c5] rounded-[15px] ${
                     isAIResponding ? 'opacity-50 cursor-not-allowed' : ''
                   }`}
-                  disabled={true}
+                  // disabled={true}
+                  onClick={() => {
+                    console.log("option.text", option.text)
+                    setMessageInput(option.text)
+                  }}
                 >
                   <p className='text-sm font-normal py-2.5 dark:text-white'>{option.text}</p>
                 </button>
