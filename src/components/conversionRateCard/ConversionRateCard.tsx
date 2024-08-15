@@ -34,14 +34,14 @@ const ConversionRateCard = ({ viewing, dotSize, data, title, percentage, classNa
         <p className='font-customMedium  lg:text-[20px]/[20px] text-[#8E8E93]'>{title}</p>
       </div>
 
-      {percentage && (
+      {percentage ? (
         <div className='absolute right-0 top-[-30px] lg:top-[-50px] z-[999] flex items-center gap-3'>
           <ArrowBottom />
           <p className='bg-ln-red-purple bg-clip-text font-customSemiBold text-[30px] lg:text-[56px] text-transparent'>
             {percentage}%
           </p>
         </div>
-      )}
+      ): <></>}
     </div>
   )
 }

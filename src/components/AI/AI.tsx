@@ -102,7 +102,7 @@ const AIQuestion: React.FC<IAIQuestionProps> = () => {
           ...prev,
           {
             id: null,
-            text: `This response could not be created. Please contact the administrator for further assistance.`,
+            text: `It appears that you does not have administrative rights. If you require access to these features, please contact the system administrator for further assistance.`,
             type: 'ai'
           }
         ])
