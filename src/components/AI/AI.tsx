@@ -52,6 +52,39 @@ const AIQuestion: React.FC<IAIQuestionProps> = () => {
     setIsTypingComplete(true)
     setIsAIResponding(false)
   }
+  const handleAskQuestion = (id: number) => {
+    const matchedOption = search(options.find((option) => option.id === id)?.text || '')
+    if (matchedOption) {
+      const aiMessage = messages.find((msg) => msg.id === matchedOption)
+      if (aiMessage) {
+        // Add user's input to chat history
+        setChatHistory([
+          ...chatHistory,
+          { id: null, text: options.find((option) => option.id === id)?.text || '', type: 'user' }
+        ])
+        setChatHistory((prev) => [
+          ...prev,
+          ...aiMessage.message.map((m, index) => ({
+            id: matchedOption,
+            text: m,
+            type: 'ai' as const,
+            image: aiMessage.image[index]
+          }))
+        ])
+
+        setTemp(() => [
+          ...aiMessage.message.map((m, index) => ({
+            id: matchedOption,
+            text: m,
+            type: 'ai' as const,
+            image: aiMessage.image[index]
+          }))
+        ])
+        setIsTypingComplete(true)
+        setIsAIResponding(false)
+      }
+    }
+  }
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -181,7 +214,8 @@ const AIQuestion: React.FC<IAIQuestionProps> = () => {
                   className={`flex flex-col  items-center justify-center w-full max-w-[200px] min-h-[50px] leading-1.5 px-4 border-gray-200 text-white bg-[#898989] opacity-50 hover:opacity-100 hover:bg-[#494949c5] rounded-[15px] ${
                     isAIResponding ? 'opacity-50 cursor-not-allowed' : ''
                   }`}
-                  disabled={true}
+                  // disabled={true}
+                  onClick={() => handleAskQuestion(option.id)}
                 >
                   <p className='text-sm font-normal py-2.5 dark:text-white'>{option.text}</p>
                 </button>
