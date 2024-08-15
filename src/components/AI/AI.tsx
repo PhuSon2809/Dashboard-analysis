@@ -135,7 +135,7 @@ const AIQuestion: React.FC<IAIQuestionProps> = () => {
           ...prev,
           {
             id: null,
-            text: `It appears that you does not have administrative rights. If you require access to these features, please contact the system administrator for further assistance.`,
+            text: `You do not have admin rights, please choose 1 of 3 demo options above the chat box.`,
             type: 'ai'
           }
         ])

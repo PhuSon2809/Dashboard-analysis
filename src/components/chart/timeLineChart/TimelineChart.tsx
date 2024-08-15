@@ -76,13 +76,18 @@ const TimelineChart = memo(() => {
 
     // Tính tổng số phút từ giờ hiện tại và phút hiện tại
     const currentTotalMinutes = currentHour * totalMinutesInHour + currentMinute
-    const lastMarkerTotalMinutes = lastMarker * totalMinutesInHour
 
-    // left = vị trí bắt đầu + khoảng cách giữa các item * (tổng số phút marker cuối - tổng số phút hiện tại)
-    const left =
+    // Xử lý trường hợp lastMarker là 0h
+    const lastMarkerTotalMinutes =
+      lastMarker === 0
+        ? 24 * totalMinutesInHour // Nếu là 0h, tính như cuối của ngày trước
+        : lastMarker * totalMinutesInHour
+
+    // Tính toán vị trí right
+    let right =
       positionStart + distanceBetweenItems * ((lastMarkerTotalMinutes - currentTotalMinutes) / totalMinutesInHour)
 
-    return left
+    return right
   }, [currentHour, currentMinute, distanceBetweenItems, timeMarkers])
 
   // cập nhật giờ mỗi phút
@@ -91,7 +96,7 @@ const TimelineChart = memo(() => {
       const now = new Date()
       setCurrentHour(now.getHours())
       setCurrentMinute(now.getMinutes())
-    }, 60000) // Cập nhật mỗi phút
+    }, 10000) // Cập nhật mỗi 10s
 
     return () => clearInterval(interval)
   }, [])

@@ -137,7 +137,7 @@ const Navbar = memo(({ className, scrollToSection }: NavbarProps) => {
                   } else {
                     // navigate(nav.url)
                     alert(
-                      'It appears that you does not have administrative rights. If you require access to these features, please contact the system administrator for further assistance."'
+                      'You do not have administrative rights, please contact the administrator.'
                     )
                   }
                 }}
