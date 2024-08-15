@@ -48,7 +48,7 @@ const MostUsedPaymentChart = memo(({ isSmall }: { isSmall?: boolean }) => {
         className={classNames(
           isSmall
             ? 'absolute -bottom-[2px] -left-[3px] flex h-[14px] w-[150px] p-3 lg:w-[78.05px] items-center justify-center rounded-bl-[30px] rounded-tr-[30px] bg-white backdrop-blur-[80px]'
-            : 'absolute -left-[10px] bottom-[0px] flex h-[50px] w-[200px] items-center justify-center rounded-bl-[32px] rounded-tr-[32px] bg-[#FBFCFE]'
+            : 'absolute -right-[20px] top-[20px] flex h-[50px] w-[200px] items-center justify-center rounded-bl-[32px] rounded-tr-[32px] bg-[#FBFCFE]'
         )}
       >
         <p

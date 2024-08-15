@@ -9,8 +9,8 @@ import AvatarImg6 from '~/assets/images/Avatar (6).svg'
 import AvatarImg7 from '~/assets/images/Avatar (7).svg'
 import AvatarImg from '~/assets/images/Avatar.svg'
 import { AvatarGroup, AvatarItem } from '~/components/avatar/avatar'
+import TooltipCustom from '~/components/tooltip/tooltip'
 import { useAppSelector } from '~/redux/configStore'
-import TooltipCustom from '../tooltip/tooltip'
 
 const avatars = [
   { src: AvatarImg, alt: 'Avatar 1' },

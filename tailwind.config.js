@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
 const plugin = require('tailwindcss/plugin')
-
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}', './node_modules/tailwind-datepicker-react/dist/**/*.js'],
@@ -117,12 +116,14 @@ export default {
     },
     screens: {
       'xs-min': '480px',
+      'z-max': { max: '345px' },
       's-max': { max: '480px' },
       xs: { max: '640px' },
       sm: '640px',
       md: '768px',
       lg: '1024px',
-      xl: '1280px'
+      xl: '1280px',
+      '2xl': '1640px'
     },
     boxShadow: {
       's-1': '0px 0px 80px 0px #1A1A1A0D',
@@ -155,6 +156,7 @@ export default {
           marginRight: 'auto'
         }
       })
-    })
+    }),
+    require('daisyui')
   ]
 }

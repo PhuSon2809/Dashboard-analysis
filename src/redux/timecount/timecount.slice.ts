@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { LOCAL_STORAGE } from '~/constants/localStorage'
+import { LOCAL_STORAGE } from '~/common/localStorage'
 import { getLocalStorage, setLocalStorage } from '~/utils/localStorage'
 
 interface timecountState {

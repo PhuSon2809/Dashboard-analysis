@@ -1,4 +1,4 @@
-import { abiKventure, abiMasterpool, abiUsdt, abiV1, abiNoti, abiPOS } from '~/constants/version/index'
+import { abiKventure, abiMasterpool, abiNoti, abiPOS, abiUsdt, abiV1 } from '~/common/version/index'
 
 export const sendTransaction = async (
   functionName: string,
@@ -73,9 +73,7 @@ export const sendTransaction = async (
       abiMasterpool.address
     ])
   }
-  console.log('send smartcontarct before', data)
   const res = await window.finSdk.sendTransaction(data)
-  // console.log('send smartcontarct after', res)
 
   if (server === 'client-full') {
     if (!res) return console.log('success false')

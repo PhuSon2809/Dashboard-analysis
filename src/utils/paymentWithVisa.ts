@@ -27,19 +27,12 @@ export class PaymentWithVisa extends PaymentCore {
   async payment() {
     // eslint-disable-next-line no-useless-catch
     try {
-      console.log(this)
       if (!this.amount) throw new Error('amount must be provided')
       if (!this.order_id) throw new Error('order_id must be provided')
-      console.log('this.visaInfo: ', this.visaInfo)
       if (!this.visaInfo || isEmpty(this.visaInfo)) throw new Error('visaInfo invalid!')
       this.validateInfoVisa(this.visaInfo)
       const dataPostalCode: Awaited<ReturnType<typeof this.getPostalCode>> = await this.getPostalCode()
       if (!dataPostalCode.address.postcode) throw new Error('Cannot get PostalCode at current location!')
-      const dataIP: Awaited<ReturnType<typeof this.getIP>> = await this.getIP()
-      const postalCode = dataPostalCode.address.postcode
-      const ip = dataIP.ip
-      const bodyPayment = this.formatDataSendPayment(postalCode, ip)
-      console.log('bodyPayment: ', bodyPayment)
       return
       // const dataPayment: Awaited<ReturnType<typeof this.sendPayment>> = await this.sendPayment(bodyPayment)
       // return dataPayment
@@ -65,7 +58,6 @@ export class PaymentWithVisa extends PaymentCore {
         paymentId,
         riskScore
       )
-      console.log('dataCheckPayment', dataCheckPayment)
       if (dataCheckPayment.status !== 1) {
         // if (!this.urlFail)
         //   throw {

@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react'
 import { Navigate, useRoutes } from 'react-router-dom'
 
-import { PATH_PUBLIC_APP } from '~/constants/paths'
+import { PATH_PUBLIC_APP } from '~/common/paths'
 
 import { SimpleLayout } from '~/layouts/simpleLayout'
 

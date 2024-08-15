@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 
-import { ArrowBottom } from '../icons'
+import { ArrowBottom } from '../../assets/icons'
 
 type ConversionRateCardProps = {
   viewing?: boolean

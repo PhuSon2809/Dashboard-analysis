@@ -47,7 +47,7 @@ const PurchasesChart = memo(({ isSmall }: { isSmall?: boolean }) => {
   return (
     <div
       className={classNames(
-        'purchases-chart relative bg-ln-orange-3 shadow-s-11',
+        'purchases-chart relative bg-ln-orange-3',
         isSmall
           ? 'h-[150px] w-[300px] lg:h-[120px] lg:w-[130px] rounded-[10px]'
           : 'size-[470px] sm:size-[520px] rounded-[32px]'

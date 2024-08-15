@@ -75,7 +75,6 @@ const ReactionViewChart = memo(() => {
     [viewChartData]
   )
   const maxDataValue = useMemo(() => Math.max(...datasetData), [datasetData])
-  console.log(datasetData)
   return (
     <div className='relative h-[521px] lg:w-[639px] rounded-[32px] bg-ln-white-blue'>
       <div className='absolute right-[-10px] top-[-10px] flex lg:h-[68px] w-[200px] lg:w-[267px] items-center justify-center rounded-bl-[34px] rounded-tr-[34px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px]'>

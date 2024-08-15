@@ -2,7 +2,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { ReportHomeData } from '~/@types/models'
 import { axiosClient } from '~/api/axiosClient'
-import { LOCAL_STORAGE } from '~/constants/localStorage'
+import { LOCAL_STORAGE } from '~/common/localStorage'
 import { getLocalStorage, setLocalStorage } from '~/utils/localStorage'
 
 interface reportState {
@@ -57,7 +57,6 @@ export default reportReducer
 export const fetchReport = createAsyncThunk('report/fetchReport', async () => {
   try {
     const res = await axiosClient.get('https://d-api.m.pro/analysis')
-    console.log('fetch-report', res)
     if (res) {
       setLocalStorage(LOCAL_STORAGE.HOME_DATA_CURRENT, res)
       return res

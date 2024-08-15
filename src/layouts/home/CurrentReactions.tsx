@@ -4,8 +4,8 @@ import { Autoplay, EffectCreative, Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import images from '~/assets'
+import { ArrowLeftIcon, ArrowRightIcon, ChevronRight } from '~/assets/icons'
 import { IconButton } from '~/components/iconButton'
-import { ArrowLeftIcon, ArrowRightIcon, ChevronRight } from '~/components/icons'
 import { PersonreactionCard } from '~/components/personreactionCard'
 import { useAppSelector } from '~/redux/configStore'
 import './styles.scss'
@@ -45,7 +45,6 @@ const CurrentReactions = memo(() => {
     () => homeReportCurrent?.currentReactions?.filter((p: any) => p.status === typeActive),
     [typeActive, homeReportCurrent]
   )
-
   return (
     <div className='relative pt-[120px] px-4'>
       <img src={images.image.dash_line} alt='dash-line' className='absolute left-[317px] top-0' />
@@ -157,13 +156,24 @@ const CurrentReactions = memo(() => {
             }}
             onSlideChange={handleSlideChange}
           >
-            {listDataRender?.map((person: any, index: number) => {
-              return (
-                <SwiperSlide key={person.id}>
-                  <PersonreactionCard person={person} isActive={activeSlide === index} />
-                </SwiperSlide>
-              )
-            })}
+            {listDataRender?.length === 0 && (
+              <PersonreactionCard
+                person={{
+                  name: 'John Doe',
+                  gender: 0,
+                  id: 1
+                }}
+                isActive={true}
+              />
+            )}
+            {listDataRender?.length > 0 &&
+              listDataRender?.map((person: any, index: number) => {
+                return (
+                  <SwiperSlide key={person.id}>
+                    <PersonreactionCard person={person} isActive={activeSlide === index} />
+                  </SwiperSlide>
+                )
+              })}
           </Swiper>
           <div className='mt-10 flex items-center justify-center gap-4 pr-7'>
             <IconButton size='48' ref={prevRef} onClick={() => swiperRef.current?.swiper?.slidePrev()}>

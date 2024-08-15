@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import { memo } from 'react'
 import images from '~/assets'
 import { useAppSelector } from '~/redux/configStore'
-import { DecreaseIcon, IncreaseIcon } from '../icons'
+import { DecreaseIcon, IncreaseIcon } from '../../assets/icons'
 
 const TodayVistorCard = memo(() => {
   const { homeReportCurrent } = useAppSelector((s) => s.report)
@@ -10,7 +10,7 @@ const TodayVistorCard = memo(() => {
   const isIncrease = Math.random() >= 0.5
 
   return (
-    <div className='relative  flex flex-shrink-0 items-center justify-center overflow-hidden bg-white/[.44] lg:shadow-s-1 backdrop-blur-2xl w-full  h-[235px] lg:h-[300px] lg:w-[454px] rounded-[32px]'>
+    <div className='relative  flex flex-shrink-0 items-center justify-center overflow-hidden lg:bg-white/[.44] bg-white/[.60]  lg:shadow-s-1 backdrop-blur-2xl w-full  h-[235px] lg:h-[300px] lg:w-[454px] rounded-[32px]'>
       <div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform xs:size-[292px] sm:size-[450px]'>
         <img src={images.bg.bg_vistor_card} alt='bg-vistor-card' className='size-full object-cover object-center' />
       </div>

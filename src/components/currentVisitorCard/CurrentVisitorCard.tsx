@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import { memo } from 'react'
 import images from '~/assets'
 import { useAppSelector } from '~/redux/configStore'
-import { DecreaseIcon, IncreaseIcon } from '../icons'
+import { DecreaseIcon, IncreaseIcon } from '../../assets/icons'
 
 const CurrentVisitorCard = memo(() => {
   const { homeReportCurrent } = useAppSelector((s) => s.report)
@@ -10,7 +10,7 @@ const CurrentVisitorCard = memo(() => {
   const isIncrease = Math.random() >= 0.5
 
   return (
-    <div className=' relative h-[235px] w-full lg:w-[355px] overflow-hidden rounded-[32px] bg-white/[.44] lg:shadow-s-1 backdrop-blur-2xl'>
+    <div className=' relative h-[235px] w-full lg:w-[355px] overflow-hidden rounded-[32px] lg:bg-white/[.44] bg-white/[.60]   shadow-s-4 backdrop-blur-2xl'>
       <div className='ml-[52px] mt-[52px] flex w-fit flex-col items-center gap-1'>
         <p className='text-[18px]/[28px] font-normal text-grey999/[.64]'>Current visitors</p>
         <div className='flex items-center gap-[9px]'>

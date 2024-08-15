@@ -1,7 +1,7 @@
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions, Transition } from '@headlessui/react'
 import { Dispatch, Fragment, memo, ReactNode, SetStateAction } from 'react'
 import { OptionSelect } from '~/@types/common'
-import { CheckIcon, ChevronDown, CloseIcon } from '~/components/icons'
+import { CheckIcon, ChevronDown, CloseIcon } from '~/assets/icons'
 
 type SelectFilterProps = {
   label?: string

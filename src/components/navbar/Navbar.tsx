@@ -1,16 +1,16 @@
 import { Tooltip } from '@radix-ui/themes'
 import classNames from 'classnames'
 import { memo, useMemo, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import images from '~/assets'
-import { NavLogoutIcon, NavSettingIcon } from '~/components/icons'
-import NavColumnChartIcon from '~/components/icons/NavColumnChartIcon'
-import NavCrownIcon from '~/components/icons/NavCrownIcon'
-import NavDemoIcon from '~/components/icons/NavDemoIcon'
-import NavPieChartIcon from '~/components/icons/NavPieChartIcon'
-import NavTimeIcon from '~/components/icons/NavTimeIcon'
-import NavUserIcon from '~/components/icons/NavUserIcon'
-import { PATH_PUBLIC_APP } from '~/constants/paths'
+import { NavLogoutIcon, NavSettingIcon } from '~/assets/icons'
+import IconLock from '~/assets/icons/lock'
+import NavColumnChartIcon from '~/assets/icons/NavColumnChartIcon'
+import NavCrownIcon from '~/assets/icons/NavCrownIcon'
+import NavDemoIcon from '~/assets/icons/NavDemoIcon'
+import NavPieChartIcon from '~/assets/icons/NavPieChartIcon'
+import NavTimeIcon from '~/assets/icons/NavTimeIcon'
+import NavUserIcon from '~/assets/icons/NavUserIcon'
+import { PATH_PUBLIC_APP } from '~/common/paths'
 
 type NavbarProps = {
   className?: string
@@ -18,7 +18,7 @@ type NavbarProps = {
 }
 
 const Navbar = memo(({ className, scrollToSection }: NavbarProps) => {
-  const navigate = useNavigate()
+  //const navigate = useNavigate()
 
   const [itemHover, setItemHover] = useState<string>('')
   const [itemActive, setItemActive] = useState<string>('')
@@ -87,7 +87,6 @@ const Navbar = memo(({ className, scrollToSection }: NavbarProps) => {
           ),
     [isOpenMenuItem, configNavbar]
   )
-  console.log(listMenuRender)
 
   return (
     <div
@@ -115,32 +114,47 @@ const Navbar = memo(({ className, scrollToSection }: NavbarProps) => {
       </button>
 
       <div className={`flex flex-col gap-1`}>
-        {listMenuRender.map((nav) => (
-          <Tooltip side='right' content={nav.title} key={nav.id}>
-            <div
-              onMouseEnter={() => setItemHover(nav.id)}
-              onMouseLeave={() => setItemHover('')}
-              onClick={() => {
-                setItemActive(nav.id)
-                if (nav.id === 'NavDemoIcon') {
-                  setIsOpenMenuItem(!isOpenMenuItem)
-                } else if (nav.id === 'NavTimeIcon' || nav.id === 'NavPieChartIcon') {
-                  scrollToSection(nav.id)
-                } else {
-                  navigate(nav.url)
-                }
-              }}
-              className={classNames(
-                `size-12 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 ease-in-out cursor-pointer`,
-                itemActive === nav.id ? 'bg-ln-icon-button backdrop-blur-[40px] shadow-s-16' : 'bg-transparent'
-              )}
-            >
-              <div className='min-w-6'>
-                {nav.icon(itemActive === nav.id ? 'white' : itemHover === nav.id ? 'linear' : 'black')}
+        {listMenuRender.map((nav) => {
+          const lockFeature =
+            nav.id !== 'NavDemoIcon' &&
+            nav.id !== 'NavUserIcon' &&
+            nav.id !== 'NavPieChartIcon' &&
+            nav.id !== 'NavTimeIcon'
+
+          return (
+            <Tooltip side='right' content={nav.title} key={nav.id}>
+              <div
+                onMouseEnter={() => setItemHover(nav.id)}
+                onMouseLeave={() => setItemHover('')}
+                onClick={() => {
+                  setItemActive(nav.id)
+                  if (nav.id === 'NavDemoIcon') {
+                    setIsOpenMenuItem(!isOpenMenuItem)
+                  } else if (nav.id === 'NavTimeIcon' || nav.id === 'NavPieChartIcon') {
+                    scrollToSection(nav.id)
+                  } else if (nav.id === 'NavUserIcon') {
+                    window.open('https://fi.ai/', '_self')
+                  } else {
+                    // navigate(nav.url)
+                    alert(
+                      'Apologies, this page is currently not accessible. Please reach out to the administrator for further details.'
+                    )
+                  }
+                }}
+                className={classNames(
+                  `size-12 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 ease-in-out cursor-pointer relative`,
+                  itemActive === nav.id ? 'bg-ln-icon-button backdrop-blur-[40px] shadow-s-16' : 'bg-transparent'
+                )}
+              >
+                {lockFeature && <IconLock className='w-[10px] h-[10px] absolute left-0 top-[20%]' />}
+
+                <div className='min-w-6'>
+                  {nav.icon(itemActive === nav.id ? 'white' : itemHover === nav.id ? 'linear' : 'black')}
+                </div>
               </div>
-            </div>
-          </Tooltip>
-        ))}
+            </Tooltip>
+          )
+        })}
       </div>
     </div>
   )

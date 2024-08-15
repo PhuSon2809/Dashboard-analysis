@@ -3,15 +3,16 @@ import { memo } from 'react'
 import { Gender } from '~/@types/enums'
 import { Person } from '~/@types/models'
 import images from '~/assets'
+import { FemaleIcon, MaleIcon, PhoneIcon } from '../../assets/icons'
 import { Button } from '../button'
-import { FemaleIcon, MaleIcon, PhoneIcon } from '../icons'
 
 type PersonreactionCardProps = {
   isActive?: boolean
   person: Person
+  children?: React.ReactNode
 }
 
-const PersonreactionCard = memo(({ person, isActive }: PersonreactionCardProps) => {
+const PersonreactionCard = memo(({ person, isActive, children }: PersonreactionCardProps) => {
   return (
     <div
       className={classNames(
@@ -49,10 +50,10 @@ const PersonreactionCard = memo(({ person, isActive }: PersonreactionCardProps) 
           {person.gender === Gender.MALE ? 'Male' : 'Female'}
         </p>
       </div>
-
+      {children && <p className='text-[20px]/[30px] text-white flex flex-col'>{children}</p>}
       {isActive && (
         <>
-          <p className='mb-[94px] mt-4 text-[20px]/[30px] text-white'>Age: {person.age}</p>
+          {person.age && <p className='mb-[94px] mt-4 text-[20px]/[30px] text-white'>Age: {person.age}</p>}
           <Button
             iconLeft={<PhoneIcon />}
             className='w-[241px] rounded-2xl bg-white'

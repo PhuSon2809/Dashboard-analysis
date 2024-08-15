@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { ReactNode } from 'react'
-import { DecreaseIcon, IncreaseIcon } from '../icons'
+import { DecreaseIcon, IncreaseIcon } from '../../assets/icons'
 
 type TodayReportCard = {
   title: string

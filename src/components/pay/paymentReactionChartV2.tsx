@@ -1,26 +1,36 @@
-import { ArcElement, Chart as ChartJS, Legend, RadialLinearScale, Tooltip } from 'chart.js'
+import { ArcElement, ChartData, Chart as ChartJS, Legend, RadialLinearScale, Tooltip } from 'chart.js'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
 import classNames from 'classnames'
 import * as React from 'react'
-import { useMemo } from 'react'
 import { PolarArea } from 'react-chartjs-2'
 import { useAppSelector } from '~/redux/configStore'
 
 ChartJS.register(Tooltip, Legend, RadialLinearScale, ArcElement, ChartDataLabels)
-const listDataSet = [
-  { value: 'satisfied', label: 'Satisfied' },
-  { value: 'dissatisfied', label: 'Dissatisfied' },
-  { value: 'average', label: 'Average' }
-]
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+interface IPaymentReactionChartV2Props {
+  title: string
+  listDataset: {
+    value: string
+    label: string
+  }[]
+  dataChartList?: ChartData<'bar'>
+}
 
-interface IPaymentReactionChartV2Props {}
-
-const PaymentReactionChartV2: React.FunctionComponent<IPaymentReactionChartV2Props> = () => {
+const PaymentReactionChartV2: React.FunctionComponent<IPaymentReactionChartV2Props> = ({
+  title,
+  listDataset,
+  dataChartList
+}) => {
   const { homeReportCurrent } = useAppSelector((s) => s.report)
 
-  const dataChart = useMemo(() => homeReportCurrent?.ORDERS?.['Purchases'], [homeReportCurrent])
+  const dataChart = dataChartList || homeReportCurrent?.ORDERS?.['Purchases']
 
-  const datasetData = [dataChart?.['1'], dataChart?.['2'], dataChart?.['3']]
+  let datasetData
+  if (dataChart?.['3']) {
+    datasetData = [dataChart?.['1'], dataChart?.['2'], dataChart?.['3']]
+  } else {
+    datasetData = [dataChart?.['1'], dataChart?.['2']]
+  }
 
   const getGradient = (ctx, chartArea, index) => {
     const gradients = [
@@ -49,7 +59,7 @@ const PaymentReactionChartV2: React.FunctionComponent<IPaymentReactionChartV2Pro
   return (
     <div
       className={classNames(
-        'payment-reaction-chart-v2 relative  bg-ln-blue-pink-2 shadow-s-11',
+        'payment-reaction-chart-v2 relative  bg-ln-blue-pink-2 ',
 
         'size-[470px] sm:w-[720px] h-[520px] rounded-[32px]'
       )}
@@ -67,7 +77,7 @@ const PaymentReactionChartV2: React.FunctionComponent<IPaymentReactionChartV2Pro
             'text-[28px]'
           )}
         >
-          Payment Reaction
+          {title}
         </p>
       </div>
 
@@ -127,20 +137,20 @@ const PaymentReactionChartV2: React.FunctionComponent<IPaymentReactionChartV2Pro
         </div>
       </div>
 
-      <div className={classNames('absolute flex w-full items-center justify-between', 'bottom-[60px] gap-2 px-10')}>
-        {listDataSet.map((data, i) => (
+      <div className={classNames('absolute flex w-full items-center justify-around', 'bottom-[60px] gap-2 px-10')}>
+        {listDataset.map((data, i) => (
           <div key={`${data.value}-${i}`} className='flex items-center gap-[6px]'>
             <div
               className={classNames(
                 `'size-[10px] md:size-[18px] rounded-md'}`,
-                data.value === 'satisfied'
+                data.value === 'satisfied' 
                   ? 'bg-payment-v2-orange'
-                  : data.value === 'dissatisfied'
+                  : data.value === 'dissatisfied' || data.value === 'yesterday'
                     ? 'bg-payment-v2-purple'
                     : 'bg-payment-v2-blue'
               )}
             />
-            <p className={classNames('text-nowrap text-[18px]/[18.9px]')}>{data.label} Purchases</p>
+            <p className={classNames('text-nowrap text-[18px]/[18.9px]')}>{data.label}</p>
           </div>
         ))}
       </div>

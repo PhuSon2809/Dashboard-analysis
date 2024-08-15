@@ -191,8 +191,8 @@ const PaymentReactionChart = memo(({ isSmall }: { isSmall?: boolean }) => {
 
       <div
         className={classNames(
-          'absolute bottom-[6.63px] left-1/2 flex -translate-x-1/2 transform items-start justify-center',
-          isSmall ? 'gap-[6.52px]' : 'gap-[20px]'
+          'absolute  left-1/2 flex -translate-x-1/2 transform items-start justify-center',
+          isSmall ? 'bottom-1 gap-[6.52px]' : 'bottom-[20px] gap-[20px]'
         )}
       >
         {listDataSet.map((data) => (

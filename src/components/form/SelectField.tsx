@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { memo, useEffect, useMemo, useState } from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
 import { OptionSelect } from '~/@types/common'
-import { CheckIcon, ChevronDown } from '../icons'
+import { CheckIcon, ChevronDown } from '../../assets/icons'
 
 interface SelectFieldProps {
   name: string

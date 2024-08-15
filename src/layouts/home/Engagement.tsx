@@ -1,9 +1,9 @@
 import { memo, useCallback, useEffect, useRef, useState } from 'react'
 import { Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { ArrowLeftIcon, ArrowRightIcon } from '~/assets/icons'
 import { MenuCheckTimeChart, ReactionMenuChart, ServeTimeAverageChart } from '~/components/chart'
 import LeaveMenuChart from '~/components/chart/LeaveMenuChart'
-import { ArrowLeftIcon, ArrowRightIcon } from '~/components/icons'
 import { SliderPagination } from '~/components/sliderPagination'
 import './styles.scss'
 
@@ -43,7 +43,7 @@ const Engagement = memo(() => {
   }, [swiperRef])
 
   return (
-    <div className='list-chart px-4 lg:px-0 lg:w-[1730px] lg:h-[810px] h-[600px] mt-[191px] flex items-center gap-2 bg-ln-white-4 overflow-hidden relative'>
+    <div className='list-chart px-4 lg:px-0 lg:w-[1730px] lg:h-[810px] h-[600px] lg:mt-[191px] flex items-center gap-2 bg-ln-white-4 overflow-hidden relative'>
       <Swiper
         ref={swiperRef}
         loop

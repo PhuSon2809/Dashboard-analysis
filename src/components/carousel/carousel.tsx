@@ -3,13 +3,14 @@ import 'swiper/css'
 import 'swiper/css/bundle'
 import { A11y, EffectCoverflow, Keyboard, Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { ArrowLeftIcon, ArrowRightIcon } from '~/components/icons'
+import { ArrowLeftIcon, ArrowRightIcon } from '~/assets/icons'
 
 interface ICarouselProps {
   listData: any[]
+  hasNavigation?: boolean
 }
 
-const Carousel: React.FunctionComponent<ICarouselProps> = ({ listData }) => {
+const Carousel: React.FunctionComponent<ICarouselProps> = ({ listData, hasNavigation }) => {
   const wrapperRef = useRef<HTMLDivElement>(null)
   const [slideWidth, setSlideWidth] = useState<number>(0)
 
@@ -35,23 +36,23 @@ const Carousel: React.FunctionComponent<ICarouselProps> = ({ listData }) => {
       <Swiper
         modules={[Navigation, A11y, Keyboard, EffectCoverflow]}
         slidesPerView={1}
-        spaceBetween={80}
-        centeredSlides={true}
+        // centeredSlides={true}
         loop={true}
         keyboard={{ enabled: true }}
         initialSlide={1}
         effect='coverflow'
+        className='px-4'
         coverflowEffect={{
           rotate: 0,
           stretch: 3,
-          depth: 80,
+          depth: 100,
           modifier: 1,
           slideShadows: false
         }}
         breakpoints={{
           320: {
-            slidesPerView: 1,
-            spaceBetween: 80
+            slidesPerView: 1.1,
+            spaceBetween: 50
           },
           768: {
             slidesPerView: 1,
@@ -71,18 +72,20 @@ const Carousel: React.FunctionComponent<ICarouselProps> = ({ listData }) => {
           <SwiperSlide key={index}>{item}</SwiperSlide>
         ))}
       </Swiper>
-      <div
-        ref={wrapperRef}
-        className='2xl:max-w-[900px] w-full mx-auto relative mt-4'
-        style={{ maxWidth: slideWidth ? `${slideWidth}px` : '100%' }}
-      >
-        <div className='custom-prev-button absolute left-0'>
-          <ArrowLeftIcon className='w-6 h-6 text-white' />
+      {hasNavigation && (
+        <div
+          ref={wrapperRef}
+          className='2xl:max-w-[900px] w-full mx-auto relative mt-4'
+          style={{ maxWidth: slideWidth ? `${slideWidth}px` : '100%' }}
+        >
+          <div className='custom-prev-button absolute left-0'>
+            <ArrowLeftIcon className='w-6 h-6 text-white' />
+          </div>
+          <div className='custom-next-button absolute right-0'>
+            <ArrowRightIcon className='w-6 h-6 text-white' />
+          </div>
         </div>
-        <div className='custom-next-button absolute right-0'>
-          <ArrowRightIcon className='w-6 h-6 text-white' />
-        </div>
-      </div>
+      )}
     </>
   )
 }

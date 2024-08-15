@@ -5,14 +5,18 @@ import * as React from 'react'
 import { useMemo } from 'react'
 import { Bar } from 'react-chartjs-2'
 import { useAppSelector } from '~/redux/configStore'
-interface IMostUsedPaymentV2Props {
+interface IMostUsedPaymentV2MobileProps {
   listPayment: string[]
   title: string
   dataset?: number[]
 }
 ChartJS.register(CategoryScale, LinearScale, BarElement, Legend, Tooltip, ChartDataLabels)
 
-const MostUsedPaymentV2: React.FunctionComponent<IMostUsedPaymentV2Props> = ({ listPayment, title, dataset }) => {
+const MostUsedPaymentV2Mobile: React.FunctionComponent<IMostUsedPaymentV2MobileProps> = ({
+  listPayment,
+  title,
+  dataset
+}) => {
   const { homeReportCurrent } = useAppSelector((s) => s.report)
   const dataChart = useMemo(() => homeReportCurrent?.mostUsedPayment, [homeReportCurrent])
   const datasetData = dataset || Array.from({ length: 7 }).map((_, index) => dataChart?.[`${index + 1}`])
@@ -31,25 +35,7 @@ const MostUsedPaymentV2: React.FunctionComponent<IMostUsedPaymentV2Props> = ({ l
     }
   ]
   return (
-    <div
-      className={classNames('best-seller-chart relative bg-ln-pink ', 'size-[460px] sm:size-[520px] rounded-[32px]')}
-    >
-      <div
-        className={classNames(
-          'absolute flex items-center justify-center bg-white/[.44] shadow-s-7 backdrop-blur-[80px]',
-          'bottom-0 left-0 lg:left-[-30px] h-[54px] w-[300px] rounded-tr-[34px] rounded-bl-[34px] '
-        )}
-      >
-        <p
-          className={classNames(
-            'bg-ln-blue-green-2 bg-clip-text font-customSemiBold capitalize text-transparent',
-            'text-[28px]'
-          )}
-        >
-          {title}
-        </p>
-      </div>
-
+    <div className={classNames('best-seller-chart relative bg-ln-pink rounded-[25px] ')}>
       <div className={classNames('w-full px-2', 'h-[420px] px-8 pt-5')}>
         <div className='h-full w-full'>
           <Bar
@@ -80,7 +66,7 @@ const MostUsedPaymentV2: React.FunctionComponent<IMostUsedPaymentV2Props> = ({ l
                   display: true,
                   grid: { display: false },
                   border: { display: true, dashOffset: 10 },
-                  ticks: { display: true, color: 'rgb(13, 13, 13)', font: { size: 16 } }
+                  ticks: { display: true, color: 'rgb(13, 13, 13)', font: { size: 13 } }
                 }
               }
             }}
@@ -133,8 +119,23 @@ const MostUsedPaymentV2: React.FunctionComponent<IMostUsedPaymentV2Props> = ({ l
           />
         </div>
       </div>
+      <div
+        className={classNames(
+          ' flex items-center justify-center bg-white/[.44] shadow-s-6 backdrop-blur-[80px]',
+          'h-[40px] w-[240px]  rounded-tr-[34px] rounded-bl-[34px] '
+        )}
+      >
+        <p
+          className={classNames(
+            'bg-ln-blue-green-2 bg-clip-text font-customSemiBold capitalize text-transparent',
+            'text-[20px]'
+          )}
+        >
+          {title}
+        </p>
+      </div>
     </div>
   )
 }
 
-export default MostUsedPaymentV2
+export default MostUsedPaymentV2Mobile
