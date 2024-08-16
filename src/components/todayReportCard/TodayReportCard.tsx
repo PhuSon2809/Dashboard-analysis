@@ -14,8 +14,8 @@ type TodayReportCard = {
 const TodayReportCard = ({ title, icon, data, color, isIncreasing = true }: TodayReportCard) => {
   return (
     <div className='relative flex h-[132px] w-full flex-col items-start justify-between rounded-2xl bg-white/[.44] p-4 shadow-s-4 backdrop-blur-2xl lg:w-[202px]'>
-      <p className='font-customMedium text-[18px]/[18px] capitalize'>{title}</p>
-      <p className='font-customSemiBold text-[32px]/[33.6px]'>{data}</p>
+      <p className='font-customMedium text-[13px] sm:text-[18px]/[18px] capitalize'>{title}</p>
+      <p className='font-customSemiBold text-[20px] sm:text-[32px]/[33.6px]'>{data}</p>
 
       <div className='flex items-center gap-1'>
         {isIncreasing ? (
@@ -23,14 +23,16 @@ const TodayReportCard = ({ title, icon, data, color, isIncreasing = true }: Toda
         ) : (
           <DecreaseIcon color='pink' className='size-[15px]' />
         )}
-        <p className={`mt-[4px] text-[12px]/[12px] ${isIncreasing ? 'text-greenLighter' : 'text-pinkMain'}`}>
+        <p
+          className={`mt-[4px] text-[10px] sm:text-[12px]/[12px] ${isIncreasing ? 'text-greenLighter' : 'text-pinkMain'}`}
+        >
           10% <span className='text-[#8E8E93]'>{'since yesterday'}</span>
         </p>
       </div>
 
       <div
         className={classNames(
-          'absolute right-3 top-3 flex size-10 items-center justify-center rounded-lg',
+          'absolute right-3 top-3 flex size-5 sm:size-10 items-center justify-center rounded-lg',
           color === 'orange'
             ? 'bg-orangeLight'
             : color === 'blue'

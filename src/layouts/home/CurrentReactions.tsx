@@ -3,6 +3,7 @@ import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Autoplay, EffectCreative, Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
+import { isDesktop, isMobile } from 'react-device-detect'
 import images from '~/assets'
 import { ArrowLeftIcon, ArrowRightIcon, ChevronRight } from '~/assets/icons'
 import { IconButton } from '~/components/iconButton'
@@ -46,19 +47,22 @@ const CurrentReactions = memo(() => {
     [typeActive, homeReportCurrent]
   )
   return (
-    <div className='relative pt-[120px] px-4'>
+    <div className='relative pt-[50px] lg:pt-[120px] px-2 lg:px-4'>
       <img src={images.image.dash_line} alt='dash-line' className='absolute left-[317px] top-0' />
       <img src={images.image.dash_line_2} alt='dash-line-2' className='absolute right-[-29px] top-[385px]' />
 
       <div className='relative z-10 flex w-full flex-col gap-28 lg:flex-row'>
         <div className='flex w-full flex-col px-3 lg:pl-[105px]'>
-          <h1 className='font-bold xs:text-[32px]/[42px] sm:text-[54px]/[70.2px]'>
-            Current <br />
-            Reactions
-          </h1>
+          {isMobile && <h1 className='font-bold xs:text-[32px]/[42px] sm:text-[54px]/[70.2px]'>Current Reactions</h1>}
+          {isDesktop && (
+            <h1 className='font-bold xs:text-[32px]/[42px] sm:text-[54px]/[70.2px]'>
+              Current <br />
+              Reactions
+            </h1>
+          )}
 
-          <p className='mt-4 font-semibold leading-[24px] text-grey999/[.64]'>
-            Reactions measured during the whole time interval <br /> at an F&B store, reflecting real-time customer{' '}
+          <p className='mt-4 font-semibold text-[13px] lg:text-[16px] leading-[24px] text-grey999/[.64]'>
+            Reactions measured during the whole time interval <br /> at an F&B store, reflecting real-time customer
             <br /> engagement and satisfaction.
           </p>
 

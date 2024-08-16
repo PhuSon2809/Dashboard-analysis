@@ -9,11 +9,11 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Legend, Title, Tooltip,
 const listDataSet = [
   { value: 'total-view', label: 'Total View' },
   { value: 'view-menu', label: 'View menu' },
-  { value: 'view-stories', label: 'View stories' },
-  { value: 'entered-stoves', label: 'Entered stoves' }
+  { value: 'view-stores', label: 'View Stores' },
+  { value: 'entered-stores', label: 'Entered Stores' }
 ]
 
-const TotalViewChart = memo(() => {
+const TotalViewChartMobile = memo(() => {
   const { homeReportCurrent } = useAppSelector((s) => s.report)
 
   const labels = ['11', '12', '13', '14', '15', '16', '17', '18', '19', '20']
@@ -25,14 +25,14 @@ const TotalViewChart = memo(() => {
   const enterStovesData = useMemo(() => labels.map((item) => chartData?.[item]?.[3]), [homeReportCurrent])
 
   return (
-    <div className='lg:w-[639px] h-[300px] lg:h-[450px] px-5 py-8 bg-ln-white-red rounded-[20px] lg:rounded-[32px] relative'>
-      <div className='lg:w-[267px] w-[150px] lg:h-[68px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tr-[34px] rounded-bl-[34px] shadow-s-7 absolute top-[-10px] right-[-10px]'>
-        <p className='lg:text-[28px] font-customSemiBold text-transparent bg-clip-text bg-ln-blue-purple'>
+    <div className='h-[370px] w-full rounded-[20px] px-5 py-8 bg-ln-white-red   relative'>
+      <div className='w-[200px]  bg-white/[.44] backdrop-blur-[80px]  rounded-tr-[34px] rounded-bl-[34px] shadow-s-7 top-0 absolute  right-[-10px] flex items-center justify-center h-[40px]'>
+        <p className='text-[18px]  font-customSemiBold text-transparent bg-clip-text bg-ln-blue-purple'>
           Total viewers
         </p>
       </div>
 
-      <div className='w-full h-[200px] lg:h-[360px]'>
+      <div className='w-full h-full'>
         <Bar
           data={{
             labels: labels,
@@ -168,12 +168,12 @@ const TotalViewChart = memo(() => {
         />
       </div>
 
-      <div className='mt-3 flex items-center justify-center  gap-[3px] lg:gap-6'>
+      <div className='mt-3 flex items-center justify-center  gap-[4px] lg:gap-6'>
         {listDataSet.map((data) => (
           <div key={data.value} className='flex items-center gap-[2px] sm:gap-[6px]'>
             <div
               className={classNames(
-                'size-[6px] sm:size-3 rounded-[1px]',
+                'size-[8px] rounded-[1px]',
                 data.value === 'total-view'
                   ? 'bg-ln-green-to-b'
                   : data.value === 'view-menu'
@@ -191,4 +191,4 @@ const TotalViewChart = memo(() => {
   )
 })
 
-export default TotalViewChart
+export default TotalViewChartMobile

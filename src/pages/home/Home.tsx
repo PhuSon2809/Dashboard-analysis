@@ -3,15 +3,15 @@ import { isDesktop, isMobile } from 'react-device-detect'
 import AIQuestion from '~/components/AI/AI'
 import AIQuestionMobile from '~/components/AI/AI-mobile'
 import Carousel from '~/components/carousel/carousel'
-import MostUsedPaymentV2 from '~/components/pay/mostUsedPaymentV2'
-import MostUsedPaymentV2Mobile from '~/components/pay/mostUsedPaymentV2Mobile'
-import PaymentReactionChartV2 from '~/components/pay/paymentReactionChartV2'
-import PaymentReactionChartV2Mobile from '~/components/pay/paymentReactionChartV2Mobile'
+import MostUsedPaymentV2 from '~/components/chart/pay/mostUsedPaymentV2'
+import MostUsedPaymentV2Mobile from '~/components/chart/pay/mostUsedPaymentV2Mobile'
+import PaymentReactionChartV2 from '~/components/chart/pay/paymentReactionChartV2'
+import PaymentReactionChartV2Mobile from '~/components/chart/pay/paymentReactionChartV2Mobile'
 import { Navbar } from '~/components/navbar'
 import { CurrentReactions, FoodBeverage, OrderReport, RealTimeReport, TodayReport } from '~/layouts/home'
 import Engagement from '~/layouts/home/Engagement'
-import { smoothScrollToElement } from '~/utils/scroll'
 import OrderReportMobile from '~/layouts/home/OrderReportMobile'
+import { smoothScrollToElement } from '~/utils/scroll'
 
 const Home = memo(() => {
   const foodBeverageRef = useRef<HTMLDivElement>(null)
@@ -58,7 +58,7 @@ const Home = memo(() => {
           {isMobile && <OrderReportMobile />}
         </div>
       </div>
-      <div className='mb-[168px]'>
+      <div className='mb-[168px] mt-5'>
         <h3 className='w-fit bg-ln-red-purple bg-clip-text font-customBold lg:text-[52px] px-5 text-[32px] uppercase leading-none text-transparent'>
           payment
         </h3>

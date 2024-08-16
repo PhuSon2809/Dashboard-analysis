@@ -21,7 +21,6 @@ const avatars = [
   { src: AvatarImg6, alt: 'Avatar 7' },
   { src: AvatarImg7, alt: 'Avatar 8' }
 ]
-console.log('avatars:', avatars)
 
 // const generateAvatars = (count) => {
 //   // Lấy các avatar thực tế từ mảng avatars
@@ -64,7 +63,6 @@ const TimelineChartMobileV2 = memo(() => {
   const [itemHeights, setItemHeights] = useState<Record<number, number>>({})
   const [hoveredItemId, setHoveredItemId] = useState<number | null>(null)
   const [positions, setPositions] = useState<Record<string, number>>({})
-  console.log('positions:', positions)
   const { homeReportCurrent } = useAppSelector((s) => s.report)
   const listDataReport = useMemo(
     () => [

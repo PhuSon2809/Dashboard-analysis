@@ -115,30 +115,22 @@
 .list-chart-order {
   .swiper-show {
     margin-top: 0px;
+    @media screen and (max-width: 480px) {
+      margin-top: -50px;
+      
+    }
   }
 
   .swiper {
     height: 650px;
 
     @media screen and (max-width: 768px) {
-      height: auto;
+      height: 465px;
 
     }
 
     .swiper-wrapper {
-      margin-left: -30px;
       align-items: center;
-
-
-      @media screen and (max-width: 768px) {
-        margin-left: 0;
-
-      }
-
-      @media screen and (max-width: 480px) {
-        margin-left: -30px;
-
-      }
 
       .swiper-slide {
         transition: all 0.5s ease-in-out;
@@ -148,7 +140,6 @@
 
       .swiper-slide-active {
         opacity: 1 !important;
-
 
 
         @media screen and (max-width: 480px) {
@@ -222,3 +213,4 @@
     scale: 0.8;
   }
 }
+

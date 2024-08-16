@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
+import { isDesktop, isMobile } from 'react-device-detect'
 import { OrderIcon, PayIcon, ViewerIcon, VisitorIcon } from '~/assets/icons'
+import Carousel from '~/components/carousel/carousel'
 import { ReactionViewChart, RealHoursChart, TotalViewChart } from '~/components/chart'
+import ReactionViewChartMobile from '~/components/chart/reaction/ReactionViewChartMobile'
+import TotalViewChartMobile from '~/components/chart/totalView/TotalViewChartMobile'
 import { ConversionRateCard } from '~/components/conversionRateCard'
 import TodayReportCard from '~/components/todayReportCard/TodayReportCard'
 import { useAppSelector } from '~/redux/configStore'
@@ -38,7 +42,7 @@ const TodayReport = () => {
         <RealHoursChart />
         <div className='mt-2 space-y-5 w-full'>
           <h5 className='font-customSemiBold text-[28px]/[18px]'>Today’s Report</h5>
-          <div className='grid grid-cols-1 w-full  items-center gap-5 sm:gap-12 sm:px-0 px-4 sm:grid-cols-2 lg:flex lg:px-0'>
+          <div className='grid  w-full  items-center gap-3 sm:gap-12 sm:px-0   grid-cols-2 lg:flex lg:px-0'>
             <TodayReportCard
               color='orange'
               title='Visitor'
@@ -115,18 +119,35 @@ const TodayReport = () => {
       </div>
 
       <div className='mt-[168px] lg:flex items-end justify-center gap-5'>
-        <div className='space-y-8 px-4 '>
-          <h1 className='w-fit bg-ln-purple-red bg-clip-text font-customBold lg:text-[52px] text-[40px] uppercase leading-none text-transparent'>
-            reach
-          </h1>
-          <TotalViewChart />
-        </div>
-        <div className='space-y-8 px-4'>
-          <h1 className='my-[30px] lg:mb-[60px] font-customBold text-[32px] lg:text-[54px]/[70.2px] leading-none text-blackMain'>
-            Customer Journey
-          </h1>
-          <ReactionViewChart />
-        </div>
+        {isDesktop && (
+          <>
+            <div className='space-y-8 px-4 '>
+              <h1 className='w-fit bg-ln-purple-red bg-clip-text font-customBold lg:text-[52px] text-[40px] uppercase leading-none text-transparent'>
+                reach
+              </h1>
+              <TotalViewChart />
+            </div>
+            <div className='space-y-8 px-4'>
+              <h1 className='my-[30px] lg:mb-[60px] font-customBold text-[32px] lg:text-[54px]/[70.2px] leading-none text-blackMain'>
+                Customer Journey
+              </h1>
+              <ReactionViewChart />
+            </div>
+          </>
+        )}
+        {isMobile && (
+          <>
+            <div className='px-4'>
+              <h1 className='my-[30px] lg:mb-[60px] font-customBold text-[32px] lg:text-[54px]/[70.2px] leading-none text-blackMain'>
+                Customer Journey
+              </h1>
+              <h1 className='w-fit bg-ln-purple-red bg-clip-text font-customBold lg:text-[52px] text-[40px] uppercase leading-none text-transparent'>
+                reach
+              </h1>
+            </div>
+            <Carousel listData={[<TotalViewChartMobile />, <ReactionViewChartMobile />]}></Carousel>
+          </>
+        )}
       </div>
     </div>
   )

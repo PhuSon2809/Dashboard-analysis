@@ -5,7 +5,7 @@ import TimelineChartMobileV2 from '~/components/chart/timeLineChart/TimeLineChar
 
 const RealTimeReport = memo(() => {
   return (
-    <div className='mt-[120px] xs:px-4 sm:px-0'>
+    <div className='lg:mt-[120px] xs:px-4 sm:px-0'>
       <div className='relative z-20 text-center xs:space-y-[14px] sm:space-y-4'>
         <h2 className='font-bold xs:text-[32px]/[38px] sm:text-[54px]/[70.2px]'>Real - Time Report</h2>
         <p className='text-grey999/[.64] xs:leading-[26px] xs:text-[13px] sm:leading-[24px]'>

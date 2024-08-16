@@ -9,7 +9,7 @@ import {
   ReactionsEnjoyChart,
   ServeTime
 } from '~/components/chart'
-import PurchasesChart from '~/components/chart/PurchasesChart'
+import PurchasesChart from '~/components/chart/purchases/PurchasesChart'
 import { IconButton } from '~/components/iconButton'
 import './styles.scss'
 

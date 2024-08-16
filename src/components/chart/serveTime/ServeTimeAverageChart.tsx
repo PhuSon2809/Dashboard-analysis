@@ -38,6 +38,7 @@ const ServeTimeAverageChart = memo(({ isActive }: { isActive: boolean }) => {
 
   const renderData = useMemo(() => labels.map((item) => datasetData?.[item]), [homeReportCurrent])
 
+  console.log('renderData', renderData)
   return (
     <div className='lg:min-w-[666px] mt-20 xs-min:mt-[7rem] lg:mt-0 min-w-[300px] h-[400px] lg:min-h-[666px] bg-ln-white-blue-2 lg:rounded-[32px] rounded-[20px] rounded-tr-[50px] lg:rounded-tr-[80px] lg:shadow-s-10 relative'>
       <div
@@ -56,7 +57,7 @@ const ServeTimeAverageChart = memo(({ isActive }: { isActive: boolean }) => {
             datasets: [
               {
                 type: 'bar',
-                label: 'Bar Dataset',
+                label: 'Serve time Duration',
                 data: renderData,
                 backgroundColor: (ctx: any) => {
                   const chart = ctx.chart
@@ -67,6 +68,7 @@ const ServeTimeAverageChart = memo(({ isActive }: { isActive: boolean }) => {
                   gradient.addColorStop(1, 'rgba(52, 179, 241, 0.13)')
                   return gradient
                 },
+
                 hoverBackgroundColor: (ctx: any) => {
                   const chart = ctx.chart
                   const { ctx: canvasCtx, chartArea } = chart
@@ -82,7 +84,7 @@ const ServeTimeAverageChart = memo(({ isActive }: { isActive: boolean }) => {
               },
               {
                 type: 'line',
-                label: 'Line Dataset',
+                label: 'Serve time Duration',
                 data: renderData,
                 fill: false,
                 tension: 0.5,

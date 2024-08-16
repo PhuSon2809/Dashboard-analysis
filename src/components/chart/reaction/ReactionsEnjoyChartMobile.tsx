@@ -12,7 +12,7 @@ const listDataSet = [
   { value: 'dissatisfied', label: 'Dissatisfied' }
 ]
 
-const ReactionsEnjoyChartMobile = memo(({ isSmall }: { isSmall?: boolean }) => {
+const ReactionsEnjoyChartMobile = memo(({ isSmall, isLittleSmall }: { isSmall?: boolean; isLittleSmall?: boolean }) => {
   const { homeReportCurrent } = useAppSelector((s) => s.report)
 
   const dataChart = useMemo(() => homeReportCurrent?.ORDERS?.['Reaction Enjoy Meal'], [homeReportCurrent])
@@ -25,7 +25,7 @@ const ReactionsEnjoyChartMobile = memo(({ isSmall }: { isSmall?: boolean }) => {
     if (width < 480) {
       setCustom({
         cutout: '80',
-        size: 8
+        size: 5
       })
     } else {
       setCustom({
@@ -64,42 +64,44 @@ const ReactionsEnjoyChartMobile = memo(({ isSmall }: { isSmall?: boolean }) => {
 
   return (
     <div
-      className={`enjoy-chart relative bg-ln-pink shadow-s-10 flex flex-col items-center w-full   ${classNames(
+      className={`enjoy-chart relative bg-ln-pink shadow-s-10 flex flex-col items-center  p-2   ${classNames(
         isSmall
-          ? 'w-[110px] pb-1  rounded-[10px]'
-          : 'min-w-[450px] min-h-[535px]  rounded-[32px] rounded-tr-[80px] gap-5'
+          ? 'w-[80px] h-full rounded-[10px] '
+          : isLittleSmall
+            ? 'h-[170px] rounded-[15px]'
+            : 'w-[470px] h-[520px] rounded-[32px] rounded-tr-[80px] gap-5'
       )}`}
     >
-      <div
-        className={classNames(
-          'flex items-center justify-center  bg-white/[.44] shadow-s-7 backdrop-blur-[80px]',
-          isSmall
-            ? '-translate-x-[25%] -translate-y-[20%] p-1 w-[80px] rounded-tl-[15px] rounded-br-[15px] '
-            : 'h-[64px] w-[400px] rounded-br-[32px] rounded-tl-[32px]'
-        )}
-      >
-        <p
+      {!isSmall && (
+        <div
           className={classNames(
-            'bg-ln-red-green bg-clip-text font-customSemiBold capitalize text-transparent p-1',
-            isSmall ? 'text-[5px]' : 'text-[28px]'
+            'flex items-center justify-center  bg-white/[.44] shadow-s-7 backdrop-blur-[80px] translate-x-[-10%] translate-y-[-30%]  rounded-br-[32px] rounded-tl-[32px]',
+            isLittleSmall ? 'h-[30px] w-[130px]' : 'h-[64px] w-[400px] '
           )}
         >
-          Reactions enjoy meal
-        </p>
-      </div>
+          <p
+            className={classNames(
+              'bg-ln-red-green bg-clip-text font-customSemiBold capitalize text-transparent p-1',
+              isLittleSmall ? 'text-[10px]' : 'text-[28px]'
+            )}
+          >
+            Reactions enjoy meal
+          </p>
+        </div>
+      )}
 
       <div
-        className={` transform rounded-full bg-white ${classNames(isSmall ? ' size-[90px] p-[1px] shadow-s-15' : ' size-[380px]  p-[10px] shadow-s-15')}`}
+        className={` transform rounded-full bg-white  shadow-s-15 ${classNames(isSmall ? ' size-[60px] shadow-s-15' : isLittleSmall ? 'size-[100px]' : ' size-[380px]  p-[10px]')}`}
       >
         <div className='relative h-full w-full rounded-full bg-white'>
           <Doughnut
             className='relative z-50'
             options={{
-              cutout: isSmall ? 30 : 115,
+              cutout: isSmall ? 25 : isLittleSmall ? 35 : 115,
               plugins: {
                 legend: { display: false },
                 datalabels: {
-                  font: { size: isSmall ? custom.size : 20 },
+                  font: { size: isSmall ? custom.size : isLittleSmall ? 10 : 20 },
                   color: '#FFF',
                   align: 'center',
                   anchor: 'center',
@@ -133,7 +135,7 @@ const ReactionsEnjoyChartMobile = memo(({ isSmall }: { isSmall?: boolean }) => {
                   hoverBackgroundColor: (ctx: any) =>
                     ctx.chart.data.datasets[0].data.map((_: any, index: number) => getGradientColor(ctx, index)),
                   borderWidth: 0,
-                  borderRadius: 7
+                  borderRadius: 0
                 }
               ]
             }}
@@ -142,22 +144,27 @@ const ReactionsEnjoyChartMobile = memo(({ isSmall }: { isSmall?: boolean }) => {
         <div
           className={classNames(
             'absolute left-1/2 top-1/2 z-10 flex -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full border-[2.5px] border-dotted border-[#A6A6A6]',
-            isSmall ? 'size-[90px]' : 'size-[220px]'
+            isSmall ? 'size-[50px]' : isLittleSmall ? 'size-[70px]' : 'size-[220px]'
           )}
         >
           <div
             className={classNames(
               'flex items-center justify-center rounded-full bg-[#F8F8F8]',
-              isSmall ? 'size-[50px]' : 'size-[200px]'
-            )}
+              isSmall ? 'size-[40px]' : isLittleSmall ? 'size-[60px]' : 'size-[180px]'
+            )} // đường viền tròn
           >
             <div
               className={classNames(
                 'flex flex-col items-center justify-center gap-1 rounded-full bg-white shadow-s-9',
-                isSmall ? 'size-[50px]' : 'size-[180px]'
+                isSmall ? 'size-[40px]' : isLittleSmall ? 'size-[50px]' : 'size-[180px]'
               )}
             >
-              <p className={classNames('font-customSemiBold text-[#292D30]', isSmall ? ' ' : 'text-[60px]')}>
+              <p
+                className={classNames(
+                  'font-customSemiBold text-[#292D30]',
+                  isSmall ? 'text-[13px] ' : isLittleSmall ? 'text-[20px]' : 'text-[60px]'
+                )}
+              >
                 {dataChart?.['1']}%
               </p>
             </div>
@@ -171,7 +178,7 @@ const ReactionsEnjoyChartMobile = memo(({ isSmall }: { isSmall?: boolean }) => {
             <div key={data.value} className='flex items-center gap-[6px]'>
               <div
                 className={classNames(
-                  `${isSmall ? 'size-[5px] rounded-sm' : 'size-[18px] rounded-md'}`,
+                  `${isSmall ? 'size-[5px] rounded-sm' : isLittleSmall ? 'size-[10px]' : 'size-[18px] rounded-md'}`,
                   data.value === 'satisfied'
                     ? 'bg-ln-orange-2'
                     : data.value === 'dissatisfied'
@@ -180,7 +187,11 @@ const ReactionsEnjoyChartMobile = memo(({ isSmall }: { isSmall?: boolean }) => {
                 )}
               />
 
-              <p className={classNames(isSmall ? 'text-[10px] lg:text-[5px]/[5px]' : 'text-[18px]/[18.9px]')}>
+              <p
+                className={classNames(
+                  isSmall ? 'text-[10px] lg:text-[5px]/[5px]' : isLittleSmall ? 'text-[10px]' : 'text-[18px]/[18.9px]'
+                )}
+              >
                 {data.label}
               </p>
             </div>

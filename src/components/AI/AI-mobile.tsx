@@ -10,8 +10,8 @@ import messages, { options } from '~/components/AI/chat'
 import search from '~/components/AI/search'
 import TypingEffect from '~/components/AI/TypeEffect'
 import { ReactionMenuChart } from '~/components/chart'
-import MostUsedPaymentV2 from '~/components/pay/mostUsedPaymentV2'
-import PaymentReactionChartV2 from '~/components/pay/paymentReactionChartV2'
+import MostUsedPaymentV2 from '~/components/chart/pay/mostUsedPaymentV2'
+import PaymentReactionChartV2 from '~/components/chart/pay/paymentReactionChartV2'
 import { PersonreactionCard } from '~/components/personreactionCard'
 import { useAppSelector } from '~/redux/configStore'
 
@@ -52,7 +52,39 @@ const AIQuestionMobile: React.FC<IAIQuestionMobileProps> = () => {
     setIsTypingComplete(true)
     setIsAIResponding(false)
   }
+  const handleAskQuestion = (id: number) => {
+    const matchedOption = search(options.find((option) => option.id === id)?.text || '')
+    if (matchedOption) {
+      const aiMessage = messages.find((msg) => msg.id === matchedOption)
+      if (aiMessage) {
+        // Add user's input to chat history
+        setChatHistory([
+          ...chatHistory,
+          { id: null, text: options.find((option) => option.id === id)?.text || '', type: 'user' }
+        ])
+        setChatHistory((prev) => [
+          ...prev,
+          ...aiMessage.message.map((m, index) => ({
+            id: matchedOption,
+            text: m,
+            type: 'ai' as const,
+            image: aiMessage.image[index]
+          }))
+        ])
 
+        setTemp(() => [
+          ...aiMessage.message.map((m, index) => ({
+            id: matchedOption,
+            text: m,
+            type: 'ai' as const,
+            image: aiMessage.image[index]
+          }))
+        ])
+        setIsTypingComplete(true)
+        setIsAIResponding(false)
+      }
+    }
+  }
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const text = messageInput.trim()
@@ -175,18 +207,15 @@ const AIQuestionMobile: React.FC<IAIQuestionMobileProps> = () => {
         )}
         {isLottieLoaded && (
           <div className=' option-question translate-[-20%,-10%] z-30 w-[300px] flex flex-col gap-5 '>
-            <div className='grid grid-cols-3 gap-5 items-center'>
+            <div className='flex overflow-x-auto gap-5 items-center'>
               {options.map((option) => (
                 <button
                   key={option.id}
-                  className={`flex flex-col  items-center justify-center w-full max-w-[200px] min-h-[50px] leading-1.5 px-4 border-gray-200 text-white bg-[#898989] opacity-50 hover:opacity-100 hover:bg-[#494949c5] rounded-[15px] ${
+                  className={`flex flex-col flex-shrink-0  items-center justify-center w-full max-w-[200px] min-h-[50px] leading-1.5 px-4 border-gray-200 text-white bg-[#898989] opacity-50 hover:opacity-100 hover:bg-[#494949c5] rounded-[15px] ${
                     isAIResponding ? 'opacity-50' : ''
                   }`}
                   // disabled={true}
-                  onClick={() => {
-                    console.log("option.text", option.text)
-                    setMessageInput(option.text)
-                  }}
+                  onClick={() => handleAskQuestion(option.id)}
                 >
                   <p className='text-sm font-normal py-2.5 dark:text-white'>{option.text}</p>
                 </button>

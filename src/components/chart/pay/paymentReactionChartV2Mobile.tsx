@@ -59,7 +59,7 @@ const PaymentReactionChartV2Mobile: React.FunctionComponent<IPaymentReactionChar
   return (
     <div
       className={classNames(
-        'payment-reaction-chart-v2 bg-ln-blue-pink-2 h-[380px] flex flex-col gap-5 ',
+        'payment-reaction-chart-v2 bg-ln-blue-pink-2 min-h-[480px] flex flex-col gap-5 ',
 
         'w-full pb-5  rounded-[25px]'
       )}
@@ -81,7 +81,7 @@ const PaymentReactionChartV2Mobile: React.FunctionComponent<IPaymentReactionChar
         </p>
       </div>
 
-      <div className='w-[280px] h-[250px]'>
+      <div className='w-[350px] h-[350px]'>
         <PolarArea
           options={{
             responsive: true,
@@ -135,7 +135,7 @@ const PaymentReactionChartV2Mobile: React.FunctionComponent<IPaymentReactionChar
         />
       </div>
 
-      <div className={classNames('flex w-full items-center justify-around')}>
+      <div className={classNames('flex  w-full items-center justify-around')}>
         {listDataset.map((data, i) => (
           <div key={`${data.value}-${i}`} className='flex items-center gap-[6px]'>
             <div

@@ -1,9 +1,14 @@
 import React, { memo, useEffect, useRef, useState } from 'react'
 import { Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { BestSellerChart, MostUsedPaymentChart, PaymentReactionChart, ServeTime } from '~/components/chart'
-import PurchasesChart from '~/components/chart/PurchasesChart'
-import ReactionsEnjoyChartMobile from '~/components/chart/ReactionsEnjoyChartMobile'
+import { ArrowLeftIcon, ArrowRightIcon } from '~/assets/icons'
+import BestSellerChartMobile from '~/components/chart/bestSeller/BestSellerChartMobile'
+import MostUsedPaymentChartMobile from '~/components/chart/mostUsedPayment/MostUsedPaymentChartMobile'
+import PaymentReactionChartMobile from '~/components/chart/pay/PaymentReactionChartMobile'
+import PurchasesChartMobile from '~/components/chart/purchases/PurchasesChartMobile'
+import ReactionsEnjoyChartMobile from '~/components/chart/reaction/ReactionsEnjoyChartMobile'
+import ServeTimeMobile from '~/components/chart/serveTime/ServeTimeMobile'
+import { IconButton } from '~/components/iconButton'
 import './styles.scss'
 
 const OrderReportMobile = memo(() => {
@@ -13,24 +18,35 @@ const OrderReportMobile = memo(() => {
 
   const charts = [
     { component: <ReactionsEnjoyChartMobile />, key: 'ReactionsEnjoyChart' },
-    { component: <BestSellerChart />, key: 'BestSellerChart' },
-    { component: <PurchasesChart />, key: 'PurchasesChart' },
-    { component: <PaymentReactionChart />, key: 'PaymentReactionChart' },
-    { component: <MostUsedPaymentChart />, key: 'MostUsedPaymentChart' },
-    { component: <ServeTime />, key: 'ServeTime' }
+    { component: <BestSellerChartMobile />, key: 'BestSellerChart' },
+    { component: <PurchasesChartMobile />, key: 'PurchasesChart' },
+    { component: <PaymentReactionChartMobile />, key: 'PaymentReactionChart' },
+    { component: <MostUsedPaymentChartMobile />, key: 'MostUsedPaymentChart' },
+    { component: <ServeTimeMobile />, key: 'ServeTime' }
   ]
 
   const [previewCharts, setPreviewCharts] = useState([
-    { component: <PaymentReactionChart isSmall />, key: 'PaymentReactionChart' },
-    { component: <MostUsedPaymentChart isSmall />, key: 'MostUsedPaymentChart' },
-    { component: <ServeTime isSmall />, key: 'ServeTime' }
+    { component: <PurchasesChartMobile isSmall />, key: 'PurchasesChart' },
+    { component: <PaymentReactionChartMobile />, key: 'PaymentReactionChart' },
+    { component: <MostUsedPaymentChartMobile isSmall />, key: 'MostUsedPaymentChart' }
+    // { component: <ServeTimeMobile isSmall />, key: 'ServeTime' }
   ])
+  const [comingSlide, setComingSlide] = useState({ component: <BestSellerChartMobile />, key: 'BestSellerChart' })
 
   const updatePreviewCharts = () => {
     if (swiperRef.current && swiperRef.current.swiper) {
       const swiper = swiperRef.current.swiper
       const activeIndex = swiper.realIndex
+      const newComingSlide = {
+        ...charts[(activeIndex + 1) % charts.length],
+        component: React.cloneElement(charts[(activeIndex + 1) % charts.length].component, { isLittleSmall: true })
+      }
+      setComingSlide(newComingSlide)
       const newPreviewCharts = [
+        {
+          ...charts[(activeIndex + 2) % charts.length],
+          component: React.cloneElement(charts[(activeIndex + 2) % charts.length].component, { isSmall: true })
+        },
         {
           ...charts[(activeIndex + 3) % charts.length],
           component: React.cloneElement(charts[(activeIndex + 3) % charts.length].component, { isSmall: true })
@@ -82,6 +98,9 @@ const OrderReportMobile = memo(() => {
         case 2:
           targetIndex = (activeIndex + 4) % totalSlides
           break
+        case 3:
+          targetIndex = (activeIndex + 5) % totalSlides
+          break
 
         default:
           break
@@ -90,10 +109,24 @@ const OrderReportMobile = memo(() => {
       swiper.slideToLoop(targetIndex)
     }
   }
+  const handleIncomingItemClick = () => {
+    if (swiperRef.current && swiperRef.current.swiper) {
+      const swiper = swiperRef.current.swiper
+      const activeIndex = swiper.realIndex // Current active slide index
+      console.log('activeIndex:', activeIndex)
+      const totalSlides = charts.length // Total number of slides
+
+      let targetIndex = activeIndex
+
+      targetIndex = (activeIndex + 1) % totalSlides
+
+      swiper.slideToLoop(targetIndex)
+    }
+  }
 
   return (
     <div className=' bg-earth-2  px-5 pt-[8px]'>
-      <div className='list-chart-order relative flex flex-col lg:gap-5 '>
+      <div className='list-chart-order relative grid grid-cols-1 lg:gap-5 '>
         <h3 className='w-fit bg-ln-red-purple bg-clip-text font-customBold lg:text-[52px] text-[32px] uppercase leading-none text-transparent'>
           orders
         </h3>
@@ -103,7 +136,8 @@ const OrderReportMobile = memo(() => {
             loop
             grabCursor
             slidesPerView={1}
-            spaceBetween={80}
+            spaceBetween={50}
+            centeredSlides={true}
             pagination={{ clickable: true }}
             modules={[Pagination, Navigation]}
             navigation={{
@@ -125,26 +159,33 @@ const OrderReportMobile = memo(() => {
             ))}
           </Swiper>
         </div>
-        <div className='swiper-preview flex  w-full items-center justify-center  z-[99999] gap-[17.6px] '>
-          {previewCharts.map((chart, index) => (
-            <div
-              key={index}
-              className='swiper-preview-items cursor-pointer'
-              onClick={() => handlePreviewItemClick(index)}
-            >
-              {chart.component}
-            </div>
-          ))}
+        <div className='swiper-preview grid grid-cols-2  w-full items-center justify-center  z-[99999] gap-2'>
+          <div className='swiper-coming-active' onClick={() => handleIncomingItemClick()}>
+            {comingSlide.component}
+          </div>
+          <div className='grid grid-cols-2 gap-2 '>
+            {previewCharts.map((chart, index) => (
+              <div
+                key={index}
+                className='swiper-preview-items cursor-pointer'
+                onClick={() => handlePreviewItemClick(index)}
+              >
+                {chart.component}
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* <div className='absolute top-[10%] left-[20%] z-[9999999999999] flex items-center gap-4'>
-          <IconButton size='48' color='white' ref={prevRef} onClick={() => swiperRef.current?.swiper?.slidePrev()}>
-            <ArrowLeftIcon className='size-6' />
-          </IconButton>
-          <IconButton size='48' color='white' ref={nextRef} onClick={() => swiperRef.current?.swiper?.slideNext()}>
-            <ArrowRightIcon className='size-6' />
-          </IconButton>
-        </div> */}
+        <div className='mt-10 flex justify-end'>
+          <div className='flex items-center gap-4'>
+            <IconButton size='48' color='white' ref={prevRef} onClick={() => swiperRef.current?.swiper?.slidePrev()}>
+              <ArrowLeftIcon className='size-6' />
+            </IconButton>
+            <IconButton size='48' color='white' ref={nextRef} onClick={() => swiperRef.current?.swiper?.slideNext()}>
+              <ArrowRightIcon className='size-6' />
+            </IconButton>
+          </div>
+        </div>
       </div>
     </div>
   )
