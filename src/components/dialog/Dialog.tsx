@@ -23,11 +23,11 @@ const Dialog = memo(({ open, setOpen, children, className, classNameBg, zIndex }
           leaveTo='opacity-0'
         >
           <div
-            className={`fixed inset-0 bg-black/[.44] backdrop-blur-[40px] shadow-4xl transition-opacity ${classNameBg}`}
+            className={`shadow-4xl fixed inset-0 bg-black/[.44] backdrop-blur-[40px] transition-opacity ${classNameBg}`}
           />
         </TransitionChild>
         <div className='fixed inset-0 z-10 w-screen overflow-y-auto'>
-          <div className='flex min-h-full xs:items-center justify-center p-4 text-center sm:items-center sm:p-0'>
+          <div className='flex min-h-full justify-center p-4 text-center xs:items-center sm:items-center sm:p-0'>
             <TransitionChild
               enter='ease-out duration-300'
               enterFrom='opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95'
@@ -37,7 +37,7 @@ const Dialog = memo(({ open, setOpen, children, className, classNameBg, zIndex }
               leaveTo='opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95'
             >
               <DialogPanel
-                className={`relative transform overflow-hidden rounded-lg bg-white transition-all min-w-[300px] ${className}`}
+                className={`relative min-w-[300px] transform overflow-hidden rounded-lg bg-white transition-all ${className}`}
               >
                 {children}
               </DialogPanel>

@@ -77,15 +77,15 @@ const ReactionViewChartMobile = memo(() => {
   const maxDataValue = useMemo(() => Math.max(...datasetData), [datasetData])
   return (
     <div className='relative h-[370px] w-full rounded-[20px] bg-ln-white-blue'>
-      <div className='absolute right-[-10px] h-[40px]  flex items-center justify-center w-[200px] rounded-bl-[34px] rounded-tr-[34px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px]'>
-        <p className='bg-ln-blue-purple bg-clip-text font-customSemiBold lg:text-[28px] text-transparent'>
+      <div className='absolute right-[-10px] flex h-[40px] w-[200px] items-center justify-center rounded-bl-[34px] rounded-tr-[34px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px]'>
+        <p className='bg-ln-blue-purple bg-clip-text font-customSemiBold text-transparent lg:text-[28px]'>
           Reaction viewers
         </p>
       </div>
 
-      <div className='relative top-[12%] left-[10%] size-[200px] xs-min:size-[350px] lg:size-[400px]'>
+      <div className='relative left-[10%] top-[12%] size-[200px] xs-min:size-[350px] lg:size-[400px]'>
         <Doughnut
-          className=' z-50'
+          className='z-50'
           ref={chartTotalOrderRef}
           options={{
             cutout: custom.cutout,
@@ -133,7 +133,7 @@ const ReactionViewChartMobile = memo(() => {
           }}
         />
 
-        <div className='absolute left-1/2 top-1/2 z-10 flex size-[100px] lg:size-[256.2px] -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full border-[2.5px] border-dotted border-[#A6A6A6]'>
+        <div className='absolute left-1/2 top-1/2 z-10 flex size-[100px] -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full border-[2.5px] border-dotted border-[#A6A6A6] lg:size-[256.2px]'>
           {/* viền */}
           <div className='flex size-[90px] items-center justify-center rounded-full bg-[#F8F8F8]'>
             <div className='flex size-[90px] flex-col items-center justify-center gap-1 rounded-full bg-white shadow-s-8'>
@@ -144,9 +144,9 @@ const ReactionViewChartMobile = memo(() => {
         </div>
       </div>
 
-      <div className='absolute bottom-5 right-5 mt-3 flex flex-col lg:items-start items-end justify-center gap-6'>
+      <div className='absolute bottom-5 right-5 mt-3 flex flex-col items-end justify-center gap-6 lg:items-start'>
         {listDataSet.map((data) => (
-          <div key={data.value} className='flex items-center lg:flex-row flex-row-reverse  gap-[6px]'>
+          <div key={data.value} className='flex flex-row-reverse items-center gap-[6px] lg:flex-row'>
             <div
               className={classNames(
                 'size-3 rounded-[1px]',

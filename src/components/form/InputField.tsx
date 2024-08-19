@@ -67,15 +67,15 @@ const InputField = memo(
                     required={required}
                     disabled={disabled}
                     placeholder={placeholder}
-                    className={`w-full ${size === 'small' ? 'h-[48px]' : 'xs:h-11 sm:h-[52px]'} px-5 ${variant === 'outline-green' ? 'border-[1px] border-solid border-greenMain rounded-lg pb-[2px]' : variant === 'outline' ? 'border-[1px] border-solid border-blackMain/[.22] xs:rounded-[30px] sm:rounded-[32px] pb-[2px]' : 'bg-greyLight rounded-lg'} ${
+                    className={`w-full ${size === 'small' ? 'h-[48px]' : 'xs:h-11 sm:h-[52px]'} px-5 ${variant === 'outline-green' ? 'rounded-lg border-[1px] border-solid border-greenMain pb-[2px]' : variant === 'outline' ? 'border-[1px] border-solid border-blackMain/[.22] pb-[2px] xs:rounded-[30px] sm:rounded-[32px]' : 'rounded-lg bg-greyLight'} ${
                       disabled
                         ? 'bg-blackMain/[.03]'
                         : variant === 'outline-green'
-                          ? 'focus:ring-[1.2px] focus:ring-greenMain hover:ring-[1.2px] hover:ring-greenMain'
+                          ? 'hover:ring-[1.2px] hover:ring-greenMain focus:ring-[1.2px] focus:ring-greenMain'
                           : variant === 'outline'
-                            ? 'focus:ring-[1.5px] focus:ring-blackMain/[.30] hover:ring-[1.5px] hover:ring-blackMain/[.30]'
-                            : 'focus:bg-blackMain/[.05] hover:bg-blackMain/[.05]'
-                    } transition-colors ease-in-out duration-300 ${className}`}
+                            ? 'hover:ring-[1.5px] hover:ring-blackMain/[.30] focus:ring-[1.5px] focus:ring-blackMain/[.30]'
+                            : 'hover:bg-blackMain/[.05] focus:bg-blackMain/[.05]'
+                    } transition-colors duration-300 ease-in-out ${className}`}
                     onChange={(e) => {
                       let value = e.target.value
 
@@ -91,7 +91,7 @@ const InputField = memo(
                     }}
                   />
                   <div
-                    className={`absolute top-1/2 ${size === 'small' ? 'right-[20px]' : 'right-[25px]'} transform -translate-y-1/2 pointer-events-none`}
+                    className={`absolute top-1/2 ${size === 'small' ? 'right-[20px]' : 'right-[25px]'} pointer-events-none -translate-y-1/2 transform`}
                   >
                     {rightIcon}
                   </div>
@@ -99,11 +99,11 @@ const InputField = memo(
               </div>
               {helperText && (
                 <div className='min-h-[18px]'>
-                  <p className='ml-2 xs:text-[13px] sm:text-[14px] text-gray-400'>{helperText}</p>
+                  <p className='ml-2 text-gray-400 xs:text-[13px] sm:text-[14px]'>{helperText}</p>
                 </div>
               )}
               <div className='min-h-[18px]'>
-                <p className='ml-2 xs:text-[13px] sm:text-[14px] text-red-500'>
+                <p className='ml-2 text-red-500 xs:text-[13px] sm:text-[14px]'>
                   {fieldState.error && fieldState.error.message}
                 </p>
               </div>

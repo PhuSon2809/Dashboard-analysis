@@ -71,18 +71,18 @@ const MenuCheckTimeChart = memo(() => {
   )
 
   return (
-    <div className='lg:min-w-[666px] mt-20 sm:mt-[7rem] lg:mt-0 min-w-[300px] h-[400px] lg:min-h-[666px] bg-ln-white-yellow lg:rounded-[32px] rounded-[20px] rounded-tr-[50px] lg:rounded-tr-[80px] lg:shadow-s-10 relative'>
+    <div className='relative mt-20 h-[400px] min-w-[300px] rounded-[20px] rounded-tr-[50px] bg-ln-white-yellow sm:mt-[7rem] lg:mt-0 lg:min-h-[666px] lg:min-w-[666px] lg:rounded-[32px] lg:rounded-tr-[80px] lg:shadow-s-10'>
       <div
-        className={`lg:w-[300px] w-[200px] lg:h-[68px] h-[40px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tl-[34px] rounded-br-[34px] shadow-s-7 absolute -top-2 -left-2`}
+        className={`absolute -left-2 -top-2 flex h-[40px] w-[200px] items-center justify-center rounded-br-[34px] rounded-tl-[34px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px] lg:h-[68px] lg:w-[300px]`}
       >
-        <p className='lg:text-[28px] font-customSemiBold text-transparent bg-clip-text bg-ln-purple-orange capitalize'>
+        <p className='bg-ln-purple-orange bg-clip-text font-customSemiBold capitalize text-transparent lg:text-[28px]'>
           Menu check time
         </p>
       </div>
 
-      <div className='lg:size-[480px] size-[300px] p-[10px] absolute top-10 lg:top-[85px] left-1/2 transform -translate-x-1/2 bg-white rounded-full shadow-s-15'>
+      <div className='absolute left-1/2 top-10 size-[300px] -translate-x-1/2 transform rounded-full bg-white p-[10px] shadow-s-15 lg:top-[85px] lg:size-[480px]'>
         <Doughnut
-          className='relative z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'
+          className='relative left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 transform'
           options={{
             cutout: custom.cutout,
             plugins: {
@@ -112,19 +112,19 @@ const MenuCheckTimeChart = memo(() => {
           }}
         />
 
-        <div className='lg:size-[303px] flex items-center justify-center rounded-full border-[2.5px] border-dotted border-[#A6A6A6] absolute left-1/2 lg:top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10' />
+        <div className='absolute left-1/2 z-10 flex -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full border-[2.5px] border-dotted border-[#A6A6A6] lg:top-1/2 lg:size-[303px]' />
       </div>
 
-      <div className='flex w-full items-start justify-center lg:gap-8 gap-4 absolute lg:bottom-8 bottom-2 left-1/2 transform -translate-x-1/2'>
+      <div className='absolute bottom-2 left-1/2 flex w-full -translate-x-1/2 transform items-start justify-center gap-4 lg:bottom-8 lg:gap-8'>
         {listDataSet.map((data) => (
           <div key={data.value} className='flex items-center gap-2'>
             <div
               className={classNames(
-                'lg:size-[16px] size-[10px] rounded-[4px]',
+                'size-[10px] rounded-[4px] lg:size-[16px]',
                 data.value === '>5' ? 'bg-ln-blue-3' : 'bg-ln-orange'
               )}
             />
-            <p className='lg:text-[18px]/[20px] font-customRegular capitalize'>{data.label} minutes</p>
+            <p className='font-customRegular capitalize lg:text-[18px]/[20px]'>{data.label} minutes</p>
           </div>
         ))}
       </div>

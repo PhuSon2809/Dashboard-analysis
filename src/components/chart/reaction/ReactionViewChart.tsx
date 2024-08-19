@@ -76,9 +76,9 @@ const ReactionViewChart = memo(() => {
   )
   const maxDataValue = useMemo(() => Math.max(...datasetData), [datasetData])
   return (
-    <div className='relative h-[521px] lg:w-[639px] rounded-[32px] bg-ln-white-blue'>
-      <div className='absolute right-[-10px] top-[-10px] flex lg:h-[68px] w-[200px] lg:w-[267px] items-center justify-center rounded-bl-[34px] rounded-tr-[34px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px]'>
-        <p className='bg-ln-blue-purple bg-clip-text font-customSemiBold lg:text-[28px] text-transparent'>
+    <div className='relative h-[521px] rounded-[32px] bg-ln-white-blue lg:w-[639px]'>
+      <div className='absolute right-[-10px] top-[-10px] flex w-[200px] items-center justify-center rounded-bl-[34px] rounded-tr-[34px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px] lg:h-[68px] lg:w-[267px]'>
+        <p className='bg-ln-blue-purple bg-clip-text font-customSemiBold text-transparent lg:text-[28px]'>
           Reaction viewers
         </p>
       </div>
@@ -135,7 +135,7 @@ const ReactionViewChart = memo(() => {
           />
         </div>
 
-        <div className='absolute left-1/2 top-1/2 z-10 flex size-[100px] lg:size-[256.2px] -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full border-[2.5px] border-dotted border-[#A6A6A6]'>
+        <div className='absolute left-1/2 top-1/2 z-10 flex size-[100px] -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full border-[2.5px] border-dotted border-[#A6A6A6] lg:size-[256.2px]'>
           <div className='flex size-[246.64px] items-center justify-center rounded-full bg-[#F8F8F8]'>
             <div className='flex size-[205.97px] flex-col items-center justify-center gap-1 rounded-full bg-white shadow-s-8'>
               <h3 className='text-[30px]/[45px] font-medium text-[#292D30]'>{maxDataValue}%</h3>
@@ -145,9 +145,9 @@ const ReactionViewChart = memo(() => {
         </div>
       </div>
 
-      <div className='absolute bottom-5 right-5 mt-3 flex flex-col lg:items-start items-end justify-center gap-6'>
+      <div className='absolute bottom-5 right-5 mt-3 flex flex-col items-end justify-center gap-6 lg:items-start'>
         {listDataSet.map((data) => (
-          <div key={data.value} className='flex items-center lg:flex-row flex-row-reverse  gap-[6px]'>
+          <div key={data.value} className='flex flex-row-reverse items-center gap-[6px] lg:flex-row'>
             <div
               className={classNames(
                 'size-3 rounded-[1px]',

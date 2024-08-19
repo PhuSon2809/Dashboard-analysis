@@ -17,7 +17,7 @@ const PersonreactionCard = memo(({ person, isActive, children }: PersonreactionC
     <div
       className={classNames(
         isActive ? 'bg-ln-blue-green' : 'bg-grey100',
-        'flex h-[533px] xs-min:w-[345px] flex-col items-center justify-center rounded-2xl transition duration-300 ease-in-out'
+        'flex h-[533px] flex-col items-center justify-center rounded-2xl transition duration-300 ease-in-out xs-min:w-[345px]'
       )}
     >
       <img
@@ -50,7 +50,7 @@ const PersonreactionCard = memo(({ person, isActive, children }: PersonreactionC
           {person.gender === Gender.MALE ? 'Male' : 'Female'}
         </p>
       </div>
-      {children && <p className='text-[20px]/[30px] text-white flex flex-col'>{children}</p>}
+      {children && <p className='flex flex-col text-[20px]/[30px] text-white'>{children}</p>}
       {isActive && (
         <>
           {person.age && <p className='mb-[94px] mt-4 text-[20px]/[30px] text-white'>Age: {person.age}</p>}

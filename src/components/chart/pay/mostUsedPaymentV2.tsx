@@ -31,13 +31,11 @@ const MostUsedPaymentV2: React.FunctionComponent<IMostUsedPaymentV2Props> = ({ l
     }
   ]
   return (
-    <div
-      className={classNames('best-seller-chart relative bg-ln-pink ', 'size-[460px] sm:size-[520px] rounded-[32px]')}
-    >
+    <div className={classNames('best-seller-chart relative bg-ln-pink', 'size-[460px] rounded-[32px] sm:size-[520px]')}>
       <div
         className={classNames(
           'absolute flex items-center justify-center bg-white/[.44] shadow-s-7 backdrop-blur-[80px]',
-          'bottom-0 left-0 lg:left-[-30px] h-[54px] w-[300px] rounded-tr-[34px] rounded-bl-[34px] '
+          'bottom-0 left-0 h-[54px] w-[300px] rounded-bl-[34px] rounded-tr-[34px] lg:left-[-30px]'
         )}
       >
         <p

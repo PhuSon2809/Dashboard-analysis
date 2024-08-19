@@ -116,13 +116,13 @@ const OrderReport = memo(() => {
   }
 
   return (
-    <div className=' bg-earth-2  px-5 pt-[8px]'>
-      <div className='list-chart-order relative flex flex-col lg:gap-5 '>
-        <h3 className='w-fit bg-ln-red-purple bg-clip-text font-customBold lg:text-[52px] text-[32px] uppercase leading-none text-transparent'>
+    <div className='bg-earth-2 px-5 pt-[8px]'>
+      <div className='list-chart-order relative flex flex-col lg:gap-5'>
+        <h3 className='w-fit bg-ln-red-purple bg-clip-text font-customBold text-[32px] uppercase leading-none text-transparent lg:text-[52px]'>
           order
         </h3>
 
-        <div className='swiper-preview lg:absolute flex  flex-wrap lg:flex-row w-full items-center justify-center  z-[99999] lg:justify-end gap-[17.6px] '>
+        <div className='swiper-preview z-[99999] flex w-full flex-wrap items-center justify-center gap-[17.6px] lg:absolute lg:flex-row lg:justify-end'>
           {previewCharts.map((chart, index) => (
             <div
               key={index}
@@ -170,7 +170,7 @@ const OrderReport = memo(() => {
           </Swiper>
         </div>
 
-        <div className='absolute top-[10%] left-[20%] z-[9999999999999] flex items-center gap-4'>
+        <div className='absolute left-[20%] top-[10%] z-[9999999999999] flex items-center gap-4'>
           <IconButton size='48' color='white' ref={prevRef} onClick={() => swiperRef.current?.swiper?.slidePrev()}>
             <ArrowLeftIcon className='size-6' />
           </IconButton>

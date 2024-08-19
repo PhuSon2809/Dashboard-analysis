@@ -10,8 +10,8 @@ const UnhappyVistorCard = memo(() => {
   const isIncrease = Math.random() >= 0.5
 
   return (
-    <div className='w-full lg:w-[355px] h-[235px] rounded-[32px] lg:bg-white/[.44] bg-white/[.60]  backdrop-blur-2xl relative lg:shadow-s-1 overflow-hidden'>
-      <div className='w-fit flex flex-col items-center gap-1 mt-[52px] ml-[158px]'>
+    <div className='relative h-[235px] w-full overflow-hidden rounded-[32px] bg-white/[.60] backdrop-blur-2xl lg:w-[355px] lg:bg-white/[.44] lg:shadow-s-1'>
+      <div className='ml-[158px] mt-[52px] flex w-fit flex-col items-center gap-1'>
         <p className='text-[18px]/[28px] font-normal text-grey999/[.64]'>Unhappy vistors</p>
         <div className='flex items-center gap-[9px]'>
           <h6 className='text-[36px]/[46.8px] font-bold'>{homeReportCurrent?.currentViews}</h6>
@@ -23,7 +23,7 @@ const UnhappyVistorCard = memo(() => {
             )}
             <p
               className={classNames(
-                `xs:text-[13.09px]/[19.4px] sm:text-[16px]/[24px] font-semibold transition-colors duration-200 ease-in-out`,
+                `font-semibold transition-colors duration-200 ease-in-out xs:text-[13.09px]/[19.4px] sm:text-[16px]/[24px]`,
                 isIncrease ? 'text-greenNeonMain' : 'text-pinkMain'
               )}
             >
@@ -33,9 +33,9 @@ const UnhappyVistorCard = memo(() => {
         </div>
       </div>
 
-      <div className='size-[245.16px] rounded-full bg-ln-white border-solid border-[1.29px] border-white/[.22] shadow-s-2 absolute left-1/2 transform -translate-x-1/2 top-[150px]' />
+      <div className='absolute left-1/2 top-[150px] size-[245.16px] -translate-x-1/2 transform rounded-full border-[1.29px] border-solid border-white/[.22] bg-ln-white shadow-s-2' />
 
-      <div className='absolute left-0 bottom-0'>
+      <div className='absolute bottom-0 left-0'>
         <img src={images.icon.unhappy_vistor} alt='unhappy-icon' />
       </div>
     </div>

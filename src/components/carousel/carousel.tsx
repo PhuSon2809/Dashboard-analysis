@@ -75,14 +75,14 @@ const Carousel: React.FunctionComponent<ICarouselProps> = ({ listData, hasNaviga
       {hasNavigation && (
         <div
           ref={wrapperRef}
-          className='2xl:max-w-[900px] w-full mx-auto relative mt-4'
+          className='relative mx-auto mt-4 w-full 2xl:max-w-[900px]'
           style={{ maxWidth: slideWidth ? `${slideWidth}px` : '100%' }}
         >
           <div className='custom-prev-button absolute left-0'>
-            <ArrowLeftIcon className='w-6 h-6 text-white' />
+            <ArrowLeftIcon className='h-6 w-6 text-white' />
           </div>
           <div className='custom-next-button absolute right-0'>
-            <ArrowRightIcon className='w-6 h-6 text-white' />
+            <ArrowRightIcon className='h-6 w-6 text-white' />
           </div>
         </div>
       )}

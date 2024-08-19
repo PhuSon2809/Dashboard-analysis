@@ -25,14 +25,14 @@ const TotalViewChart = memo(() => {
   const enterStovesData = useMemo(() => labels.map((item) => chartData?.[item]?.[3]), [homeReportCurrent])
 
   return (
-    <div className='lg:w-[639px] h-[300px] lg:h-[450px] px-5 py-8 bg-ln-white-red rounded-[20px] lg:rounded-[32px] relative'>
-      <div className='lg:w-[267px] w-[150px] lg:h-[68px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tr-[34px] rounded-bl-[34px] shadow-s-7 absolute top-[-10px] right-[-10px]'>
-        <p className='lg:text-[28px] font-customSemiBold text-transparent bg-clip-text bg-ln-blue-purple'>
+    <div className='relative h-[300px] rounded-[20px] bg-ln-white-red px-5 py-8 lg:h-[450px] lg:w-[639px] lg:rounded-[32px]'>
+      <div className='absolute right-[-10px] top-[-10px] flex w-[150px] items-center justify-center rounded-bl-[34px] rounded-tr-[34px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px] lg:h-[68px] lg:w-[267px]'>
+        <p className='bg-ln-blue-purple bg-clip-text font-customSemiBold text-transparent lg:text-[28px]'>
           Total viewers
         </p>
       </div>
 
-      <div className='w-full h-[200px] lg:h-[360px]'>
+      <div className='h-[200px] w-full lg:h-[360px]'>
         <Bar
           data={{
             labels: labels,
@@ -168,12 +168,12 @@ const TotalViewChart = memo(() => {
         />
       </div>
 
-      <div className='mt-3 flex items-center justify-center  gap-[3px] lg:gap-6'>
+      <div className='mt-3 flex items-center justify-center gap-[3px] lg:gap-6'>
         {listDataSet.map((data) => (
           <div key={data.value} className='flex items-center gap-[2px] sm:gap-[6px]'>
             <div
               className={classNames(
-                'size-[6px] sm:size-3 rounded-[1px]',
+                'size-[6px] rounded-[1px] sm:size-3',
                 data.value === 'total-view'
                   ? 'bg-ln-green-to-b'
                   : data.value === 'view-menu'

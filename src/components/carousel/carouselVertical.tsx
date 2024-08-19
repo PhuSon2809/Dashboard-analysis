@@ -26,7 +26,7 @@ const CarouselVertical: React.FunctionComponent<ICarouselProps> = ({ listData })
         modifier: 1,
         slideShadows: false
       }}
-      className='max-h-[500px] swiper-food-beverage-mobile'
+      className='swiper-food-beverage-mobile max-h-[500px]'
     >
       {listData.map((item, index) => (
         <SwiperSlide key={index}>{item}</SwiperSlide>

@@ -39,7 +39,7 @@ const CurrentReactions = memo(() => {
     [typeActive, homeReportCurrent]
   )
   return (
-    <div className='relative pt-[50px] lg:pt-[120px] px-2 lg:px-4'>
+    <div className='relative px-2 pt-[50px] lg:px-4 lg:pt-[120px]'>
       <img src={images.image.dash_line} alt='dash-line' className='absolute left-[317px] top-0' />
       <img src={images.image.dash_line_2} alt='dash-line-2' className='absolute right-[-29px] top-[385px]' />
 
@@ -53,7 +53,7 @@ const CurrentReactions = memo(() => {
             </h1>
           )}
 
-          <p className='mt-4 font-semibold text-[13px] lg:text-[16px] leading-[24px] text-grey999/[.64]'>
+          <p className='mt-4 text-[13px] font-semibold leading-[24px] text-grey999/[.64] lg:text-[16px]'>
             Reactions measured during the whole time interval <br /> at an F&B store, reflecting real-time customer
             <br /> engagement and satisfaction.
           </p>

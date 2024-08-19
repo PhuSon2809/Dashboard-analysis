@@ -95,11 +95,10 @@ const SelectField = memo(
                       onChange={(event) => setQuery(event.target.value)}
                       displayValue={(option: OptionSelect) => option?.label}
                       className={classNames(
-                        `relative w-full py-1.5 pl-5 pr-10 shadow-sm focus:outline-none`,
+                        `shadow-sm relative w-full py-1.5 pl-5 pr-10 focus:outline-none`,
                         size === 'small' ? 'h-[48px]' : 'xs:h-11 sm:h-[52px]',
                         variant === 'outline'
-                          ? `${disabled ? 'bg-blackMain/[.03]' : 'bg-transparent hover:ring-[1.2px] hover:ring-blackMain/[.3]'} 
-                              border-[1px] border-solid border-blackMain/[.22] focus:ring-[1.2px] focus:ring-blackMain/[.3] xs:rounded-[30px] sm:rounded-[32px]`
+                          ? `${disabled ? 'bg-blackMain/[.03]' : 'bg-transparent hover:ring-[1.2px] hover:ring-blackMain/[.3]'} border-[1px] border-solid border-blackMain/[.22] focus:ring-[1.2px] focus:ring-blackMain/[.3] xs:rounded-[30px] sm:rounded-[32px]`
                           : `${disabled ? 'bg-blackMain/[.03]' : 'bg-greyLight'} rounded-lg focus:bg-blackMain/[.05]`,
                         disabled && 'hover:bg-blackMain/[.05]'
                       )}
@@ -112,14 +111,14 @@ const SelectField = memo(
                     <ComboboxOptions
                       anchor='bottom'
                       className={classNames(
-                        'w-[var(--input-width)] !max-h-[200px] mt-2 overflow-auto rounded-xl bg-white/[.64] backdrop-blur-[80px] p-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm transition duration-200 ease-in-out scroll-bar-small'
+                        'shadow-lg scroll-bar-small mt-2 !max-h-[200px] w-[var(--input-width)] overflow-auto rounded-xl bg-white/[.64] p-1 ring-1 ring-black ring-opacity-5 backdrop-blur-[80px] transition duration-200 ease-in-out focus:outline-none sm:text-sm'
                       )}
                     >
                       {optionRenders.map((option) => (
                         <ComboboxOption
                           key={option.value}
                           value={option}
-                          className='flex items-center gap-2 rounded-lg py-1.5 px-3 select-none data-[focus]:bg-black/5 cursor-pointer transition duration-200 ease-in-out'
+                          className='flex cursor-pointer select-none items-center gap-2 rounded-lg px-3 py-1.5 transition duration-200 ease-in-out data-[focus]:bg-black/5'
                         >
                           <CheckIcon className='invisible size-4 fill-black group-data-[selected]:visible' />
                           <div className='text-sm/6 text-black'>{option.label}</div>
@@ -132,11 +131,11 @@ const SelectField = memo(
 
               {helperText && (
                 <div className='min-h-[18px]'>
-                  <p className='ml-2 xs:text-[13px] sm:text-[14px] text-gray-400'>{helperText}</p>
+                  <p className='ml-2 text-gray-400 xs:text-[13px] sm:text-[14px]'>{helperText}</p>
                 </div>
               )}
               <div className='min-h-[18px]'>
-                <p className='ml-2 xs:text-[13px] sm:text-[14px] text-red-500'>
+                <p className='ml-2 text-red-500 xs:text-[13px] sm:text-[14px]'>
                   {fieldState.error && fieldState.error.message}
                 </p>
               </div>

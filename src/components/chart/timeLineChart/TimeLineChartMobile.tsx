@@ -165,15 +165,15 @@ const TimelineChartMobile = memo(() => {
   }, [currentHour, currentMinute, distanceBetweenItems, timeMarkers])
 
   return (
-    <div className='h-full w-full py-8 px-4'>
+    <div className='h-full w-full px-4 py-8'>
       <div className='h-full'>
-        <div className='table-container relative flex  h-full w-full flex-grow-0'>
-          <div ref={tableHeaderRef} className='overflow-hidden s-max:w-[45px] table-header pt-[100px]'>
+        <div className='table-container relative flex h-full w-full flex-grow-0'>
+          <div ref={tableHeaderRef} className='table-header overflow-hidden pt-[100px] s-max:w-[45px]'>
             {timeMarkers.map((hour, index) => (
               <div
                 key={index}
                 ref={index <= 3 ? (el) => el && (markerRefs.current[index] = el) : null}
-                className='time-items flex w-full flex-shink-0  min-h-[80px] gap-8'
+                className='time-items flex-shink-0 flex min-h-[80px] w-full gap-8'
               >
                 <p
                   className={classNames(
@@ -203,8 +203,8 @@ const TimelineChartMobile = memo(() => {
                         onMouseLeave={() => setHoveredItemId(null)}
                         ref={(el) => el && (itemRefs.current[index] = el)}
                         className={classNames(
-                          'time-line-items absolute flex flex-col min-h-[170px] rounded-xl text-center w-[50px] text-white transition-all duration-200 ease-in-out',
-                          isHeightest ? 'h-[60px] shadow-s-17 hover:h-20' : 'h-[60px]  hover:h-20',
+                          'time-line-items absolute flex min-h-[170px] w-[50px] flex-col rounded-xl text-center text-white transition-all duration-200 ease-in-out',
+                          isHeightest ? 'h-[60px] shadow-s-17 hover:h-20' : 'h-[60px] hover:h-20',
                           index === 0
                             ? 'bg-ln-blue-yellow'
                             : index === 1
@@ -226,13 +226,13 @@ const TimelineChartMobile = memo(() => {
             </div>
           </div>
         </div>
-        <div ref={tableBottomRef} className='table-bottom pl-9 flex gap-5 items-center justify-center'>
+        <div ref={tableBottomRef} className='table-bottom flex items-center justify-center gap-5 pl-9'>
           {titleRenders.map((item) => (
             <p
               key={`${item.title}-${item.id}`}
               data-id={`${item.title}-${item.id}`}
               className={classNames(
-                'table-bottom-item  text-blackMain',
+                'table-bottom-item text-blackMain',
                 item.id === hoveredItemId ? 'text-[18px]/[20px] font-semibold' : 'text-[13px]/[27px] font-medium'
               )}
             >

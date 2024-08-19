@@ -40,16 +40,16 @@ const ServeTimeAverageChart = memo(({ isActive }: { isActive: boolean }) => {
 
   console.log('renderData', renderData)
   return (
-    <div className='lg:min-w-[666px] mt-20 xs-min:mt-[7rem] lg:mt-0 min-w-[300px] h-[400px] lg:min-h-[666px] bg-ln-white-blue-2 lg:rounded-[32px] rounded-[20px] rounded-tr-[50px] lg:rounded-tr-[80px] lg:shadow-s-10 relative'>
+    <div className='relative mt-20 h-[400px] min-w-[300px] rounded-[20px] rounded-tr-[50px] bg-ln-white-blue-2 xs-min:mt-[7rem] lg:mt-0 lg:min-h-[666px] lg:min-w-[666px] lg:rounded-[32px] lg:rounded-tr-[80px] lg:shadow-s-10'>
       <div
-        className={`lg:w-[340px] w-[200px] h-[40px] lg:h-[68px] bg-white/[.44] backdrop-blur-[80px] flex items-center justify-center rounded-tl-[34px] rounded-br-[34px] shadow-s-7 absolute ${!isActive ? '-left-5 bottom-8' : 'lg:-left-10 lg:bottom-10  bottom-3'} transition duration-300 ease-in-out`}
+        className={`absolute flex h-[40px] w-[200px] items-center justify-center rounded-br-[34px] rounded-tl-[34px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px] lg:h-[68px] lg:w-[340px] ${!isActive ? '-left-5 bottom-8' : 'bottom-3 lg:-left-10 lg:bottom-10'} transition duration-300 ease-in-out`}
       >
-        <p className='lg:text-[28px] font-customSemiBold text-transparent bg-clip-text bg-ln-yellow-green capitalize'>
+        <p className='bg-ln-yellow-green bg-clip-text font-customSemiBold capitalize text-transparent lg:text-[28px]'>
           Serve time average
         </p>
       </div>
 
-      <div className='lg:h-[500px] h-[330px] relative top-4'>
+      <div className='relative top-4 h-[330px] lg:h-[500px]'>
         <Chart
           type='bar'
           data={{

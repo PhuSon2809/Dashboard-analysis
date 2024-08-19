@@ -93,10 +93,10 @@ const Navbar = memo(({ className, scrollToSection }: NavbarProps) => {
       className={classNames(
         className,
         isOpenMenu
-          ? 'h-fit py-[26px] px-[22px] bg-[#ebebeb] backdrop-blur-[40px] rounded-3xl shadow-s-16 top-5 left-5 transform '
-          : 'h-[100px] p-5 xs:top-[10px] sm:top-[30px] xs:left-[10px] sm:left-[17px]',
+          ? 'left-5 top-5 h-fit transform rounded-3xl bg-[#ebebeb] px-[22px] py-[26px] shadow-s-16 backdrop-blur-[40px]'
+          : 'h-[100px] p-5 xs:left-[10px] xs:top-[10px] sm:left-[17px] sm:top-[30px]',
         isOpenMenu ? 'max-h-screen' : 'max-h-[100px]',
-        'fixed w-fit z-50 flex flex-col items-center gap-[18px] overflow-hidden transition-all duration-700 ease-in-out'
+        'fixed z-50 flex w-fit flex-col items-center gap-[18px] overflow-hidden transition-all duration-700 ease-in-out'
       )}
     >
       <button
@@ -106,7 +106,7 @@ const Navbar = memo(({ className, scrollToSection }: NavbarProps) => {
           setIsOpenMenuItem(false)
         }}
         className={classNames(
-          'min-w-[48.01px] min-h-[48.01px] flex items-center justify-center bg-white shadow-s-19 rounded-full transition-transform duration-1000 ease-in-out',
+          'flex min-h-[48.01px] min-w-[48.01px] items-center justify-center rounded-full bg-white shadow-s-19 transition-transform duration-1000 ease-in-out',
           isOpenMenu && 'rotate-y-360deg'
         )}
       >
@@ -136,17 +136,15 @@ const Navbar = memo(({ className, scrollToSection }: NavbarProps) => {
                     window.open('https://fi.ai/', '_self')
                   } else {
                     // navigate(nav.url)
-                    alert(
-                      'You do not have administrative rights, please contact the administrator.'
-                    )
+                    alert('You do not have administrative rights, please contact the administrator.')
                   }
                 }}
                 className={classNames(
-                  `size-12 flex items-center justify-center rounded-full hover:scale-105 transition duration-300 ease-in-out cursor-pointer relative`,
-                  itemActive === nav.id ? 'bg-ln-icon-button backdrop-blur-[40px] shadow-s-16' : 'bg-transparent'
+                  `relative flex size-12 cursor-pointer items-center justify-center rounded-full transition duration-300 ease-in-out hover:scale-105`,
+                  itemActive === nav.id ? 'bg-ln-icon-button shadow-s-16 backdrop-blur-[40px]' : 'bg-transparent'
                 )}
               >
-                {lockFeature && <IconLock className='w-[10px] h-[10px] absolute left-0 top-[20%]' />}
+                {lockFeature && <IconLock className='absolute left-0 top-[20%] h-[10px] w-[10px]' />}
 
                 <div className='min-w-6'>
                   {nav.icon(itemActive === nav.id ? 'white' : itemHover === nav.id ? 'linear' : 'black')}

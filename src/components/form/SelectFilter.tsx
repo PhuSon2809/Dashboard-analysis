@@ -34,7 +34,7 @@ const SelectFilter = memo(
         {({ open }) => (
           <div className={`relative ${fullWidth ? 'xs:w-full' : ''}`}>
             <ListboxButton
-              className={`relative xs:min-w-[130px] sm:min-w-[180px] min-h-10 rounded-md bg-white shadow-sm ring-1 ring-inset ring-blackMain/[.22] focus:ring-[1.5px] focus:ring-blackMain/[.30] hover:ring-[1.5px] hover:ring-blackMain/[.30] xs:pr-8 sm:pl-3 sm:pr-10 text-left transition-colors ease-in-out duration-300 ${className}`}
+              className={`shadow-sm relative min-h-10 rounded-md bg-white text-left ring-1 ring-inset ring-blackMain/[.22] transition-colors duration-300 ease-in-out hover:ring-[1.5px] hover:ring-blackMain/[.30] focus:ring-[1.5px] focus:ring-blackMain/[.30] xs:min-w-[130px] xs:pr-8 sm:min-w-[180px] sm:pl-3 sm:pr-10 ${className}`}
             >
               <div className='flex items-center gap-2'>
                 {leftIcon && leftIcon}
@@ -44,9 +44,9 @@ const SelectFilter = memo(
                     <div className='h-6 border-0 border-r-[1px] border-solid border-blackMain/[.1]' />
                   </>
                 )}
-                <span className={`xs:text-[12px] sm:text-[14px] font-customRegular text-blackMain/[.64] text-nowrap`}>
+                <span className={`text-nowrap font-customRegular text-blackMain/[.64] xs:text-[12px] sm:text-[14px]`}>
                   {label && `${label}:`}{' '}
-                  <span className={`text-[14px] text-blackMain font-customMedium truncate`}>{selected.label}</span>
+                  <span className={`truncate font-customMedium text-[14px] text-blackMain`}>{selected.label}</span>
                 </span>
               </div>
               {!hideClear && selected.value !== '' && (
@@ -73,13 +73,13 @@ const SelectFilter = memo(
               leaveTo='opacity-0'
             >
               <ListboxOptions
-                className={`absolute z-10 mt-1 ${maxHeight ? maxHeight : 'max-h-56'} w-full py-1 overflow-auto rounded-lg bg-white/[.64] backdrop-blur-[80px] shadow-lg scroll-bar-small`}
+                className={`absolute z-10 mt-1 ${maxHeight ? maxHeight : 'max-h-56'} shadow-lg scroll-bar-small w-full overflow-auto rounded-lg bg-white/[.64] py-1 backdrop-blur-[80px]`}
               >
                 {options.map((option, index) => (
                   <ListboxOption
                     value={option}
                     key={index}
-                    className={`bg-transparent hover:bg-black/[.05] cursor-pointer select-none py-2 px-3 flex items-center justify-between transition-colors duration-100 ease-in-out ${options.length - 1 === index ? '' : 'border-0 border-b-[1px] border-solid border-[#F8F8F9]'}`}
+                    className={`flex cursor-pointer select-none items-center justify-between bg-transparent px-3 py-2 transition-colors duration-100 ease-in-out hover:bg-black/[.05] ${options.length - 1 === index ? '' : 'border-0 border-b-[1px] border-solid border-[#F8F8F9]'}`}
                   >
                     <span
                       className={`text-[14px] ${selected.value === option.value ? 'font-customMedium' : 'font-customRegular'} block truncate`}

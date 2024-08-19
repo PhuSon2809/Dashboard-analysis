@@ -64,24 +64,24 @@ const ReactionsEnjoyChartMobile = memo(({ isSmall, isLittleSmall }: { isSmall?: 
 
   return (
     <div
-      className={`enjoy-chart relative bg-ln-pink shadow-s-10 flex flex-col items-center  p-2   ${classNames(
+      className={`enjoy-chart relative flex flex-col items-center bg-ln-pink p-2 shadow-s-10 ${classNames(
         isSmall
-          ? 'w-[80px] h-full rounded-[10px] '
+          ? 'h-full w-[80px] rounded-[10px]'
           : isLittleSmall
             ? 'h-[170px] rounded-[15px]'
-            : 'w-[470px] h-[520px] rounded-[32px] rounded-tr-[80px] gap-5'
+            : 'h-[520px] w-[470px] gap-5 rounded-[32px] rounded-tr-[80px]'
       )}`}
     >
       {!isSmall && (
         <div
           className={classNames(
-            'flex items-center justify-center  bg-white/[.44] shadow-s-7 backdrop-blur-[80px] translate-x-[-10%] translate-y-[-30%]  rounded-br-[32px] rounded-tl-[32px]',
-            isLittleSmall ? 'h-[30px] w-[130px]' : 'h-[64px] w-[400px] '
+            'flex translate-x-[-10%] translate-y-[-30%] items-center justify-center rounded-br-[32px] rounded-tl-[32px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px]',
+            isLittleSmall ? 'h-[30px] w-[130px]' : 'h-[64px] w-[400px]'
           )}
         >
           <p
             className={classNames(
-              'bg-ln-red-green bg-clip-text font-customSemiBold capitalize text-transparent p-1',
+              'bg-ln-red-green bg-clip-text p-1 font-customSemiBold capitalize text-transparent',
               isLittleSmall ? 'text-[10px]' : 'text-[28px]'
             )}
           >
@@ -91,7 +91,7 @@ const ReactionsEnjoyChartMobile = memo(({ isSmall, isLittleSmall }: { isSmall?: 
       )}
 
       <div
-        className={` transform rounded-full bg-white  shadow-s-15 ${classNames(isSmall ? ' size-[60px] shadow-s-15' : isLittleSmall ? 'size-[100px]' : ' size-[380px]  p-[10px]')}`}
+        className={`transform rounded-full bg-white shadow-s-15 ${classNames(isSmall ? 'size-[60px] shadow-s-15' : isLittleSmall ? 'size-[100px]' : 'size-[380px] p-[10px]')}`}
       >
         <div className='relative h-full w-full rounded-full bg-white'>
           <Doughnut
@@ -162,7 +162,7 @@ const ReactionsEnjoyChartMobile = memo(({ isSmall, isLittleSmall }: { isSmall?: 
               <p
                 className={classNames(
                   'font-customSemiBold text-[#292D30]',
-                  isSmall ? 'text-[13px] ' : isLittleSmall ? 'text-[20px]' : 'text-[60px]'
+                  isSmall ? 'text-[13px]' : isLittleSmall ? 'text-[20px]' : 'text-[60px]'
                 )}
               >
                 {dataChart?.['1']}%
@@ -173,7 +173,7 @@ const ReactionsEnjoyChartMobile = memo(({ isSmall, isLittleSmall }: { isSmall?: 
       </div>
 
       {!isSmall && (
-        <div className={classNames(' flex w-full items-center justify-center gap-5')}>
+        <div className={classNames('flex w-full items-center justify-center gap-5')}>
           {listDataSet.map((data) => (
             <div key={data.value} className='flex items-center gap-[6px]'>
               <div

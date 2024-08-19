@@ -39,7 +39,7 @@ const TypingEffect: React.FC<TypingEffectProps> = ({ text, children, speed, widt
   }, [index, content, speed, onComplete, isGenerating, hasLoading])
 
   return (
-    <div className={`inline-block ${width ? `w-[${width}px]` : 'w-full'} text-white max-w-full break-words`}>
+    <div className={`inline-block ${width ? `w-[${width}px]` : 'w-full'} max-w-full break-words text-white`}>
       {/* @ts-expect-error */}
       <ReactMarkdown remarkPlugins={[remarkBreaks]}>{displayedContent}</ReactMarkdown>
     </div>

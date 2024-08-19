@@ -21,7 +21,7 @@ const avatars = [
   { src: AvatarImg6, alt: 'Avatar 7' },
   { src: AvatarImg7, alt: 'Avatar 8' }
 ]
-console.log("avatars:", avatars)
+console.log('avatars:', avatars)
 
 // const generateAvatars = (count) => {
 //   // Lấy các avatar thực tế từ mảng avatars
@@ -172,18 +172,18 @@ const TimelineChartMobileV2 = memo(() => {
     setPositions(positions)
   }, [titleRenders])
   return (
-    <div className='h-full w-full py-8 px-4 overflow-hidden'>
+    <div className='h-full w-full overflow-hidden px-4 py-8'>
       <div className='h-full'>
-        <div className='table-container relative flex items-end h-full w-full flex-grow-0 pb-5'>
+        <div className='table-container relative flex h-full w-full flex-grow-0 items-end pb-5'>
           <div
             ref={tableHeaderRef}
-            className='overflow-hidden max-h-[400px] z-max:w-[40px] s-max:w-[45px] table-time grid h-full'
+            className='table-time grid h-full max-h-[400px] overflow-hidden z-max:w-[40px] s-max:w-[45px]'
           >
             {timeMarkers.map((hour, index) => (
               <div
                 key={index}
                 ref={index <= 4 ? (el) => el && (markerRefs.current[index] = el) : null}
-                className='time-items z-max:text-[13px] flex items-end w-full flex-shink-0   gap-8'
+                className='time-items flex-shink-0 flex w-full items-end gap-8 z-max:text-[13px]'
               >
                 <p
                   className={classNames(
@@ -196,11 +196,11 @@ const TimelineChartMobileV2 = memo(() => {
               </div>
             ))}
           </div>
-          <div className='w-full h-full relative grid pl-4 z-max:pl-1'>
+          <div className='relative grid h-full w-full pl-4 z-max:pl-1'>
             {timeMarkers.map((hour, index) => (
               <div
                 key={index}
-                className={`box   border-0 border-b border-dashed ${+hour === currentHour ? 'border-blackMain' : 'border-[#E5E5E5]'}`}
+                className={`box border-0 border-b border-dashed ${+hour === currentHour ? 'border-blackMain' : 'border-[#E5E5E5]'}`}
               />
             ))}
           </div>
@@ -217,8 +217,8 @@ const TimelineChartMobileV2 = memo(() => {
                         onMouseLeave={() => setHoveredItemId(null)}
                         ref={(el) => el && (itemRefs.current[index] = el)}
                         className={classNames(
-                          'time-line-items absolute flex flex-col min-h-[170px] rounded-xl text-center w-[50px] z-max:w-[40px] z-max:rounded-lg text-white transition-all duration-200 ease-in-out ',
-                          isHeightest ? 'h-[60px] shadow-s-17 hover:h-20' : 'h-[60px]  hover:h-20',
+                          'time-line-items absolute flex min-h-[170px] w-[50px] flex-col rounded-xl text-center text-white transition-all duration-200 ease-in-out z-max:w-[40px] z-max:rounded-lg',
+                          isHeightest ? 'h-[60px] shadow-s-17 hover:h-20' : 'h-[60px] hover:h-20',
                           index === 0
                             ? 'bg-ln-blue-yellow'
                             : index === 1
@@ -240,13 +240,13 @@ const TimelineChartMobileV2 = memo(() => {
             </div>
           </div>
         </div>
-        <div ref={tableBottomRef} className='table-bottom z-max:pl-[40px] pl-[55px] flex gap-5   '>
+        <div ref={tableBottomRef} className='table-bottom flex gap-5 pl-[55px] z-max:pl-[40px]'>
           {titleRenders.map((item) => (
             <p
               key={`${item.title}-${item.id}`}
               data-id={`${item.title}-${item.id}`}
               className={classNames(
-                'table-bottom-item  text-blackMain',
+                'table-bottom-item text-blackMain',
                 item.id === hoveredItemId ? 'text-[18px]/[20px] font-semibold' : 'text-[13px]/[27px] font-medium'
               )}
             >

@@ -53,19 +53,19 @@ const BestSellerChart = memo(({ isSmall }: { isSmall?: boolean }) => {
   return (
     <div
       className={classNames(
-        'best-seller-chart relative bg-ln-yellow ',
-        isSmall ? 'h-[150px] w-[300px] lg:size-[110px] rounded-lg' : 'size-[460px] sm:size-[520px] rounded-[32px]'
+        'best-seller-chart relative bg-ln-yellow',
+        isSmall ? 'h-[150px] w-[300px] rounded-lg lg:size-[110px]' : 'size-[460px] rounded-[32px] sm:size-[520px]'
       )}
     >
       {!isSmall && (
         <div
           className={classNames(
-            'absolute flex items-center justify-center bg-white/[.44] shadow-s-7 backdrop-blur-[80px] rounded-tl-[30px]  rounded-br-[30px]  w-[200px] h-[50px]'
+            'absolute flex h-[50px] w-[200px] items-center justify-center rounded-br-[30px] rounded-tl-[30px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px]'
           )}
         >
           <p
             className={classNames(
-              'bg-ln-blue-green-2 bg-clip-text font-customSemiBold capitalize text-transparent text-[28px]'
+              'bg-ln-blue-green-2 bg-clip-text font-customSemiBold text-[28px] capitalize text-transparent'
             )}
           >
             Best Seller

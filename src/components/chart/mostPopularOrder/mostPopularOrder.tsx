@@ -40,14 +40,14 @@ const MostUsedPaymentChart = memo(({ isSmall }: { isSmall?: boolean }) => {
     <div
       className={classNames(
         isSmall
-          ? 'most-used-payment-chart h-[150px] w-[300px] lg:size-[110px] rounded-[9.64px] bg-ln-white-green pr-[6.03px] pt-2 shadow-s-14 backdrop-blur-2xl'
-          : 'most-used-payment-chart size-[470px] sm:size-[510px] rounded-[32px] bg-ln-white-green pr-[6.03px] pt-2 shadow-s-14 backdrop-blur-2xl'
+          ? 'most-used-payment-chart h-[150px] w-[300px] rounded-[9.64px] bg-ln-white-green pr-[6.03px] pt-2 shadow-s-14 backdrop-blur-2xl lg:size-[110px]'
+          : 'most-used-payment-chart size-[470px] rounded-[32px] bg-ln-white-green pr-[6.03px] pt-2 shadow-s-14 backdrop-blur-2xl sm:size-[510px]'
       )}
     >
       {!isSmall && (
         <div
           className={classNames(
-            'absolute -left-[20px] top-[0px] flex h-[50px] w-[200px] items-center justify-center rounded-tl-[32px] rounded-br-[32px] bg-[#FBFCFE]'
+            'absolute -left-[20px] top-[0px] flex h-[50px] w-[200px] items-center justify-center rounded-br-[32px] rounded-tl-[32px] bg-[#FBFCFE]'
           )}
         >
           <p
@@ -60,7 +60,7 @@ const MostUsedPaymentChart = memo(({ isSmall }: { isSmall?: boolean }) => {
         </div>
       )}
 
-      <div className={classNames(isSmall ? 'h-[110px] lg:h-[90px] w-full' : 'h-[90%] w-full')}>
+      <div className={classNames(isSmall ? 'h-[110px] w-full lg:h-[90px]' : 'h-[90%] w-full')}>
         <Bar
           data={{
             labels: ['Delivery', ' In-store', 'Take away'],

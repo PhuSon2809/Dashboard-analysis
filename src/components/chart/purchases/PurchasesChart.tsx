@@ -48,18 +48,18 @@ const PurchasesChart = memo(({ isSmall }: { isSmall?: boolean }) => {
     <div
       className={classNames(
         'purchases-chart relative bg-ln-orange-3',
-        isSmall ? 'size-[110px] rounded-[10px]' : 'size-[470px] sm:size-[520px] rounded-[32px]'
+        isSmall ? 'size-[110px] rounded-[10px]' : 'size-[470px] rounded-[32px] sm:size-[520px]'
       )}
     >
       {!isSmall && (
         <div
           className={classNames(
-            'absolute flex items-center justify-center bg-white/[.44] shadow-s-7 backdrop-blur-[80px] -bottom-[30px] -left-[6px] h-[64px] w-[228px] rounded-bl-[34px] rounded-tr-[34px]'
+            'absolute -bottom-[30px] -left-[6px] flex h-[64px] w-[228px] items-center justify-center rounded-bl-[34px] rounded-tr-[34px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px]'
           )}
         >
           <p
             className={classNames(
-              'bg-ln-green-orange bg-clip-text font-customSemiBold capitalize text-transparent text-[28px]'
+              'bg-ln-green-orange bg-clip-text font-customSemiBold text-[28px] capitalize text-transparent'
             )}
           >
             Purchases
@@ -70,7 +70,7 @@ const PurchasesChart = memo(({ isSmall }: { isSmall?: boolean }) => {
       <div
         className={classNames(
           'absolute left-1/2 w-full -translate-x-1/2 transform',
-          isSmall ? 'lg:top-3 top-4 size-[130px] lg:h-[90px]' : 'top-10  h-[400px]'
+          isSmall ? 'top-4 size-[130px] lg:top-3 lg:h-[90px]' : 'top-10 h-[400px]'
         )}
       >
         <div className='h-full w-full'>
@@ -129,12 +129,12 @@ const PurchasesChart = memo(({ isSmall }: { isSmall?: boolean }) => {
       </div>
 
       {!isSmall && (
-        <div className={classNames('absolute flex w-full items-center justify-between bottom-[60px] gap-2 px-10')}>
+        <div className={classNames('absolute bottom-[60px] flex w-full items-center justify-between gap-2 px-10')}>
           {listDataSet.map((data, i) => (
             <div key={`${data.value}-${i}`} className='flex items-center gap-[6px]'>
               <div
                 className={classNames(
-                  `${'size-[10px] md:size-[18px] rounded-md'}`,
+                  `${'size-[10px] rounded-md md:size-[18px]'}`,
                   data.value === '2-4' ? 'bg-ln-orange-2' : data.value === '5' ? 'bg-ln-orange' : 'bg-ln-blue-2'
                 )}
               />

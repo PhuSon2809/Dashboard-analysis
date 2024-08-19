@@ -43,7 +43,7 @@ const Engagement = memo(() => {
   }, [swiperRef])
 
   return (
-    <div className='list-chart px-4 lg:px-0 lg:w-[1730px] lg:h-[810px] h-[600px] lg:mt-[191px] flex items-center gap-2 bg-ln-white-4 overflow-hidden relative'>
+    <div className='list-chart relative flex h-[600px] items-center gap-2 overflow-hidden bg-ln-white-4 px-4 lg:mt-[191px] lg:h-[810px] lg:w-[1730px] lg:px-0'>
       <Swiper
         ref={swiperRef}
         loop
@@ -92,13 +92,13 @@ const Engagement = memo(() => {
         </SwiperSlide>
       </Swiper>
 
-      <div className='absolute lg:top-[110px] top-10 lg:left-[750px] left-0 px-4'>
-        <h1 className='w-fit lg:text-[52px] text-[32px] font-customBold text-transparent bg-clip-text bg-ln-purple-red'>
+      <div className='absolute left-0 top-10 px-4 lg:left-[750px] lg:top-[110px]'>
+        <h1 className='w-fit bg-ln-purple-red bg-clip-text font-customBold text-[32px] text-transparent lg:text-[52px]'>
           ENGAGEMENT
         </h1>
       </div>
 
-      <div className='flex items-center gap-4 absolute bottom-0 lg:bottom-[100px] lg:left-[750px] z-50'>
+      <div className='absolute bottom-0 z-50 flex items-center gap-4 lg:bottom-[100px] lg:left-[750px]'>
         <button ref={prevRef} onClick={() => swiperRef.current?.swiper.slidePrev()}>
           <ArrowLeftIcon className='size-10 cursor-pointer' />
         </button>

@@ -57,17 +57,17 @@ const BestSellerChartMobile = memo(({ isSmall, isLittleSmall }: { isSmall?: bool
         isSmall
           ? 'size-[80px] overflow-hidden rounded-lg'
           : isLittleSmall
-            ? ' rounded-[10px]  h-[170px]'
-            : 'w-[470px] h-[520px] rounded-[32px]'
+            ? 'h-[170px] rounded-[10px]'
+            : 'h-[520px] w-[470px] rounded-[32px]'
       )}
     >
       {!isSmall && (
         <div
           className={classNames(
-            ' flex items-center justify-center bg-white/[.44] shadow-s-7 backdrop-blur-[80px]',
+            'flex items-center justify-center bg-white/[.44] shadow-s-7 backdrop-blur-[80px]',
             isLittleSmall
-              ? 'absolute top-[-10%] h-[30px] w-[100px] items-center justify-center rounded-bl-[32px] rounded-tr-[32px] '
-              : 'bottom-0 left-0 h-[54px] w-[191px] rounded-tr-[34px] rounded-bl-[34px] '
+              ? 'absolute top-[-10%] h-[30px] w-[100px] items-center justify-center rounded-bl-[32px] rounded-tr-[32px]'
+              : 'bottom-0 left-0 h-[54px] w-[191px] rounded-bl-[34px] rounded-tr-[34px]'
           )}
         >
           <p
@@ -82,10 +82,7 @@ const BestSellerChartMobile = memo(({ isSmall, isLittleSmall }: { isSmall?: bool
       )}
 
       <div
-        className={classNames(
-          'w-full  p-2',
-          isSmall ? 'h-[90px]' : isLittleSmall ? 'h-[170px]' : 'h-[450px] px-8 pt-5'
-        )}
+        className={classNames('w-full p-2', isSmall ? 'h-[90px]' : isLittleSmall ? 'h-[170px]' : 'h-[450px] px-8 pt-5')}
       >
         <div className='h-full w-full'>
           <Bar

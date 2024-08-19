@@ -59,16 +59,16 @@ const PaymentReactionChartV2: React.FunctionComponent<IPaymentReactionChartV2Pro
   return (
     <div
       className={classNames(
-        'payment-reaction-chart-v2 relative  bg-ln-blue-pink-2 ',
+        'payment-reaction-chart-v2 relative bg-ln-blue-pink-2',
 
-        'size-[470px] sm:w-[720px] h-[520px] rounded-[32px]'
+        'size-[470px] h-[520px] rounded-[32px] sm:w-[720px]'
       )}
     >
       <div
         className={classNames(
           'absolute flex items-center justify-center bg-white/[.44] shadow-s-7 backdrop-blur-[80px]',
 
-          'top-0 -left-[6px] h-[50px] w-[300px] rounded-bl-[34px] rounded-tr-[34px]'
+          '-left-[6px] top-0 h-[50px] w-[300px] rounded-bl-[34px] rounded-tr-[34px]'
         )}
       >
         <p
@@ -81,7 +81,7 @@ const PaymentReactionChartV2: React.FunctionComponent<IPaymentReactionChartV2Pro
         </p>
       </div>
 
-      <div className={classNames('absolute left-1/2 w-full -translate-x-1/2 transform', 'top-10  h-[400px]')}>
+      <div className={classNames('absolute left-1/2 w-full -translate-x-1/2 transform', 'top-10 h-[400px]')}>
         <div className='h-full w-full'>
           <PolarArea
             options={{
@@ -142,8 +142,8 @@ const PaymentReactionChartV2: React.FunctionComponent<IPaymentReactionChartV2Pro
           <div key={`${data.value}-${i}`} className='flex items-center gap-[6px]'>
             <div
               className={classNames(
-                `'size-[10px] md:size-[18px] rounded-md'}`,
-                data.value === 'satisfied' 
+                `'size-[10px] rounded-md'} md:size-[18px]`,
+                data.value === 'satisfied'
                   ? 'bg-payment-v2-orange'
                   : data.value === 'dissatisfied' || data.value === 'yesterday'
                     ? 'bg-payment-v2-purple'

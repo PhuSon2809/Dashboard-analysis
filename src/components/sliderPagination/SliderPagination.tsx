@@ -26,7 +26,7 @@ const SliderPagination = memo(
                 : color === 'black'
                   ? 'bg-blackMain/[.32]'
                   : 'bg-white/[.32]'
-            } ${color === 'black' ? 'hover:bg-blackMain/[.68]' : 'hover:bg-white/[.68]'} transition-colors duration-100 ease-linear cursor-pointer ${className}`}
+            } ${color === 'black' ? 'hover:bg-blackMain/[.68]' : 'hover:bg-white/[.68]'} cursor-pointer transition-colors duration-100 ease-linear ${className}`}
           />
         ))}
       </div>

@@ -40,26 +40,26 @@ const MostUsedPaymentChartMobile = memo(
     return (
       <div
         className={classNames(
-          'most-used-payment-chart backdrop-blur-2xl pt-2 shadow-s-14 bg-ln-white-green  relative',
+          'most-used-payment-chart relative bg-ln-white-green pt-2 shadow-s-14 backdrop-blur-2xl',
           isSmall
-            ? ' size-[80px] rounded-[9.64px] pr-[6.03px] '
+            ? 'size-[80px] rounded-[9.64px] pr-[6.03px]'
             : isLittleSmall
               ? 'h-[170px] rounded-[15px]'
-              : ' w-[470px] h-[520px]  rounded-[32px]  pr-[6.03px] '
+              : 'h-[520px] w-[470px] rounded-[32px] pr-[6.03px]'
         )}
       >
         {!isSmall && (
           <div
             className={classNames(
-              'flex items-center justify-center  bg-[#f1f1f1] translate-y-[-30%]',
+              'flex translate-y-[-30%] items-center justify-center bg-[#f1f1f1]',
               isLittleSmall
-                ? ' h-[30px] w-[130px]   rounded-bl-[15px] rounded-tr-[15px]'
-                : ' h-[50px] w-[300px] rounded-bl-[32px] rounded-tr-[32px]'
+                ? 'h-[30px] w-[130px] rounded-bl-[15px] rounded-tr-[15px]'
+                : 'h-[50px] w-[300px] rounded-bl-[32px] rounded-tr-[32px]'
             )}
           >
             <p
               className={classNames(
-                'bg-ln-purple-green bg-clip-text font-customSemiBold  capitalize text-transparent',
+                'bg-ln-purple-green bg-clip-text font-customSemiBold capitalize text-transparent',
                 isLittleSmall ? 'text-[10px]' : 'text-[28px]'
               )}
             >
@@ -68,7 +68,7 @@ const MostUsedPaymentChartMobile = memo(
           </div>
         )}
 
-        <div className={classNames(isSmall ? 'h-[70px] w-full' : isLittleSmall ? 'h-[130px]' : 'h-[85%] pt-4 w-full')}>
+        <div className={classNames(isSmall ? 'h-[70px] w-full' : isLittleSmall ? 'h-[130px]' : 'h-[85%] w-full pt-4')}>
           <Bar
             data={{
               labels: ['QR Pay', 'Cash', 'Take away'],

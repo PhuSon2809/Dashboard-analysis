@@ -21,15 +21,15 @@ const ServeTime = memo(({ isSmall }: { isSmall?: boolean }) => {
     <div
       className={classNames(
         isSmall
-          ? 'serve-time flex h-[150px] w-[300px] lg:size-[110px] items-center justify-center rounded-[9.64px] bg-rg-white shadow-s-14 backdrop-blur-2xl'
-          : 'serve-time flex size-[440px] md:size-[510px] items-center justify-center rounded-[32px] bg-rg-white shadow-s-14 backdrop-blur-2xl'
+          ? 'serve-time flex h-[150px] w-[300px] items-center justify-center rounded-[9.64px] bg-rg-white shadow-s-14 backdrop-blur-2xl lg:size-[110px]'
+          : 'serve-time flex size-[440px] items-center justify-center rounded-[32px] bg-rg-white shadow-s-14 backdrop-blur-2xl md:size-[510px]'
       )}
     >
       <div
         className={classNames(
           isSmall
-            ? 'relative flex size-[130px] lg:size-[90px] items-center justify-center rounded-full bg-white shadow-s-9'
-            : 'relative flex size-[400px] sm:size-[450px] items-center justify-center rounded-full bg-white shadow-s-9'
+            ? 'relative flex size-[130px] items-center justify-center rounded-full bg-white shadow-s-9 lg:size-[90px]'
+            : 'relative flex size-[400px] items-center justify-center rounded-full bg-white shadow-s-9 sm:size-[450px]'
         )}
       >
         <div role='status'>
@@ -75,7 +75,7 @@ const ServeTime = memo(({ isSmall }: { isSmall?: boolean }) => {
           </h6>
           <p
             className={classNames(
-              'bg-ln-serve-time bg-clip-text font-customSemiBold text-transparent capitalize',
+              'bg-ln-serve-time bg-clip-text font-customSemiBold capitalize text-transparent',
               isSmall ? 'text-[10px] lg:text-[6.63px]' : 'text-[25px]'
             )}
           >

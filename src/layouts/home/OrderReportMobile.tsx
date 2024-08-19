@@ -125,9 +125,9 @@ const OrderReportMobile = memo(() => {
   }
 
   return (
-    <div className=' bg-earth-2  px-5 pt-[8px]'>
-      <div className='list-chart-order relative grid grid-cols-1 lg:gap-5 '>
-        <h3 className='w-fit bg-ln-red-purple bg-clip-text font-customBold lg:text-[52px] text-[32px] uppercase leading-none text-transparent'>
+    <div className='bg-earth-2 px-5 pt-[8px]'>
+      <div className='list-chart-order relative grid grid-cols-1 lg:gap-5'>
+        <h3 className='w-fit bg-ln-red-purple bg-clip-text font-customBold text-[32px] uppercase leading-none text-transparent lg:text-[52px]'>
           order
         </h3>
         <div className='swiper-show w-full'>
@@ -159,11 +159,11 @@ const OrderReportMobile = memo(() => {
             ))}
           </Swiper>
         </div>
-        <div className='swiper-preview grid grid-cols-2  w-full items-center justify-center  z-[99999] gap-2'>
+        <div className='swiper-preview z-[99999] grid w-full grid-cols-2 items-center justify-center gap-2'>
           <div className='swiper-coming-active' onClick={() => handleIncomingItemClick()}>
             {comingSlide.component}
           </div>
-          <div className='grid grid-cols-2 gap-2 '>
+          <div className='grid grid-cols-2 gap-2'>
             {previewCharts.map((chart, index) => (
               <div
                 key={index}

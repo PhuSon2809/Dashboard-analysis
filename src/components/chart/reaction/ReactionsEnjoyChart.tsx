@@ -67,18 +67,18 @@ const ReactionsEnjoyChart = memo(({ isSmall }: { isSmall?: boolean }) => {
       className={`enjoy-chart relative bg-ln-pink shadow-s-10 ${classNames(
         isSmall
           ? 'size-[110px] rounded-[10px]'
-          : 'min-w-[450px] min-h-[535px]  lg:min-w-[535px] rounded-[32px] rounded-tr-[80px]'
+          : 'min-h-[535px] min-w-[450px] rounded-[32px] rounded-tr-[80px] lg:min-w-[535px]'
       )}`}
     >
       {!isSmall && (
         <div
           className={classNames(
-            'absolute  flex items-center justify-center rounded-tl-[30px] rounded-br-[30px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px] h-[70px]  w-[340px] left-[-20px] top-0'
+            'absolute left-[-20px] top-0 flex h-[70px] w-[340px] items-center justify-center rounded-br-[30px] rounded-tl-[30px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px]'
           )}
         >
           <p
             className={classNames(
-              'bg-ln-red-green bg-clip-text font-customSemiBold capitalize text-transparent p-1 text-[28px]'
+              'bg-ln-red-green bg-clip-text p-1 font-customSemiBold text-[28px] capitalize text-transparent'
             )}
           >
             Reactions enjoy meal
@@ -87,7 +87,7 @@ const ReactionsEnjoyChart = memo(({ isSmall }: { isSmall?: boolean }) => {
       )}
 
       <div
-        className={`absolute ${classNames(isSmall ? 'left-1/2 top-[15px] lg:top-[6px] size-[120px] lg:size-[90px] -translate-x-1/2 transform rounded-full bg-white p-[1px] shadow-s-15' : 'left-1/2 top-[80px] size-[380px] -translate-x-1/2 transform rounded-full bg-white p-[10px] shadow-s-15')}`}
+        className={`absolute ${classNames(isSmall ? 'left-1/2 top-[15px] size-[120px] -translate-x-1/2 transform rounded-full bg-white p-[1px] shadow-s-15 lg:top-[6px] lg:size-[90px]' : 'left-1/2 top-[80px] size-[380px] -translate-x-1/2 transform rounded-full bg-white p-[10px] shadow-s-15')}`}
       >
         <div className='relative h-full w-full rounded-full bg-white'>
           <Doughnut
@@ -164,7 +164,7 @@ const ReactionsEnjoyChart = memo(({ isSmall }: { isSmall?: boolean }) => {
       </div>
 
       {!isSmall && (
-        <div className={classNames('absolute flex w-full items-center justify-center bottom-7 gap-20 px-14')}>
+        <div className={classNames('absolute bottom-7 flex w-full items-center justify-center gap-20 px-14')}>
           {listDataSet.map((data) => (
             <div key={data.value} className='flex items-center gap-[6px]'>
               <div

@@ -14,7 +14,7 @@ type TodayReportCard = {
 const TodayReportCard = ({ title, icon, data, color, isIncreasing = true }: TodayReportCard) => {
   return (
     <div className='relative flex h-[132px] w-full flex-col items-start justify-between rounded-2xl bg-white/[.44] p-4 shadow-s-4 backdrop-blur-2xl lg:w-[202px]'>
-      <p className='font-customMedium text-[13px] sm:text-[18px]/[18px] capitalize'>{title}</p>
+      <p className='font-customMedium text-[13px] capitalize sm:text-[18px]/[18px]'>{title}</p>
       <p className='font-customSemiBold text-[20px] sm:text-[32px]/[33.6px]'>{data}</p>
 
       <div className='flex items-center gap-1'>
@@ -32,7 +32,7 @@ const TodayReportCard = ({ title, icon, data, color, isIncreasing = true }: Toda
 
       <div
         className={classNames(
-          'absolute right-3 top-3 flex size-5 sm:size-10 items-center justify-center rounded-lg',
+          'absolute right-3 top-3 flex size-5 items-center justify-center rounded-lg sm:size-10',
           color === 'orange'
             ? 'bg-orangeLight'
             : color === 'blue'

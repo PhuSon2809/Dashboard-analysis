@@ -55,13 +55,13 @@ const Home = memo(() => {
       </div>
 
       <div className='relative bg-ln-white-5'>
-        <div className=' z-20 mt-[20px] '>
+        <div className='z-20 mt-[20px]'>
           {isDesktop && <OrderReport />}
           {isMobile && <OrderReportMobile />}
         </div>
       </div>
       <div className='mb-[168px] mt-5'>
-        <h3 className='w-fit bg-ln-red-purple bg-clip-text font-customBold lg:text-[52px] px-5 text-[32px] uppercase leading-none text-transparent'>
+        <h3 className='w-fit bg-ln-red-purple bg-clip-text px-5 font-customBold text-[32px] uppercase leading-none text-transparent lg:text-[52px]'>
           payment
         </h3>
         <div className='items-center justify-around gap-5 overflow-hidden py-5 lg:flex'>

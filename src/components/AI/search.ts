@@ -9,7 +9,7 @@ const fuse = new Fuse(options, {
 
 // Function to perform the search
 function search(query) {
-  if (query.trim().length <=3) {
+  if (query.trim().length <= 3) {
     return null
   }
 

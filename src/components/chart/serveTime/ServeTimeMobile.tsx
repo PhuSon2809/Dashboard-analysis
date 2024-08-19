@@ -20,18 +20,18 @@ const ServeTimeMobile = memo(({ isSmall, isLittleSmall }: { isSmall?: boolean; i
   return (
     <div
       className={classNames(
-        'serve-time flex items-center justify-center bg-rg-white backdrop-blur-2xl shadow-s-14',
+        'serve-time flex items-center justify-center bg-rg-white shadow-s-14 backdrop-blur-2xl',
         isSmall
-          ? 'size-[80px]  rounded-[9.64px]   '
+          ? 'size-[80px] rounded-[9.64px]'
           : isLittleSmall
-            ? 'h-[170px] rounded-[15px] '
-            : '  w-[470px] h-[520px]  rounded-[32px]  pr-[6.03px] '
+            ? 'h-[170px] rounded-[15px]'
+            : 'h-[520px] w-[470px] rounded-[32px] pr-[6.03px]'
       )}
     >
       <div
         className={classNames(
-          'relative flex items-center justify-center bg-white shadow-s-9 rounded-full',
-          isSmall ? ' size-[70px] ' : isLittleSmall ? 'size-[150px]' : ' size-[400px]'
+          'relative flex items-center justify-center rounded-full bg-white shadow-s-9',
+          isSmall ? 'size-[70px]' : isLittleSmall ? 'size-[150px]' : 'size-[400px]'
         )}
       >
         <div role='status'>
@@ -82,7 +82,7 @@ const ServeTimeMobile = memo(({ isSmall, isLittleSmall }: { isSmall?: boolean; i
           </h6>
           <p
             className={classNames(
-              'bg-ln-serve-time bg-clip-text font-customSemiBold text-transparent capitalize',
+              'bg-ln-serve-time bg-clip-text font-customSemiBold capitalize text-transparent',
               isSmall ? 'text-[2px]' : isLittleSmall ? 'text-[8px]' : 'text-[20px]'
             )}
           >

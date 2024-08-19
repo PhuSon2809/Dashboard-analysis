@@ -146,10 +146,10 @@ const AIQuestionMobile: React.FC<IAIQuestionMobileProps> = () => {
 
   return (
     <>
-      <div className='AI-question relative z-20 flex flex-col gap-5 items-center justify-center mt-20 text-[18px] px-4'>
-        <div className='chat-group-mobile w-full flex flex-col pt-24'>
+      <div className='AI-question relative z-20 mt-20 flex flex-col items-center justify-center gap-5 px-4 text-[18px]'>
+        <div className='chat-group-mobile flex w-full flex-col pt-24'>
           {isLottieLoaded && !chatHistory.length && (
-            <div className='chat chat-end absolute top-[5%] left-[0%] w-[75%]'>
+            <div className='chat chat-end absolute left-[0%] top-[5%] w-[75%]'>
               <div className='chat-bubble chat-bubble-primary w-full text-[15px]'>
                 <TypingEffect text='What do you want to ask? ' speed={50} hasLoading={false} />
               </div>
@@ -158,15 +158,15 @@ const AIQuestionMobile: React.FC<IAIQuestionMobileProps> = () => {
           {chatHistory.length > 0 && (
             <div
               ref={chatContainerRef}
-              className='chat-group-bubble overflow-y-auto w-full  rounded-lg shadow max-h-[500px]'
+              className='chat-group-bubble shadow max-h-[500px] w-full overflow-y-auto rounded-lg'
             >
               {chatHistory.map((chat, index) => (
                 <div
                   key={index}
-                  className={`w-full chat ${classNames(chat.type === 'user' ? 'chat-end' : 'chat-start', index === chatHistory.length - 1 ? 'scale-100 ' : 'scale-[0.85]')}   animate__animated animate__pulse`}
+                  className={`chat w-full ${classNames(chat.type === 'user' ? 'chat-end' : 'chat-start', index === chatHistory.length - 1 ? 'scale-100' : 'scale-[0.85]')} animate__animated animate__pulse`}
                 >
                   <div
-                    className={`chat-bubble ${!chat.image ? 'grid-cols-1' : 'has-image'} ${chat.type === 'user' ? 'bg-[#898989]  opacity-50 hover:opacity-100 text-white' : 'bg-[#69ACF5]'}`}
+                    className={`chat-bubble ${!chat.image ? 'grid-cols-1' : 'has-image'} ${chat.type === 'user' ? 'bg-[#898989] text-white opacity-50 hover:opacity-100' : 'bg-[#69ACF5]'}`}
                   >
                     {chat.type === 'user' ? (
                       chat.text
@@ -179,7 +179,7 @@ const AIQuestionMobile: React.FC<IAIQuestionMobileProps> = () => {
                       </TypingEffect>
                     )}
                     {chat.type === 'ai' && isTypingComplete && chat.image && (
-                      <img src={chat.image} alt='img' className='w-full mt-5' />
+                      <img src={chat.image} alt='img' className='mt-5 w-full' />
                     )}
                   </div>
                 </div>
@@ -204,29 +204,29 @@ const AIQuestionMobile: React.FC<IAIQuestionMobileProps> = () => {
         )}
 
         {chatHistory.length === 0 && (
-          <div className=' bg-white text-center max-w-[300px] left-0 ring-1 rounded-lg overflow-hidden p-2 mt-[-200px]'>
-            <div className=' text-black '>
+          <div className='left-0 mt-[-200px] max-w-[300px] overflow-hidden rounded-lg bg-white p-2 text-center ring-1'>
+            <div className='text-black'>
               This demo highlights F&B store data. For other industries, contact us for details.
             </div>
           </div>
         )}
         {isLottieLoaded && (
-          <div className=' option-question w-full translate-[-20%,-10%] z-30  flex flex-col gap-5 '>
-            <div className='flex overflow-x-auto gap-5 items-center'>
+          <div className='option-question translate-[-20%,-10%] z-30 flex w-full flex-col gap-5'>
+            <div className='flex items-center gap-5 overflow-x-auto'>
               {options.map((option) => (
                 <button
                   key={option.id}
-                  className={`flex flex-col flex-shrink-0  items-center justify-center w-full max-w-[200px] min-h-[50px] leading-1.5 px-4 border-gray-200 text-white bg-[#898989] opacity-50 hover:opacity-100 hover:bg-[#494949c5] rounded-[15px] ${
+                  className={`leading-1.5 flex min-h-[50px] w-full max-w-[200px] flex-shrink-0 flex-col items-center justify-center rounded-[15px] border-gray-200 bg-[#898989] px-4 text-white opacity-50 hover:bg-[#494949c5] hover:opacity-100 ${
                     isAIResponding ? 'opacity-50' : ''
                   }`}
                   // disabled={true}
                   onClick={() => handleAskQuestion(option.id)}
                 >
-                  <p className='text-sm font-normal py-2.5 dark:text-white'>{option.text}</p>
+                  <p className='py-2.5 text-sm font-normal dark:text-white'>{option.text}</p>
                 </button>
               ))}
             </div>
-            <form onSubmit={handleSubmit} className='relative w-full '>
+            <form onSubmit={handleSubmit} className='relative w-full'>
               <div>
                 <div className='pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3'>
                   <img src={brainImg} alt='search' />
@@ -234,15 +234,15 @@ const AIQuestionMobile: React.FC<IAIQuestionMobileProps> = () => {
                 <input
                   type='search'
                   id='search'
-                  className='block w-full rounded-[50px] border text-black border-gray-300 bg-gray-50 py-4  ps-12 text-sm shadow-s-2'
+                  className='block w-full rounded-[50px] border border-gray-300 bg-gray-50 py-4 ps-12 text-sm text-black shadow-s-2'
                   placeholder={`What's in your mind?`}
                   onChange={(e) => setMessageInput(e.target.value)}
                   value={messageInput}
                 />
                 <button
                   type='submit'
-                  className={`absolute top-[50%] translate-y-[-50%] right-0 rounded-full w-[40px] h-[40px] btn-ai text-white flex items-center justify-center ${
-                    isAIResponding ? 'opacity-50 cursor-not-allowed' : ''
+                  className={`btn-ai absolute right-0 top-[50%] flex h-[40px] w-[40px] translate-y-[-50%] items-center justify-center rounded-full text-white ${
+                    isAIResponding ? 'cursor-not-allowed opacity-50' : ''
                   }`}
                   disabled={isAIResponding}
                 >
@@ -253,27 +253,27 @@ const AIQuestionMobile: React.FC<IAIQuestionMobileProps> = () => {
           </div>
         )}
       </div>
-      <dialog id='my_modal_4' className='modal ' open={showDialog}>
-        <div className='modal-box relative bg-[rgba(0,0,0,0.8)] min-w-[80vw]  '>
-          <div className='sticky top-0 right-0 left-0 flex justify-end'>
-            <button className=' btn btn-lg  text-white btn-circle btn-ghost  ' onClick={() => setShowDialog(false)}>
+      <dialog id='my_modal_4' className='modal' open={showDialog}>
+        <div className='modal-box relative min-w-[80vw] bg-[rgba(0,0,0,0.8)]'>
+          <div className='sticky left-0 right-0 top-0 flex justify-end'>
+            <button className='btn btn-circle btn-ghost btn-lg text-white' onClick={() => setShowDialog(false)}>
               ✕
             </button>
           </div>
           <div>
-            <div className='dialog overflow-y-scroll  min-h-[80vh] flex flex-col items-center justify-center'>
-              <div className='flex flex-col gap-20 items-center justify-center w-full h-full'>
+            <div className='dialog flex min-h-[80vh] flex-col items-center justify-center overflow-y-scroll'>
+              <div className='flex h-full w-full flex-col items-center justify-center gap-20'>
                 {chatTemp.map((chat, index) => {
                   switch (true) {
                     case chat.type === 'ai' && chat.id === 3:
                       return (
                         <React.Fragment key={index}>
                           {/* unhappy chart */}
-                          <div className='flex  mt-[20%] items-center justify-between gap-8 bg-white px-4 py-2 rounded-xl lg:h-[100px] lg:w-[650px]'>
+                          <div className='mt-[20%] flex items-center justify-between gap-8 rounded-xl bg-white px-4 py-2 lg:h-[100px] lg:w-[650px]'>
                             <img
                               src={images.icon.unhappy_pink}
                               alt={`unhappy-icon`}
-                              className={classNames('size-[60px] ')}
+                              className={classNames('size-[60px]')}
                             />
 
                             <div>

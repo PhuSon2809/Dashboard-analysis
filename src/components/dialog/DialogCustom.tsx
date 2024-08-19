@@ -46,7 +46,7 @@ const DialogCustom = memo(
             </TransitionChild>
           )}
 
-          <div className='fixed inset-0 z-[600] w-screen overflow-y-auto hidden-scroll'>
+          <div className='hidden-scroll fixed inset-0 z-[600] w-screen overflow-y-auto'>
             <div
               className={`flex min-h-full xs:px-4 sm:px-0 ${variant !== 'vertical' ? 'sm:pr-[11px]' : ''} ${positionDialog ? positionDialog : 'items-start'} justify-center`}
             >
@@ -61,7 +61,7 @@ const DialogCustom = memo(
               >
                 <DialogPanel
                   onMouseLeave={onMouseLeave}
-                  className={`transform overflow-hidden bg-white/[.44] backdrop-blur-[40px] shadow-4xl ${variant === 'vertical' ? 'rounded-tr-xl rounded-br-xl' : 'rounded-xl'} transition-all my-5 mx-auto w-full max-w-[1400px] min-h-[500px] xs:p-4 sm:p-5 ${className}`}
+                  className={`shadow-4xl transform overflow-hidden bg-white/[.44] backdrop-blur-[40px] ${variant === 'vertical' ? 'rounded-br-xl rounded-tr-xl' : 'rounded-xl'} mx-auto my-5 min-h-[500px] w-full max-w-[1400px] transition-all xs:p-4 sm:p-5 ${className}`}
                 >
                   {children}
                 </DialogPanel>

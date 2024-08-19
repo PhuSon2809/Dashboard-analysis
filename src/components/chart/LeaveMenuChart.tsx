@@ -63,17 +63,17 @@ const LeaveMenuChart = memo(({ isActive }: { isActive: boolean }) => {
   )
 
   return (
-    <div className='lg:min-w-[666px] mt-20 xs-min:mt-[7rem] lg:mt-0 min-w-[300px] h-[400px] lg:min-h-[666px]  lg:rounded-[32px] rounded-[20px] rounded-tr-[50px] lg:rounded-tr-[80px] lg:shadow-s-10 relative bg-ln-pink '>
+    <div className='relative mt-20 h-[400px] min-w-[300px] rounded-[20px] rounded-tr-[50px] bg-ln-pink xs-min:mt-[7rem] lg:mt-0 lg:min-h-[666px] lg:min-w-[666px] lg:rounded-[32px] lg:rounded-tr-[80px] lg:shadow-s-10'>
       <div
-        className={`absolute flex lg:h-[68px] sm:h-[40px] w-[200px] lg:w-[280px] items-center justify-center lg:rounded-br-[34px] rounded-br-[15px] lg:rounded-tl-[34px] rounded-tl-[20px] z-[9999] bg-white/[.44] shadow-s-7 backdrop-blur-[80px] ${!isActive ? '-left-5 bottom-8' : 'lg:-left-10 left-[-10px] lg:bottom-10 bottom-2'} transition duration-300 ease-in-out`}
+        className={`absolute z-[9999] flex w-[200px] items-center justify-center rounded-br-[15px] rounded-tl-[20px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px] sm:h-[40px] lg:h-[68px] lg:w-[280px] lg:rounded-br-[34px] lg:rounded-tl-[34px] ${!isActive ? '-left-5 bottom-8' : 'bottom-2 left-[-10px] lg:-left-10 lg:bottom-10'} transition duration-300 ease-in-out`}
       >
-        <p className='bg-ln-purple-pink bg-clip-text font-customSemiBold lg:text-[28px] capitalize text-transparent'>
+        <p className='bg-ln-purple-pink bg-clip-text font-customSemiBold capitalize text-transparent lg:text-[28px]'>
           % menu leave rate
         </p>
       </div>
 
-      <div className='absolute left-1/2 lg:top-[70px] top-[50px] lg:size-[480px] size-[300px] -translate-x-1/2 transform rounded-full bg-white p-[10px] shadow-s-15'>
-        <div className='h-full w-full  rounded-full bg-[#D1D1D6]'>
+      <div className='absolute left-1/2 top-[50px] size-[300px] -translate-x-1/2 transform rounded-full bg-white p-[10px] shadow-s-15 lg:top-[70px] lg:size-[480px]'>
+        <div className='h-full w-full rounded-full bg-[#D1D1D6]'>
           <Doughnut
             options={{
               cutout: custom.cutout,
@@ -99,8 +99,8 @@ const LeaveMenuChart = memo(({ isActive }: { isActive: boolean }) => {
             }}
           />
         </div>
-        <div className='absolute left-1/2 top-1/2 z-10 flex size-[200px] lg:size-[306px] -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full bg-white'>
-          <p className='font-customSemiBold lg:text-[80px] text-[50px] text-[#292D30]'>20%</p>
+        <div className='absolute left-1/2 top-1/2 z-10 flex size-[200px] -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full bg-white lg:size-[306px]'>
+          <p className='font-customSemiBold text-[50px] text-[#292D30] lg:text-[80px]'>20%</p>
         </div>
       </div>
     </div>

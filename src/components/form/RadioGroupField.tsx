@@ -33,12 +33,12 @@ const RadioGroupField = memo(
         defaultValue={defaultValue}
         render={({ field, fieldState }) => {
           return (
-            <div className={`flex flex-col gap-1 w-full`}>
-              <div className='flex items-center xs:gap-4 sm:gap-5 w-full'>
+            <div className={`flex w-full flex-col gap-1`}>
+              <div className='flex w-full items-center xs:gap-4 sm:gap-5'>
                 {options.map((option, i) => (
                   <div
                     key={i}
-                    className={`w-full xs:h-[50px] sm:h-[96px] xs:px-3 sm:px-6 flex items-center justify-between border-[1px] border-solid border-blackMain/[.12] xs:rounded-none sm:rounded-xl ${className}`}
+                    className={`flex w-full items-center justify-between border-[1px] border-solid border-blackMain/[.12] xs:h-[50px] xs:rounded-none xs:px-3 sm:h-[96px] sm:rounded-xl sm:px-6 ${className}`}
                   >
                     {option.label}
                     <input
@@ -53,7 +53,7 @@ const RadioGroupField = memo(
                         field.onChange(value)
                       }}
                       checked={field.value === option.value}
-                      className='appearance-none xs:size-[14px] sm:size-8 flex items-center justify-center border border-blackMain border-solid rounded-full checked:bg-transparent checked:after:content-[" "] xs:checked:after:size-[8px] sm:checked:after:size-4 checked:after:rounded-full checked:after:bg-blackMain hover:scale-105 transition-all duration-300 ease-linear cursor-pointer'
+                      className='checked:after:content-[" "] flex cursor-pointer appearance-none items-center justify-center rounded-full border border-solid border-blackMain transition-all duration-300 ease-linear checked:bg-transparent checked:after:rounded-full checked:after:bg-blackMain hover:scale-105 xs:size-[14px] xs:checked:after:size-[8px] sm:size-8 sm:checked:after:size-4'
                     />
                   </div>
                 ))}

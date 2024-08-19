@@ -25,14 +25,12 @@ const TotalViewChartMobile = memo(() => {
   const enterStovesData = useMemo(() => labels.map((item) => chartData?.[item]?.[3]), [homeReportCurrent])
 
   return (
-    <div className='h-[370px] w-full rounded-[20px] px-5 py-8 bg-ln-white-red   relative'>
-      <div className='w-[200px]  bg-white/[.44] backdrop-blur-[80px]  rounded-tr-[34px] rounded-bl-[34px] shadow-s-7 top-0 absolute  right-[-10px] flex items-center justify-center h-[40px]'>
-        <p className='text-[18px]  font-customSemiBold text-transparent bg-clip-text bg-ln-blue-purple'>
-          Total viewers
-        </p>
+    <div className='relative h-[370px] w-full rounded-[20px] bg-ln-white-red px-5 py-8'>
+      <div className='absolute right-[-10px] top-0 flex h-[40px] w-[200px] items-center justify-center rounded-bl-[34px] rounded-tr-[34px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px]'>
+        <p className='bg-ln-blue-purple bg-clip-text font-customSemiBold text-[18px] text-transparent'>Total viewers</p>
       </div>
 
-      <div className='w-full h-full'>
+      <div className='h-full w-full'>
         <Bar
           data={{
             labels: labels,
@@ -168,7 +166,7 @@ const TotalViewChartMobile = memo(() => {
         />
       </div>
 
-      <div className='mt-3 flex items-center justify-center  gap-[4px] lg:gap-6'>
+      <div className='mt-3 flex items-center justify-center gap-[4px] lg:gap-6'>
         {listDataSet.map((data) => (
           <div key={data.value} className='flex items-center gap-[2px] sm:gap-[6px]'>
             <div

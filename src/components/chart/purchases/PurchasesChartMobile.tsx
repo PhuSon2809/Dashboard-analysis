@@ -47,26 +47,26 @@ const PurchasesChartMobile = memo(({ isSmall, isLittleSmall }: { isSmall?: boole
   return (
     <div
       className={classNames(
-        'purchases-chart relative bg-ln-orange-3 flex flex-col items-center justify-center ',
+        'purchases-chart relative flex flex-col items-center justify-center bg-ln-orange-3',
         isSmall
           ? 'h-full rounded-[10px]'
           : isLittleSmall
             ? 'h-[170px] rounded-[15px]'
-            : 'w-[470px] h-[520px]  rounded-[32px]'
+            : 'h-[520px] w-[470px] rounded-[32px]'
       )}
     >
       {!isSmall && (
         <div
           className={classNames(
-            ' flex items-center justify-center bg-white/[.44] shadow-s-7 backdrop-blur-[80px] -bottom-[30px] -left-[6px]  absolute ',
+            'absolute -bottom-[30px] -left-[6px] flex items-center justify-center bg-white/[.44] shadow-s-7 backdrop-blur-[80px]',
             isLittleSmall
-              ? ' top-[-10%] h-[30px] w-[100px] items-center justify-center rounded-bl-[32px] rounded-tr-[32px] '
-              : 'h-[64px] w-[228px] rounded-bl-[34px] rounded-tr-[34px] top-0'
+              ? 'top-[-10%] h-[30px] w-[100px] items-center justify-center rounded-bl-[32px] rounded-tr-[32px]'
+              : 'top-0 h-[64px] w-[228px] rounded-bl-[34px] rounded-tr-[34px]'
           )}
         >
           <p
             className={classNames(
-              'bg-ln-green-orange bg-clip-text font-customSemiBold capitalize text-transparent ',
+              'bg-ln-green-orange bg-clip-text font-customSemiBold capitalize text-transparent',
               isLittleSmall ? 'text-[14px]' : 'text-[28px]'
             )}
           >
@@ -78,7 +78,7 @@ const PurchasesChartMobile = memo(({ isSmall, isLittleSmall }: { isSmall?: boole
       <div
         className={classNames(
           isSmall
-            ? 'size-[70px] translate-x-[-5%] translate-y-1 '
+            ? 'size-[70px] translate-x-[-5%] translate-y-1'
             : isLittleSmall
               ? 'mt-5 size-[120px]'
               : 'top-10 size-[400px]'
@@ -140,19 +140,19 @@ const PurchasesChartMobile = memo(({ isSmall, isLittleSmall }: { isSmall?: boole
       {!isSmall && (
         <div
           className={classNames(
-            ' flex w-full items-center justify-between',
-            isLittleSmall ? 'flex-wrap pb-4 px-2' : 'gap-2 px-10'
+            'flex w-full items-center justify-between',
+            isLittleSmall ? 'flex-wrap px-2 pb-4' : 'gap-2 px-10'
           )}
         >
           {listDataSet.map((data, i) => (
             <div key={`${data.value}-${i}`} className='flex items-center gap-[6px]'>
               <div
                 className={classNames(
-                  'size-[10px] md:size-[18px] rounded-md',
+                  'size-[10px] rounded-md md:size-[18px]',
                   data.value === '2-4' ? 'bg-ln-orange-2' : data.value === '5' ? 'bg-ln-orange' : 'bg-ln-blue-2'
                 )}
               />
-              <p className={classNames('text-nowrap ', isLittleSmall ? 'text-[8px]' : 'text-[18px]/[18.9px]')}>
+              <p className={classNames('text-nowrap', isLittleSmall ? 'text-[8px]' : 'text-[18px]/[18.9px]')}>
                 {data.label} Purchases
               </p>
             </div>

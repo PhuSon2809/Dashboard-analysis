@@ -75,20 +75,20 @@ const PaymentReactionChartMobile = memo(
       <div
         className={classNames(
           isSmall
-            ? 'payment-reaction-chart  size-[80px] flex flex-col items-center justify-center rounded-[9.64px]'
+            ? 'payment-reaction-chart flex size-[80px] flex-col items-center justify-center rounded-[9.64px]'
             : isLittleSmall
-              ? 'h-[170px] rounded-[15px] '
-              : 'w-[470px] h-[520px] rounded-[32px]',
+              ? 'h-[170px] rounded-[15px]'
+              : 'h-[520px] w-[470px] rounded-[32px]',
           'payment-reaction-chart relative bg-ln-white-blue-2 shadow-s-14'
         )}
       >
         {!isSmall && (
           <div
             className={classNames(
-              ' flex items-center justify-center bg-white/[.44] shadow-s-7 backdrop-blur-[80px] translate-y-[-10%]',
+              'flex translate-y-[-10%] items-center justify-center bg-white/[.44] shadow-s-7 backdrop-blur-[80px]',
               isLittleSmall
-                ? 'h-[30px] w-[130px]   rounded-br-[15px] rounded-tl-[15px]'
-                : 'h-[50px] w-[200px]   rounded-br-[32px] rounded-tl-[32px]'
+                ? 'h-[30px] w-[130px] rounded-br-[15px] rounded-tl-[15px]'
+                : 'h-[50px] w-[200px] rounded-br-[32px] rounded-tl-[32px]'
             )}
           >
             <p
@@ -99,7 +99,7 @@ const PaymentReactionChartMobile = memo(
           </div>
         )}
         <div
-          className={` ${classNames(isSmall ? 'size-[70px]' : isLittleSmall ? 'size-[100px] absolute left-1/2 -translate-x-1/2' : ' absolute left-1/2 top-[40px] size-[420px] -translate-x-1/2 transform')}`}
+          className={` ${classNames(isSmall ? 'size-[70px]' : isLittleSmall ? 'absolute left-1/2 size-[100px] -translate-x-1/2' : 'absolute left-1/2 top-[40px] size-[420px] -translate-x-1/2 transform')}`}
         >
           <div className='h-full w-full'>
             <Doughnut
@@ -166,7 +166,7 @@ const PaymentReactionChartMobile = memo(
                 <div
                   className={classNames(
                     'flex flex-col items-center justify-center gap-1 rounded-full bg-white shadow-s-13',
-                    isSmall ? 'size-[40.99px] ' : isLittleSmall ? 'size-[50px]' : 'size-[150px]'
+                    isSmall ? 'size-[40.99px]' : isLittleSmall ? 'size-[50px]' : 'size-[150px]'
                   )}
                 >
                   <h3
@@ -183,7 +183,7 @@ const PaymentReactionChartMobile = memo(
                   <p
                     className={classNames(
                       isSmall
-                        ? 'text-[10px] lg:text-[3.62px]/[3.8px] text-[#0D0D0D]'
+                        ? 'text-[10px] text-[#0D0D0D] lg:text-[3.62px]/[3.8px]'
                         : isLittleSmall
                           ? 'text-[10px]'
                           : 'text-[19px]/[13px] text-[#0D0D0D]'
@@ -200,18 +200,15 @@ const PaymentReactionChartMobile = memo(
         {!isSmall && (
           <div
             className={classNames(
-              'absolute justify-center flex  w-full',
-              isLittleSmall ? 'gap-[5px] flex-wrap bottom-0  items-start ' : 'gap-[20px] bottom-6 items-center'
+              'absolute flex w-full justify-center',
+              isLittleSmall ? 'bottom-0 flex-wrap items-start gap-[5px]' : 'bottom-6 items-center gap-[20px]'
             )}
           >
             {listDataSet.map((data) => (
-              <div
-                key={data.value}
-                className={classNames('flex items-center ', isLittleSmall ? 'gap-2' : 'gap-[10px]')}
-              >
+              <div key={data.value} className={classNames('flex items-center', isLittleSmall ? 'gap-2' : 'gap-[10px]')}>
                 <div
                   className={classNames(
-                    ` rounded-[2px]`,
+                    `rounded-[2px]`,
                     isLittleSmall ? 'size-[5px] rounded-sm' : 'h-[20px] w-[5px] rounded-md',
                     (() => {
                       if (data.value === 'satisfied') {
@@ -227,7 +224,7 @@ const PaymentReactionChartMobile = memo(
                 <p
                   className={classNames(
                     'font-customRegular capitalize',
-                    isLittleSmall ? 'text-[10px] ' : ' text-[18px]/[18px] '
+                    isLittleSmall ? 'text-[10px]' : 'text-[18px]/[18px]'
                   )}
                 >
                   {data.label}

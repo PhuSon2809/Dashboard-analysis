@@ -33,33 +33,31 @@ const IconButton = memo(
         ref={ref}
         onClick={onClick}
         disabled={disabled}
-        className={`
-        ${
+        className={` ${
           size === '28'
-            ? `${title || leftTitle ? 'px-[16px] h-7' : 'size-7'}`
+            ? `${title || leftTitle ? 'h-7 px-[16px]' : 'size-7'}`
             : size === '32'
-              ? `${title || leftTitle ? 'px-[18px] min-h-8 h-8' : 'size-8'}`
+              ? `${title || leftTitle ? 'h-8 min-h-8 px-[18px]' : 'size-8'}`
               : size === '36'
-                ? `${title || leftTitle ? 'px-[16px] !min-h-9 !min-w-9 !h-9' : '!min-h-9 !min-w-9 !size-9'}`
+                ? `${title || leftTitle ? '!h-9 !min-h-9 !min-w-9 px-[16px]' : '!size-9 !min-h-9 !min-w-9'}`
                 : size === '40'
-                  ? `${title || leftTitle ? 'px-[16px] h-10' : 'size-10'}`
+                  ? `${title || leftTitle ? 'h-10 px-[16px]' : 'size-10'}`
                   : size === '44'
-                    ? `${title || leftTitle ? 'px-[18px] h-11' : 'size-11'}`
+                    ? `${title || leftTitle ? 'h-11 px-[18px]' : 'size-11'}`
                     : size === '48'
-                      ? `${title || leftTitle ? 'px-[18px] h-[48px]' : 'size-[48px]'}`
+                      ? `${title || leftTitle ? 'h-[48px] px-[18px]' : 'size-[48px]'}`
                       : size === '52'
-                        ? `${title || leftTitle ? 'px-[20px] h-[52px]' : 'size-[52px]'}`
+                        ? `${title || leftTitle ? 'h-[52px] px-[20px]' : 'size-[52px]'}`
                         : size === '54'
-                          ? `${title || leftTitle ? 'px-[22px] h-[54px]' : 'size-[54px]'}`
+                          ? `${title || leftTitle ? 'h-[54px] px-[22px]' : 'size-[54px]'}`
                           : size === '56'
-                            ? `${title || leftTitle ? 'px-6 h-[56px]' : 'size-[56px]'}`
+                            ? `${title || leftTitle ? 'h-[56px] px-6' : 'size-[56px]'}`
                             : size === '60'
-                              ? `${title || leftTitle ? 'px-[26px] h-[60px]' : 'size-[60px]'}`
-                              : `${title || leftTitle ? 'px-7 h-16' : 'size-16'}`
-        }
-        ${
+                              ? `${title || leftTitle ? 'h-[60px] px-[26px]' : 'size-[60px]'}`
+                              : `${title || leftTitle ? 'h-16 px-7' : 'size-16'}`
+        } ${
           disabled
-            ? '!bg-[#dcdcdc] !border-0'
+            ? '!border-0 !bg-[#dcdcdc]'
             : color === 'default' && variant === 'container'
               ? 'bg-grey200'
               : color === 'default' && variant === 'outline'
@@ -67,22 +65,16 @@ const IconButton = memo(
                 : color === 'linear' && variant === 'container'
                   ? 'bg-gradient-to-br from-greenMain to-blueMain'
                   : 'bg-white'
-        } 
-        ${color === 'default' && variant === 'container' ? 'hover:bg-greyMain' : 'hover:bg-white'} 
-        ${variant === 'outline' && color === 'white' ? 'border-blackMain border-2 border-solid' : variant === 'outline' && color === 'default' ? 'border-blackMain/[.22] border-2 border-solid' : ''} 
-        ${shadow && 'shadow-icon-button'} 
-        flex items-center ${title || leftTitle ? 'gap-2' : 'justify-center'} rounded-full backdrop-blur-2xl transition ease-in-out duration-300 hover:shadow-avatar
-        ${className}
-      `}
+        } ${color === 'default' && variant === 'container' ? 'hover:bg-greyMain' : 'hover:bg-white'} ${variant === 'outline' && color === 'white' ? 'border-2 border-solid border-blackMain' : variant === 'outline' && color === 'default' ? 'border-2 border-solid border-blackMain/[.22]' : ''} ${shadow && 'shadow-icon-button'} flex items-center ${title || leftTitle ? 'gap-2' : 'justify-center'} hover:shadow-avatar rounded-full backdrop-blur-2xl transition duration-300 ease-in-out ${className} `}
       >
         {leftTitle && (
-          <p className='xs:text-[14px] sm:text-[18px] font-customRegular xs:leading-[14.7px] sm:leading-[18.9px]'>
+          <p className='font-customRegular xs:text-[14px] xs:leading-[14.7px] sm:text-[18px] sm:leading-[18.9px]'>
             {leftTitle}
           </p>
         )}{' '}
         {children}{' '}
         {title && (
-          <p className='xs:text-[14px] sm:text-[18px] font-customRegular xs:leading-[14.7px] sm:leading-[18.9px]'>
+          <p className='font-customRegular xs:text-[14px] xs:leading-[14.7px] sm:text-[18px] sm:leading-[18.9px]'>
             {title}
           </p>
         )}

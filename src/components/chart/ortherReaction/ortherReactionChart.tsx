@@ -74,15 +74,15 @@ const PaymentReactionChart = memo(({ isSmall }: { isSmall?: boolean }) => {
     <div
       className={classNames(
         isSmall
-          ? 'payment-reaction-chart h-[150px] w-[300px] lg:size-[110px] rounded-[9.64px]'
-          : 'w-[450px] h-[500px] lg:size-[520px] rounded-[32px]',
+          ? 'payment-reaction-chart h-[150px] w-[300px] rounded-[9.64px] lg:size-[110px]'
+          : 'h-[500px] w-[450px] rounded-[32px] lg:size-[520px]',
         'payment-reaction-chart relative bg-ln-white-blue-2 shadow-s-14'
       )}
     >
       {!isSmall && (
         <div
           className={classNames(
-            '-left-[10px]  h-[50px] w-[200px] rounded-br-[32px] rounded-tl-[32px] absolute flex items-center justify-center bg-white/[.44] shadow-s-7 backdrop-blur-[80px]'
+            'absolute -left-[10px] flex h-[50px] w-[200px] items-center justify-center rounded-br-[32px] rounded-tl-[32px] bg-white/[.44] shadow-s-7 backdrop-blur-[80px]'
           )}
         >
           <p className={`bg-ln-orange-purple bg-clip-text font-bold text-transparent ${classNames('text-[18px]')}`}>
@@ -92,7 +92,7 @@ const PaymentReactionChart = memo(({ isSmall }: { isSmall?: boolean }) => {
       )}
 
       <div
-        className={`absolute ${classNames(isSmall ? 'left-1/2 top-[15.64px]  size-[110px] lg:size-[80px] -translate-x-1/2 transform' : 'left-1/2 top-[40px] size-[420px] -translate-x-1/2 transform')}`}
+        className={`absolute ${classNames(isSmall ? 'left-1/2 top-[15.64px] size-[110px] -translate-x-1/2 transform lg:size-[80px]' : 'left-1/2 top-[40px] size-[420px] -translate-x-1/2 transform')}`}
       >
         <div className='h-full w-full'>
           <Doughnut
@@ -153,19 +153,19 @@ const PaymentReactionChart = memo(({ isSmall }: { isSmall?: boolean }) => {
             <div
               className={classNames(
                 'flex items-center justify-center rounded-full bg-[#F8F8F8]',
-                isSmall ? 'lg:size-[100.4px] size-[110px]' : ''
+                isSmall ? 'size-[110px] lg:size-[100.4px]' : ''
               )}
             >
               <div
                 className={classNames(
                   'flex flex-col items-center justify-center gap-1 rounded-full bg-white shadow-s-13',
-                  isSmall ? 'lg:size-[40.99px] size-[80px]' : 'size-[150px]'
+                  isSmall ? 'size-[80px] lg:size-[40.99px]' : 'size-[150px]'
                 )}
               >
                 <h3
                   className={classNames(
                     isSmall
-                      ? 'font-customSemiBold text-[11px] lg:text-[8.44px]/[8.86px] text-[#292D30]'
+                      ? 'font-customSemiBold text-[11px] text-[#292D30] lg:text-[8.44px]/[8.86px]'
                       : 'text-[35px]/[30px] font-bold text-[#292D30]'
                   )}
                 >
@@ -174,7 +174,7 @@ const PaymentReactionChart = memo(({ isSmall }: { isSmall?: boolean }) => {
                 <p
                   className={classNames(
                     isSmall
-                      ? 'text-[10px] lg:text-[3.62px]/[3.8px] text-[#0D0D0D]'
+                      ? 'text-[10px] text-[#0D0D0D] lg:text-[3.62px]/[3.8px]'
                       : 'text-[19px]/[13px] text-[#0D0D0D]'
                   )}
                 >
@@ -189,7 +189,7 @@ const PaymentReactionChart = memo(({ isSmall }: { isSmall?: boolean }) => {
       {!isSmall && (
         <div
           className={classNames(
-            'absolute  left-1/2 flex -translate-x-1/2 transform items-start justify-center bottom-[20px] gap-[20px]'
+            'absolute bottom-[20px] left-1/2 flex -translate-x-1/2 transform items-start justify-center gap-[20px]'
           )}
         >
           {listDataSet.map((data) => (

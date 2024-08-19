@@ -22,26 +22,28 @@ const ConversionRateCard = ({ viewing, dotSize, data, title, percentage, classNa
         className={classNames(
           dotSize ? dotSize : 'size-4',
           viewing && 'rotate-[360deg]',
-          'rounded-full bg-rg-blue-green backdrop-blur-2xl transition-all duration-300 ease-in-out hidden sm:block'
+          'hidden rounded-full bg-rg-blue-green backdrop-blur-2xl transition-all duration-300 ease-in-out sm:block'
         )}
       />
       <div
         className={classNames(
-          'shadow-6 flex h-[88px] lg:w-[362px] w-[260px] items-center justify-between rounded-[9px] bg-ln-white-3 px-5 bg-white backdrop-blur-2xl'
+          'shadow-6 flex h-[88px] w-[260px] items-center justify-between rounded-[9px] bg-white bg-ln-white-3 px-5 backdrop-blur-2xl lg:w-[362px]'
         )}
       >
         <p className='font-customSemiBold text-[25px] lg:text-[32px]/[18px]'>{data}</p>
-        <p className='font-customMedium  lg:text-[20px]/[20px] text-[#8E8E93]'>{title}</p>
+        <p className='font-customMedium text-[#8E8E93] lg:text-[20px]/[20px]'>{title}</p>
       </div>
 
       {percentage ? (
-        <div className='absolute right-0 top-[-30px] lg:top-[-50px] z-[999] flex items-center gap-3'>
+        <div className='absolute right-0 top-[-30px] z-[999] flex items-center gap-3 lg:top-[-50px]'>
           <ArrowBottom />
-          <p className='bg-ln-red-purple bg-clip-text font-customSemiBold text-[30px] lg:text-[56px] text-transparent'>
+          <p className='bg-ln-red-purple bg-clip-text font-customSemiBold text-[30px] text-transparent lg:text-[56px]'>
             {percentage}%
           </p>
         </div>
-      ): <></>}
+      ) : (
+        <></>
+      )}
     </div>
   )
 }

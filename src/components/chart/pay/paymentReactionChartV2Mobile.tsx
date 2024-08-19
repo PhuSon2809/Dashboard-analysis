@@ -59,16 +59,16 @@ const PaymentReactionChartV2Mobile: React.FunctionComponent<IPaymentReactionChar
   return (
     <div
       className={classNames(
-        'payment-reaction-chart-v2 bg-ln-blue-pink-2 min-h-[480px] flex flex-col gap-5 ',
+        'payment-reaction-chart-v2 flex min-h-[480px] flex-col gap-5 bg-ln-blue-pink-2',
 
-        'w-full pb-5  rounded-[25px]'
+        'w-full rounded-[25px] pb-5'
       )}
     >
       <div
         className={classNames(
           'flex items-center justify-center bg-white/[.44] shadow-s-7 backdrop-blur-[80px]',
 
-          'top-0 -left-[6px] h-[40px] w-[240px] rounded-bl-[34px] rounded-tr-[34px]'
+          '-left-[6px] top-0 h-[40px] w-[240px] rounded-bl-[34px] rounded-tr-[34px]'
         )}
       >
         <p
@@ -81,7 +81,7 @@ const PaymentReactionChartV2Mobile: React.FunctionComponent<IPaymentReactionChar
         </p>
       </div>
 
-      <div className='w-[350px] h-[350px]'>
+      <div className='h-[350px] w-[350px]'>
         <PolarArea
           options={{
             responsive: true,
@@ -135,12 +135,12 @@ const PaymentReactionChartV2Mobile: React.FunctionComponent<IPaymentReactionChar
         />
       </div>
 
-      <div className={classNames('flex  w-full items-center justify-around')}>
+      <div className={classNames('flex w-full items-center justify-around')}>
         {listDataset.map((data, i) => (
           <div key={`${data.value}-${i}`} className='flex items-center gap-[6px]'>
             <div
               className={classNames(
-                `h-[15px] w-[15px] rounded-md flex flex-shrink-1`,
+                `flex-shrink-1 flex h-[15px] w-[15px] rounded-md`,
                 data.value === 'satisfied'
                   ? 'bg-payment-v2-orange'
                   : data.value === 'dissatisfied' || data.value === 'yesterday'

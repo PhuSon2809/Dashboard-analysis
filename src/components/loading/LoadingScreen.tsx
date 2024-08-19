@@ -52,7 +52,7 @@ export default function LoadingScreen({ ...other }) {
       <ProgressBar />
 
       <div
-        className='h-full flex items-center justify-center bg-gradient-to-tr from-[#C15CFF]/[.2] to-[#FF5454]/[.2]'
+        className='flex h-full items-center justify-center bg-gradient-to-tr from-[#C15CFF]/[.2] to-[#FF5454]/[.2]'
         {...other}
       >
         <motion.div
@@ -76,7 +76,7 @@ export default function LoadingScreen({ ...other }) {
             borderRadius: ['25%', '25%', '50%', '50%', '25%']
           }}
           transition={{ ease: 'linear', duration: 3.2, repeat: Infinity }}
-          className='size-[100px] rounded-[25%] absolute border-[3px] border-solid border-[#C15CFF]/[.4]'
+          className='absolute size-[100px] rounded-[25%] border-[3px] border-solid border-[#C15CFF]/[.4]'
         />
 
         <motion.div
@@ -91,7 +91,7 @@ export default function LoadingScreen({ ...other }) {
             duration: 3.2,
             repeat: Infinity
           }}
-          className='size-[120px] rounded-[25%] absolute border-[8px] border-solid border-[#FF5454]/[.6]'
+          className='absolute size-[120px] rounded-[25%] border-[8px] border-solid border-[#FF5454]/[.6]'
         />
       </div>
     </>

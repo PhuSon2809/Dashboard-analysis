@@ -19,7 +19,7 @@ const TooltipCustom: React.FC<TooltipProps> = ({ content, children, position }) 
             align='center'
             sideOffset={5}
             className={classNames(
-              'min-w-[308px] max-w-[308px] z-50 p-6 text-blackMain bg-[#FCFCFC] rounded-xl shadow-s-18 border-[#F2F2F2] border-solid border'
+              'z-50 min-w-[308px] max-w-[308px] rounded-xl border border-solid border-[#F2F2F2] bg-[#FCFCFC] p-6 text-blackMain shadow-s-18'
             )}
           >
             {content}

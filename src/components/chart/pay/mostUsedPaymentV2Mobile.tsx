@@ -35,9 +35,9 @@ const MostUsedPaymentV2Mobile: React.FunctionComponent<IMostUsedPaymentV2MobileP
     }
   ]
   return (
-    <div className={classNames('best-seller-chart  bg-ln-pink rounded-[25px] ')}>
-      <div className={classNames('w-full px-2 ', ' px-8 pt-5')}>
-        <div className=' w-full min-h-[420px]'>
+    <div className={classNames('best-seller-chart rounded-[25px] bg-ln-pink')}>
+      <div className={classNames('w-full px-2', 'px-8 pt-5')}>
+        <div className='min-h-[420px] w-full'>
           <Bar
             options={{
               indexAxis: 'y',
@@ -121,8 +121,8 @@ const MostUsedPaymentV2Mobile: React.FunctionComponent<IMostUsedPaymentV2MobileP
       </div>
       <div
         className={classNames(
-          ' flex items-center justify-center bg-white/[.44] shadow-s-6 backdrop-blur-[80px]',
-          'h-[40px] w-[240px]  rounded-tr-[34px] rounded-bl-[34px] '
+          'flex items-center justify-center bg-white/[.44] shadow-s-6 backdrop-blur-[80px]',
+          'h-[40px] w-[240px] rounded-bl-[34px] rounded-tr-[34px]'
         )}
       >
         <p
