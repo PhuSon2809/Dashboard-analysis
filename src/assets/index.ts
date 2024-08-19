@@ -43,7 +43,7 @@ const images = {
     female_white
   },
   bg: { bg_vistor_card },
-  icon: { happy_green, unhappy_pink, unhappy_vistor }
+  icon: { happy_green, unhappy_pink, unhappy_vistor}
 }
 
 export default images

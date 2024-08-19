@@ -8,6 +8,7 @@ import MostUsedPaymentV2Mobile from '~/components/chart/pay/mostUsedPaymentV2Mob
 import PaymentReactionChartV2 from '~/components/chart/pay/paymentReactionChartV2'
 import PaymentReactionChartV2Mobile from '~/components/chart/pay/paymentReactionChartV2Mobile'
 import { Navbar } from '~/components/navbar'
+import Wallet from '~/components/wallet'
 import { CurrentReactions, FoodBeverage, OrderReport, RealTimeReport, TodayReport } from '~/layouts/home'
 import Engagement from '~/layouts/home/Engagement'
 import OrderReportMobile from '~/layouts/home/OrderReportMobile'
@@ -32,6 +33,7 @@ const Home = memo(() => {
   return (
     <div className='relative h-full w-full max-w-[1440px] overflow-x-hidden bg-grey500'>
       <Navbar scrollToSection={scrollToSection} />
+      <Wallet />
       <div>
         {isDesktop && <AIQuestion />}
         {isMobile && <AIQuestionMobile />}
