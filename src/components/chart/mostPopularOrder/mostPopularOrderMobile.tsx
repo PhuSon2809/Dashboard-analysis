@@ -63,7 +63,7 @@ const MostUsedPaymentChartMobile = memo(
                 isLittleSmall ? 'text-[10px]' : 'text-[28px]'
               )}
             >
-              waiting reaction
+              Most popular order
             </p>
           </div>
         )}

@@ -21,6 +21,7 @@ const avatars = [
   { src: AvatarImg6, alt: 'Avatar 7' },
   { src: AvatarImg7, alt: 'Avatar 8' }
 ]
+console.log("avatars:", avatars)
 
 // const generateAvatars = (count) => {
 //   // Lấy các avatar thực tế từ mảng avatars

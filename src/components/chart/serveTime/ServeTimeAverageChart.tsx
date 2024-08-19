@@ -106,12 +106,40 @@ const ServeTimeAverageChart = memo(({ isActive }: { isActive: boolean }) => {
           options={{
             responsive: true,
             maintainAspectRatio: false,
-            plugins: { legend: { display: false }, datalabels: { display: false } },
+            plugins: {
+              legend: { display: false },
+              datalabels: { display: false },
+              tooltip: {
+                callbacks: {
+                  title: (tooltipItems) => {
+                    const label = tooltipItems[0].label
+                    const hour = parseInt(label)
+                    const period = hour < 12 ? 'AM' : 'PM'
+                    const formattedHour = hour % 12 === 0 ? 12 : hour % 12
+                    return `${formattedHour} ${period}`
+                  },
+                  label: (tooltipItem) => {
+                    const value = tooltipItem.raw
+                    return `Serve time Duration: ${value}s`
+                  }
+                }
+              }
+            },
             scales: {
               x: {
                 display: true,
                 grid: { display: false },
-                ticks: { display: true, font: { size: 20 }, color: '#0D0D0D' },
+                ticks: {
+                  display: true,
+                  font: { size: 20 },
+                  color: '#0D0D0D',
+                  callback: (value) => {
+                    const hour = parseInt(labels[value])
+                    const period = hour < 12 ? 'AM' : 'PM'
+                    const formattedHour = hour % 12 === 0 ? 12 : hour % 12
+                    return `${formattedHour} ${period}`
+                  }
+                },
                 border: { display: true, color: '#000' }
               },
               y: {

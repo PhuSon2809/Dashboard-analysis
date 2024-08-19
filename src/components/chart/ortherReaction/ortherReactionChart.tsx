@@ -79,20 +79,17 @@ const PaymentReactionChart = memo(({ isSmall }: { isSmall?: boolean }) => {
         'payment-reaction-chart relative bg-ln-white-blue-2 shadow-s-14'
       )}
     >
-      <div
-        className={classNames(
-          isSmall
-            ? '-left-[7px] -top-[5px] h-[14px] w-[140px] p-3 lg:p-0 lg:w-[74px] rounded-br-[7.23px] rounded-tl-[7.23px]'
-            : '-left-[7.11px] -top-[9.11px] h-[50px] w-[200px] rounded-br-[32px] rounded-tl-[32px]',
-          'absolute flex items-center justify-center bg-white/[.44] shadow-s-7 backdrop-blur-[80px]'
-        )}
-      >
-        <p
-          className={`bg-ln-orange-purple bg-clip-text font-bold text-transparent ${classNames(isSmall ? 'text-[10px] lg:text-[6.63px]' : 'text-[18px]')}`}
+      {!isSmall && (
+        <div
+          className={classNames(
+            '-left-[10px]  h-[50px] w-[200px] rounded-br-[32px] rounded-tl-[32px] absolute flex items-center justify-center bg-white/[.44] shadow-s-7 backdrop-blur-[80px]'
+          )}
         >
-          Payment Reaction
-        </p>
-      </div>
+          <p className={`bg-ln-orange-purple bg-clip-text font-bold text-transparent ${classNames('text-[18px]')}`}>
+            Order Reaction
+          </p>
+        </div>
+      )}
 
       <div
         className={`absolute ${classNames(isSmall ? 'left-1/2 top-[15.64px]  size-[110px] lg:size-[80px] -translate-x-1/2 transform' : 'left-1/2 top-[40px] size-[420px] -translate-x-1/2 transform')}`}
@@ -189,40 +186,33 @@ const PaymentReactionChart = memo(({ isSmall }: { isSmall?: boolean }) => {
         </div>
       </div>
 
-      <div
-        className={classNames(
-          'absolute  left-1/2 flex -translate-x-1/2 transform items-start justify-center',
-          isSmall ? 'bottom-1 gap-[6.52px]' : 'bottom-[20px] gap-[20px]'
-        )}
-      >
-        {listDataSet.map((data) => (
-          <div key={data.value} className={classNames('flex items-center', isSmall ? 'gap-[2px]' : 'gap-[10px]')}>
-            <div
-              className={classNames(
-                `${isSmall ? 'lg:h-[4.82px] lg:w-[1px] size-[10px] rounded-[1.05px]' : 'h-[20px] w-[5px] rounded-[2px]'}`,
-                (() => {
-                  if (data.value === 'satisfied') {
-                    return 'bg-[#0D0D0D]'
-                  } else if (data.value === 'dissatisfied') {
-                    return 'bg-ln-orange'
-                  } else {
-                    return 'bg-ln-blue'
-                  }
-                })()
-              )}
-            />
-            <p
-              className={classNames(
-                isSmall
-                  ? 'font-customRegular text-[10px] lg:text-[4.82px]/[4.82px] capitalize'
-                  : 'font-customRegular text-[18px]/[18px] capitalize'
-              )}
-            >
-              {data.label}
-            </p>
-          </div>
-        ))}
-      </div>
+      {!isSmall && (
+        <div
+          className={classNames(
+            'absolute  left-1/2 flex -translate-x-1/2 transform items-start justify-center bottom-[20px] gap-[20px]'
+          )}
+        >
+          {listDataSet.map((data) => (
+            <div key={data.value} className={classNames('flex items-center gap-[10px]')}>
+              <div
+                className={classNames(
+                  `${'h-[20px] w-[5px] rounded-[2px]'}`,
+                  (() => {
+                    if (data.value === 'satisfied') {
+                      return 'bg-[#0D0D0D]'
+                    } else if (data.value === 'dissatisfied') {
+                      return 'bg-ln-orange'
+                    } else {
+                      return 'bg-ln-blue'
+                    }
+                  })()
+                )}
+              />
+              <p className={classNames('font-customRegular text-[18px]/[18px] capitalize')}>{data.label}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   )
 })

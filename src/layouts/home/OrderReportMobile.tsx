@@ -3,8 +3,8 @@ import { Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { ArrowLeftIcon, ArrowRightIcon } from '~/assets/icons'
 import BestSellerChartMobile from '~/components/chart/bestSeller/BestSellerChartMobile'
-import MostUsedPaymentChartMobile from '~/components/chart/mostUsedPayment/MostUsedPaymentChartMobile'
-import PaymentReactionChartMobile from '~/components/chart/pay/PaymentReactionChartMobile'
+import MostUsedPaymentChartMobile from '~/components/chart/mostPopularOrder/mostPopularOrderMobile'
+import PaymentReactionChartMobile from '~/components/chart/ortherReaction/ortherReactionChartMobile'
 import PurchasesChartMobile from '~/components/chart/purchases/PurchasesChartMobile'
 import ReactionsEnjoyChartMobile from '~/components/chart/reaction/ReactionsEnjoyChartMobile'
 import ServeTimeMobile from '~/components/chart/serveTime/ServeTimeMobile'
@@ -128,7 +128,7 @@ const OrderReportMobile = memo(() => {
     <div className=' bg-earth-2  px-5 pt-[8px]'>
       <div className='list-chart-order relative grid grid-cols-1 lg:gap-5 '>
         <h3 className='w-fit bg-ln-red-purple bg-clip-text font-customBold lg:text-[52px] text-[32px] uppercase leading-none text-transparent'>
-          orders
+          order
         </h3>
         <div className='swiper-show w-full'>
           <Swiper

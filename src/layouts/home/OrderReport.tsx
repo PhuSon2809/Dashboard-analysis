@@ -119,7 +119,7 @@ const OrderReport = memo(() => {
     <div className=' bg-earth-2  px-5 pt-[8px]'>
       <div className='list-chart-order relative flex flex-col lg:gap-5 '>
         <h3 className='w-fit bg-ln-red-purple bg-clip-text font-customBold lg:text-[52px] text-[32px] uppercase leading-none text-transparent'>
-          orders
+          order
         </h3>
 
         <div className='swiper-preview lg:absolute flex  flex-wrap lg:flex-row w-full items-center justify-center  z-[99999] lg:justify-end gap-[17.6px] '>

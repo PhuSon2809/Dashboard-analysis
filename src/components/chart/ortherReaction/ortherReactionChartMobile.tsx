@@ -94,7 +94,7 @@ const PaymentReactionChartMobile = memo(
             <p
               className={`bg-ln-orange-purple bg-clip-text font-bold text-transparent ${classNames('', isLittleSmall ? 'text-[10px]' : 'text-[18px]')}`}
             >
-              Payment Reaction
+              Order Reaction
             </p>
           </div>
         )}

@@ -57,25 +57,22 @@ const BestSellerChart = memo(({ isSmall }: { isSmall?: boolean }) => {
         isSmall ? 'h-[150px] w-[300px] lg:size-[110px] rounded-lg' : 'size-[460px] sm:size-[520px] rounded-[32px]'
       )}
     >
-      <div
-        className={classNames(
-          'absolute flex items-center justify-center bg-white/[.44] shadow-s-7 backdrop-blur-[80px]',
-          isSmall
-            ? 'top-[-10px] h-[20px] rounded-tl-[30px]  rounded-br-[30px] w-[100px] lg:w-[60px]'
-            : 'lg:bottom-[2%] bottom-0 left-0 lg:left-[-30px] h-[54px] w-[191px] rounded-tr-[34px] rounded-bl-[34px] '
-        )}
-      >
-        <p
+      {!isSmall && (
+        <div
           className={classNames(
-            'bg-ln-blue-green-2 bg-clip-text font-customSemiBold capitalize text-transparent',
-            isSmall ? 'text-[10px] lg:text-[6px]' : 'text-[28px]'
+            'absolute flex items-center justify-center bg-white/[.44] shadow-s-7 backdrop-blur-[80px] rounded-tl-[30px]  rounded-br-[30px]  w-[200px] h-[50px]'
           )}
         >
-          Best Seller
-        </p>
-      </div>
-
-      <div className={classNames('w-full px-2', isSmall ? 'h-[150px] pt-4 lg:h-[100px]' : 'h-[420px] px-8 pt-5')}>
+          <p
+            className={classNames(
+              'bg-ln-blue-green-2 bg-clip-text font-customSemiBold capitalize text-transparent text-[28px]'
+            )}
+          >
+            Best Seller
+          </p>
+        </div>
+      )}
+      <div className={classNames('w-full px-2', isSmall ? 'h-[150px] pt-4 lg:h-[100px]' : 'h-[500px] px-8 pt-20')}>
         <div className='h-full w-full'>
           <Bar
             options={{

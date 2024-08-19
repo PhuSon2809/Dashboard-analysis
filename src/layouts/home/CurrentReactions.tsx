@@ -1,6 +1,6 @@
 import classNames from 'classnames'
-import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { Autoplay, EffectCreative, Navigation } from 'swiper/modules'
+import { memo, useEffect, useMemo, useState } from 'react'
+import { EffectCreative, Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import { isDesktop, isMobile } from 'react-device-detect'
@@ -12,15 +12,11 @@ import { useAppSelector } from '~/redux/configStore'
 import './styles.scss'
 
 const CurrentReactions = memo(() => {
-  const swiperRef = useRef<any>(null)
-  const prevRef = useRef<HTMLButtonElement>(null)
-  const nextRef = useRef<HTMLButtonElement>(null)
-
   const { homeReportCurrent } = useAppSelector((s) => s.report)
-
   const [typeActive, setTypeActive] = useState<number>(0)
-  const [activeSlide, setActiveSlide] = useState<number>(0)
+  const [activeSlide, setActiveSlide] = useState<number>(2)
   const [center, setCenter] = useState(false)
+
   const handleResize = () => {
     const width = window.innerWidth
     if (width < 1024) {
@@ -37,10 +33,6 @@ const CurrentReactions = memo(() => {
     }
   }, [])
   const listTypePerson = useMemo(() => [0, 1], [])
-
-  const handleSlideChange = useCallback(() => {
-    if (swiperRef.current && swiperRef.current.swiper) setActiveSlide(swiperRef.current.swiper.realIndex)
-  }, [swiperRef])
 
   const listDataRender = useMemo(
     () => homeReportCurrent?.currentReactions?.filter((p: any) => p.status === typeActive),
@@ -117,14 +109,13 @@ const CurrentReactions = memo(() => {
         </div>
         <div className='list-person pt-[30px] lg:w-[800px] lg:pr-[97px]'>
           <Swiper
-            ref={swiperRef}
-            loop
+            loop={true}
+            keyboard={{ enabled: true }}
             grabCursor
             centeredSlides={center}
-            effect={'creative'}
+            effect='creative'
             slidesPerView={1}
             initialSlide={2}
-            freeMode={true}
             breakpoints={{
               320: {
                 slidesPerView: 1,
@@ -153,12 +144,12 @@ const CurrentReactions = memo(() => {
                 scale: 0.56
               }
             }}
-            modules={[EffectCreative, Navigation, Autoplay]}
+            modules={[EffectCreative, Navigation]}
             navigation={{
-              prevEl: prevRef.current ? prevRef.current : undefined,
-              nextEl: nextRef.current ? nextRef.current : undefined
+              prevEl: '.custom-prev-button',
+              nextEl: '.custom-next-button'
             }}
-            onSlideChange={handleSlideChange}
+            onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}
           >
             {listDataRender?.length === 0 && (
               <PersonreactionCard
@@ -180,10 +171,10 @@ const CurrentReactions = memo(() => {
               })}
           </Swiper>
           <div className='mt-10 flex items-center justify-center gap-4 pr-7'>
-            <IconButton size='48' ref={prevRef} onClick={() => swiperRef.current?.swiper?.slidePrev()}>
+            <IconButton size='48' className='custom-prev-button'>
               <ArrowLeftIcon className='size-6' />
             </IconButton>
-            <IconButton size='48' ref={nextRef} onClick={() => swiperRef.current?.swiper?.slideNext()}>
+            <IconButton size='48' className='custom-next-button'>
               <ArrowRightIcon className='size-6' />
             </IconButton>
           </div>

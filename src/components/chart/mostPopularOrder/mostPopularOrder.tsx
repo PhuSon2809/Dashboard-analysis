@@ -44,28 +44,26 @@ const MostUsedPaymentChart = memo(({ isSmall }: { isSmall?: boolean }) => {
           : 'most-used-payment-chart size-[470px] sm:size-[510px] rounded-[32px] bg-ln-white-green pr-[6.03px] pt-2 shadow-s-14 backdrop-blur-2xl'
       )}
     >
-      <div
-        className={classNames(
-          isSmall
-            ? 'absolute -bottom-[2px] -left-[3px] flex h-[14px] w-[150px] p-3 lg:w-[78.05px] items-center justify-center rounded-bl-[30px] rounded-tr-[30px] bg-white backdrop-blur-[80px]'
-            : 'absolute -right-[20px] top-[20px] flex h-[50px] w-[200px] items-center justify-center rounded-bl-[32px] rounded-tr-[32px] bg-[#FBFCFE]'
-        )}
-      >
-        <p
+      {!isSmall && (
+        <div
           className={classNames(
-            isSmall
-              ? 'bg-ln-purple-green bg-clip-text font-customSemiBold text-[10px] lg:text-[6.63px] capitalize text-transparent'
-              : 'bg-ln-purple-green bg-clip-text font-customSemiBold text-[18px] capitalize text-transparent'
+            'absolute -left-[20px] top-[0px] flex h-[50px] w-[200px] items-center justify-center rounded-tl-[32px] rounded-br-[32px] bg-[#FBFCFE]'
           )}
         >
-          Most used payment
-        </p>
-      </div>
+          <p
+            className={classNames(
+              'bg-ln-purple-green bg-clip-text font-customSemiBold text-[18px] capitalize text-transparent'
+            )}
+          >
+            Most popular order
+          </p>
+        </div>
+      )}
 
       <div className={classNames(isSmall ? 'h-[110px] lg:h-[90px] w-full' : 'h-[90%] w-full')}>
         <Bar
           data={{
-            labels: ['QR Pay', 'Cash', 'Take away'],
+            labels: ['Delivery', ' In-store', 'Take away'],
             datasets: [
               {
                 data: [dataChart?.['1'], dataChart?.['2'], dataChart?.['3']],

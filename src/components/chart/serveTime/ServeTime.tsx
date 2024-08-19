@@ -75,11 +75,11 @@ const ServeTime = memo(({ isSmall }: { isSmall?: boolean }) => {
           </h6>
           <p
             className={classNames(
-              'bg-ln-serve-time bg-clip-text font-customSemiBold text-transparent',
-              isSmall ? 'text-[10px] lg:text-[6.63px]' : 'text-[30px]'
+              'bg-ln-serve-time bg-clip-text font-customSemiBold text-transparent capitalize',
+              isSmall ? 'text-[10px] lg:text-[6.63px]' : 'text-[25px]'
             )}
           >
-            Serve Time
+            Meal service time
           </p>
         </div>
       </div>

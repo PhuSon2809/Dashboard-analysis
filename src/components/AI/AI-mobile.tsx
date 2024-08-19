@@ -149,38 +149,43 @@ const AIQuestionMobile: React.FC<IAIQuestionMobileProps> = () => {
       <div className='AI-question relative z-20 flex flex-col gap-5 items-center justify-center mt-20 text-[18px] px-4'>
         <div className='chat-group-mobile w-full flex flex-col pt-24'>
           {isLottieLoaded && !chatHistory.length && (
-            <div className='chat chat-end absolute top-[10%] left-[0%]'>
-              <div className='chat-bubble chat-bubble-primary'>
+            <div className='chat chat-end absolute top-[5%] left-[0%] w-[75%]'>
+              <div className='chat-bubble chat-bubble-primary w-full text-[15px]'>
                 <TypingEffect text='What do you want to ask? ' speed={50} hasLoading={false} />
               </div>
             </div>
           )}
-          <div ref={chatContainerRef} className='chat-group-bubble overflow-y-auto w-full  rounded-lg shadow '>
-            {chatHistory.map((chat, index) => (
-              <div
-                key={index}
-                className={`chat ${classNames(chat.type === 'user' ? 'chat-end' : 'chat-start', index === chatHistory.length - 1 ? 'scale-100 ' : 'scale-[0.85]')}   animate__animated animate__pulse`}
-              >
+          {chatHistory.length > 0 && (
+            <div
+              ref={chatContainerRef}
+              className='chat-group-bubble overflow-y-auto w-full  rounded-lg shadow max-h-[500px]'
+            >
+              {chatHistory.map((chat, index) => (
                 <div
-                  className={`chat-bubble ${!chat.image ? 'grid-cols-1' : 'has-image'} ${chat.type === 'user' ? 'bg-[#898989]  opacity-50 hover:opacity-100 text-white' : 'bg-[#69ACF5]'}`}
+                  key={index}
+                  className={`w-full chat ${classNames(chat.type === 'user' ? 'chat-end' : 'chat-start', index === chatHistory.length - 1 ? 'scale-100 ' : 'scale-[0.85]')}   animate__animated animate__pulse`}
                 >
-                  {chat.type === 'user' ? (
-                    chat.text
-                  ) : (
-                    <TypingEffect
-                      speed={10}
-                      onComplete={index === chatHistory.length - 1 ? handleTypingComplete : undefined}
-                    >
-                      {chat.text}
-                    </TypingEffect>
-                  )}
-                  {chat.type === 'ai' && isTypingComplete && chat.image && (
-                    <img src={chat.image} alt='img' className='w-full mt-5' />
-                  )}
+                  <div
+                    className={`chat-bubble ${!chat.image ? 'grid-cols-1' : 'has-image'} ${chat.type === 'user' ? 'bg-[#898989]  opacity-50 hover:opacity-100 text-white' : 'bg-[#69ACF5]'}`}
+                  >
+                    {chat.type === 'user' ? (
+                      chat.text
+                    ) : (
+                      <TypingEffect
+                        speed={10}
+                        onComplete={index === chatHistory.length - 1 ? handleTypingComplete : undefined}
+                      >
+                        {chat.text}
+                      </TypingEffect>
+                    )}
+                    {chat.type === 'ai' && isTypingComplete && chat.image && (
+                      <img src={chat.image} alt='img' className='w-full mt-5' />
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
         {chatHistory.length === 0 && (
           <dotlottie-player
@@ -192,21 +197,21 @@ const AIQuestionMobile: React.FC<IAIQuestionMobileProps> = () => {
               height: '400px',
               zIndex: 30,
               position: 'relative',
-              top: '0px',
+              top: '-150px',
               left: '100px'
             }}
           />
         )}
 
         {chatHistory.length === 0 && (
-          <div className=' bg-white text-center max-w-[300px] left-0 ring-1 rounded-lg overflow-hidden p-2'>
+          <div className=' bg-white text-center max-w-[300px] left-0 ring-1 rounded-lg overflow-hidden p-2 mt-[-200px]'>
             <div className=' text-black '>
               This demo highlights F&B store data. For other industries, contact us for details.
             </div>
           </div>
         )}
         {isLottieLoaded && (
-          <div className=' option-question translate-[-20%,-10%] z-30 w-[300px] flex flex-col gap-5 '>
+          <div className=' option-question w-full translate-[-20%,-10%] z-30  flex flex-col gap-5 '>
             <div className='flex overflow-x-auto gap-5 items-center'>
               {options.map((option) => (
                 <button
@@ -221,8 +226,8 @@ const AIQuestionMobile: React.FC<IAIQuestionMobileProps> = () => {
                 </button>
               ))}
             </div>
-            <form onSubmit={handleSubmit}>
-              <div className='relative w-full '>
+            <form onSubmit={handleSubmit} className='relative w-full '>
+              <div>
                 <div className='pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3'>
                   <img src={brainImg} alt='search' />
                 </div>
