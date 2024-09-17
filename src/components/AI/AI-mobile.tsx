@@ -1,30 +1,22 @@
 import '@dotlottie/player-component'
 import 'animate.css'
 import classNames from 'classnames'
-import React, { FormEvent, useEffect, useRef, useState } from 'react'
-import images from '~/assets'
+import React, { useEffect, useRef, useState } from 'react'
 import IconPaperAirplane16 from '~/assets/icons/plan'
 import IconStop from '~/assets/icons/stop'
 import brainImg from '~/assets/images/brain.png'
-import messages, { options } from '~/components/AI/chat'
-import search from '~/components/AI/search'
 import TypingEffect from '~/components/AI/TypeEffect'
-import { ReactionMenuChart } from '~/components/chart'
-import MostUsedPaymentV2 from '~/components/chart/pay/mostUsedPaymentV2'
-import PaymentReactionChartV2 from '~/components/chart/pay/paymentReactionChartV2'
-import { PersonreactionCard } from '~/components/personreactionCard'
-import { useAppSelector } from '~/redux/configStore'
-import { useAi } from './useAi'
 import { Button } from '../button'
+import { useAi } from './useAi'
 
 interface IAIQuestionMobileProps {}
 
-interface ChatMessage {
-  id: number | null
-  text: string
-  type: 'user' | 'ai'
-  image?: string
-}
+// interface ChatMessage {
+//   id: number | null
+//   text: string
+//   type: 'user' | 'ai'
+//   image?: string
+// }
 
 const AIQuestionMobile: React.FC<IAIQuestionMobileProps> = () => {
   const [isLottieLoaded, setIsLottieLoaded] = useState<boolean>(false)
@@ -149,6 +141,7 @@ const AIQuestionMobile: React.FC<IAIQuestionMobileProps> = () => {
                   {isAIResponding ? <IconStop /> : <IconPaperAirplane16 />}
                 </button>
               </div>
+              <input type='file' onChange={selectFile} className='hidden' ref={fileInputRef} />
               <Button
                 className='absolute top-16'
                 variant='blue'
